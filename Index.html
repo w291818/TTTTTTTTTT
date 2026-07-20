@@ -1,1 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>銳鋒顧問 Top Market | 一站式商業諮詢</title>
+  <style>
+    /* ===== 全域重置 & 字體 ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif; }
+    body { background: #020510; color: #e2e8f0; line-height: 1.8; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== 固定導航 (玻璃) ===== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(2, 5, 16, 0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 14px 0; transition: 0.4s;
+    }
+    .header.scrolled { padding: 8px 0; }
+    .nav-container {
+      max-width: 1280px; margin: 0 auto; padding: 0 40px 0 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: baseline; gap: 10px; margin-right: auto; }
+    .logo a { display: flex; align-items: baseline; gap: 8px; }
+    .logo .brand-cn { font-size: 2.6rem; font-weight: 800; color: #fff; letter-spacing: 2px; line-height: 1; }
+    .logo .brand-en { font-size: 1.1rem; font-weight: 600; color: #94a3b8; letter-spacing: 1px; opacity: 0.9; }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: #cbd5e1; font-weight: 500; font-size: 0.95rem;
+      padding: 6px 0; position: relative; transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: #3b82f6; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .menu-toggle span { width: 26px; height: 2px; background: #e2e8f0; transition: 0.3s; }
+
+    /* ===== 返回頂部按鈕 ===== */
+    #backToTop {
+      position: fixed;
+      bottom: 40px;
+      right: 30px;
+      z-index: 999;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    }
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    #backToTop:hover {
+      background: #2563eb;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+    }
+    #backToTop svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ===== 通用區塊 ===== */
+    .section { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
+    .section-title { text-align: center; margin-bottom: 60px; }
+    .section-label .label-en {
+      font-size: 0.8rem; letter-spacing: 6px; text-transform: uppercase;
+      color: #3b82f6; font-weight: 600;
+      display: flex; align-items: center; gap: 15px; justify-content: center; opacity: 0.7;
+    }
+    .section-label .label-en::before,
+    .section-label .label-en::after {
+      content: ""; flex: 1; height: 1px; max-width: 100px;
+      background: linear-gradient(90deg, transparent, #3b82f6);
+    }
+    .section-label .label-en::after { background: linear-gradient(90deg, #3b82f6, transparent); }
+    .section-title h2 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: #fff;
+      letter-spacing: -1px; opacity: 0; transform: translateY(30px);
+    }
+    .section-title h2.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); }
+    .section-title .line { width: 60px; height: 3px; background: #3b82f6; margin: 15px auto 0; }
+
+    .visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+    /* ===== 主視覺 ===== */
+    .hero {
+      width: 100%; min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 40px 80px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      z-index: 0; animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+    .hero-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(10,15,30,0.15) 0%, rgba(2,5,16,0.15) 90%);
+      z-index: 1;
+    }
+    .hero-content {
+      max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+    }
+    .hero-text { flex: 1 1 500px; margin-left: -2.5cm; }
+    .hero-text .label-en {
+      font-size: 0.8rem; letter-spacing: 6px; text-transform: uppercase;
+      color: #3b82f6; margin-bottom: 20px; font-weight: 600;
+      display: flex; align-items: center; gap: 15px; opacity: 0.7;
+    }
+    .hero-text .label-en::after {
+      content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, #3b82f6, transparent);
+    }
+    .hero-text .label-en.white { color: #fff; opacity: 0.5; }
+    .hero-text h1 {
+      font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; color: #fff;
+      line-height: 1; letter-spacing: -1px; margin-bottom: 25px;
+      opacity: 0; transform: translateY(40px);
+    }
+    .hero-text h1.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); }
+    .hero-text h1 .outline-text { -webkit-text-stroke: 1.5px #fff; -webkit-text-fill-color: transparent; display: inline-block; }
+    .hero-text h1 .highlight { color: #3b82f6; display: block; }
+    .hero-text p {
+      font-size: 1.2rem; color: #cbd5e1; margin-bottom: 40px; max-width: 500px; line-height: 1.9;
+      opacity: 0; transform: translateY(30px);
+    }
+    .hero-text p.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); transition-delay: 0.2s; }
+    .hero-text .btn-primary {
+      display: inline-block; background: #3b82f6; color: #fff; padding: 15px 40px;
+      border-radius: 6px; font-weight: 600; letter-spacing: 0.5px;
+      transition: all 0.3s; border: 2px solid #3b82f6; font-size: 1rem;
+      opacity: 0; transform: translateY(30px);
+    }
+    .hero-text .btn-primary.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); transition-delay: 0.4s; }
+    .hero-text .btn-outline { background: transparent; color: #3b82f6; border: 2px solid #3b82f6; margin-left: 15px; }
+    .btn-primary:hover { background: #2563eb; border-color: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(59,130,246,0.3); }
+    .btn-outline:hover { background: #3b82f6; color: #fff; }
+
+    /* ===== 統計 ===== */
+    .gradient-bg { background: linear-gradient(to right, #1e3a8a 0%, #020510 80%); }
+    .stats {
+      max-width: 1200px; margin: 0 auto; padding: 80px 20px 40px;
+      display: flex; justify-content: center; gap: 100px; text-align: center; flex-wrap: wrap;
+    }
+    .stat-item { opacity: 0; transform: scale(0.8); }
+    .stat-item.visible { animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .stat-item:nth-child(2).visible { animation-delay: 0.2s; }
+    .stat-item:nth-child(3).visible { animation-delay: 0.4s; }
+    @keyframes scaleIn { 0% { opacity: 0; transform: scale(0.6); } 100% { opacity: 1; transform: scale(1); } }
+    .stat-number { font-size: 4rem; font-weight: 900; color: #3b82f6; line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: #94a3b8; letter-spacing: 3px; margin-top: 8px; text-transform: uppercase; font-weight: 600; }
+
+    /* ===== 服務卡片滑動 ===== */
+    .card-scroll-wrapper { position: relative; width: 100%; overflow: hidden; }
+    .card-scroll-wrapper::before, .card-scroll-wrapper::after {
+      content: ""; position: absolute; top: 0; bottom: 0; width: 8%; z-index: 10; pointer-events: none;
+    }
+    .card-scroll-wrapper::before { left: 0; background: linear-gradient(to right, rgba(2,5,16,0.9) 0%, transparent 100%); }
+    .card-scroll-wrapper::after { right: 0; background: linear-gradient(to left, rgba(2,5,16,0.9) 0%, transparent 100%); }
+    .card-scroll-container { overflow: hidden; padding: 20px 8%; position: relative; }
+    .card-track { display: flex; gap: 20px; transition: transform 0.5s ease; will-change: transform; }
+    .service-card {
+      flex: 0 0 60%; max-width: 460px; background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(30px); border-radius: 24px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25); transition: all 0.4s ease;
+      opacity: 0.6; transform: scale(0.92);
+      border: 1px solid rgba(255,255,255,0.06); cursor: pointer; position: relative;
+    }
+    .service-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(59,130,246,0.08) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card.active { opacity: 1; transform: scale(1); border-color: rgba(59,130,246,0.4); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+    .service-card:hover { opacity: 1 !important; transform: scale(1) !important; box-shadow: 0 30px 60px rgba(0,0,0,0.4); border-color: rgba(59,130,246,0.4); }
+    .card-img { width: 100%; height: 220px; object-fit: cover; opacity: 0; transition: opacity 2s ease; z-index: 0; }
+    .card-img.visible { opacity: 1; }
+    .card-content { padding: 30px 28px; position: relative; z-index: 2; }
+    .card-content h3 { font-size: 1.7rem; margin-bottom: 12px; color: #fff; }
+    .card-content p { color: #cbd5e1; line-height: 1.9; margin-bottom: 20px; font-size: 0.9rem; }
+    .card-link { color: #3b82f6; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.3s; font-size: 0.95rem; }
+    .card-link:hover { gap: 12px; }
+    .slider-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
+      background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15); color: #fff;
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s ease; font-size: 1.6rem; font-weight: 300; line-height: 1;
+    }
+    .slider-arrow:hover { background: rgba(59,130,246,0.3); border-color: rgba(59,130,246,0.6); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+    .left-arrow { left: 15px; }
+    .right-arrow { right: 15px; }
+
+    /* ===== Why Us 全屏 ===== */
+    .why-us { position: relative; }
+    .why-block {
+      width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center;
+      background-size: cover; background-position: center; position: relative;
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1);
+    }
+    .why-block.visible { opacity: 1; transform: translateY(0); }
+    .why-block::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(2,5,16,0.3) 0%, rgba(2,5,16,0.8) 100%);
+      z-index: 1;
+    }
+    .why-text { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 30px; color: #fff; }
+    .why-text .label-en {
+      font-size: 0.8rem; letter-spacing: 6px; text-transform: uppercase;
+      color: #3b82f6; margin-bottom: 20px; font-weight: 600;
+      display: flex; align-items: center; gap: 15px; justify-content: center; opacity: 0.8;
+    }
+    .why-text .label-en::before, .why-text .label-en::after {
+      content: ""; flex: 1; height: 1px; max-width: 80px;
+      background: linear-gradient(90deg, transparent, #3b82f6);
+    }
+    .why-text .label-en::after { background: linear-gradient(90deg, #3b82f6, transparent); }
+    .why-text h3 {
+      font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; letter-spacing: -1px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6); opacity: 0; transform: translateY(30px);
+    }
+    .why-text h3.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); transition-delay: 0.2s; }
+    .why-text p {
+      font-size: 1.2rem; line-height: 1.9; text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+      opacity: 0; transform: translateY(30px); color: #e2e8f0;
+    }
+    .why-text p.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); transition-delay: 0.5s; }
+
+    /* ===== 客戶案例 ===== */
+    .case-studies { background: #020510; padding: 80px 20px; }
+    .case-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; max-width: 1100px; margin: 0 auto;
+    }
+    .case-card {
+      background: rgba(255,255,255,0.02); backdrop-filter: blur(30px);
+      border-radius: 24px; overflow: hidden; transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+      border: 1px solid rgba(255,255,255,0.06); opacity: 0; transform: translateY(30px);
+      cursor: pointer; position: relative;
+    }
+    .case-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(59,130,246,0.08) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
+    }
+    .case-card:hover::before { opacity: 1; }
+    .case-card.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); }
+    .case-card:nth-child(2).visible { transition-delay: 0.15s; }
+    .case-card:nth-child(3).visible { transition-delay: 0.3s; }
+    .case-card:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); border-color: rgba(59,130,246,0.4); }
+    .case-card img { width: 100%; height: 200px; object-fit: cover; opacity: 0; transition: opacity 2s ease; z-index: 0; }
+    .case-card img.visible { opacity: 1; }
+    .case-card .case-content { padding: 28px; position: relative; z-index: 2; }
+    .case-card h4 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; font-weight: 700; letter-spacing: 0.5px; }
+    .case-card p { color: #cbd5e1; font-size: 0.9rem; line-height: 1.9; }
+
+    /* ===== About ===== */
+    .about {
+      width: 100%; height: 500px;
+      background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: #fff; position: relative;
+    }
+    .about::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(2,5,16,0.3) 0%, rgba(2,5,16,0.7) 100%);
+      z-index: 1;
+    }
+    .about-content { position: relative; z-index: 2; max-width: 700px; padding: 0 30px; opacity: 0; transform: translateY(30px); }
+    .about-content.visible { opacity: 1; transform: translateY(0); transition: 1.2s cubic-bezier(0.16,1,0.3,1); }
+    .about-content .label-en {
+      font-size: 0.8rem; letter-spacing: 6px; text-transform: uppercase;
+      color: #3b82f6; margin-bottom: 20px; font-weight: 600;
+      display: flex; align-items: center; gap: 15px; justify-content: center; opacity: 0.8;
+    }
+    .about-content .label-en::before, .about-content .label-en::after {
+      content: ""; flex: 1; height: 1px; max-width: 80px;
+      background: linear-gradient(90deg, transparent, #3b82f6);
+    }
+    .about-content .label-en::after { background: linear-gradient(90deg, #3b82f6, transparent); }
+    .about-content h2 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -1px; text-shadow: 0 2px 20px rgba(0,0,0,0.6); }
+    .about-content .line { width: 60px; height: 3px; background: #3b82f6; margin: 0 auto 25px; }
+    .about-content p { font-size: 1.1rem; margin-bottom: 25px; line-height: 1.9; font-weight: 300; text-shadow: 0 2px 15px rgba(0,0,0,0.5); color: #e2e8f0; }
+    .about-content .quote {
+      font-size: 1.2rem; font-weight: 600; color: #fff; letter-spacing: 3px;
+      border: 1px solid rgba(255,255,255,0.5); display: inline-block; padding: 12px 30px;
+      border-radius: 50px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+    }
+
+    /* ===== Footer ===== */
+    .footer { background: #fff; color: #1a202c; padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
+    .footer-social { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; flex-wrap: wrap; }
+    .footer-social a { color: #333; font-weight: 500; display: flex; align-items: center; gap: 10px; transition: 0.3s; font-size: 0.95rem; }
+    .footer-social a:hover { color: #2563eb; transform: translateY(-2px); }
+    .footer-social a svg { width: 24px; height: 24px; }
+    .copyright { font-size: 0.9rem; color: #555; }
+
+    /* ===== 響應式 ===== */
+    @media (max-width: 900px) {
+      .hero-text { margin-left: 0; }
+      .hero-text h1 { font-size: 2.5rem; }
+      .why-text h3 { font-size: 2.2rem; }
+      .why-text p { font-size: 1.1rem; }
+      .stat-number { font-size: 2.8rem; }
+      .stats { gap: 50px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #020510; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: flex; }
+      .hero { min-height: auto; padding: 100px 20px 60px; }
+      .hero-content { flex-direction: column; text-align: center; }
+      .hero-text { margin-left: 0; }
+      .hero-text p { margin: 0 auto 30px; }
+      .btn-outline { margin-left: 0; margin-top: 15px; }
+      .service-card { flex: 0 0 80%; }
+      .card-scroll-container { padding: 20px 5%; }
+      .slider-arrow { display: none; }
+      #backToTop { bottom: 25px; right: 20px; width: 46px; height: 46px; font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== 導航 ===== -->
+<header class="header" id="header">
+  <div class="nav-container">
+    <div class="logo"><a href="#hero"><span class="brand-cn">銳鋒</span><span class="brand-en">The Top Market</span></a></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">業務範圍</a></li>
+      <li><a href="#cases">成功案例</a></li>
+      <li><a href="#process">咨詢流程</a></li>
+      <li><a href="#faq">常見問題</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ===== 返回頂部按鈕 ===== -->
+<button id="backToTop" aria-label="返回頂部">
+  <svg viewBox="0 0 24 24">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="label-en white" style="font-weight:1200; font-size:2rem;">The Top Market</span>
+      <h1 class="hero-title"><span class="outline-text">讓商業視野</span><span class="highlight">超越界限</span></h1>
+      <p class="hero-desc">香港市場 · 精準數據 · 策略賦能。我們協助企業在複雜的商業環境中找到清晰方向，實現可持續增長。</p>
+      <a href="#services" class="btn-primary hero-btn">探索服務</a>
+      <a href="#contact" class="btn-primary btn-outline hero-btn">聯絡我們</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 統計 + 服務 ===== -->
+<div class="gradient-bg">
+  <div class="stats">
+    <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">成功案例</div></div>
+    <div class="stat-item"><div class="stat-number">10年</div><div class="stat-label">行業經驗</div></div>
+    <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">客戶滿意度</div></div>
+  </div>
+
+  <!-- 核心服務 -->
+  <div class="section" id="services">
+    <div class="section-title">
+      <div class="section-label"><span class="label-en">✦ Core Services</span></div>
+      <h2 class="service-title">核心服務</h2>
+      <div class="line"></div>
+    </div>
+    <div class="card-scroll-wrapper" id="cardScrollWrapper">
+      <button class="slider-arrow left-arrow" id="leftArrow">‹</button>
+      <div class="card-scroll-container" id="cardScrollContainer"><div class="card-track" id="cardTrack"></div></div>
+      <button class="slider-arrow right-arrow" id="rightArrow">›</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WHY US (全屏三塊) ===== -->
+<section class="why-us" id="why">
+  <div class="why-block" style="background-image:url('https://img1.wallspic.com/crops/8/3/6/8/3/138638/138638-red_and_white_bokeh_lights-3840x2160.jpg');">
+    <div class="why-text"><span class="label-en">✦ Data-Driven</span><h3 class="why-title">數據驅動</h3><p class="why-desc">以真實數據為基底，結合行業洞察，制定可執行的策略方案。我們的分析團隊擅長從複雜數據中提煉關鍵信號，確保每一次決策都有據可依。</p></div>
+  </div>
+  <div class="why-block" style="background-image:url('https://img3.wallspic.com/crops/0/5/7/8/5/158750/158750-xiang_gang-zi_se_de-dian_li_ta_kuai-ren_ti_nei_de_shui-3840x2160.jpg');">
+    <div class="why-text"><span class="label-en">✦ Local Roots</span><h3 class="why-title">本地深耕</h3><p class="why-desc">扎根香港，熟悉本地法規與商業環境，提供接地氣的專業建議。我們的本地網絡與經驗能幫助企業快速適應市場變化，降低風險。</p></div>
+  </div>
+  <div class="why-block" style="background-image:url('https://images.pexels.com/photos/7441079/pexels-photo-7441079.jpeg?_gl=1*c15iy9*_ga*MTAyNDQ1NjIzNS4xNzg0MDc5NjU1*_ga_8JE65Q40S6*czE3ODQwNzk2NTQkbzEkZzEkdDE3ODQwODA1MjAkajEzJGwwJGhw');">
+    <div class="why-text"><span class="label-en">✦ Agile Response</span><h3 class="why-title">敏捷反應</h3><p class="why-desc">快速響應市場變化，為客戶提供靈活且高效的解決方案。我們保持敏銳的市場觸覺，隨時調整策略以應對突發狀況。</p></div>
+  </div>
+</section>
+
+<!-- ===== 客戶案例 ===== -->
+<section class="case-studies section" id="cases">
+  <div class="section-title">
+    <div class="section-label"><span class="label-en">✦ Success Stories</span></div>
+    <h2 class="case-title">客戶案例</h2>
+    <div class="line"></div>
+  </div>
+  <div class="case-grid">
+    <div class="case-card" onclick="document.getElementById('cases').scrollIntoView({behavior:'smooth'})">
+      <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&auto=format&fit=crop" alt="案例一" class="case-img">
+      <div class="case-content"><h4>留學顧問數據調研——精準鎖定潛在客戶</h4><p>一家成立5年的香港本地海外留學顧問公司，網站查詢量在3個月內增長了65%。</p></div>
+    </div>
+    <div class="case-card" onclick="document.getElementById('cases').scrollIntoView({behavior:'smooth'})">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&auto=format&fit=crop" alt="案例二" class="case-img">
+      <div class="case-content"><h4>零售品牌——5店老闆的擴張抉擇</h4><p>為傳統零售品牌制定數字化轉型路線，銷售額從零增長至佔總營收的45%，整體營收回升22%。</p></div>
+    </div>
+    <div class="case-card" onclick="document.getElementById('cases').scrollIntoView({behavior:'smooth'})">
+      <img src="https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/4B217530-644A-435E-8A65-F1CFCBD79688.jpeg" alt="案例三" class="case-img">
+      <div class="case-content"><h4>米芝蓮星級大厨——一站式開業</h4><p>開業首月即獲得米芝蓮指南推薦，營運首年毛利率達到38%。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 咨詢流程 (原 team.html 內容) ===== -->
+<section class="section" id="process" style="max-width:1000px; padding-top:20px;">
+  <div class="section-title">
+    <div class="section-label"><span class="label-en">✦ Our Process</span></div>
+    <h2 class="process-title">計劃流程</h2>
+    <div class="line"></div>
+  </div>
+  <div style="background:rgba(26,32,44,0.6); backdrop-filter:blur(20px); border-radius:20px; padding:35px 40px; margin-bottom:40px; border:1px solid rgba(59,130,246,0.2); text-align:center;">
+    <p style="color:#e2e8f0; font-size:1.05rem;">我們建立了一套嚴謹且高效的工作流程，從客戶需求出發，透過多維度市場數據搜集、專業分析與策略制定，到長期監測與合作，確保每一個環節都精準到位。</p>
+    <div style="display:inline-block; background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.3); border-radius:50px; padding:10px 30px; color:#60a5fa; font-weight:600; margin-top:20px;">全程監控 · 數據真實 · 專業執行</div>
+  </div>
+
+  <div style="position:relative; padding:20px 0;">
+    <div style="position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(180deg, #3b82f6 0%, #1e3a8a 100%); transform:translateX(-50%);"></div>
+    <!-- 步驟 -->
+    <div class="timeline-item" style="display:flex; align-items:center; margin-bottom:50px; position:relative; opacity:0; transform:translateY(30px);">
+      <div style="width:42%; background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); padding:30px 35px; border-radius:20px; border:1px solid rgba(59,130,246,0.2);"><div style="display:inline-block; background:#3b82f6; color:#fff; width:36px; height:36px; border-radius:50%; text-align:center; line-height:36px; font-weight:700; margin-bottom:12px;">1</div><h3 style="font-size:1.5rem; color:#fff; margin-bottom:12px;">客戶提出需求</h3><p style="color:#cbd5e1; font-size:0.95rem;">深入溝通，了解業務目標、市場與期望成果，精準界定專案範圍與關鍵指標。</p></div>
+      <div style="width:16px; height:16px; background:#3b82f6; border-radius:50%; position:absolute; left:50%; transform:translateX(-50%); z-index:2; box-shadow:0 0 20px rgba(59,130,246,0.6);"></div>
+    </div>
+    <div class="timeline-item" style="display:flex; align-items:center; margin-bottom:50px; position:relative; opacity:0; transform:translateY(30px); flex-direction:row-reverse;">
+      <div style="width:42%; background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); padding:30px 35px; border-radius:20px; border:1px solid rgba(59,130,246,0.2);"><div style="display:inline-block; background:#3b82f6; color:#fff; width:36px; height:36px; border-radius:50%; text-align:center; line-height:36px; font-weight:700; margin-bottom:12px;">2</div><h3 style="font-size:1.5rem; color:#fff; margin-bottom:12px;">多維度市場數據搜集</h3><p style="color:#cbd5e1; font-size:0.95rem;">問卷調查、電話抽樣、街頭訪談、深度面談、社交輿論、電商數據及公開報告整合。</p></div>
+      <div style="width:16px; height:16px; background:#3b82f6; border-radius:50%; position:absolute; left:50%; transform:translateX(-50%); z-index:2; box-shadow:0 0 20px rgba(59,130,246,0.6);"></div>
+    </div>
+    <div class="timeline-item" style="display:flex; align-items:center; margin-bottom:50px; position:relative; opacity:0; transform:translateY(30px);">
+      <div style="width:42%; background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); padding:30px 35px; border-radius:20px; border:1px solid rgba(59,130,246,0.2);"><div style="display:inline-block; background:#3b82f6; color:#fff; width:36px; height:36px; border-radius:50%; text-align:center; line-height:36px; font-weight:700; margin-bottom:12px;">3</div><h3 style="font-size:1.5rem; color:#fff; margin-bottom:12px;">數據整理與解讀</h3><p style="color:#cbd5e1; font-size:0.95rem;">內部數據分析組統計核算、建模與圖表製作，嚴格品質監控，轉化為明確市場洞察。</p></div>
+      <div style="width:16px; height:16px; background:#3b82f6; border-radius:50%; position:absolute; left:50%; transform:translateX(-50%); z-index:2; box-shadow:0 0 20px rgba(59,130,246,0.6);"></div>
+    </div>
+    <div class="timeline-item" style="display:flex; align-items:center; margin-bottom:50px; position:relative; opacity:0; transform:translateY(30px); flex-direction:row-reverse;">
+      <div style="width:42%; background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); padding:30px 35px; border-radius:20px; border:1px solid rgba(59,130,246,0.2);"><div style="display:inline-block; background:#3b82f6; color:#fff; width:36px; height:36px; border-radius:50%; text-align:center; line-height:36px; font-weight:700; margin-bottom:12px;">4</div><h3 style="font-size:1.5rem; color:#fff; margin-bottom:12px;">制訂專屬市場顧問方案</h3><p style="color:#cbd5e1; font-size:0.95rem;">品牌定位、市場進入策略、定價建議、渠道選擇與宣傳推廣方向，高度契合業務目標。</p></div>
+      <div style="width:16px; height:16px; background:#3b82f6; border-radius:50%; position:absolute; left:50%; transform:translateX(-50%); z-index:2; box-shadow:0 0 20px rgba(59,130,246,0.6);"></div>
+    </div>
+    <div class="timeline-item" style="display:flex; align-items:center; margin-bottom:50px; position:relative; opacity:0; transform:translateY(30px);">
+      <div style="width:42%; background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); padding:30px 35px; border-radius:20px; border:1px solid rgba(59,130,246,0.2);"><div style="display:inline-block; background:#3b82f6; color:#fff; width:36px; height:36px; border-radius:50%; text-align:center; line-height:36px; font-weight:700; margin-bottom:12px;">5</div><h3 style="font-size:1.5rem; color:#fff; margin-bottom:12px;">按行業場景優化調整</h3><p style="color:#cbd5e1; font-size:0.95rem;">針對零售、飲食、化妝品等行業微調方案，持續跟進與動態調整，確保落地實效。</p></div>
+      <div style="width:16px; height:16px; background:#3b82f6; border-radius:50%; position:absolute; left:50%; transform:translateX(-50%); z-index:2; box-shadow:0 0 20px rgba(59,130,246,0.6);"></div>
+    </div>
+    <div class="timeline-item" style="display:flex; align-items:center; margin-bottom:50px; position:relative; opacity:0; transform:translateY(30px); flex-direction:row-reverse;">
+      <div style="width:42%; background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); padding:30px 35px; border-radius:20px; border:1px solid rgba(59,130,246,0.2);"><div style="display:inline-block; background:#3b82f6; color:#fff; width:36px; height:36px; border-radius:50%; text-align:center; line-height:36px; font-weight:700; margin-bottom:12px;">6</div><h3 style="font-size:1.5rem; color:#fff; margin-bottom:12px;">長期市場監測與年度續約</h3><p style="color:#cbd5e1; font-size:0.95rem;">按月/季度更新數據，消費小組持續追蹤，支持年度續約，掌握市場動向。</p></div>
+      <div style="width:16px; height:16px; background:#3b82f6; border-radius:50%; position:absolute; left:50%; transform:translateX(-50%); z-index:2; box-shadow:0 0 20px rgba(59,130,246,0.6);"></div>
+    </div>
+  </div>
+
+  <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:40px; text-align:center; border:1px solid rgba(59,130,246,0.2); margin-top:20px;">
+    <h2 style="font-size:1.8rem; color:#3b82f6; margin-bottom:15px;">全程監控機制</h2>
+    <p style="color:#cbd5e1; font-size:1rem;">內部品質監控團隊透過抽樣覆核、採訪抽查、數據交叉驗證，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。</p>
+  </div>
+</section>
+
+<!-- ===== FAQ (常見問題) ===== -->
+<section class="section" id="faq" style="max-width:1100px;">
+  <div class="section-title">
+    <div class="section-label"><span class="label-en">✦ FAQ</span></div>
+    <h2 class="faq-title">常見問題</h2>
+    <div class="line"></div>
+  </div>
+  <div style="background:rgba(26,32,44,0.6); backdrop-filter:blur(12px); border-radius:20px; padding:35px 40px; margin-bottom:40px; border:1px solid rgba(59,130,246,0.2);">
+    <p style="color:#e2e8f0; font-size:1.05rem;">企業尋求顧問公司協助時，最常面臨的疑問包括服務價值、收費模式以及執行成效。了解常見問題有助於企業與顧問團隊建立明確的合作共識與目標。</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:24px;">
+    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">顧問公司能為企業帶來什麼具體幫助？</h3><p style="color:#e2e8f0;">透過專業分析工具與跨產業經驗，協助識別營運瓶頸、優化商業模式、制定策略路線圖，並在執行過程中提供持續指導與調整。</p></div>
+    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">顧問不如我們熟悉自身產業，他們的專業在哪裡？</h3><p style="color:#e2e8f0;">企業主是行業專家，但顧問專精商業模式、管理架構與問題解決流程，運用系統性分析與跨產業經驗，幫助跳脫盲點、優化營運。</p></div>
+    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2); grid-column:span 2; text-align:center;"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">顧問公司的收費標準為何？</h3><p style="color:#e2e8f0;">按時計費（諮詢/診斷）、專案計費（固定費用）、成效抽成（依營收增長或成本節省比例）。依專案性質與合約而定。</p></div>
+    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">合作專案的時程通常需要多久？</h3><p style="color:#e2e8f0;">短期診斷與策略規劃約2-4週；深度轉型或品牌重塑專案約3個月至1年，搭配階段性檢核點控管進度。</p></div>
+    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">專案結束後，成效是否能長期維持？</h3><p style="color:#e2e8f0;">提供人員培訓與標準作業流程，亦可簽訂年度顧問合約，持續監督與執行支援，確保適應市場變化。</p></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="about-content" id="aboutContent">
+    <span class="label-en">✦ About Us</span>
+    <h2>銳鋒顧問</h2>
+    <div class="line"></div>
+    <p>銳鋒顧問有限公司是一家集市場數據搜集及咨詢、消費者行為研究、品牌營運策略服務於一體的全方位顧問公司。</p>
+    <p>我們為商業咨詢、零售、飲食、化妝等行業提供從市場調研分析、策略規劃及長期追蹤的一條龍解決方案，以專業數據協助品牌打破競爭，精準發掘機會。</p>
+    <p>以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。</p>
+    <div class="quote">精準 · 務實 · 可持續</div>
+  </div>
+</section>
+
+<!-- ===== CONTACT (聯絡我們) ===== -->
+<section class="section" id="contact" style="max-width:1100px;">
+  <div class="section-title">
+    <div class="section-label"><span class="label-en">✦ Contact</span></div>
+    <h2 class="contact-title">聯絡我們</h2>
+    <div class="line"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:40px;">
+    <a href="tel:+85212345678" style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px 30px; text-align:center; border:1px solid rgba(59,130,246,0.15); transition:all 0.4s; display:block; color:inherit;" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)'; this.style.transform='translateY(-8px)'" onmouseout="this.style.borderColor='rgba(59,130,246,0.15)'; this.style.transform='translateY(0)'">
+      <svg viewBox="0 0 24 24" width="40" height="40" fill="#3b82f6"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.2 2.2z"/></svg>
+      <h3 style="font-size:1.3rem; color:#fff; margin:10px 0 5px;">電話</h3>
+      <p style="color:#94a3b8;">+852 1234 5678</p>
+    </a>
+    <a href="https://wa.me/85212345678" target="_blank" style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px 30px; text-align:center; border:1px solid rgba(59,130,246,0.15); transition:all 0.4s; display:block; color:inherit;" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)'; this.style.transform='translateY(-8px)'" onmouseout="this.style.borderColor='rgba(59,130,246,0.15)'; this.style.transform='translateY(0)'">
+      <svg viewBox="0 0 24 24" width="40" height="40" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      <h3 style="font-size:1.3rem; color:#fff; margin:10px 0 5px;">WhatsApp</h3>
+      <p style="color:#94a3b8;">+852 1234 5678</p>
+    </a>
+    <a href="https://instagram.com/topmarkethk" target="_blank" style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px 30px; text-align:center; border:1px solid rgba(59,130,246,0.15); transition:all 0.4s; display:block; color:inherit;" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)'; this.style.transform='translateY(-8px)'" onmouseout="this.style.borderColor='rgba(59,130,246,0.15)'; this.style.transform='translateY(0)'">
+      <svg viewBox="0 0 24 24" width="40" height="40"><defs><linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGrad)"/></svg>
+      <h3 style="font-size:1.3rem; color:#fff; margin:10px 0 5px;">Instagram</h3>
+      <p style="color:#94a3b8;">@topmarkethk</p>
+    </a>
+  </div>
+  <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:24px; padding:45px 40px; text-align:center; border:1px solid rgba(59,130,246,0.2);">
+    <h2 style="font-size:2rem; color:#3b82f6; margin-bottom:20px;">歡迎諮詢</h2>
+    <p style="font-size:1.1rem; color:#e2e8f0; max-width:700px; margin:0 auto 25px;">歡迎各行業企業咨詢市場調研、數據收集，品牌營運、拓展等顧問服務。我們提供免費初步需求溝通會議，可透過致電或電郵預約，專人將在24小時內回覆。</p>
+    <div style="display:inline-block; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); border-radius:50px; padding:10px 30px; color:#60a5fa; font-weight:600;">24小時內專人回覆 · 免費初步諮詢</div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-social">
+    <a href="#contact"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg> WeChat</a>
+    <a href="https://wa.me/85212345678" target="_blank"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+    <a href="https://instagram.com/topmarkethk" target="_blank"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg> Instagram</a>
+  </div>
+  <p class="copyright">© 2026 銳鋒有限公司 Top Market HK Limited</p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ----- 導航滾動效果 -----
+  window.addEventListener('scroll', () => {
+    const h = document.getElementById('header');
+    if (window.scrollY > 50) h.classList.add('scrolled');
+    else h.classList.remove('scrolled');
+
+    // 返回頂部按鈕顯示/隱藏
+    const backBtn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+      backBtn.classList.add('show');
+    } else {
+      backBtn.classList.remove('show');
+    }
+  });
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('active');
+  });
+
+  // 返回頂部功能
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ----- 服務卡片滑動 (保留原功能) -----
+  const cardData = [
+    { img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop', title: '商業策劃', desc: '從計劃書到投資架構，我們以數據驅動的策略，為你的業務注入清晰方向。' },
+    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop', title: '市場數據分析與調研', desc: '運用大數據與行業洞察，提供精準的市場分析、消費者行為研究及競爭情報。' },
+    { img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop', title: '品牌營運服務', desc: '為現有品牌進行大眾認知度調查，負面口碑風險，定位偏差修正等，讓每一次優化都強而有力。' }
+  ];
+  const track = document.getElementById('cardTrack');
+  const wrapper = document.getElementById('cardScrollWrapper');
+  const leftArrow = document.getElementById('leftArrow');
+  const rightArrow = document.getElementById('rightArrow');
+
+  function createCard(d, i) {
+    const div = document.createElement('div');
+    div.className = 'service-card';
+    div.dataset.card = i;
+    div.innerHTML = `<img class="card-img" src="${d.img}" alt="${d.title}"><div class="card-content"><h3>${d.title}</h3><p>${d.desc}</p><a href="#services" class="card-link">了解更多 →</a></div>`;
+    div.addEventListener('click', function(e) { if (!e.target.closest('.card-link')) { document.getElementById('services').scrollIntoView({behavior:'smooth'}); } });
+    return div;
+  }
+  const realCards = [];
+  for (let i = 0; i < 5; i++) cardData.forEach((d, idx) => realCards.push(createCard(d, i * 3 + idx + 1)));
+  track.appendChild(createCard(cardData[2], 'clone-last'));
+  realCards.forEach(c => track.appendChild(c));
+  track.appendChild(createCard(cardData[0], 'clone-first'));
+  const allCards = track.querySelectorAll('.service-card');
+  let ci = 1, transitioning = false;
+
+  function getOffset(i) {
+    const c = allCards[i]; if (!c) return 0;
+    const cw = track.parentElement.offsetWidth;
+    return -(c.offsetLeft - cw / 2 + c.offsetWidth / 2);
+  }
+  function updateActive(i) { allCards.forEach(c => c.classList.remove('active')); if (allCards[i]) allCards[i].classList.add('active'); }
+  function goTo(i, a = true) {
+    if (i < 0 || i >= allCards.length) return;
+    const o = getOffset(i);
+    track.style.transition = a ? 'transform 0.5s ease' : 'none';
+    track.style.transform = `translateX(${o}px)`;
+    updateActive(i);
+  }
+  function goNext() {
+    if (transitioning) return;
+    transitioning = true;
+    ci++;
+    goTo(ci, true);
+    track.addEventListener('transitionend', function eh() {
+      track.removeEventListener('transitionend', eh);
+      if (ci === allCards.length - 1) { ci = 1; goTo(ci, false); }
+      transitioning = false;
+    });
+  }
+  function goPrev() {
+    if (transitioning) return;
+    transitioning = true;
+    ci--;
+    goTo(ci, true);
+    track.addEventListener('transitionend', function eh() {
+      track.removeEventListener('transitionend', eh);
+      if (ci === 0) { ci = allCards.length - 2; goTo(ci, false); }
+      transitioning = false;
+    });
+  }
+  setTimeout(() => { goTo(1, false); updateActive(1); }, 100);
+  let autoInt;
+  function sa() { clearInterval(autoInt); autoInt = setInterval(goNext, 3000); }
+  function pa() { clearInterval(autoInt); }
+  wrapper.addEventListener('mouseenter', pa);
+  wrapper.addEventListener('mouseleave', sa);
+  leftArrow.addEventListener('click', () => { goPrev(); pa(); sa(); });
+  rightArrow.addEventListener('click', () => { goNext(); pa(); sa(); });
+  sa();
+
+  // 卡片光暈
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+      const cx = rect.width/2, cy = rect.height/2;
+      const rx = ((y - 50) / 50) * -8;
+      const ry = ((x - 50) / 50) * 8;
+      card.style.transform = `scale(1) perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = 'scale(0.92) perspective(800px) rotateX(0deg) rotateY(0deg)'; });
+  });
+
+  // 案例卡片光暈
+  document.querySelectorAll('.case-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+      const cx = rect.width/2, cy = rect.height/2;
+      const rx = ((y - 50) / 50) * -5;
+      const ry = ((x - 50) / 50) * 5;
+      card.style.transform = `perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateY(0px)'; });
+  });
+
+  // ----- 滾動觸發動畫 (IntersectionObserver) -----
+  const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        entry.target.querySelectorAll('img').forEach(img => img.classList.add('visible'));
+      }
+    });
+  }, observerOptions);
+  document.querySelectorAll(
+    '.hero-title, .hero-desc, .hero-btn, .stat-item, .service-title, .case-title, .process-title, .faq-title, .contact-title, .why-block, .why-title, .why-desc, .case-card, .about-content, .timeline-item'
+  ).forEach(el => observer.observe(el));
+  // 額外監測 timeline-item 自定義
+  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+  // 圖片延遲載入
+  const allImages = document.querySelectorAll('img');
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  allImages.forEach(img => imageObserver.observe(img));
+
+  // 導航點擊平滑跳轉 (錨點)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId.startsWith('#')) {
+        e.preventDefault();
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('navLinks').classList.remove('active');
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
 
