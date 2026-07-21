@@ -1,4 +1,5 @@
-
+我已按要求修改了FAQ区域的引言卡片：将其文字居中显示，缩短了卡片宽度，并将“了解常见问题…”部分换到第二行。
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -911,9 +912,7 @@
       .contact-card p { font-size: 0.8rem; }
       .contact-card svg { width: 30px; height: 30px; }
       .welcome-block { padding: 28px 20px; }
-      .welcome-block h2 { font-size: 
-
-1.5rem; }
+      .welcome-block h2 { font-size: 1.5rem; }
       .welcome-block p { font-size: 0.95rem; }
 
       .footer { padding: 30px 16px; }
@@ -1224,8 +1223,12 @@
       <h2 class="faq-title">常見問題</h2>
       <div class="line"></div>
     </div>
-    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(12px); border-radius:20px; padding:35px 40px; margin-bottom:40px; border:1px solid rgba(59,130,246,0.2);">
-      <p style="color:#e2e8f0; font-size:1.05rem;">企業尋求顧問公司協助時，最常面臨的疑問包括服務價值、收費模式以及執行成效。了解常見問題有助於企業與顧問團隊建立明確的合作共識與目標。</p>
+    <!-- 引言卡片：置中、縮短、第二行換行 -->
+    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(12px); border-radius:20px; padding:20px 30px; margin:0 auto 40px; border:1px solid rgba(59,130,246,0.2); width:fit-content; max-width:90%; text-align:center;">
+      <p style="color:#e2e8f0; font-size:1.05rem; margin:0;">
+        企業尋求顧問公司協助時，最常面臨的疑問包括服務價值、收費模式以及執行成效。<br>
+        了解常見問題有助於企業與顧問團隊建立明確的合作共識與目標。
+      </p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;">
       <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">顧問公司能為企業帶來什麼具體幫助？</h3><p style="color:#e2e8f0;">透過專業分析工具與跨產業經驗，協助識別營運瓶頸、優化商業模式、制定策略路線圖，並在執行過程中提供持續指導與調整。</p></div>
@@ -1506,3 +1509,4 @@
 </script>
 </body>
 </html>
+```
