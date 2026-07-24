@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -6,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>銳鋒顧問 Top Market | 一站式商業諮詢</title>
     <style>
-        /* ===== 原有樣式（保持不變） ===== */
         * {
             margin: 0;
             padding: 0;
@@ -105,7 +103,6 @@
             width: 100%;
         }
 
-        /* ---- 語言切換按鈕 ---- */
         .lang-switch {
             display: flex;
             align-items: center;
@@ -1921,16 +1918,20 @@
     <!-- ===== HEADER（含語言切換） ===== -->
     <header class="header" id="header">
         <div class="nav-container">
-            <div class="logo"><a href="#hero"><span class="brand-cn"><span class="brand-en">The Top Market</span></a></div>
+            <div class="logo">
+                <a href="#hero">
+                    <span class="brand-cn" id="brandCn">銳鋒</span>
+                    <span class="brand-en">The Top Market</span>
+                </a>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#services" data-i18n="nav.services">業務範圍</a></li>
                 <li><a href="#cases" data-i18n="nav.cases">成功案例</a></li>
                 <li><a href="#process" data-i18n="nav.process">咨詢流程</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">聯絡我們</a></li>
-                <!-- 語言切換按鈕（桌面版內嵌） -->
                 <li style="display:flex;align-items:center;margin-left:8px;">
                     <div class="lang-switch" id="langSwitch">
-                        <span class="lang-opt active" data-lang="zh">中</span>
+                        <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
                         <span class="lang-divider">/</span>
                         <span class="lang-opt" data-lang="en">EN</span>
                     </div>
@@ -1963,7 +1964,10 @@
     <div class="stats-services-wrapper">
         <div class="stats">
             <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label" data-i18n="stats.label1">成功案例</div></div>
-            <div class="stat-item"><div class="stat-number">10年</div><div class="stat-label" data-i18n="stats.label2">行業經驗</div></div>
+            <div class="stat-item">
+                <div class="stat-number" data-i18n="stats.num2">10年</div>
+                <div class="stat-label" data-i18n="stats.label2">行業經驗</div>
+            </div>
             <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label" data-i18n="stats.label3">客戶滿意度</div></div>
         </div>
 
@@ -2230,6 +2234,7 @@
                 'stats.label1': '成功案例',
                 'stats.label2': '行業經驗',
                 'stats.label3': '客戶滿意度',
+                'stats.num2': '10年',
                 // About
                 'about.title': '銳鋒顧問',
                 'about.p1': '銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。',
@@ -2239,6 +2244,7 @@
                 // Services
                 'services.label': '✦ Core Services',
                 'services.title': '核心業務',
+                'card.link': '了解更多 →',
                 // Why Us
                 'why.label': '✦ Why Us',
                 'why.title': '我們的優勢',
@@ -2395,6 +2401,7 @@
                 'stats.label1': 'Case Studies',
                 'stats.label2': 'Years of Experience',
                 'stats.label3': 'Client Satisfaction',
+                'stats.num2': '10 Years',
                 // About
                 'about.title': 'Top Market Consulting',
                 'about.p1': 'Top Market Consulting Ltd. is a full-service business advisory firm integrating market data collection, consumer behavior research, and brand strategy.',
@@ -2404,6 +2411,7 @@
                 // Services
                 'services.label': '✦ Core Services',
                 'services.title': 'Our Core Services',
+                'card.link': 'Learn More →',
                 // Why Us
                 'why.label': '✦ Why Us',
                 'why.title': 'Our Advantages',
@@ -2546,6 +2554,29 @@
             }
         };
 
+        // 卡片專用翻譯（動態生成）
+        const cardTranslations = {
+            'zh': {
+                'card1.title': '市場洞察與數據分析',
+                'card1.desc': '• 多維度研究策略： 結合數據統計與行業深度訪查，精準描繪消費動態與消費者行為模式。<br>• 全渠道大數據情報： 無縫對接多渠道大數據，涵蓋主流社交平台、論壇與電商網絡，實時捕捉市場脈搏與最新競爭情報。',
+                'card2.title': '商業戰略規劃',
+                'card2.desc': '• 市場進入與可行性評估： 基於紮實的數據基礎，為企業評估新市場或新產品的潛在回報與風險。<br>• 頂層架構與商業藍圖：從撰寫商業計劃書到提供資源配置的全面咨詢，規劃清晰的商業發展藍圖。',
+                'card3.title': '品牌管理與優化',
+                'card3.desc': '• 競爭定位與核心優勢： 針對市場現況與競爭形勢，調整品牌定位與敘事，提升品牌核心優勢。<br>• 長效追蹤與動態優化： 建立特定市場趨勢監測機制，透過定期管理會議跟進策略執行成效，確保優化措施精準落地。'
+            },
+            'en': {
+                'card1.title': 'Market Insights & Data Analytics',
+                'card1.desc': '• Multi-dimensional research: combine quantitative surveys with in-depth industry interviews to precisely map consumer dynamics.<br>• Omnichannel big data: seamless integration across social media, forums, and e-commerce to capture real-time market intelligence.',
+                'card2.title': 'Business Strategy Planning',
+                'card2.desc': '• Market entry & feasibility: data-driven assessment of new markets or products.<br>• Strategic blueprint: from business plan writing to resource allocation, we help you chart a clear growth roadmap.',
+                'card3.title': 'Brand Management & Optimization',
+                'card3.desc': '• Competitive positioning: refine brand narrative and sharpen your edge based on market realities.<br>• Ongoing monitoring: track KPIs through regular reviews to ensure strategies stay on course.'
+            }
+        };
+        // 合併到主 i18n
+        Object.assign(i18n['zh'], cardTranslations['zh']);
+        Object.assign(i18n['en'], cardTranslations['en']);
+
         let currentLang = 'zh';
 
         function applyLanguage(lang) {
@@ -2553,26 +2584,33 @@
             const dict = i18n[lang];
             if (!dict) return;
 
-            // 更新所有帶 data-i18n 屬性的元素
+            // 更新所有 data-i18n 元素
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (dict[key] !== undefined) {
-                    // 如果是標題/段落等需要保留子元素的，用 innerHTML
-                    // 對於按鈕、鏈接等純文本，用 textContent 更安全，但為了保留高亮等，統一用 innerHTML
                     el.innerHTML = dict[key];
                 }
             });
 
-            // 更新語言切換按鈕的 active 狀態
+            // 控制左上角「銳鋒」顯示
+            const brandCn = document.getElementById('brandCn');
+            if (brandCn) {
+                brandCn.style.display = (lang === 'zh') ? 'inline' : 'none';
+            }
+
+            // 控制語言按鈕文字：「中」變「CH」
+            const zhLabel = document.getElementById('langZhLabel');
+            if (zhLabel) {
+                zhLabel.textContent = (lang === 'zh') ? '中' : 'CH';
+            }
+
+            // 更新 active 狀態
             document.querySelectorAll('.lang-opt').forEach(opt => {
                 const l = opt.getAttribute('data-lang');
                 opt.classList.toggle('active', l === lang);
             });
 
-            // 更新 html lang 屬性
             document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
-
-            // 存儲偏好
             try { localStorage.setItem('topmarket-lang', lang); } catch (e) {}
         }
 
@@ -2587,7 +2625,7 @@
             });
         });
 
-        // 從 localStorage 恢復語言偏好
+        // 恢復語言（默認英文）
         (function restoreLang() {
             try {
                 const saved = localStorage.getItem('topmarket-lang');
@@ -2596,12 +2634,12 @@
                     return;
                 }
             } catch (e) {}
-            // 默認中文
+            // 默認英文
             applyLanguage('en');
         })();
 
         // =============================================================
-        // 2. 原有功能（保留）
+        // 2. 原有功能（滾動、卡片滑動、IntersectionObserver 等）
         // =============================================================
         window.addEventListener('scroll', () => {
             const h = document.getElementById('header');
@@ -2618,7 +2656,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 服務卡片（保留原有數據，使用 data-i18n 後卡片內容已由翻譯系統驅動）
+        // 服務卡片動態生成
         const cardData = [
             { img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop',
                 titleKey: 'card1.title',
@@ -2631,24 +2669,6 @@
                 descKey: 'card3.desc' }
         ];
 
-        // 添加卡片的翻譯內容到 i18n 對象
-        Object.assign(i18n['zh'], {
-            'card1.title': '市場洞察與數據分析',
-            'card1.desc': '• 多維度研究策略： 結合數據統計與行業深度訪查，精準描繪消費動態與消費者行為模式。<br>• 全渠道大數據情報： 無縫對接多渠道大數據，涵蓋主流社交平台、論壇與電商網絡，實時捕捉市場脈搏與最新競爭情報。',
-            'card2.title': '商業戰略規劃',
-            'card2.desc': '• 市場進入與可行性評估： 基於紮實的數據基礎，為企業評估新市場或新產品的潛在回報與風險。<br>• 頂層架構與商業藍圖：從撰寫商業計劃書到提供資源配置的全面咨詢，規劃清晰的商業發展藍圖。',
-            'card3.title': '品牌管理與優化',
-            'card3.desc': '• 競爭定位與核心優勢： 針對市場現況與競爭形勢，調整品牌定位與敘事，提升品牌核心優勢。<br>• 長效追蹤與動態優化： 建立特定市場趨勢監測機制，透過定期管理會議跟進策略執行成效，確保優化措施精準落地。'
-        });
-        Object.assign(i18n['en'], {
-            'card1.title': 'Market Insights & Data Analytics',
-            'card1.desc': '• Multi-dimensional research: combine quantitative surveys with in-depth industry interviews to precisely map consumer dynamics.<br>• Omnichannel big data: seamless integration across social media, forums, and e-commerce to capture real-time market intelligence.',
-            'card2.title': 'Business Strategy Planning',
-            'card2.desc': '• Market entry & feasibility: data-driven assessment of new markets or products.<br>• Strategic blueprint: from business plan writing to resource allocation, we help you chart a clear growth roadmap.',
-            'card3.title': 'Brand Management & Optimization',
-            'card3.desc': '• Competitive positioning: refine brand narrative and sharpen your edge based on market realities.<br>• Ongoing monitoring: track KPIs through regular reviews to ensure strategies stay on course.'
-        });
-
         const track = document.getElementById('cardTrack');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
@@ -2657,7 +2677,6 @@
             const div = document.createElement('div');
             div.className = 'service-card';
             div.dataset.card = idx;
-            // 使用 data-i18n 讓翻譯系統處理標題和描述
             div.innerHTML =
                 `<img class="card-img" src="${d.img}" alt="${d.titleKey}"><div class="card-content"><h3 data-i18n="${d.titleKey}">${i18n['zh'][d.titleKey]}</h3><p data-i18n="${d.descKey}">${i18n['zh'][d.descKey]}</p><a href="#business" class="card-link" data-i18n="card.link">了解更多 →</a></div>`;
             div.addEventListener('click', function(e) {
@@ -2667,10 +2686,6 @@
             });
             return div;
         }
-
-        // 添加 "了解更多" 翻譯
-        i18n['zh']['card.link'] = '了解更多 →';
-        i18n['en']['card.link'] = 'Learn More →';
 
         const realCards = [];
         for (let i = 0; i < 5; i++) cardData.forEach((d, idx) => realCards.push(createCard(d, i * 3 + idx + 1)));
@@ -2743,7 +2758,7 @@
             sa(); });
         sa();
 
-        // 卡片 hover 3D 效果
+        // 卡片 3D 效果
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -2761,7 +2776,7 @@
                     'scale(0.92) perspective(800px) rotateX(0deg) rotateY(0deg)'; });
         });
 
-        // Intersection Observers (保留原有)
+        // Intersection Observers
         const businessObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2868,21 +2883,7 @@
             });
         });
 
-        // 在語言切換後重新觸發卡片內 data-i18n 的更新（因為卡片是動態生成的，需要重新應用翻譯）
-        // 我們在 applyLanguage 中已經使用了 querySelectorAll('[data-i18n]')，會覆蓋所有元素
-        // 但是動態生成的卡片是在頁面加載時創建的，它們的 data-i18n 屬性已經存在，所以 applyLanguage 會處理它們
-        // 但由於卡片內容是在 JS 中創建的，我們需要確保在語言切換時，卡片內的 data-i18n 元素被更新
-        // 解決方案：在 applyLanguage 中，我們遍歷所有 [data-i18n] 元素，這已經包括了動態生成的卡片
-        // 所以沒問題。
-
-        // 修復：由於卡片是動態生成的，在生成時使用了 i18n['zh'] 的內容作為初始值，
-        // 但當語言切換為英文時，需要更新卡片內容。
-        // 但因為卡片內的 h3 和 p 都有 data-i18n 屬性，applyLanguage 會遍歷到它們並更新。
-        // 但是卡片的 "了解更多" 鏈接也有 data-i18n="card.link"，也會被更新。
-        // 所以一切正常。
-
-        console.log('✅ 語言切換系統已啟用。當前語言:', currentLang);
+        console.log('✅ 語言切換系統已啟用（默認英文）。當前語言:', currentLang);
     </script>
 </body>
 </html>
-```
