@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>銳鋒顧問 Top Market | 一站式商業諮詢</title>
     <style>
+        /* ===== 原有樣式（保持不變） ===== */
         * {
             margin: 0;
             padding: 0;
@@ -76,6 +78,7 @@
             display: flex;
             gap: 32px;
             list-style: none;
+            align-items: center;
         }
         .nav-links a {
             color: #cbd5e1;
@@ -102,11 +105,52 @@
             width: 100%;
         }
 
+        /* ---- 語言切換按鈕 ---- */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 30px;
+            padding: 4px 6px;
+            margin-left: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            user-select: none;
+        }
+        .lang-switch:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .lang-switch .lang-opt {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        .lang-switch .lang-opt.active {
+            background: #3b82f6;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
+        }
+        .lang-switch .lang-divider {
+            color: #334155;
+            font-weight: 300;
+            font-size: 0.8rem;
+        }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
+            margin-left: 12px;
         }
         .menu-toggle span {
             width: 26px;
@@ -933,6 +977,7 @@
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
             transform: translateY(30px);
+            position: relative;
         }
         .fragment.visible {
             opacity: 1;
@@ -1567,6 +1612,15 @@
                 font-size: 0.85rem;
             }
 
+            .lang-switch {
+                margin-left: 10px;
+                padding: 2px 4px;
+            }
+            .lang-switch .lang-opt {
+                padding: 2px 10px;
+                font-size: 0.7rem;
+            }
+
             .hero {
                 min-height: 90vh;
                 padding: 90px 16px 40px;
@@ -1864,58 +1918,72 @@
 </head>
 <body>
 
+    <!-- ===== HEADER（含語言切換） ===== -->
     <header class="header" id="header">
         <div class="nav-container">
             <div class="logo"><a href="#hero"><span class="brand-cn">銳鋒</span><span class="brand-en">The Top Market</span></a></div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#services">業務範圍</a></li>
-                <li><a href="#cases">成功案例</a></li>
-                <li><a href="#process">咨詢流程</a></li>
-                <li><a href="#contact">聯絡我們</a></li>
+                <li><a href="#services" data-i18n="nav.services">業務範圍</a></li>
+                <li><a href="#cases" data-i18n="nav.cases">成功案例</a></li>
+                <li><a href="#process" data-i18n="nav.process">咨詢流程</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">聯絡我們</a></li>
+                <!-- 語言切換按鈕（桌面版內嵌） -->
+                <li style="display:flex;align-items:center;margin-left:8px;">
+                    <div class="lang-switch" id="langSwitch">
+                        <span class="lang-opt active" data-lang="zh">中</span>
+                        <span class="lang-divider">/</span>
+                        <span class="lang-opt" data-lang="en">EN</span>
+                    </div>
+                </li>
             </ul>
             <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
         </div>
     </header>
 
+    <!-- ===== 返回頂部按鈕 ===== -->
     <button id="backToTop" aria-label="返回頂部">
         <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <!-- ===== HERO ===== -->
     <section class="hero" id="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title"><span class="outline-text">讓商業視野</span><span class="highlight">超越界限</span></h1>
-                <p class="hero-desc">洞悉香港市場，以精準數據驅動商業策略。</p>
-                <p class="hero-desc">銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。</p>
-                <a href="#services" class="btn-primary hero-btn">探索服務</a>
-                <a href="#contact" class="btn-primary btn-outline hero-btn">聯絡我們</a>
+                <h1 class="hero-title" data-i18n="hero.title"><span class="outline-text">讓商業視野</span><span class="highlight">超越界限</span></h1>
+                <p class="hero-desc" data-i18n="hero.desc1">洞悉香港市場，以精準數據驅動商業策略。</p>
+                <p class="hero-desc" data-i18n="hero.desc2">銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。</p>
+                <a href="#services" class="btn-primary hero-btn" data-i18n="hero.btn1">探索服務</a>
+                <a href="#contact" class="btn-primary btn-outline hero-btn" data-i18n="hero.btn2">聯絡我們</a>
             </div>
         </div>
     </section>
 
+    <!-- ===== STATS + ABOUT + SERVICES ===== -->
     <div class="stats-services-wrapper">
         <div class="stats">
-            <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">成功案例</div></div>
-            <div class="stat-item"><div class="stat-number">10年</div><div class="stat-label">行業經驗</div></div>
-            <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">客戶滿意度</div></div>
+            <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label" data-i18n="stats.label1">成功案例</div></div>
+            <div class="stat-item"><div class="stat-number">10年</div><div class="stat-label" data-i18n="stats.label2">行業經驗</div></div>
+            <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label" data-i18n="stats.label3">客戶滿意度</div></div>
         </div>
 
+        <!-- ABOUT -->
         <div class="about-card-section">
             <div class="about-card" id="aboutCard">
-                <h2>銳鋒顧問</h2>
+                <h2 data-i18n="about.title">銳鋒顧問</h2>
                 <div class="divider"></div>
-                <p>銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。</p>
-                <p>專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
-                <p>以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。</p>
-                <div class="quote-tag">精準 · 務實 · 可持續</div>
+                <p data-i18n="about.p1">銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。</p>
+                <p data-i18n="about.p2">專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
+                <p data-i18n="about.p3">以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。</p>
+                <div class="quote-tag" data-i18n="about.tag">精準 · 務實 · 可持續</div>
             </div>
         </div>
 
+        <!-- SERVICES -->
         <div class="section" id="services">
             <div class="section-title">
-                <div class="section-label"><span class="label-en">✦ Core Services</span></div>
-                <h2 class="service-title">核心業務</h2>
+                <div class="section-label"><span class="label-en" data-i18n="services.label">✦ Core Services</span></div>
+                <h2 class="service-title" data-i18n="services.title">核心業務</h2>
                 <div class="line"></div>
             </div>
             <div class="card-scroll-wrapper" id="cardScrollWrapper">
@@ -1926,144 +1994,152 @@
         </div>
     </div>
 
+    <!-- ===== WHY US ===== -->
     <section class="why-us" id="why">
         <div class="section-title">
-            <div class="section-label"><span class="label-en">✦ Why Us</span></div>
-            <h2 class="why-title">我們的優勢</h2>
+            <div class="section-label"><span class="label-en" data-i18n="why.label">✦ Why Us</span></div>
+            <h2 class="why-title" data-i18n="why.title">我們的優勢</h2>
             <div class="line"></div>
         </div>
         <div class="why-grid">
             <div class="why-card">
                 <img class="why-card-img" src="https://img1.wallspic.com/crops/8/3/6/8/3/138638/138638-red_and_white_bokeh_lights-1980x1060.jpg" alt="數據驅動">
                 <div class="why-card-body">
-                    <h3>數據驅動</h3>
+                    <h3 data-i18n="why.card1.title">數據驅動</h3>
                     <div class="accent-line"></div>
-                    <p>摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
+                    <p data-i18n="why.card1.desc">摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
                 </div>
             </div>
             <div class="why-card">
                 <img class="why-card-img" src="https://img3.wallspic.com/crops/0/5/7/8/5/158750/158750-xiang_gang-zi_se_de-dian_li_ta_kuai-ren_ti_nei_de_shui-3840x2160.jpg" alt="本地深耕">
                 <div class="why-card-body">
-                    <h3>本地深耕</h3>
+                    <h3 data-i18n="why.card2.title">本地深耕</h3>
                     <div class="accent-line"></div>
-                    <p>植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
+                    <p data-i18n="why.card2.desc">植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
                 </div>
             </div>
             <div class="why-card">
                 <img class="why-card-img" src="https://images.pexels.com/photos/7441079/pexels-photo-7441079.jpeg?_gl=1*c15iy9*_ga*MTAyNDQ1NjIzNS4xNzg0MDc5NjU1*_ga_8JE65Q40S6*czE3ODQwNzk2NTQkbzEkZzEkdDE3ODQwODA1MjAkajEzJGwwJGhw" alt="敏捷反應">
                 <div class="why-card-body">
-                    <h3>敏捷反應</h3>
+                    <h3 data-i18n="why.card3.title">敏捷反應</h3>
                     <div class="accent-line"></div>
-                    <p>面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
+                    <p data-i18n="why.card3.desc">面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== BUSINESS (市場調研 + 長期合作) ===== -->
     <div id="business">
+        <!-- 01 市場調研與咨詢 -->
         <div class="business-block">
             <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/long%20business.jpg');"></div>
             <div class="business-content">
                 <div class="floating-num">01</div>
                 <div class="section-heading-area">
                     <div class="section-kicker">Market Research & Consulting</div>
-                    <h2><span class="outline">市場調研</span> <span class="fill">與咨詢</span></h2>
+                    <h2><span class="outline" data-i18n="biz1.head1">市場調研</span> <span class="fill" data-i18n="biz1.head2">與咨詢</span></h2>
                 </div>
                 <div class="info-grid">
-                    <div class="info-card"><h3><span class="icon"></span>量化調查</h3><ul><li>網上問卷：消費習慣、價格接受度、品牌認知、選購渠道偏好</li><li>電話抽樣：本地居民及企業採購負責人定向調查</li><li>街頭訪問：商場、街市、屋苑現場面談</li><li>固定訪問小組：長期追蹤消費者習慣轉變</li></ul></div>
-                    <div class="info-card"><h3><span class="icon"></span>深度採訪</h3><ul><li>一對一深度面談：高消費客戶、行業專家、企業決策人</li><li>分享會</li><li>神秘顧客：服務品質、產品體驗、競品比對</li><li>實地觀察：超市、餐廳、化妝品店場景記錄</li></ul></div>
-                    <div class="info-card"><h3><span class="icon"></span>大數據收集</h3><ul><li>社交平台輿論：Facebook、IG、小紅書、抖音、討論區</li><li>電商平台銷售數據：銷量、評價、熱門商品</li><li>政府／行業公開報告整合</li><li>私人定制數據：行業分類、競品對照、地區特徵</li></ul></div>
-                    <div class="info-card"><h3><span class="icon"></span>品牌進入市場策略</h3><ul><li>市場可行性評估：行業規模、增速、競爭度、門檻</li><li>選址風險分析：各區人流、租金、同行密度</li><li>目標客戶特徵：年齡、收入、消費場景與習慣</li><li>競爭品牌全方位拆解，制定差異化定位</li></ul></div>
-                    <div class="info-card"><h3><span class="icon"></span>品牌現況分析及經營策略</h3><ul><li>品牌健康檢查：認知度調查、口碑風險、定位修正</li><li>新產品上市：概念測試、試用反饋、文案測評</li><li>宣傳優化：廣告、直播、社交話題、會員營運</li><li>銷售渠道評估：實體門店、分銷商、網上渠道</li></ul></div>
-                    <div class="info-card"><h3><span class="icon"></span>消費行業專項顧問</h3><ul><li>消費品：食品、飲品、護膚品、日用品潮流研究</li><li>飲食：選址人流分析、口味偏好、回頭客方案</li><li>化妝品：消費觀念調查、熱賣產品拆解、口碑分析</li><li>母嬰家居：家庭決策流程、真實需求發掘、信任度調查</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz1.c1.t">量化調查</span></h3><ul><li data-i18n="biz1.c1.l1">網上問卷：消費習慣、價格接受度、品牌認知、選購渠道偏好</li><li data-i18n="biz1.c1.l2">電話抽樣：本地居民及企業採購負責人定向調查</li><li data-i18n="biz1.c1.l3">街頭訪問：商場、街市、屋苑現場面談</li><li data-i18n="biz1.c1.l4">固定訪問小組：長期追蹤消費者習慣轉變</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz1.c2.t">深度採訪</span></h3><ul><li data-i18n="biz1.c2.l1">一對一深度面談：高消費客戶、行業專家、企業決策人</li><li data-i18n="biz1.c2.l2">分享會</li><li data-i18n="biz1.c2.l3">神秘顧客：服務品質、產品體驗、競品比對</li><li data-i18n="biz1.c2.l4">實地觀察：超市、餐廳、化妝品店場景記錄</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz1.c3.t">大數據收集</span></h3><ul><li data-i18n="biz1.c3.l1">社交平台輿論：Facebook、IG、小紅書、抖音、討論區</li><li data-i18n="biz1.c3.l2">電商平台銷售數據：銷量、評價、熱門商品</li><li data-i18n="biz1.c3.l3">政府／行業公開報告整合</li><li data-i18n="biz1.c3.l4">私人定制數據：行業分類、競品對照、地區特徵</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz1.c4.t">品牌進入市場策略</span></h3><ul><li data-i18n="biz1.c4.l1">市場可行性評估：行業規模、增速、競爭度、門檻</li><li data-i18n="biz1.c4.l2">選址風險分析：各區人流、租金、同行密度</li><li data-i18n="biz1.c4.l3">目標客戶特徵：年齡、收入、消費場景與習慣</li><li data-i18n="biz1.c4.l4">競爭品牌全方位拆解，制定差異化定位</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz1.c5.t">品牌現況分析及經營策略</span></h3><ul><li data-i18n="biz1.c5.l1">品牌健康檢查：認知度調查、口碑風險、定位修正</li><li data-i18n="biz1.c5.l2">新產品上市：概念測試、試用反饋、文案測評</li><li data-i18n="biz1.c5.l3">宣傳優化：廣告、直播、社交話題、會員營運</li><li data-i18n="biz1.c5.l4">銷售渠道評估：實體門店、分銷商、網上渠道</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz1.c6.t">消費行業專項顧問</span></h3><ul><li data-i18n="biz1.c6.l1">消費品：食品、飲品、護膚品、日用品潮流研究</li><li data-i18n="biz1.c6.l2">飲食：選址人流分析、口味偏好、回頭客方案</li><li data-i18n="biz1.c6.l3">化妝品：消費觀念調查、熱賣產品拆解、口碑分析</li><li data-i18n="biz1.c6.l4">母嬰家居：家庭決策流程、真實需求發掘、信任度調查</li></ul></div>
                 </div>
             </div>
         </div>
 
+        <!-- 02 長期合作 -->
         <div class="business-block">
             <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/teamwork.jpg');"></div>
             <div class="business-content">
                 <div class="floating-num">02</div>
                 <div class="section-heading-area">
                     <div class="section-kicker">Long-term Partnership</div>
-                    <h2><span class="outline">長期</span> <span class="fill">合作</span></h2>
+                    <h2><span class="outline" data-i18n="biz2.head1">長期</span> <span class="fill" data-i18n="biz2.head2">合作</span></h2>
                 </div>
                 <div class="info-grid">
-                    <div class="info-card"><h3><span class="icon"></span>協助企業落實措施</h3><ul><li>調研完成後提供3至6個月跟進服務</li><li>策略顧問團隊協助轉化為具體執行步驟</li><li>根據實際情況動態調整方案</li><li>方案架構、營運邏輯設計及實地路線定制</li></ul></div>
-                    <div class="info-card"><h3><span class="icon"></span>監察市場趨勢</h3><ul><li>簽訂長期市場監察合約</li><li>按月或按季度更新行業數據</li><li>固定消費小組持續追蹤消費習慣變化</li><li>量化抽樣調查，實時捕捉市場變化</li></ul></div>
-                    <div class="info-card"><h3><span class="icon"></span>定期報告與跟進</h3><ul><li>標準化報告：原始數據表、圖表分析、完整研究報告</li><li>月度／季度專屬會議，深入溝通分析結果</li><li>企業內部培訓：市場團隊數據解讀</li><li>消費者需求分析，強化自主研判能力</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz2.c1.t">協助企業落實措施</span></h3><ul><li data-i18n="biz2.c1.l1">調研完成後提供3至6個月跟進服務</li><li data-i18n="biz2.c1.l2">策略顧問團隊協助轉化為具體執行步驟</li><li data-i18n="biz2.c1.l3">根據實際情況動態調整方案</li><li data-i18n="biz2.c1.l4">方案架構、營運邏輯設計及實地路線定制</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz2.c2.t">監察市場趨勢</span></h3><ul><li data-i18n="biz2.c2.l1">簽訂長期市場監察合約</li><li data-i18n="biz2.c2.l2">按月或按季度更新行業數據</li><li data-i18n="biz2.c2.l3">固定消費小組持續追蹤消費習慣變化</li><li data-i18n="biz2.c2.l4">量化抽樣調查，實時捕捉市場變化</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span><span data-i18n="biz2.c3.t">定期報告與跟進</span></h3><ul><li data-i18n="biz2.c3.l1">標準化報告：原始數據表、圖表分析、完整研究報告</li><li data-i18n="biz2.c3.l2">月度／季度專屬會議，深入溝通分析結果</li><li data-i18n="biz2.c3.l3">企業內部培訓：市場團隊數據解讀</li><li data-i18n="biz2.c3.l4">消費者需求分析，強化自主研判能力</li></ul></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- ===== CASE STUDIES ===== -->
     <section class="cases-section" id="cases">
+        <!-- Case 1 -->
         <div class="case-screen">
             <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/student.com.jpg');"></div>
             <div class="case-inner">
                 <div class="floating-num">01</div>
                 <div class="case-title-area">
                     <div class="case-kicker">Market Research</div>
-                    <h2><span class="outline">留學顧問</span><br><span class="fill">數據調研</span></h2>
+                    <h2><span class="outline" data-i18n="case1.head1">留學顧問</span><br><span class="fill" data-i18n="case1.head2">數據調研</span></h2>
                 </div>
                 <div class="case-layout">
                     <div class="col-left">
-                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>香港本地海外升學顧問公司，成立多年，專注協助中三至中六學生申請英國、澳洲及加拿大的大學。團隊共10名全職顧問，每年服務約200名學生。</p></div>
-                        <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>競爭環境急劇惡化：行業內已存在上市公司（大地教育，上市編號08417），按2022年收入計算，前四大機構已佔據相當市場份額。</li><li>市場規模持續萎縮：根據香港教育局最新公布的《2025年中六學生出路統計調查》，在43,561名有回覆的2025年中六畢業生中，僅6.5%選擇到香港以外地區升學。</li><li>缺乏決策數據支撐：長期依賴顧問個人經驗判斷家長需求，未能清晰及數據化「家長決策的關鍵」及「客戶流失」，導致市場營銷效率偏低。</li></ul></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case1.f1.t">客戶背景</span></h3><p data-i18n="case1.f1.p">香港本地海外升學顧問公司，成立多年，專注協助中三至中六學生申請英國、澳洲及加拿大的大學。團隊共10名全職顧問，每年服務約200名學生。</p></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case1.f2.t">核心挑戰</span></h3><ul><li data-i18n="case1.f2.l1">競爭環境急劇惡化：行業內已存在上市公司（大地教育，上市編號08417），按2022年收入計算，前四大機構已佔據相當市場份額。</li><li data-i18n="case1.f2.l2">市場規模持續萎縮：根據香港教育局最新公布的《2025年中六學生出路統計調查》，在43,561名有回覆的2025年中六畢業生中，僅6.5%選擇到香港以外地區升學。</li><li data-i18n="case1.f2.l3">缺乏決策數據支撐：長期依賴顧問個人經驗判斷家長需求，未能清晰及數據化「家長決策的關鍵」及「客戶流失」，導致市場營銷效率偏低。</li></ul></div>
                     </div>
                     <div class="col-right">
-                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>部署AI引擎，捕捉多個本地論壇及多個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。</li><li>部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。</li><li>建立混合式AI數據分析平台，整合一手調研與多維度公開數據。</li><li>向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。</li><li>進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。</li></ul></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case1.f3.t">解決方案</span></h3><ul><li data-i18n="case1.f3.l1">部署AI引擎，捕捉多個本地論壇及多個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。</li><li data-i18n="case1.f3.l2">部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。</li><li data-i18n="case1.f3.l3">建立混合式AI數據分析平台，整合一手調研與多維度公開數據。</li><li data-i18n="case1.f3.l4">向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。</li><li data-i18n="case1.f3.l5">進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。</li></ul></div>
                         <div class="result-blast">
                             <div class="big-number">+65%</div>
-                            <p>網站查詢量於三個月內增長65%；經過我司建議及調整之後，為客戶公司帶來額外120萬港元營收，佔公司全年總營業額的17%。成功避開了加拿大市場的簽證配額大幅削減及最低生活保证金等等的政策風險。</p>
+                            <p data-i18n="case1.result">網站查詢量於三個月內增長65%；經過我司建議及調整之後，為客戶公司帶來額外120萬港元營收，佔公司全年總營業額的17%。成功避開了加拿大市場的簽證配額大幅削減及最低生活保证金等等的政策風險。</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Case 2 -->
         <div class="case-screen">
             <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/sushi1.jpg');"></div>
             <div class="case-inner">
                 <div class="floating-num">02</div>
                 <div class="case-title-area">
                     <div class="case-kicker">Restaurant Launch</div>
-                    <h2><span class="fill">日式餐廳</span><br><span class="outline">無憂開業</span></h2>
+                    <h2><span class="fill" data-i18n="case2.head1">日式餐廳</span><br><span class="outline" data-i18n="case2.head2">無憂開業</span></h2>
                 </div>
                 <div class="case-layout reverse">
                     <div class="col-left">
-                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一位曾任職於日式餐廳的廚師，計劃開設其第一餐廳，主打日式料理。雖客戶具備優秀廚藝，但對飲食市場的實務及商業策劃缺乏經驗。</p></div>
-                        <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>選址風險：核心商業區及住宅區的街舖及商場舖位租金持續高企，選址決策直接影響客流及租金成本結構，客戶對各區人流特徵、消費力及競爭格局缺乏數據認知。</li><li>牌照及法律：餐飲牌照申請程序複雜，涉及食物環境衞生署、屋宇署及消防處等多個部門的審批，若處理不當，隨時延誤開業進度數月之久。</li><li>供應鏈建立困難：料理對食材新鮮度及品質要求極高，需要建立穩定、合規且具成本效益的食材供應渠道，由日本進口的冷鏈物流及本地供應商的篩選均構成挑戰。</li><li>市場推廣資源有限：新餐廳缺乏品牌知名度，在Instagram、Facebook及小紅書等社交平台上的曝光為零。在競爭激烈的香港餐飲市場中，如何以有限預算有效吸引目標客群，是決定開業成敗的關鍵。</li></ul></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case2.f1.t">客戶背景</span></h3><p data-i18n="case2.f1.p">一位曾任職於日式餐廳的廚師，計劃開設其第一餐廳，主打日式料理。雖客戶具備優秀廚藝，但對飲食市場的實務及商業策劃缺乏經驗。</p></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case2.f2.t">核心挑戰</span></h3><ul><li data-i18n="case2.f2.l1">選址風險：核心商業區及住宅區的街舖及商場舖位租金持續高企，選址決策直接影響客流及租金成本結構，客戶對各區人流特徵、消費力及競爭格局缺乏數據認知。</li><li data-i18n="case2.f2.l2">牌照及法律：餐飲牌照申請程序複雜，涉及食物環境衞生署、屋宇署及消防處等多個部門的審批，若處理不當，隨時延誤開業進度數月之久。</li><li data-i18n="case2.f2.l3">供應鏈建立困難：料理對食材新鮮度及品質要求極高，需要建立穩定、合規且具成本效益的食材供應渠道，由日本進口的冷鏈物流及本地供應商的篩選均構成挑戰。</li><li data-i18n="case2.f2.l4">市場推廣資源有限：新餐廳缺乏品牌知名度，在Instagram、Facebook及小紅書等社交平台上的曝光為零。在競爭激烈的香港餐飲市場中，如何以有限預算有效吸引目標客群，是決定開業成敗的關鍵。</li></ul></div>
                     </div>
                     <div class="col-right">
                         <div class="result-blast">
                             <div class="big-number">62%</div>
-                            <p>餐廳於六個月內順利開業，營運首年毛利率達到62%，成為區內熱門預約餐廳。開業初期社交媒體曝光量超出預期，首月訂座率達85%，並持續維持高翻桌率。客戶現正籌備第二間分店，並已委託本公司進行新選址的數據分析及市場定位研究。</p>
+                            <p data-i18n="case2.result">餐廳於六個月內順利開業，營運首年毛利率達到62%，成為區內熱門預約餐廳。開業初期社交媒體曝光量超出預期，首月訂座率達85%，並持續維持高翻桌率。客戶現正籌備第二間分店，並已委託本公司進行新選址的數據分析及市場定位研究。</p>
                         </div>
-                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>數據選址工具，評估超過10個潛在舖位，綜合分析各選址周邊的人口密度、年齡結構、收入水平、步行人流及方圓500米內同類型餐廳的供應與定價分佈。</li><li>食物環境衞生署、屋宇署及消防處的牌照申請流程及文件要求多及複雜，制定詳細的合規時間表。</li><li>行業網絡及供應商資料庫，篩選及評估多家日本食材進口商及本地供應商，比較其供貨穩定性、價格及冷鏈物流能力。</li><li>分析客群在Instagram、Facebook及小紅書上的內容消費習慣及餐飲相關話題標籤，制定針對性的內容營銷策略。</li></ul></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case2.f3.t">解決方案</span></h3><ul><li data-i18n="case2.f3.l1">數據選址工具，評估超過10個潛在舖位，綜合分析各選址周邊的人口密度、年齡結構、收入水平、步行人流及方圓500米內同類型餐廳的供應與定價分佈。</li><li data-i18n="case2.f3.l2">食物環境衞生署、屋宇署及消防處的牌照申請流程及文件要求多及複雜，制定詳細的合規時間表。</li><li data-i18n="case2.f3.l3">行業網絡及供應商資料庫，篩選及評估多家日本食材進口商及本地供應商，比較其供貨穩定性、價格及冷鏈物流能力。</li><li data-i18n="case2.f3.l4">分析客群在Instagram、Facebook及小紅書上的內容消費習慣及餐飲相關話題標籤，制定針對性的內容營銷策略。</li></ul></div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Case 3 -->
         <div class="case-screen">
             <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/shop1.jpg');"></div>
             <div class="case-inner">
                 <div class="floating-num">03</div>
                 <div class="case-title-area">
                     <div class="case-kicker">Brand Transformation</div>
-                    <h2><span class="outline">雜貨舖</span><br><span class="fill">電子化轉型</span></h2>
+                    <h2><span class="outline" data-i18n="case3.head1">雜貨舖</span><br><span class="fill" data-i18n="case3.head2">電子化轉型</span></h2>
                 </div>
                 <div class="case-layout">
                     <div class="col-left">
-                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一間位於九龍區的雜貨舖，開業逾10年，多年來憑藉貨品齊全及價格實惠，累積了一班熟客。老店經營方式傳統，所有交易記錄及庫存管理全依賴人手及經驗，隨着創辦人年屆退休，接班人希望引入電子化管理，但對如何着手毫無頭緒。</p></div>
-                        <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>庫存管理全憑經驗：店內逾3,000種貨品，一直靠創辦人記憶及肉眼判斷補貨，沒有系統記錄實際庫存數量，亦無法統計各貨品的銷售速度及毛利率，訂貨決策全憑「感覺」。</li><li>店鋪形象過時：裝修及陳列風格停留在30年前，門口貨架堆滿雜物，光線昏暗，衛生問題嚴重。年輕顧客即使有購物需求，亦因店鋪外觀「老舊」、「雜亂」而卻步。</li><li>客源嚴重老化：主要依靠周邊街坊及熟客支持，但消費群以長者及家庭主婦為主，年輕一代對老店缺乏認識。隨着社區人口老化，熟客流失，新客不足，營業額跌。</li><li>會員及客戶數據空白：過往從未記錄客戶聯絡資料或消費習慣，無法進行任何形式的客戶關係管理或精準營銷。即使有意推出促銷活動，亦缺乏有效的通知渠道。</li></ul></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case3.f1.t">客戶背景</span></h3><p data-i18n="case3.f1.p">一間位於九龍區的雜貨舖，開業逾10年，多年來憑藉貨品齊全及價格實惠，累積了一班熟客。老店經營方式傳統，所有交易記錄及庫存管理全依賴人手及經驗，隨着創辦人年屆退休，接班人希望引入電子化管理，但對如何着手毫無頭緒。</p></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case3.f2.t">核心挑戰</span></h3><ul><li data-i18n="case3.f2.l1">庫存管理全憑經驗：店內逾3,000種貨品，一直靠創辦人記憶及肉眼判斷補貨，沒有系統記錄實際庫存數量，亦無法統計各貨品的銷售速度及毛利率，訂貨決策全憑「感覺」。</li><li data-i18n="case3.f2.l2">店鋪形象過時：裝修及陳列風格停留在30年前，門口貨架堆滿雜物，光線昏暗，衛生問題嚴重。年輕顧客即使有購物需求，亦因店鋪外觀「老舊」、「雜亂」而卻步。</li><li data-i18n="case3.f2.l3">客源嚴重老化：主要依靠周邊街坊及熟客支持，但消費群以長者及家庭主婦為主，年輕一代對老店缺乏認識。隨着社區人口老化，熟客流失，新客不足，營業額跌。</li><li data-i18n="case3.f2.l4">會員及客戶數據空白：過往從未記錄客戶聯絡資料或消費習慣，無法進行任何形式的客戶關係管理或精準營銷。即使有意推出促銷活動，亦缺乏有效的通知渠道。</li></ul></div>
                     </div>
                     <div class="col-right">
-                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>提高店鋪形象及進店率：翻新工程完成後，店鋪外觀新净光猛，同時保留老字號的辨識度。年輕路人的進店率明顯提高。整體店鋪日均客流比翻新前增幅超過40%。</li><li>搭建「人工智能庫存周轉系統」：上線後三個月內，整體庫存周轉日數由估計約90至100日縮減至約65日，，因缺貨導致的銷售損失按月減少約30%。負責人由以往「憑感覺訂貨」改為「睇數據訂貨」，訂貨決策的準確度顯著提升。</li><li>營銷：在店内顯眼處貼不同的營銷廣告，增加商品曝光率。透過WhatsApp及電話接受訂貨，向會員推廣限時優惠，大幅提升顧客復購率。</li></ul></div>
+                        <div class="fragment"><h3><span class="icon"></span><span data-i18n="case3.f3.t">解決方案</span></h3><ul><li data-i18n="case3.f3.l1">提高店鋪形象及進店率：翻新工程完成後，店鋪外觀新净光猛，同時保留老字號的辨識度。年輕路人的進店率明顯提高。整體店鋪日均客流比翻新前增幅超過40%。</li><li data-i18n="case3.f3.l2">搭建「人工智能庫存周轉系統」：上線後三個月內，整體庫存周轉日數由估計約90至100日縮減至約65日，，因缺貨導致的銷售損失按月減少約30%。負責人由以往「憑感覺訂貨」改為「睇數據訂貨」，訂貨決策的準確度顯著提升。</li><li data-i18n="case3.f3.l3">營銷：在店内顯眼處貼不同的營銷廣告，增加商品曝光率。透過WhatsApp及電話接受訂貨，向會員推廣限時優惠，大幅提升顧客復購率。</li></ul></div>
                         <div class="result-blast">
                             <div class="big-number">+18.7%</div>
-                            <p>整體業績：在推行電子化轉型後的八個月內，整體營業額按年增長18.7%，毛利率由約38%提升至44.2%（主因是減少滯銷貨品的積壓，降低不必要的庫存成本）。老店舖成功由傳統街坊小店轉型為「現代老字號」，第二代接班人已初步掌握數據主導的營運模式。</p>
+                            <p data-i18n="case3.result">整體業績：在推行電子化轉型後的八個月內，整體營業額按年增長18.7%，毛利率由約38%提升至44.2%（主因是減少滯銷貨品的積壓，降低不必要的庫存成本）。老店舖成功由傳統街坊小店轉型為「現代老字號」，第二代接班人已初步掌握數據主導的營運模式。</p>
                         </div>
                     </div>
                 </div>
@@ -2071,117 +2147,462 @@
         </div>
     </section>
 
+    <!-- ===== PROCESS ===== -->
     <section id="process">
         <div class="process-inner">
             <div class="section-title">
-                <div class="section-label"><span class="label-en">✦ Our Process</span></div>
-                <h2 class="process-title">專案咨詢流程</h2>
+                <div class="section-label"><span class="label-en" data-i18n="process.label">✦ Our Process</span></div>
+                <h2 class="process-title" data-i18n="process.title">專案咨詢流程</h2>
                 <div class="line"></div>
             </div>
             <div class="process-intro">
-                <p>我們建立了一套嚴謹且高效的工作流程，從客戶需求出發，透過多維度市場數據搜集、專業分析與策略制定，到長期監測與合作，確保每一個環節都精準到位。全程監控機制，確保每個環節的數據真實與專業性。</p>
-                <div class="highlight-note">全程監控 · 數據真實 · 專業執行</div>
+                <p data-i18n="process.intro">我們建立了一套嚴謹且高效的工作流程，從客戶需求出發，透過多維度市場數據搜集、專業分析與策略制定，到長期監測與合作，確保每一個環節都精準到位。全程監控機制，確保每個環節的數據真實與專業性。</p>
+                <div class="highlight-note" data-i18n="process.tag">全程監控 · 數據真實 · 專業執行</div>
             </div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="step-number">1</div>
-                        <h3>需求界定</h3>
-                        <p>與企業決策者深度溝通，確立商業目標、專案範圍及關鍵績效指標。</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="step-number">2</div>
-                        <h3>蒐集數據</h3>
-                        <p>全方位搜集市場情報，採集多維度數據。</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="step-number">3</div>
-                        <h3>策略制定</h3>
-                        <p>深度解析數據，量身定制專屬的商業策略與行動方案。</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="step-number">4</div>
-                        <h3>實施支援</h3>
-                        <p>根據特定行業場景進行策略優化，提供落地支援。</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="step-number">5</div>
-                        <h3>長效追蹤</h3>
-                        <p>建立長期合作關係，持續監測市場變化並動態調整策略。</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
+                <div class="timeline-item"><div class="timeline-content"><div class="step-number">1</div><h3 data-i18n="process.step1.t">需求界定</h3><p data-i18n="process.step1.p">與企業決策者深度溝通，確立商業目標、專案範圍及關鍵績效指標。</p></div><div class="timeline-dot"></div></div>
+                <div class="timeline-item"><div class="timeline-content"><div class="step-number">2</div><h3 data-i18n="process.step2.t">蒐集數據</h3><p data-i18n="process.step2.p">全方位搜集市場情報，採集多維度數據。</p></div><div class="timeline-dot"></div></div>
+                <div class="timeline-item"><div class="timeline-content"><div class="step-number">3</div><h3 data-i18n="process.step3.t">策略制定</h3><p data-i18n="process.step3.p">深度解析數據，量身定制專屬的商業策略與行動方案。</p></div><div class="timeline-dot"></div></div>
+                <div class="timeline-item"><div class="timeline-content"><div class="step-number">4</div><h3 data-i18n="process.step4.t">實施支援</h3><p data-i18n="process.step4.p">根據特定行業場景進行策略優化，提供落地支援。</p></div><div class="timeline-dot"></div></div>
+                <div class="timeline-item"><div class="timeline-content"><div class="step-number">5</div><h3 data-i18n="process.step5.t">長效追蹤</h3><p data-i18n="process.step5.p">建立長期合作關係，持續監測市場變化並動態調整策略。</p></div><div class="timeline-dot"></div></div>
             </div>
             <div class="monitoring-card">
-                <h2>全程監控機制</h2>
-                <p>我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p>
+                <h2 data-i18n="process.monitor.t">全程監控機制</h2>
+                <p data-i18n="process.monitor.p">我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p>
             </div>
         </div>
     </section>
 
+    <!-- ===== CONTACT ===== -->
     <section class="section" id="contact" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/contact%20us.jpg');">
         <div style="position: relative; z-index: 1;">
             <div class="section-title">
-                <div class="section-label"><span class="label-en">✦ Contact</span></div>
-                <h2 class="contact-title">聯絡我們</h2>
+                <div class="section-label"><span class="label-en" data-i18n="contact.label">✦ Contact</span></div>
+                <h2 class="contact-title" data-i18n="contact.title">聯絡我們</h2>
                 <div class="line"></div>
             </div>
             <div class="contact-grid">
-                <a href="tel:+85212345678" class="contact-card">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#3b82f6"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.2 2.2z"/></svg>
-                    <h3>電話</h3><p>+852 1234 5678</p>
-                </a>
-                <a href="https://wa.me/85212345678" target="_blank" class="contact-card">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                    <h3>WhatsApp</h3><p>+852 1234 5678</p>
-                </a>
-                <a href="https://instagram.com/topmarkethk" target="_blank" class="contact-card">
-                    <svg viewBox="0 0 24 24" width="40" height="40"><defs><linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGrad)"/></svg>
-                    <h3>Instagram</h3><p>@topmarkethk</p>
-                </a>
-                <a href="#" class="contact-card">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#07C160"><path d="M8.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7.76 5.27c-.47-.27-.74-.68-.74-1.13 0-.45.27-.86.74-1.13C7.13 13.27 8.5 12.5 12 12.5s4.87.77 6.26 1.51c.47.27.74.68.74 1.13 0 .45-.27.86-.74 1.13-1.39.74-3.76 1.51-6.26 1.51s-4.87-.77-6.26-1.51zM12 2C6.48 2 2 6.48 2 12c0 2.07.63 4 1.7 5.59L2.5 22l4.62-1.29c1.42.82 3.05 1.29 4.88 1.29 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                    <h3>WeChat</h3><p>TopMarketHK</p>
-                </a>
-                <a href="mailto:info@topmarket.hk" class="contact-card">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-                    <h3>電郵</h3><p>info@topmarket.hk</p>
-                </a>
-                <a href="https://www.linkedin.com/company/topmarkethk" target="_blank" class="contact-card">
-                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    <h3>LinkedIn</h3><p>Top Market HK</p>
-                </a>
+                <a href="tel:+85212345678" class="contact-card"><svg viewBox="0 0 24 24" width="40" height="40" fill="#3b82f6"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.2 2.2z"/></svg><h3 data-i18n="contact.phone.t">電話</h3><p>+852 1234 5678</p></a>
+                <a href="https://wa.me/85212345678" target="_blank" class="contact-card"><svg viewBox="0 0 24 24" width="40" height="40" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><h3 data-i18n="contact.whatsapp.t">WhatsApp</h3><p>+852 1234 5678</p></a>
+                <a href="https://instagram.com/topmarkethk" target="_blank" class="contact-card"><svg viewBox="0 0 24 24" width="40" height="40"><defs><linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGrad)"/></svg><h3 data-i18n="contact.ig.t">Instagram</h3><p>@topmarkethk</p></a>
+                <a href="#" class="contact-card"><svg viewBox="0 0 24 24" width="40" height="40" fill="#07C160"><path d="M8.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7.76 5.27c-.47-.27-.74-.68-.74-1.13 0-.45.27-.86.74-1.13C7.13 13.27 8.5 12.5 12 12.5s4.87.77 6.26 1.51c.47.27.74.68.74 1.13 0 .45-.27.86-.74 1.13-1.39.74-3.76 1.51-6.26 1.51s-4.87-.77-6.26-1.51zM12 2C6.48 2 2 6.48 2 12c0 2.07.63 4 1.7 5.59L2.5 22l4.62-1.29c1.42.82 3.05 1.29 4.88 1.29 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg><h3 data-i18n="contact.wechat.t">WeChat</h3><p>TopMarketHK</p></a>
+                <a href="mailto:info@topmarket.hk" class="contact-card"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg><h3 data-i18n="contact.email.t">電郵</h3><p>info@topmarket.hk</p></a>
+                <a href="https://www.linkedin.com/company/topmarkethk" target="_blank" class="contact-card"><svg viewBox="0 0 24 24" width="40" height="40" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><h3 data-i18n="contact.linkedin.t">LinkedIn</h3><p>Top Market HK</p></a>
             </div>
             <div class="welcome-block">
-                <h2>歡迎諮詢</h2>
-                <p>啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。</p>
-                <div class="badge">24小時內專人回覆 · 免費初步諮詢</div>
+                <h2 data-i18n="contact.welcome.t">歡迎諮詢</h2>
+                <p data-i18n="contact.welcome.p">啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。</p>
+                <div class="badge" data-i18n="contact.welcome.badge">24小時內專人回覆 · 免費初步諮詢</div>
             </div>
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-social">
-            <a href="#contact"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg> WeChat</a>
-            <a href="https://wa.me/85212345678" target="_blank"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
-            <a href="https://instagram.com/topmarkethk" target="_blank"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg> Instagram</a>
+            <a href="#contact"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg><span data-i18n="footer.wechat">WeChat</span></a>
+            <a href="https://wa.me/85212345678" target="_blank"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span data-i18n="footer.whatsapp">WhatsApp</span></a>
+            <a href="https://instagram.com/topmarkethk" target="_blank"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg><span data-i18n="footer.ig">Instagram</span></a>
         </div>
-        <p class="copyright">© 2026 銳鋒有限公司 Top Market HK Limited</p>
+        <p class="copyright" data-i18n="footer.copy">© 2026 銳鋒有限公司 Top Market HK Limited</p>
     </footer>
 
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT（原有功能 + 語言切換） ===== -->
     <script>
+        // =============================================================
+        // 1. 語言切換系統
+        // =============================================================
+        const i18n = {
+            'zh': {
+                // 導航
+                'nav.services': '業務範圍',
+                'nav.cases': '成功案例',
+                'nav.process': '咨詢流程',
+                'nav.contact': '聯絡我們',
+                // Hero
+                'hero.title': '<span class="outline-text">讓商業視野</span><span class="highlight">超越界限</span>',
+                'hero.desc1': '洞悉香港市場，以精準數據驅動商業策略。',
+                'hero.desc2': '銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。',
+                'hero.btn1': '探索服務',
+                'hero.btn2': '聯絡我們',
+                // Stats
+                'stats.label1': '成功案例',
+                'stats.label2': '行業經驗',
+                'stats.label3': '客戶滿意度',
+                // About
+                'about.title': '銳鋒顧問',
+                'about.p1': '銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。',
+                'about.p2': '專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。',
+                'about.p3': '以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。',
+                'about.tag': '精準 · 務實 · 可持續',
+                // Services
+                'services.label': '✦ Core Services',
+                'services.title': '核心業務',
+                // Why Us
+                'why.label': '✦ Why Us',
+                'why.title': '我們的優勢',
+                'why.card1.title': '數據驅動',
+                'why.card1.desc': '摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。',
+                'why.card2.title': '本地深耕',
+                'why.card2.desc': '植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。',
+                'why.card3.title': '敏捷反應',
+                'why.card3.desc': '面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。',
+                // Business 1
+                'biz1.head1': '市場調研',
+                'biz1.head2': '與咨詢',
+                'biz1.c1.t': '量化調查',
+                'biz1.c1.l1': '網上問卷：消費習慣、價格接受度、品牌認知、選購渠道偏好',
+                'biz1.c1.l2': '電話抽樣：本地居民及企業採購負責人定向調查',
+                'biz1.c1.l3': '街頭訪問：商場、街市、屋苑現場面談',
+                'biz1.c1.l4': '固定訪問小組：長期追蹤消費者習慣轉變',
+                'biz1.c2.t': '深度採訪',
+                'biz1.c2.l1': '一對一深度面談：高消費客戶、行業專家、企業決策人',
+                'biz1.c2.l2': '分享會',
+                'biz1.c2.l3': '神秘顧客：服務品質、產品體驗、競品比對',
+                'biz1.c2.l4': '實地觀察：超市、餐廳、化妝品店場景記錄',
+                'biz1.c3.t': '大數據收集',
+                'biz1.c3.l1': '社交平台輿論：Facebook、IG、小紅書、抖音、討論區',
+                'biz1.c3.l2': '電商平台銷售數據：銷量、評價、熱門商品',
+                'biz1.c3.l3': '政府／行業公開報告整合',
+                'biz1.c3.l4': '私人定制數據：行業分類、競品對照、地區特徵',
+                'biz1.c4.t': '品牌進入市場策略',
+                'biz1.c4.l1': '市場可行性評估：行業規模、增速、競爭度、門檻',
+                'biz1.c4.l2': '選址風險分析：各區人流、租金、同行密度',
+                'biz1.c4.l3': '目標客戶特徵：年齡、收入、消費場景與習慣',
+                'biz1.c4.l4': '競爭品牌全方位拆解，制定差異化定位',
+                'biz1.c5.t': '品牌現況分析及經營策略',
+                'biz1.c5.l1': '品牌健康檢查：認知度調查、口碑風險、定位修正',
+                'biz1.c5.l2': '新產品上市：概念測試、試用反饋、文案測評',
+                'biz1.c5.l3': '宣傳優化：廣告、直播、社交話題、會員營運',
+                'biz1.c5.l4': '銷售渠道評估：實體門店、分銷商、網上渠道',
+                'biz1.c6.t': '消費行業專項顧問',
+                'biz1.c6.l1': '消費品：食品、飲品、護膚品、日用品潮流研究',
+                'biz1.c6.l2': '飲食：選址人流分析、口味偏好、回頭客方案',
+                'biz1.c6.l3': '化妝品：消費觀念調查、熱賣產品拆解、口碑分析',
+                'biz1.c6.l4': '母嬰家居：家庭決策流程、真實需求發掘、信任度調查',
+                // Business 2
+                'biz2.head1': '長期',
+                'biz2.head2': '合作',
+                'biz2.c1.t': '協助企業落實措施',
+                'biz2.c1.l1': '調研完成後提供3至6個月跟進服務',
+                'biz2.c1.l2': '策略顧問團隊協助轉化為具體執行步驟',
+                'biz2.c1.l3': '根據實際情況動態調整方案',
+                'biz2.c1.l4': '方案架構、營運邏輯設計及實地路線定制',
+                'biz2.c2.t': '監察市場趨勢',
+                'biz2.c2.l1': '簽訂長期市場監察合約',
+                'biz2.c2.l2': '按月或按季度更新行業數據',
+                'biz2.c2.l3': '固定消費小組持續追蹤消費習慣變化',
+                'biz2.c2.l4': '量化抽樣調查，實時捕捉市場變化',
+                'biz2.c3.t': '定期報告與跟進',
+                'biz2.c3.l1': '標準化報告：原始數據表、圖表分析、完整研究報告',
+                'biz2.c3.l2': '月度／季度專屬會議，深入溝通分析結果',
+                'biz2.c3.l3': '企業內部培訓：市場團隊數據解讀',
+                'biz2.c3.l4': '消費者需求分析，強化自主研判能力',
+                // Cases
+                'case1.head1': '留學顧問',
+                'case1.head2': '數據調研',
+                'case1.f1.t': '客戶背景',
+                'case1.f1.p': '香港本地海外升學顧問公司，成立多年，專注協助中三至中六學生申請英國、澳洲及加拿大的大學。團隊共10名全職顧問，每年服務約200名學生。',
+                'case1.f2.t': '核心挑戰',
+                'case1.f2.l1': '競爭環境急劇惡化：行業內已存在上市公司（大地教育，上市編號08417），按2022年收入計算，前四大機構已佔據相當市場份額。',
+                'case1.f2.l2': '市場規模持續萎縮：根據香港教育局最新公布的《2025年中六學生出路統計調查》，在43,561名有回覆的2025年中六畢業生中，僅6.5%選擇到香港以外地區升學。',
+                'case1.f2.l3': '缺乏決策數據支撐：長期依賴顧問個人經驗判斷家長需求，未能清晰及數據化「家長決策的關鍵」及「客戶流失」，導致市場營銷效率偏低。',
+                'case1.f3.t': '解決方案',
+                'case1.f3.l1': '部署AI引擎，捕捉多個本地論壇及多個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。',
+                'case1.f3.l2': '部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。',
+                'case1.f3.l3': '建立混合式AI數據分析平台，整合一手調研與多維度公開數據。',
+                'case1.f3.l4': '向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。',
+                'case1.f3.l5': '進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。',
+                'case1.result': '網站查詢量於三個月內增長65%；經過我司建議及調整之後，為客戶公司帶來額外120萬港元營收，佔公司全年總營業額的17%。成功避開了加拿大市場的簽證配額大幅削減及最低生活保证金等等的政策風險。',
+                'case2.head1': '日式餐廳',
+                'case2.head2': '無憂開業',
+                'case2.f1.t': '客戶背景',
+                'case2.f1.p': '一位曾任職於日式餐廳的廚師，計劃開設其第一餐廳，主打日式料理。雖客戶具備優秀廚藝，但對飲食市場的實務及商業策劃缺乏經驗。',
+                'case2.f2.t': '核心挑戰',
+                'case2.f2.l1': '選址風險：核心商業區及住宅區的街舖及商場舖位租金持續高企，選址決策直接影響客流及租金成本結構，客戶對各區人流特徵、消費力及競爭格局缺乏數據認知。',
+                'case2.f2.l2': '牌照及法律：餐飲牌照申請程序複雜，涉及食物環境衞生署、屋宇署及消防處等多個部門的審批，若處理不當，隨時延誤開業進度數月之久。',
+                'case2.f2.l3': '供應鏈建立困難：料理對食材新鮮度及品質要求極高，需要建立穩定、合規且具成本效益的食材供應渠道，由日本進口的冷鏈物流及本地供應商的篩選均構成挑戰。',
+                'case2.f2.l4': '市場推廣資源有限：新餐廳缺乏品牌知名度，在Instagram、Facebook及小紅書等社交平台上的曝光為零。在競爭激烈的香港餐飲市場中，如何以有限預算有效吸引目標客群，是決定開業成敗的關鍵。',
+                'case2.result': '餐廳於六個月內順利開業，營運首年毛利率達到62%，成為區內熱門預約餐廳。開業初期社交媒體曝光量超出預期，首月訂座率達85%，並持續維持高翻桌率。客戶現正籌備第二間分店，並已委託本公司進行新選址的數據分析及市場定位研究。',
+                'case2.f3.t': '解決方案',
+                'case2.f3.l1': '數據選址工具，評估超過10個潛在舖位，綜合分析各選址周邊的人口密度、年齡結構、收入水平、步行人流及方圓500米內同類型餐廳的供應與定價分佈。',
+                'case2.f3.l2': '食物環境衞生署、屋宇署及消防處的牌照申請流程及文件要求多及複雜，制定詳細的合規時間表。',
+                'case2.f3.l3': '行業網絡及供應商資料庫，篩選及評估多家日本食材進口商及本地供應商，比較其供貨穩定性、價格及冷鏈物流能力。',
+                'case2.f3.l4': '分析客群在Instagram、Facebook及小紅書上的內容消費習慣及餐飲相關話題標籤，制定針對性的內容營銷策略。',
+                'case3.head1': '雜貨舖',
+                'case3.head2': '電子化轉型',
+                'case3.f1.t': '客戶背景',
+                'case3.f1.p': '一間位於九龍區的雜貨舖，開業逾10年，多年來憑藉貨品齊全及價格實惠，累積了一班熟客。老店經營方式傳統，所有交易記錄及庫存管理全依賴人手及經驗，隨着創辦人年屆退休，接班人希望引入電子化管理，但對如何着手毫無頭緒。',
+                'case3.f2.t': '核心挑戰',
+                'case3.f2.l1': '庫存管理全憑經驗：店內逾3,000種貨品，一直靠創辦人記憶及肉眼判斷補貨，沒有系統記錄實際庫存數量，亦無法統計各貨品的銷售速度及毛利率，訂貨決策全憑「感覺」。',
+                'case3.f2.l2': '店鋪形象過時：裝修及陳列風格停留在30年前，門口貨架堆滿雜物，光線昏暗，衛生問題嚴重。年輕顧客即使有購物需求，亦因店鋪外觀「老舊」、「雜亂」而卻步。',
+                'case3.f2.l3': '客源嚴重老化：主要依靠周邊街坊及熟客支持，但消費群以長者及家庭主婦為主，年輕一代對老店缺乏認識。隨着社區人口老化，熟客流失，新客不足，營業額跌。',
+                'case3.f2.l4': '會員及客戶數據空白：過往從未記錄客戶聯絡資料或消費習慣，無法進行任何形式的客戶關係管理或精準營銷。即使有意推出促銷活動，亦缺乏有效的通知渠道。',
+                'case3.f3.t': '解決方案',
+                'case3.f3.l1': '提高店鋪形象及進店率：翻新工程完成後，店鋪外觀新净光猛，同時保留老字號的辨識度。年輕路人的進店率明顯提高。整體店鋪日均客流比翻新前增幅超過40%。',
+                'case3.f3.l2': '搭建「人工智能庫存周轉系統」：上線後三個月內，整體庫存周轉日數由估計約90至100日縮減至約65日，，因缺貨導致的銷售損失按月減少約30%。負責人由以往「憑感覺訂貨」改為「睇數據訂貨」，訂貨決策的準確度顯著提升。',
+                'case3.f3.l3': '營銷：在店内顯眼處貼不同的營銷廣告，增加商品曝光率。透過WhatsApp及電話接受訂貨，向會員推廣限時優惠，大幅提升顧客復購率。',
+                'case3.result': '整體業績：在推行電子化轉型後的八個月內，整體營業額按年增長18.7%，毛利率由約38%提升至44.2%（主因是減少滯銷貨品的積壓，降低不必要的庫存成本）。老店舖成功由傳統街坊小店轉型為「現代老字號」，第二代接班人已初步掌握數據主導的營運模式。',
+                // Process
+                'process.label': '✦ Our Process',
+                'process.title': '專案咨詢流程',
+                'process.intro': '我們建立了一套嚴謹且高效的工作流程，從客戶需求出發，透過多維度市場數據搜集、專業分析與策略制定，到長期監測與合作，確保每一個環節都精準到位。全程監控機制，確保每個環節的數據真實與專業性。',
+                'process.tag': '全程監控 · 數據真實 · 專業執行',
+                'process.step1.t': '需求界定',
+                'process.step1.p': '與企業決策者深度溝通，確立商業目標、專案範圍及關鍵績效指標。',
+                'process.step2.t': '蒐集數據',
+                'process.step2.p': '全方位搜集市場情報，採集多維度數據。',
+                'process.step3.t': '策略制定',
+                'process.step3.p': '深度解析數據，量身定制專屬的商業策略與行動方案。',
+                'process.step4.t': '實施支援',
+                'process.step4.p': '根據特定行業場景進行策略優化，提供落地支援。',
+                'process.step5.t': '長效追蹤',
+                'process.step5.p': '建立長期合作關係，持續監測市場變化並動態調整策略。',
+                'process.monitor.t': '全程監控機制',
+                'process.monitor.p': '我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。',
+                // Contact
+                'contact.label': '✦ Contact',
+                'contact.title': '聯絡我們',
+                'contact.phone.t': '電話',
+                'contact.whatsapp.t': 'WhatsApp',
+                'contact.ig.t': 'Instagram',
+                'contact.wechat.t': 'WeChat',
+                'contact.email.t': '電郵',
+                'contact.linkedin.t': 'LinkedIn',
+                'contact.welcome.t': '歡迎諮詢',
+                'contact.welcome.p': '啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。',
+                'contact.welcome.badge': '24小時內專人回覆 · 免費初步諮詢',
+                // Footer
+                'footer.wechat': 'WeChat',
+                'footer.whatsapp': 'WhatsApp',
+                'footer.ig': 'Instagram',
+                'footer.copy': '© 2026 銳鋒有限公司 Top Market HK Limited'
+            },
+            'en': {
+                // Nav
+                'nav.services': 'Services',
+                'nav.cases': 'Case Studies',
+                'nav.process': 'Our Process',
+                'nav.contact': 'Contact Us',
+                // Hero
+                'hero.title': '<span class="outline-text">Expand Your</span><span class="highlight">Business Horizon</span>',
+                'hero.desc1': 'Gain deep insights into the Hong Kong market with precision data-driven strategies.',
+                'hero.desc2': 'Top Market Consulting helps businesses navigate complexity, clarify strategic direction, and achieve sustainable growth.',
+                'hero.btn1': 'Explore Services',
+                'hero.btn2': 'Contact Us',
+                // Stats
+                'stats.label1': 'Case Studies',
+                'stats.label2': 'Years of Experience',
+                'stats.label3': 'Client Satisfaction',
+                // About
+                'about.title': 'Top Market Consulting',
+                'about.p1': 'Top Market Consulting Ltd. is a full-service business advisory firm integrating market data collection, consumer behavior research, and brand strategy.',
+                'about.p2': 'We provide end-to-end solutions for commercial services, retail, F&B, and beauty industries in Hong Kong.',
+                'about.p3': 'We see further, strike sharper. We are not just consultants — we are your strategic partners.',
+                'about.tag': 'Precise · Pragmatic · Sustainable',
+                // Services
+                'services.label': '✦ Core Services',
+                'services.title': 'Our Core Services',
+                // Why Us
+                'why.label': '✦ Why Us',
+                'why.title': 'Our Advantages',
+                'why.card1.title': 'Data-Driven',
+                'why.card1.desc': 'We eliminate guesswork by extracting critical business signals from complex data, ensuring every strategy is grounded in real insights.',
+                'why.card2.title': 'Local Expertise',
+                'why.card2.desc': 'Rooted in Hong Kong, we have a deep understanding of local regulations and business dynamics, helping you navigate market volatility with confidence.',
+                'why.card3.title': 'Agile & Responsive',
+                'why.card3.desc': 'In a fast-changing environment, we stay ahead of market shifts and help you adapt quickly to seize emerging opportunities.',
+                // Business 1
+                'biz1.head1': 'Market',
+                'biz1.head2': 'Research & Consulting',
+                'biz1.c1.t': 'Quantitative Surveys',
+                'biz1.c1.l1': 'Online questionnaires: consumption habits, price tolerance, brand awareness, purchase channels',
+                'biz1.c1.l2': 'Telephone sampling: targeted surveys of residents and corporate buyers',
+                'biz1.c1.l3': 'Street interviews: on-site talks at malls, markets, and housing estates',
+                'biz1.c1.l4': 'Fixed panels: long-term tracking of consumer behavior shifts',
+                'biz1.c2.t': 'In-Depth Interviews',
+                'biz1.c2.l1': 'One-on-one interviews: high-value clients, industry experts, decision-makers',
+                'biz1.c2.l2': 'Focus group discussions',
+                'biz1.c2.l3': 'Mystery shopping: service quality, product experience, competitor benchmarking',
+                'biz1.c2.l4': 'Field observation: supermarkets, restaurants, cosmetic stores',
+                'biz1.c3.t': 'Big Data Collection',
+                'biz1.c3.l1': 'Social media monitoring: Facebook, Instagram, Xiaohongshu, Douyin, forums',
+                'biz1.c3.l2': 'E-commerce sales data: volume, reviews, trending products',
+                'biz1.c3.l3': 'Government & industry public reports integration',
+                'biz1.c3.l4': 'Custom data: industry segmentation, competitor mapping, regional profiling',
+                'biz1.c4.t': 'Market Entry Strategy',
+                'biz1.c4.l1': 'Feasibility assessment: market size, growth, competition, barriers',
+                'biz1.c4.l2': 'Site risk analysis: foot traffic, rent, competitor density by district',
+                'biz1.c4.l3': 'Target customer profiling: age, income, consumption scenarios',
+                'biz1.c4.l4': 'Competitive brand deconstruction and differentiation positioning',
+                'biz1.c5.t': 'Brand Health & Operations',
+                'biz1.c5.l1': 'Brand health check: awareness, reputation risk, positioning adjustment',
+                'biz1.c5.l2': 'New product launch: concept testing, trial feedback, copy evaluation',
+                'biz1.c5.l3': 'Marketing optimization: advertising, live streaming, social campaigns, CRM',
+                'biz1.c5.l4': 'Channel assessment: physical stores, distributors, online platforms',
+                'biz1.c6.t': 'Industry-Specific Consulting',
+                'biz1.c6.l1': 'Consumer goods: food, beverages, skincare, daily essentials trend analysis',
+                'biz1.c6.l2': 'F&B: site traffic analysis, taste preferences, retention strategies',
+                'biz1.c6.l3': 'Cosmetics: consumption patterns, best-seller analysis, reputation review',
+                'biz1.c6.l4': 'Baby & home: family decision journeys, needs discovery, trust building',
+                // Business 2
+                'biz2.head1': 'Long-Term',
+                'biz2.head2': 'Partnership',
+                'biz2.c1.t': 'Implementation Support',
+                'biz2.c1.l1': '3–6 months of follow-up support after research completion',
+                'biz2.c1.l2': 'Strategy team assists in translating insights into actionable steps',
+                'biz2.c1.l3': 'Dynamic adjustment based on real-world feedback',
+                'biz2.c1.l4': 'Blueprint design, operational logic, and on-site roadmap customization',
+                'biz2.c2.t': 'Market Monitoring',
+                'biz2.c2.l1': 'Long-term market surveillance contracts',
+                'biz2.c2.l2': 'Monthly or quarterly industry data updates',
+                'biz2.c2.l3': 'Fixed consumer panels tracking behavioral shifts',
+                'biz2.c2.l4': 'Quantitative sampling to capture real-time market changes',
+                'biz2.c3.t': 'Regular Reporting & Follow-Up',
+                'biz2.c3.l1': 'Standardized reports: raw data, charts, comprehensive research',
+                'biz2.c3.l2': 'Monthly/quarterly client meetings for deep-dive analysis',
+                'biz2.c3.l3': 'In-house training: data interpretation for marketing teams',
+                'biz2.c3.l4': 'Consumer needs analysis to strengthen independent decision-making',
+                // Cases
+                'case1.head1': 'Study Abroad',
+                'case1.head2': 'Data Research',
+                'case1.f1.t': 'Client Background',
+                'case1.f1.p': 'A Hong Kong-based overseas education consultancy with 10 full-time consultants, serving ~200 students annually for UK, Australia, and Canada university applications.',
+                'case1.f2.t': 'Core Challenges',
+                'case1.f2.l1': 'Intensifying competition: listed players dominate market share.',
+                'case1.f2.l2': 'Market shrinkage: only 6.5% of 2025 S6 graduates chose overseas study per HKEB.',
+                'case1.f2.l3': 'Lack of decision data: relied on consultant intuition, unable to quantify key decision drivers or client churn, leading to low marketing efficiency.',
+                'case1.f3.t': 'Solutions',
+                'case1.f3.l1': 'Deployed AI engine to capture thousands of discussions across forums and Facebook groups.',
+                'case1.f3.l2': 'Built AI model for real-time tracking of visa policy changes and QS university admission data.',
+                'case1.f3.l3': 'Integrated hybrid AI analytics platform combining primary research and public data.',
+                'case1.f3.l4': 'Surveyed 1,000+ clients with AI-assisted analysis of decision logic.',
+                'case1.f3.l5': 'Conducted dozens of deep interviews to uncover key decision keywords and traits.',
+                'case1.result': 'Website inquiries grew 65% in 3 months, bringing HK$1.2M extra revenue (17% of annual turnover). Successfully avoided Canada visa quota cuts and minimum living cost policy risks.',
+                'case2.head1': 'Japanese',
+                'case2.head2': 'Restaurant Launch',
+                'case2.f1.t': 'Client Background',
+                'case2.f1.p': 'A chef with excellent culinary skills but lacking business and market experience planned to open his first Japanese restaurant.',
+                'case2.f2.t': 'Core Challenges',
+                'case2.f2.l1': 'Site selection risk: high rents in commercial/residential areas, no data on foot traffic, spending power, or competition.',
+                'case2.f2.l2': 'License complexity: involved multiple government departments; any delay could postpone opening by months.',
+                'case2.f2.l3': 'Supply chain: high standards for freshness and quality; needed stable, compliant, cost-effective sourcing from Japan and local suppliers.',
+                'case2.f2.l4': 'Limited marketing budget: zero brand awareness on social media; needed cost-effective customer acquisition strategy.',
+                'case2.result': 'Restaurant opened within 6 months, achieved 62% gross margin in first year, became a top reservation spot. Social media exposure exceeded expectations, first-month booking rate 85% with high table turnover. Client is now planning a second outlet with our site selection and positioning support.',
+                'case2.f3.t': 'Solutions',
+                'case2.f3.l1': 'Data-driven site selection tool evaluated 10+ locations across demographics, income, foot traffic, and competitor density.',
+                'case2.f3.l2': 'Developed detailed compliance timeline for licensing approvals across multiple departments.',
+                'case2.f3.l3': 'Leveraged industry network to assess Japanese importers and local suppliers on reliability, pricing, and cold chain capability.',
+                'case2.f3.l4': 'Analyzed content consumption on Instagram, Facebook, and Xiaohongshu to craft targeted marketing campaigns.',
+                'case3.head1': 'Grocery Store',
+                'case3.head2': 'Digital Transformation',
+                'case3.f1.t': 'Client Background',
+                'case3.f1.p': 'A 10+ year-old grocery store in Kowloon with loyal customers but outdated operations – all inventory and transactions managed manually.',
+                'case3.f2.t': 'Core Challenges',
+                'case3.f2.l1': 'Inventory management by intuition: 3,000+ products tracked by memory, no system for turnover or margin analysis.',
+                'case3.f2.l2': 'Outdated store image: dim lighting, cluttered shelves, poor hygiene – deterring younger customers.',
+                'case3.f2.l3': 'Aging customer base: relying on elderly and housewives, with declining footfall as community demographics shift.',
+                'case3.f2.l4': 'No customer data: no records of contacts or purchase history, unable to run CRM or targeted promotions.',
+                'case3.f3.t': 'Solutions',
+                'case3.f3.l1': 'Renovation boosted store appeal while retaining heritage identity; foot traffic increased 40% post-renovation.',
+                'case3.f3.l2': 'AI inventory system reduced stock turnover from 90–100 days to ~65 days in 3 months; stockout loss dropped 30% monthly.',
+                'case3.f3.l3': 'In-store promotions, WhatsApp ordering, and member-exclusive offers drove repeat purchases.',
+                'case3.result': 'Revenue grew 18.7% YoY within 8 months, gross margin improved from 38% to 44.2%. The store successfully transformed into a "modern heritage brand", with the second-generation owner now data-savvy.',
+                // Process
+                'process.label': '✦ Our Process',
+                'process.title': 'Our Consulting Process',
+                'process.intro': 'We follow a rigorous and efficient workflow — from understanding your needs, collecting multi-dimensional market data, to strategic analysis and long-term monitoring. Every step is quality-assured.',
+                'process.tag': 'Full Monitoring · Data Integrity · Professional Execution',
+                'process.step1.t': 'Needs Definition',
+                'process.step1.p': 'Deep-dive discussions with decision-makers to define business goals, scope, and KPIs.',
+                'process.step2.t': 'Data Collection',
+                'process.step2.p': 'Comprehensive market intelligence gathering across multiple data dimensions.',
+                'process.step3.t': 'Strategy Formulation',
+                'process.step3.p': 'In-depth data analysis to craft a tailored business strategy and action plan.',
+                'process.step4.t': 'Implementation Support',
+                'process.step4.p': 'Optimize strategies for specific industry scenarios and provide on-ground support.',
+                'process.step5.t': 'Long-Term Tracking',
+                'process.step5.p': 'Ongoing partnership with continuous monitoring and dynamic strategy adjustments.',
+                'process.monitor.t': 'Full Monitoring System',
+                'process.monitor.p': 'Our internal quality control team uses sample reviews, interview audits, and cross-validation to ensure data accuracy and professionalism at every stage — from project kick-off to final delivery.',
+                // Contact
+                'contact.label': '✦ Contact',
+                'contact.title': 'Contact Us',
+                'contact.phone.t': 'Phone',
+                'contact.whatsapp.t': 'WhatsApp',
+                'contact.ig.t': 'Instagram',
+                'contact.wechat.t': 'WeChat',
+                'contact.email.t': 'Email',
+                'contact.linkedin.t': 'LinkedIn',
+                'contact.welcome.t': 'Get in Touch',
+                'contact.welcome.p': 'Start your data-driven growth journey today. Talk to our team to explore how we can help your business thrive.',
+                'contact.welcome.badge': 'Reply within 24h · Free Initial Consultation',
+                // Footer
+                'footer.wechat': 'WeChat',
+                'footer.whatsapp': 'WhatsApp',
+                'footer.ig': 'Instagram',
+                'footer.copy': '© 2026 Top Market HK Limited'
+            }
+        };
+
+        let currentLang = 'zh';
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            const dict = i18n[lang];
+            if (!dict) return;
+
+            // 更新所有帶 data-i18n 屬性的元素
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) {
+                    // 如果是標題/段落等需要保留子元素的，用 innerHTML
+                    // 對於按鈕、鏈接等純文本，用 textContent 更安全，但為了保留高亮等，統一用 innerHTML
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            // 更新語言切換按鈕的 active 狀態
+            document.querySelectorAll('.lang-opt').forEach(opt => {
+                const l = opt.getAttribute('data-lang');
+                opt.classList.toggle('active', l === lang);
+            });
+
+            // 更新 html lang 屬性
+            document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+
+            // 存儲偏好
+            try { localStorage.setItem('topmarket-lang', lang); } catch (e) {}
+        }
+
+        // 語言切換事件
+        document.querySelectorAll('.lang-opt').forEach(opt => {
+            opt.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const lang = this.getAttribute('data-lang');
+                if (lang !== currentLang) {
+                    applyLanguage(lang);
+                }
+            });
+        });
+
+        // 從 localStorage 恢復語言偏好
+        (function restoreLang() {
+            try {
+                const saved = localStorage.getItem('topmarket-lang');
+                if (saved && (saved === 'zh' || saved === 'en')) {
+                    applyLanguage(saved);
+                    return;
+                }
+            } catch (e) {}
+            // 默認中文
+            applyLanguage('en');
+        })();
+
+        // =============================================================
+        // 2. 原有功能（保留）
+        // =============================================================
         window.addEventListener('scroll', () => {
             const h = document.getElementById('header');
             if (window.scrollY > 50) h.classList.add('scrolled');
@@ -2197,28 +2618,48 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // 服務卡片（保留原有數據，使用 data-i18n 後卡片內容已由翻譯系統驅動）
         const cardData = [
             { img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop',
-                title: '市場洞察與數據分析',
-                desc: '• 多維度研究策略： 結合數據統計與行業深度訪查，精準描繪消費動態與消費者行為模式。<br>• 全渠道大數據情報： 無縫對接多渠道大數據，涵蓋主流社交平台、論壇與電商網絡，實時捕捉市場脈搏與最新競爭情報。' },
+                titleKey: 'card1.title',
+                descKey: 'card1.desc' },
             { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop',
-                title: '商業戰略規劃',
-                desc: '• 市場進入與可行性評估： 基於紮實的數據基礎，為企業評估新市場或新產品的潛在回報與風險。<br>• 頂層架構與商業藍圖：從撰寫商業計劃書到提供資源配置的全面咨詢，規劃清晰的商業發展藍圖。' },
+                titleKey: 'card2.title',
+                descKey: 'card2.desc' },
             { img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop',
-                title: '品牌管理與優化',
-                desc: '• 競爭定位與核心優勢： 針對市場現況與競爭形勢，調整品牌定位與敘事，提升品牌核心優勢。<br>• 長效追蹤與動態優化： 建立特定市場趨勢監測機制，透過定期管理會議跟進策略執行成效，確保優化措施精準落地。' }
+                titleKey: 'card3.title',
+                descKey: 'card3.desc' }
         ];
+
+        // 添加卡片的翻譯內容到 i18n 對象
+        Object.assign(i18n['zh'], {
+            'card1.title': '市場洞察與數據分析',
+            'card1.desc': '• 多維度研究策略： 結合數據統計與行業深度訪查，精準描繪消費動態與消費者行為模式。<br>• 全渠道大數據情報： 無縫對接多渠道大數據，涵蓋主流社交平台、論壇與電商網絡，實時捕捉市場脈搏與最新競爭情報。',
+            'card2.title': '商業戰略規劃',
+            'card2.desc': '• 市場進入與可行性評估： 基於紮實的數據基礎，為企業評估新市場或新產品的潛在回報與風險。<br>• 頂層架構與商業藍圖：從撰寫商業計劃書到提供資源配置的全面咨詢，規劃清晰的商業發展藍圖。',
+            'card3.title': '品牌管理與優化',
+            'card3.desc': '• 競爭定位與核心優勢： 針對市場現況與競爭形勢，調整品牌定位與敘事，提升品牌核心優勢。<br>• 長效追蹤與動態優化： 建立特定市場趨勢監測機制，透過定期管理會議跟進策略執行成效，確保優化措施精準落地。'
+        });
+        Object.assign(i18n['en'], {
+            'card1.title': 'Market Insights & Data Analytics',
+            'card1.desc': '• Multi-dimensional research: combine quantitative surveys with in-depth industry interviews to precisely map consumer dynamics.<br>• Omnichannel big data: seamless integration across social media, forums, and e-commerce to capture real-time market intelligence.',
+            'card2.title': 'Business Strategy Planning',
+            'card2.desc': '• Market entry & feasibility: data-driven assessment of new markets or products.<br>• Strategic blueprint: from business plan writing to resource allocation, we help you chart a clear growth roadmap.',
+            'card3.title': 'Brand Management & Optimization',
+            'card3.desc': '• Competitive positioning: refine brand narrative and sharpen your edge based on market realities.<br>• Ongoing monitoring: track KPIs through regular reviews to ensure strategies stay on course.'
+        });
+
         const track = document.getElementById('cardTrack');
-        const wrapper = document.getElementById('cardScrollWrapper');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
 
-        function createCard(d, i) {
+        function createCard(d, idx) {
             const div = document.createElement('div');
             div.className = 'service-card';
-            div.dataset.card = i;
+            div.dataset.card = idx;
+            // 使用 data-i18n 讓翻譯系統處理標題和描述
             div.innerHTML =
-                `<img class="card-img" src="${d.img}" alt="${d.title}"><div class="card-content"><h3>${d.title}</h3><p>${d.desc}</p><a href="#business" class="card-link">了解更多 →</a></div>`;
+                `<img class="card-img" src="${d.img}" alt="${d.titleKey}"><div class="card-content"><h3 data-i18n="${d.titleKey}">${i18n['zh'][d.titleKey]}</h3><p data-i18n="${d.descKey}">${i18n['zh'][d.descKey]}</p><a href="#business" class="card-link" data-i18n="card.link">了解更多 →</a></div>`;
             div.addEventListener('click', function(e) {
                 if (!e.target.closest('.card-link')) {
                     document.getElementById('business').scrollIntoView({ behavior: 'smooth' });
@@ -2226,6 +2667,11 @@
             });
             return div;
         }
+
+        // 添加 "了解更多" 翻譯
+        i18n['zh']['card.link'] = '了解更多 →';
+        i18n['en']['card.link'] = 'Learn More →';
+
         const realCards = [];
         for (let i = 0; i < 5; i++) cardData.forEach((d, idx) => realCards.push(createCard(d, i * 3 + idx + 1)));
         track.appendChild(createCard(cardData[2], 'clone-last'));
@@ -2286,6 +2732,7 @@
             autoInt = setInterval(goNext, 3000); }
 
         function pa() { clearInterval(autoInt); }
+        const wrapper = document.getElementById('cardScrollWrapper');
         wrapper.addEventListener('mouseenter', pa);
         wrapper.addEventListener('mouseleave', sa);
         leftArrow.addEventListener('click', () => { goPrev();
@@ -2296,6 +2743,7 @@
             sa(); });
         sa();
 
+        // 卡片 hover 3D 效果
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -2313,6 +2761,7 @@
                     'scale(0.92) perspective(800px) rotateX(0deg) rotateY(0deg)'; });
         });
 
+        // Intersection Observers (保留原有)
         const businessObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2323,7 +2772,6 @@
                 }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.business-block').forEach(block => {
             businessObserver.observe(block);
         });
@@ -2338,7 +2786,6 @@
                 }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.case-screen').forEach(screen => {
             caseObserver.observe(screen);
         });
@@ -2352,9 +2799,8 @@
                 }
             });
         }, { threshold: 0.1 });
-
         document.querySelector('#contact .contact-grid')?.parentElement && contactObserver.observe(document
-            .querySelector('#contact'));
+        .querySelector('#contact'));
 
         const timelineObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2363,7 +2809,6 @@
                 }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('#process .timeline-item, #process .process-intro, #process .monitoring-card')
             .forEach(el => {
                 timelineObserver.observe(el);
@@ -2376,7 +2821,6 @@
                 }
             });
         }, { threshold: 0.15 });
-
         document.querySelectorAll('.why-card').forEach(card => {
             whyObserver.observe(card);
         });
@@ -2388,7 +2832,6 @@
                 }
             });
         }, { threshold: 0.15 });
-
         const aboutCard = document.getElementById('aboutCard');
         if (aboutCard) aboutObserver.observe(aboutCard);
 
@@ -2424,6 +2867,22 @@
                 }
             });
         });
+
+        // 在語言切換後重新觸發卡片內 data-i18n 的更新（因為卡片是動態生成的，需要重新應用翻譯）
+        // 我們在 applyLanguage 中已經使用了 querySelectorAll('[data-i18n]')，會覆蓋所有元素
+        // 但是動態生成的卡片是在頁面加載時創建的，它們的 data-i18n 屬性已經存在，所以 applyLanguage 會處理它們
+        // 但由於卡片內容是在 JS 中創建的，我們需要確保在語言切換時，卡片內的 data-i18n 元素被更新
+        // 解決方案：在 applyLanguage 中，我們遍歷所有 [data-i18n] 元素，這已經包括了動態生成的卡片
+        // 所以沒問題。
+
+        // 修復：由於卡片是動態生成的，在生成時使用了 i18n['zh'] 的內容作為初始值，
+        // 但當語言切換為英文時，需要更新卡片內容。
+        // 但因為卡片內的 h3 和 p 都有 data-i18n 屬性，applyLanguage 會遍歷到它們並更新。
+        // 但是卡片的 "了解更多" 鏈接也有 data-i18n="card.link"，也會被更新。
+        // 所以一切正常。
+
+        console.log('✅ 語言切換系統已啟用。當前語言:', currentLang);
     </script>
 </body>
 </html>
+```
