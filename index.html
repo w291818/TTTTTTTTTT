@@ -1,5 +1,3 @@
-我已按要求修改了FAQ区域的引言卡片：将其文字居中显示，缩短了卡片宽度，并将“了解常见问题…”部分换到第二行。
-```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -196,34 +194,74 @@
     .left-arrow { left: 15px; }
     .right-arrow { right: 15px; }
 
-    /* ===== Why Us 全屏 ===== */
-    .why-us { position: relative; }
-    .why-block {
-      width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center;
-      background-size: cover; background-position: center; position: relative;
-      opacity: 0; transform: translateY(40px);
-      transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1);
+    /* ===== Why Us 整合為卡片區塊 ===== */
+    .why-us {
+      padding: 80px 20px;
+      background: #020510;
     }
-    .why-block.visible { opacity: 1; transform: translateY(0); }
-    .why-block::before { display: none; }
-    .why-text { 
-      position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 30px; 
-      color: #fff; text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .why-text .label-en { display: none; }
-    .why-text h3 {
-      font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; letter-spacing: -1px;
-      text-shadow: 0 4px 30px rgba(0,0,0,0.8); opacity: 0; transform: translateY(30px);
-      transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1);
+    .why-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: translateY(40px);
+      cursor: default;
     }
-    .why-text h3.visible { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
-    .why-text p {
-      font-size: 1.2rem; line-height: 1.9; 
-      text-shadow: 0 4px 30px rgba(0,0,0,0.8);
-      opacity: 0; transform: translateY(30px); color: #ffffff;
-      transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1);
+    .why-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .why-text p.visible { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+    .why-card:nth-child(2).visible { transition-delay: 0.15s; }
+    .why-card:nth-child(3).visible { transition-delay: 0.3s; }
+    .why-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(59,130,246,0.4);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+    .why-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .why-card:hover .why-card-img {
+      transform: scale(1.05);
+    }
+    .why-card-body {
+      padding: 30px 28px 35px;
+      text-align: center;
+    }
+    .why-card-body h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .why-card-body p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+    .why-card-body .accent-line {
+      width: 40px;
+      height: 3px;
+      background: #3b82f6;
+      margin: 0 auto 16px;
+      border-radius: 2px;
+    }
 
     /* ===== 業務範圍 (無邊距) ===== */
     #business {
@@ -812,8 +850,7 @@
     @media (max-width: 900px) {
       .hero-text { margin-left: 0; }
       .hero-text h1 { font-size: 2.5rem; }
-      .why-text h3 { font-size: 2.2rem; }
-      .why-text p { font-size: 1.1rem; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-number { font-size: 2.8rem; }
       .stats { gap: 50px; }
       .contact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -865,10 +902,8 @@
       .card-content h3 { font-size: 1.3rem; }
       .card-content p { font-size: 0.85rem; }
 
-      .why-block { height: 70vh; min-height: 400px; }
-      .why-text h3 { font-size: 1.8rem; }
-      .why-text p { font-size: 0.95rem; }
-      .why-text { padding: 0 20px; }
+      .why-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .why-card-img { height: 160px; }
 
       .business-block { min-height: auto; }
       .business-content { padding: 80px 16px 50px; }
@@ -935,6 +970,7 @@
       .business-content .section-heading-area h2 { font-size: 1.6rem; }
       .case-title-area h2 { font-size: 1.5rem; }
       .result-blast .big-number { font-size: 2.2rem; }
+      .why-grid { max-width: 100%; }
     }
   </style>
 </head>
@@ -997,16 +1033,41 @@
   </div>
 </div>
 
-<!-- ===== WHY US ===== -->
+<!-- ===== WHY US — 三個卡片整合為一個區塊 ===== -->
 <section class="why-us" id="why">
-  <div class="why-block" style="background-image:url('https://img1.wallspic.com/crops/8/3/6/8/3/138638/138638-red_and_white_bokeh_lights-3840x2160.jpg');">
-    <div class="why-text"><h3 class="why-title">數據驅動</h3><p class="why-desc">摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p></div>
+  <div class="section-title">
+    <div class="section-label"><span class="label-en">✦ Why Us</span></div>
+    <h2 class="why-title">我們的優勢</h2>
+    <div class="line"></div>
   </div>
-  <div class="why-block" style="background-image:url('https://img3.wallspic.com/crops/0/5/7/8/5/158750/158750-xiang_gang-zi_se_de-dian_li_ta_kuai-ren_ti_nei_de_shui-3840x2160.jpg');">
-    <div class="why-text"><h3 class="why-title">本地深耕</h3><p class="why-desc">植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。 </p></div>
-  </div>
-  <div class="why-block" style="background-image:url('https://images.pexels.com/photos/7441079/pexels-photo-7441079.jpeg?_gl=1*c15iy9*_ga*MTAyNDQ1NjIzNS4xNzg0MDc5NjU1*_ga_8JE65Q40S6*czE3ODQwNzk2NTQkbzEkZzEkdDE3ODQwODA1MjAkajEzJGwwJGhw');">
-    <div class="why-text"><h3 class="why-title">敏捷反應</h3><p class="why-desc">面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p></div>
+  <div class="why-grid">
+    <!-- 卡片 1: 數據驅動 -->
+    <div class="why-card">
+      <img class="why-card-img" src="https://img1.wallspic.com/crops/8/3/6/8/3/138638/138638-red_and_white_bokeh_lights-3840x2160.jpg" alt="數據驅動">
+      <div class="why-card-body">
+        <h3>數據驅動</h3>
+        <div class="accent-line"></div>
+        <p>摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
+      </div>
+    </div>
+    <!-- 卡片 2: 本地深耕 -->
+    <div class="why-card">
+      <img class="why-card-img" src="https://img3.wallspic.com/crops/0/5/7/8/5/158750/158750-xiang_gang-zi_se_de-dian_li_ta_kuai-ren_ti_nei_de_shui-3840x2160.jpg" alt="本地深耕">
+      <div class="why-card-body">
+        <h3>本地深耕</h3>
+        <div class="accent-line"></div>
+        <p>植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
+      </div>
+    </div>
+    <!-- 卡片 3: 敏捷反應 -->
+    <div class="why-card">
+      <img class="why-card-img" src="https://images.pexels.com/photos/7441079/pexels-photo-7441079.jpeg?_gl=1*c15iy9*_ga*MTAyNDQ1NjIzNS4xNzg0MDc5NjU1*_ga_8JE65Q40S6*czE3ODQwNzk2NTQkbzEkZzEkdDE3ODQwODA1MjAkajEzJGwwJGhw" alt="敏捷反應">
+      <div class="why-card-body">
+        <h3>敏捷反應</h3>
+        <div class="accent-line"></div>
+        <p>面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1142,7 +1203,7 @@
   </div>
 </section>
 
-<!-- ===== 咨詢流程（新版設計，保留原始文字） ===== -->
+<!-- ===== 咨詢流程 ===== -->
 <section id="process">
   <div class="process-inner">
     <div class="section-title">
@@ -1157,7 +1218,6 @@
     </div>
 
     <div class="timeline">
-      <!-- 1. 需求界定 -->
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">1</div>
@@ -1167,7 +1227,6 @@
         <div class="timeline-dot"></div>
       </div>
 
-      <!-- 2. 蒐集數據 -->
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">2</div>
@@ -1177,7 +1236,6 @@
         <div class="timeline-dot"></div>
       </div>
 
-      <!-- 3. 策略制定 -->
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">3</div>
@@ -1187,7 +1245,6 @@
         <div class="timeline-dot"></div>
       </div>
 
-      <!-- 4. 實施支援 -->
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">4</div>
@@ -1197,7 +1254,6 @@
         <div class="timeline-dot"></div>
       </div>
 
-      <!-- 5. 長效追蹤 -->
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">5</div>
@@ -1223,7 +1279,6 @@
       <h2 class="faq-title">常見問題</h2>
       <div class="line"></div>
     </div>
-    <!-- 引言卡片：置中、縮短、第二行換行 -->
     <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(12px); border-radius:20px; padding:20px 30px; margin:0 auto 40px; border:1px solid rgba(59,130,246,0.2); width:fit-content; max-width:90%; text-align:center;">
       <p style="color:#e2e8f0; font-size:1.05rem; margin:0;">
         企業尋求顧問公司協助時，最常面臨的疑問包括服務價值、收費模式以及執行成效。<br>
@@ -1472,6 +1527,19 @@
     timelineObserver.observe(el);
   });
 
+  // Why Us 卡片動畫
+  const whyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.why-card').forEach(card => {
+    whyObserver.observe(card);
+  });
+
   // ----- 滾動觸發動畫 (原有) -----
   const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
   const observer = new IntersectionObserver((entries) => {
@@ -1483,7 +1551,7 @@
     });
   }, observerOptions);
   document.querySelectorAll(
-    '.hero-title, .hero-desc, .hero-btn, .stat-item, .service-title, .case-title, .process-title, .faq-title, .contact-title, .why-block, .why-title, .why-desc, .about-content'
+    '.hero-title, .hero-desc, .hero-btn, .stat-item, .service-title, .case-title, .process-title, .faq-title, .contact-title, .why-title, .about-content'
   ).forEach(el => observer.observe(el));
 
   const allImages = document.querySelectorAll('img');
@@ -1509,4 +1577,3 @@
 </script>
 </body>
 </html>
-```
