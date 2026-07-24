@@ -194,13 +194,12 @@
     .left-arrow { left: 15px; }
     .right-arrow { right: 15px; }
 
-    /* ===== Why Us 整合為卡片區塊 + 背景圖片（新圖片，無遮擋） ===== */
+    /* ===== Why Us 整合為卡片區塊 + 背景圖片 ===== */
     .why-us {
       padding: 80px 20px;
       background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/y%20US.jpg') center/cover no-repeat fixed;
       position: relative;
     }
-    /* 不添加任何額外遮罩層，保留圖片原始色彩 */
     .why-us .section-title h2,
     .why-us .section-title .label-en {
       color: #fff;
@@ -643,30 +642,75 @@
       z-index: 1;
     }
 
-    /* ===== About ===== */
-    .about {
-      width: 100%; height: 500px;
-      background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
-      background-size: cover;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      color: #fff; position: relative;
+    /* ===== 銳鋒顧問介紹卡片 (移至核心業務上方) ===== */
+    .about-card-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px 40px;
     }
-    .about::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, rgba(2,5,16,0.3) 0%, rgba(2,5,16,0.7) 100%);
+    .about-card {
+      background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/background%20card.jpg') center/cover no-repeat;
+      border-radius: 32px;
+      padding: 50px 60px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .about-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 5, 16, 0.55);
+      pointer-events: none;
+      border-radius: 32px;
+      z-index: 0;
+    }
+    .about-card * {
+      position: relative;
       z-index: 1;
     }
-    .about-content { position: relative; z-index: 2; max-width: 700px; padding: 0 30px; opacity: 0; transform: translateY(30px); transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1); }
-    .about-content.visible { opacity: 1; transform: translateY(0); }
-    .about-content .label-en { display: none; }
-    .about-content h2 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -1px; text-shadow: 0 2px 20px rgba(0,0,0,0.6); }
-    .about-content .line { width: 60px; height: 3px; background: #3b82f6; margin: 0 auto 25px; }
-    .about-content p { font-size: 1.1rem; margin-bottom: 25px; line-height: 1.9; font-weight: 300; text-shadow: 0 2px 15px rgba(0,0,0,0.5); color: #e2e8f0; }
-    .about-content .quote {
-      font-size: 1.2rem; font-weight: 600; color: #fff; letter-spacing: 3px;
-      border: 1px solid rgba(255,255,255,0.5); display: inline-block; padding: 12px 30px;
-      border-radius: 50px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+    .about-card h2 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+    .about-card .divider {
+      width: 60px;
+      height: 3px;
+      background: #3b82f6;
+      margin: 0 auto 25px;
+      border-radius: 2px;
+    }
+    .about-card p {
+      color: #e2e8f0;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      max-width: 750px;
+      margin: 0 auto 18px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    }
+    .about-card .quote-tag {
+      display: inline-block;
+      background: rgba(59,130,246,0.2);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 50px;
+      padding: 10px 32px;
+      color: #93bbfc;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      margin-top: 10px;
     }
 
     /* ===== Footer ===== */
@@ -843,8 +887,7 @@
       font-weight: 600;
     }
 
-    /* ===== 常見問題 & 聯絡我們 — 背景鋪滿無遮蓋 ===== */
-    #faq,
+    /* ===== 聯絡我們 — 背景鋪滿無遮蓋 ===== */
     #contact {
       width: 100%;
       max-width: none;
@@ -856,9 +899,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: scroll;
-      /* 移除 background-blend-mode 與任何遮罩 */
     }
-    #faq > *,
     #contact > * {
       position: relative;
       z-index: 2;
@@ -881,6 +922,7 @@
       .case-inner { padding: 100px 25px 60px; }
       .case-inner .floating-num { font-size: 10rem; top: 0; right: 10px; }
       .case-title-area h2 { font-size: 2.5rem; }
+      .about-card { padding: 40px 30px; }
     }
 
     @media (max-width: 768px) {
@@ -954,10 +996,9 @@
       .process-intro { padding: 25px 20px; }
       .monitoring-card { padding: 25px 20px; }
 
-      .about { height: auto; min-height: 400px; padding: 40px 16px; }
-      .about-content h2 { font-size: 2.2rem; }
-      .about-content p { font-size: 0.95rem; }
-      .about-content .quote { font-size: 1rem; padding: 10px 20px; }
+      .about-card-section { padding: 40px 16px 20px; }
+      .about-card { padding: 30px 20px; }
+      .about-card h2 { font-size: 1.8rem; }
 
       #contact .contact-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .contact-card { padding: 20px 16px; }
@@ -989,6 +1030,8 @@
       .case-title-area h2 { font-size: 1.5rem; }
       .result-blast .big-number { font-size: 2.2rem; }
       .why-grid { max-width: 100%; }
+      .about-card h2 { font-size: 1.5rem; }
+      .about-card { padding: 24px 16px; }
     }
   </style>
 </head>
@@ -1002,7 +1045,6 @@
       <li><a href="#services">業務範圍</a></li>
       <li><a href="#cases">成功案例</a></li>
       <li><a href="#process">咨詢流程</a></li>
-      <li><a href="#faq">常見問題</a></li>
       <li><a href="#contact">聯絡我們</a></li>
     </ul>
     <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
@@ -1028,12 +1070,24 @@
   </div>
 </section>
 
-<!-- ===== 統計 + 服務 ===== -->
+<!-- ===== 統計 + 銳鋒顧問介紹卡片 + 核心業務 ===== -->
 <div class="gradient-bg">
   <div class="stats">
     <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">成功案例</div></div>
     <div class="stat-item"><div class="stat-number">10年</div><div class="stat-label">行業經驗</div></div>
     <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">客戶滿意度</div></div>
+  </div>
+
+  <!-- 銳鋒顧問介紹卡片 -->
+  <div class="about-card-section">
+    <div class="about-card" id="aboutCard">
+      <h2>銳鋒顧問</h2>
+      <div class="divider"></div>
+      <p>銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。</p>
+      <p>專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
+      <p>以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。</p>
+      <div class="quote-tag">精準 · 務實 · 可持續</div>
+    </div>
   </div>
 
   <!-- 核心業務 -->
@@ -1051,7 +1105,7 @@
   </div>
 </div>
 
-<!-- ===== WHY US — 三個卡片整合為一個區塊 + 背景圖片（新圖片） ===== -->
+<!-- ===== WHY US — 三個卡片整合為一個區塊 + 背景圖片 ===== -->
 <section class="why-us" id="why">
   <div class="section-title">
     <div class="section-label"><span class="label-en">✦ Why Us</span></div>
@@ -1059,7 +1113,6 @@
     <div class="line"></div>
   </div>
   <div class="why-grid">
-    <!-- 卡片 1: 數據驅動 -->
     <div class="why-card">
       <img class="why-card-img" src="https://img1.wallspic.com/crops/8/3/6/8/3/138638/138638-red_and_white_bokeh_lights-1980x1060.jpg" alt="數據驅動">
       <div class="why-card-body">
@@ -1068,7 +1121,6 @@
         <p>摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
       </div>
     </div>
-    <!-- 卡片 2: 本地深耕 -->
     <div class="why-card">
       <img class="why-card-img" src="https://img3.wallspic.com/crops/0/5/7/8/5/158750/158750-xiang_gang-zi_se_de-dian_li_ta_kuai-ren_ti_nei_de_shui-3840x2160.jpg" alt="本地深耕">
       <div class="why-card-body">
@@ -1077,7 +1129,6 @@
         <p>植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
       </div>
     </div>
-    <!-- 卡片 3: 敏捷反應 -->
     <div class="why-card">
       <img class="why-card-img" src="https://images.pexels.com/photos/7441079/pexels-photo-7441079.jpeg?_gl=1*c15iy9*_ga*MTAyNDQ1NjIzNS4xNzg0MDc5NjU1*_ga_8JE65Q40S6*czE3ODQwNzk2NTQkbzEkZzEkdDE3ODQwODA1MjAkajEzJGwwJGhw" alt="敏捷反應">
       <div class="why-card-body">
@@ -1091,7 +1142,6 @@
 
 <!-- ===== 業務範圍 ===== -->
 <div id="business">
-  <!-- 市場調研 -->
   <div class="business-block">
     <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/biger.jpg');"></div>
     <div class="business-content">
@@ -1108,7 +1158,6 @@
     </div>
   </div>
 
-  <!-- 市場咨詢 -->
   <div class="business-block">
     <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/long%20business.jpg');"></div>
     <div class="business-content">
@@ -1125,7 +1174,6 @@
     </div>
   </div>
 
-  <!-- 長期合作 -->
   <div class="business-block">
     <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/teamwork.jpg');"></div>
     <div class="business-content">
@@ -1143,9 +1191,9 @@
   </div>
 </div>
 
-<!-- ===== 成功案例 ===== -->
+<!-- ===== 成功案例（已更新內容） ===== -->
 <section class="cases-section" id="cases">
-  <!-- 案例一 -->
+  <!-- 案例一：留學顧問 -->
   <div class="case-screen">
     <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/student.com.jpg');"></div>
     <div class="case-inner">
@@ -1156,21 +1204,21 @@
       </div>
       <div class="case-layout">
         <div class="col-left">
-          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一家香港本地海外留學顧問公司，主要協助中學生申請英國、澳洲及加拿大的寄宿學校與大學。公司有約10名顧問，每年服務約200名學生。</p></div>
-          <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>同類公司在3年內增加近40%</li><li>傳統渠道轉換率持續下降</li><li>對目標客戶決策過程缺乏數據理解</li><li>希望拓展新服務但不確定市場需求</li></ul></div>
+          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>香港本地海外升學顧問公司，成立9年，專注協助中三至中六學生申請英國、澳洲及加拿大的大學。團隊共10名全職顧問，每年服務約200名學生。</p></div>
+          <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>競爭環境急劇惡化：行業內已存在上市公司（大地教育，上市編號08417），按2022年收入計算，前四大機構已佔據相當市場份額。</li><li>市場規模持續萎縮：根據香港教育局最新公布的《2025年中六學生出路統計調查》，在43,561名有回覆的2025年中六畢業生中，僅6.5%選擇到香港以外地區升學。</li><li>缺乏決策數據支撐：長期依賴顧問個人經驗判斷家長需求，未能清晰及數據化「家長決策的關鍵」及「客戶流失」，導致市場營銷效率偏低。</li></ul></div>
         </div>
         <div class="col-right">
-          <div class="fragment"><h3><span class="icon"></span>調研規模</h3><p>向800名家長發放問卷，回收512份有效樣本。與12位家長進行深度訪談。分析網上論壇與社交媒體討論內容。收集英國、澳洲、加拿大三國的最新留學簽證政策與大學錄取數據。</p></div>
+          <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>部署AI引擎，捕捉3個本地論壇及數個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。</li><li>部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。</li><li>建立混合式AI數據分析平台，整合一手調研與多維度公開數據。</li><li>向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。</li><li>進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。</li></ul></div>
           <div class="result-blast">
             <div class="big-number">+65%</div>
-            <p>網站查詢量在3個月內增長65%，新推出的加拿大大學申請服務在首年內帶來額外120萬港元營收。</p>
+            <p>網站查詢量於三個月內增長65%；經過我司建議及調整之後，為客戶公司帶來額外120萬港元營收，佔公司全年總營業額的17%。成功避開了加拿大市場的簽證配額大幅削減及最低生活保证金等等的政策風險。</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 案例二 -->
+  <!-- 案例二：日式餐廳 -->
   <div class="case-screen">
     <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/chef.com.jpg');"></div>
     <div class="case-inner">
@@ -1181,39 +1229,39 @@
       </div>
       <div class="case-layout reverse">
         <div class="col-left">
-          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一位曾在日式餐廳任職的厨師，計劃在香港開設自己人生中的第一家餐廳，主打現代日式料理。他雖然擁有頂尖廚藝，但對餐飲市場的運營實務十分陌生。</p></div>
-          <div class="fragment"><h3><span class="icon"></span>服務範圍</h3><ul><li>選址分析（評估10+店舖）</li><li>餐飲牌照代辦</li><li>食材供應鏈建立</li><li>IG、Facebook、小紅書話題營銷</li></ul></div>
+          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一位曾任職於日式餐廳的廚師，計劃開設其第一餐廳，主打日式料理。雖客戶具備優秀廚藝，但對飲食市場的實務及商業策劃缺乏經驗。</p></div>
+          <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>選址風險：核心商業區及住宅區的街舖及商場舖位租金持續高企，選址決策直接影響客流及租金成本結構，客戶對各區人流特徵、消費力及競爭格局缺乏數據認知。</li><li>牌照及法律：餐飲牌照申請程序複雜，涉及食物環境衞生署、屋宇署及消防處等多個部門的審批，若處理不當，隨時延誤開業進度數月之久。</li><li>供應鏈建立困難：料理對食材新鮮度及品質要求極高，需要建立穩定、合規且具成本效益的食材供應渠道，由日本進口的冷鏈物流及本地供應商的篩選均構成挑戰。</li><li>市場推廣資源有限：新餐廳缺乏品牌知名度，在Instagram、Facebook及小紅書等社交平台上的曝光為零。在競爭激烈的香港餐飲市場中，如何以有限預算有效吸引目標客群，是決定開業成敗的關鍵。</li></ul></div>
         </div>
         <div class="col-right">
           <div class="result-blast">
-            <div class="big-number">38%</div>
-            <p>餐廳在6個月內順利開業，營運首年毛利率達到38%，成為區內熱門預約餐廳。客戶現正籌備第二間分店。</p>
+            <div class="big-number">48%</div>
+            <p>餐廳於六個月內順利開業，營運首年毛利率達到48%，成為區內熱門預約餐廳。開業初期社交媒體曝光量超出預期，首月訂座率達85%，並持續維持高翻桌率。客戶現正籌備第二間分店，並已委託本公司進行新選址的數據分析及市場定位研究。</p>
           </div>
-          <div class="fragment"><h3><span class="icon"></span>開業營銷</h3><p>制定開業營銷計劃，包括試菜活動與媒體公關策略。在社交平台建立網上話題，引導輿論，引起市場關注，成功吸引大量食客預約。</p></div>
+          <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>數據選址工具，評估超過10個潛在舖位，綜合分析各選址周邊的人口密度、年齡結構、收入水平、步行人流及方圓500米內同類型餐廳的供應與定價分佈。</li><li>食物環境衞生署、屋宇署及消防處的牌照申請流程及文件要求多及複雜，制定詳細的合規時間表。</li><li>行業網絡及供應商資料庫，篩選及評估多家日本食材進口商及本地供應商，比較其供貨穩定性、價格及冷鏈物流能力。</li><li>分析客群在Instagram、Facebook及小紅書上的內容消費習慣及餐飲相關話題標籤，制定針對性的內容營銷策略。</li></ul></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 案例三 -->
+  <!-- 案例三：雜貨舖 -->
   <div class="case-screen">
     <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/shop.com.jpg');"></div>
     <div class="case-inner">
       <div class="floating-num">03</div>
       <div class="case-title-area">
         <div class="case-kicker">Brand Transformation</div>
-        <h2><span class="outline">零售品牌</span><br><span class="fill">數位轉型</span></h2>
+        <h2><span class="outline">雜貨舖</span><br><span class="fill">數位轉型</span></h2>
       </div>
       <div class="case-layout">
         <div class="col-left">
-          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一家香港本地的零售品牌，近年因電商衝擊與消費習慣改變，生意大幅下滑。</p></div>
-          <div class="fragment"><h3><span class="icon"></span>面臨挑戰</h3><ul><li>近5年營收累計下跌超過40%</li><li>品牌形象老化</li><li>內部團隊缺乏數位化能力</li><li>需在不關閉現有門店下轉型</li></ul></div>
+          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一間位於九龍區的雜貨舖，開業逾10年，多年來憑藉貨品齊全及價格實惠，累積了一班熟客。老店經營方式傳統，所有交易記錄及庫存管理全依賴人手及經驗，隨着創辦人年屆退休，接班人希望引入電子化管理，但對如何着手毫無頭緒。</p></div>
+          <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>庫存管理全依賴經驗：店內逾3,000種貨品，一直靠創辦人記憶及肉眼判斷補貨，沒有系統記錄實際庫存數量，亦無法統計各貨品的銷售速度及毛利率，訂貨決策全憑「感覺」。</li><li>店鋪形象過時：裝修及陳列風格停留在30年前，門口貨架堆滿雜物，光線昏暗，衛生問題嚴重。年輕顧客即使有購物需求，亦因店鋪外觀「老舊」、「雜亂」而卻步。</li><li>客源嚴重老化：主要依靠周邊街坊及熟客支持，但消費群以長者及家庭主婦為主，年輕一代對老店缺乏認識。隨着社區人口老化，熟客流失，新客不足，營業額跌。</li><li>會員及客戶數據空白：過往從未記錄客戶聯絡資料或消費習慣，無法進行任何形式的客戶關係管理或精準營銷。即使有意推出促銷活動，亦缺乏有效的通知渠道。</li></ul></div>
         </div>
         <div class="col-right">
-          <div class="fragment"><h3><span class="icon"></span>解決方案</h3><p>制定全渠道零售轉型策略，重新設計品牌形象，搭建電商平台並培訓內部團隊，引入會員數據管理系統。</p></div>
+          <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>提高店鋪形象及進店率：翻新工程完成後，店鋪外觀新净明亮，同時保留老字號的辨識度。年輕路人的進店率明顯提高。整體店鋪日均客流比翻新前增幅超過40%。</li><li>搭建「人工智能庫存周轉系統」：上線後三個月內，整體庫存周轉日數由估計約90至100日縮減至約65日，熱賣款缺貨情況大幅改善，因缺貨導致的銷售損失按月減少約40%。負責人由以往「憑感覺訂貨」改為「睇數據訂貨」，訂貨決策的準確度顯著提升。</li><li>營銷：在店内顯眼處貼不同的營銷廣告，增加商品曝光率。透過WhatsApp,IG接受訂貨及通向會員推廣限時優惠，大幅提升顧客復購率。</li></ul></div>
           <div class="result-blast">
-            <div class="big-number">45%</div>
-            <p>轉型後18個月內，銷售額從零增長至佔總營收的45%，整體營收回升22%，30歲以下消費者佔比從8%提升至35%。品牌更獲網民稱為「打卡聖地」。</p>
+            <div class="big-number">+18.7%</div>
+            <p>整體業績：在推行數碼化轉型後的八個月內，整體營業額按年增長18.7%，毛利率由約38%提升至44.2%（主因是減少滯銷貨品的積壓，降低了不必要的庫存成本）。老店成功由傳統街坊小店轉型為「現代老字號」，第二代接班人已初步掌握數據主導的營運模式。</p>
           </div>
         </div>
       </div>
@@ -1229,12 +1277,10 @@
       <h2 class="process-title">專案咨詢流程</h2>
       <div class="line"></div>
     </div>
-
     <div class="process-intro">
       <p>我們建立了一套嚴謹且高效的工作流程，從客戶需求出發，透過多維度市場數據搜集、專業分析與策略制定，到長期監測與合作，確保每一個環節都精準到位。全程監控機制，確保每個環節的數據真實與專業性。</p>
       <div class="highlight-note">全程監控 · 數據真實 · 專業執行</div>
     </div>
-
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-content">
@@ -1244,7 +1290,6 @@
         </div>
         <div class="timeline-dot"></div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">2</div>
@@ -1253,7 +1298,6 @@
         </div>
         <div class="timeline-dot"></div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">3</div>
@@ -1262,7 +1306,6 @@
         </div>
         <div class="timeline-dot"></div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">4</div>
@@ -1271,7 +1314,6 @@
         </div>
         <div class="timeline-dot"></div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-content">
           <div class="step-number">5</div>
@@ -1281,47 +1323,10 @@
         <div class="timeline-dot"></div>
       </div>
     </div>
-
     <div class="monitoring-card">
       <h2>全程監控機制</h2>
       <p>我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p>
     </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="section" id="faq" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/FAQ.jpg');">
-  <div style="position: relative; z-index: 1;">
-    <div class="section-title">
-      <div class="section-label"><span class="label-en">✦ FAQ</span></div>
-      <h2 class="faq-title">常見問題</h2>
-      <div class="line"></div>
-    </div>
-    <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(12px); border-radius:20px; padding:20px 30px; margin:0 auto 40px; border:1px solid rgba(59,130,246,0.2); width:fit-content; max-width:90%; text-align:center;">
-      <p style="color:#e2e8f0; font-size:1.05rem; margin:0;">
-        企業尋求顧問公司協助時，最常面臨的疑問包括服務價值、收費模式以及執行成效。<br>
-        了解常見問題有助於企業與顧問團隊建立明確的合作共識與目標。
-      </p>
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;">
-      <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">顧問公司能為企業帶來什麼具體幫助？</h3><p style="color:#e2e8f0;">透過專業分析工具與跨產業經驗，協助識別營運瓶頸、優化商業模式、制定策略路線圖，並在執行過程中提供持續指導與調整。</p></div>
-      <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">顧問不如我們熟悉自身產業，他們的專業在哪裡？</h3><p style="color:#e2e8f0;">企業主是行業專家，但顧問專精商業模式、管理架構與問題解決流程，運用系統性分析與跨產業經驗，幫助跳脫盲點、優化營運。</p></div>
-      <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">顧問公司的收費標準為何？</h3><p style="color:#e2e8f0;">按時計費（諮詢/診斷）、專案計費（固定費用）、成效抽成（依營收增長或成本節省比例）。依專案性質與合約而定。</p></div>
-      <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">合作專案的時程通常需要多久？</h3><p style="color:#e2e8f0;">短期診斷與策略規劃約2-4週；深度轉型或品牌重塑專案約3個月至1年，搭配階段性檢核點控管進度。</p></div>
-      <div style="background:rgba(26,32,44,0.7); backdrop-filter:blur(20px); border-radius:20px; padding:35px; border:1px solid rgba(59,130,246,0.2);"><h3 style="font-size:1.3rem; color:#3b82f6; margin-bottom:12px;">專案結束後，成效是否能長期維持？</h3><p style="color:#e2e8f0;">提供人員培訓與標準作業流程，亦可簽訂年度顧問合約，持續監督與執行支援，確保適應市場變化。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section class="about" id="about">
-  <div class="about-content" id="aboutContent">
-    <h2>銳鋒顧問</h2>
-    <div class="line"></div>
-    <p>銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。</p>
-    <p>專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
-    <p>以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。</p>
-    <div class="quote">精準 · 務實 · 可持續</div>
   </div>
 </section>
 
@@ -1558,6 +1563,18 @@
     whyObserver.observe(card);
   });
 
+  // 銳鋒顧問卡片動畫
+  const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  const aboutCard = document.getElementById('aboutCard');
+  if (aboutCard) aboutObserver.observe(aboutCard);
+
   // ----- 滾動觸發動畫 (原有) -----
   const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
   const observer = new IntersectionObserver((entries) => {
@@ -1569,7 +1586,7 @@
     });
   }, observerOptions);
   document.querySelectorAll(
-    '.hero-title, .hero-desc, .hero-btn, .stat-item, .service-title, .case-title, .process-title, .faq-title, .contact-title, .why-title, .about-content'
+    '.hero-title, .hero-desc, .hero-btn, .stat-item, .service-title, .case-title, .process-title, .contact-title, .why-title, .about-card'
   ).forEach(el => observer.observe(el));
 
   const allImages = document.querySelectorAll('img');
