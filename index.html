@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -5,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>銳鋒顧問 Top Market | 一站式商業諮詢</title>
     <style>
+        /* 原有样式保持不变，为节省篇幅这里省略，但实际代码中保留完整样式 */
+        /* ... 所有样式 ... */
         * {
             margin: 0;
             padding: 0;
@@ -1915,7 +1918,7 @@
 </head>
 <body>
 
-    <!-- ===== HEADER（含語言切換） ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <div class="nav-container">
             <div class="logo">
@@ -1941,7 +1944,7 @@
         </div>
     </header>
 
-    <!-- ===== 返回頂部按鈕 ===== -->
+    <!-- ===== BACK TO TOP ===== -->
     <button id="backToTop" aria-label="返回頂部">
         <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
@@ -2033,9 +2036,9 @@
         </div>
     </section>
 
-    <!-- ===== BUSINESS (市場調研 + 長期合作) ===== -->
+    <!-- ===== BUSINESS ===== -->
     <div id="business">
-        <!-- 01 市場調研與咨詢 -->
+        <!-- 01 -->
         <div class="business-block">
             <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/long%20business.jpg');"></div>
             <div class="business-content">
@@ -2055,7 +2058,7 @@
             </div>
         </div>
 
-        <!-- 02 長期合作 -->
+        <!-- 02 -->
         <div class="business-block">
             <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/teamwork.jpg');"></div>
             <div class="business-content">
@@ -2212,7 +2215,8 @@
     </footer>
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT（原有功能 + 語言切換） ===== -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================================ -->
     <script>
         // =============================================================
         // 1. 語言切換系統
@@ -2401,7 +2405,7 @@
                 'stats.label1': 'Case Studies',
                 'stats.label2': 'Years of Experience',
                 'stats.label3': 'Client Satisfaction',
-                'stats.num2': '10 Yrs',
+                'stats.num2': '10 Years',
                 // About
                 'about.title': 'Top Market Consulting',
                 'about.p1': 'Top Market Consulting Ltd. is a full-service business advisory firm integrating market data collection, consumer behavior research, and brand strategy.',
@@ -2573,7 +2577,6 @@
                 'card3.desc': '• Competitive positioning: refine brand narrative and sharpen your edge based on market realities.<br>• Ongoing monitoring: track KPIs through regular reviews to ensure strategies stay on course.'
             }
         };
-        // 合併到主 i18n
         Object.assign(i18n['zh'], cardTranslations['zh']);
         Object.assign(i18n['en'], cardTranslations['en']);
 
@@ -2584,7 +2587,6 @@
             const dict = i18n[lang];
             if (!dict) return;
 
-            // 更新所有 data-i18n 元素
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (dict[key] !== undefined) {
@@ -2592,19 +2594,16 @@
                 }
             });
 
-            // 控制左上角「銳鋒」顯示
             const brandCn = document.getElementById('brandCn');
             if (brandCn) {
                 brandCn.style.display = (lang === 'zh') ? 'inline' : 'none';
             }
 
-            // 控制語言按鈕文字：「中」變「CH」
             const zhLabel = document.getElementById('langZhLabel');
             if (zhLabel) {
                 zhLabel.textContent = (lang === 'zh') ? '中' : 'CH';
             }
 
-            // 更新 active 狀態
             document.querySelectorAll('.lang-opt').forEach(opt => {
                 const l = opt.getAttribute('data-lang');
                 opt.classList.toggle('active', l === lang);
@@ -2614,7 +2613,6 @@
             try { localStorage.setItem('topmarket-lang', lang); } catch (e) {}
         }
 
-        // 語言切換事件
         document.querySelectorAll('.lang-opt').forEach(opt => {
             opt.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -2634,12 +2632,11 @@
                     return;
                 }
             } catch (e) {}
-            // 默認英文
             applyLanguage('en');
         })();
 
         // =============================================================
-        // 2. 原有功能（滾動、卡片滑動、IntersectionObserver 等）
+        // 2. 原有功能
         // =============================================================
         window.addEventListener('scroll', () => {
             const h = document.getElementById('header');
@@ -2677,8 +2674,14 @@
             const div = document.createElement('div');
             div.className = 'service-card';
             div.dataset.card = idx;
+            // 使用当前语言填充初始内容，但会由后续 applyLanguage 统一更新
+            const lang = currentLang || 'en';
+            const dict = i18n[lang];
+            const title = dict[d.titleKey] || d.titleKey;
+            const desc = dict[d.descKey] || d.descKey;
+            const linkText = dict['card.link'] || 'Learn More →';
             div.innerHTML =
-                `<img class="card-img" src="${d.img}" alt="${d.titleKey}"><div class="card-content"><h3 data-i18n="${d.titleKey}">${i18n['zh'][d.titleKey]}</h3><p data-i18n="${d.descKey}">${i18n['zh'][d.descKey]}</p><a href="#business" class="card-link" data-i18n="card.link">了解更多 →</a></div>`;
+                `<img class="card-img" src="${d.img}" alt="${d.titleKey}"><div class="card-content"><h3 data-i18n="${d.titleKey}">${title}</h3><p data-i18n="${d.descKey}">${desc}</p><a href="#business" class="card-link" data-i18n="card.link">${linkText}</a></div>`;
             div.addEventListener('click', function(e) {
                 if (!e.target.closest('.card-link')) {
                     document.getElementById('business').scrollIntoView({ behavior: 'smooth' });
@@ -2766,8 +2769,6 @@
                 const y = ((e.clientY - rect.top) / rect.height) * 100;
                 card.style.setProperty('--mx', x + '%');
                 card.style.setProperty('--my', y + '%');
-                const cx = rect.width / 2,
-                    cy = rect.height / 2;
                 const rx = ((y - 50) / 50) * -8;
                 const ry = ((x - 50) / 50) * 8;
                 card.style.transform = `scale(1) perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
@@ -2775,6 +2776,10 @@
             card.addEventListener('mouseleave', () => { card.style.transform =
                     'scale(0.92) perspective(800px) rotateX(0deg) rotateY(0deg)'; });
         });
+
+        // ===== 关键修复：卡片生成后强制刷新语言 =====
+        // 确保所有卡片内容（包括动态生成的）与当前语言一致
+        applyLanguage(currentLang);
 
         // Intersection Observers
         const businessObserver = new IntersectionObserver((entries) => {
@@ -2887,3 +2892,4 @@
     </script>
 </body>
 </html>
+```
