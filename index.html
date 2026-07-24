@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>銳鋒顧問 Top Market | 一站式商業諮詢</title>
     <style>
-        /* ===== 全域重置 & 字體 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -24,7 +23,6 @@
             color: inherit;
         }
 
-        /* ===== 固定導航 (玻璃) ===== */
         .header {
             position: fixed;
             top: 0;
@@ -117,7 +115,6 @@
             transition: 0.3s;
         }
 
-        /* ===== 返回頂部按鈕 ===== */
         #backToTop {
             position: fixed;
             bottom: 40px;
@@ -160,7 +157,6 @@
             stroke-linejoin: round;
         }
 
-        /* ===== 通用區塊 ===== */
         .section {
             max-width: 1200px;
             margin: 0 auto;
@@ -218,7 +214,6 @@
             transform: translateY(0) !important;
         }
 
-        /* ===== 主視覺 ===== */
         .hero {
             width: 100%;
             min-height: 100vh;
@@ -345,7 +340,6 @@
             color: #fff;
         }
 
-        /* ===== 統計 + 核心業務 共用背景區塊 ===== */
         .stats-services-wrapper {
             background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/about%20us.jpg') center/cover no-repeat fixed;
             position: relative;
@@ -364,7 +358,6 @@
             z-index: 1;
         }
 
-        /* ===== 統計 ===== */
         .stats {
             max-width: 1200px;
             margin: 0 auto;
@@ -405,7 +398,6 @@
             font-weight: 600;
         }
 
-        /* ===== 服務卡片滑動 ===== */
         .card-scroll-wrapper {
             position: relative;
             width: 100%;
@@ -552,7 +544,6 @@
             right: 15px;
         }
 
-        /* ===== Why Us 整合為卡片區塊 + 背景圖片 ===== */
         .why-us {
             padding: 80px 20px;
             background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/y%20US.jpg') center/cover no-repeat fixed;
@@ -642,7 +633,6 @@
             border-radius: 2px;
         }
 
-        /* ===== 業務範圍 (無邊距) ===== */
         #business {
             width: 100%;
         }
@@ -833,7 +823,6 @@
             padding-left: 22px;
         }
 
-        /* ===== 成功案例 (無邊距) ===== */
         .cases-section {
             width: 100%;
             padding: 0;
@@ -1053,7 +1042,6 @@
             z-index: 1;
         }
 
-        /* ===== 銳鋒顧問介紹卡片 (半透明毛玻璃，無背景圖) ===== */
         .about-card-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -1121,7 +1109,6 @@
             margin-top: 10px;
         }
 
-        /* ===== Footer ===== */
         .footer {
             background: #fff;
             color: #1a202c;
@@ -1158,7 +1145,6 @@
             color: #555;
         }
 
-        /* ===== 計劃流程（新版設計 + 動畫 + 背景） ===== */
         #process {
             width: 100%;
             max-width: none;
@@ -1374,7 +1360,6 @@
             line-height: 1.9;
         }
 
-        /* ===== 聯絡我們內部卡片 ===== */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1461,7 +1446,6 @@
             font-weight: 600;
         }
 
-        /* ===== 聯絡我們 — 背景鋪滿無遮蓋 ===== */
         #contact {
             width: 100%;
             max-width: none;
@@ -1479,7 +1463,6 @@
             z-index: 2;
         }
 
-        /* ===== 手機版響應式 ===== */
         @media (max-width: 1024px) {
             .info-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1881,7 +1864,6 @@
 </head>
 <body>
 
-    <!-- ===== 導航 ===== -->
     <header class="header" id="header">
         <div class="nav-container">
             <div class="logo"><a href="#hero"><span class="brand-cn">銳鋒</span><span class="brand-en">The Top Market</span></a></div>
@@ -1895,12 +1877,10 @@
         </div>
     </header>
 
-    <!-- ===== 返回頂部按鈕 ===== -->
     <button id="backToTop" aria-label="返回頂部">
         <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
-    <!-- ===== HERO ===== -->
     <section class="hero" id="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
@@ -1914,7 +1894,6 @@
         </div>
     </section>
 
-    <!-- ===== 統計 + 核心業務（共用背景） ===== -->
     <div class="stats-services-wrapper">
         <div class="stats">
             <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">成功案例</div></div>
@@ -1922,7 +1901,6 @@
             <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">客戶滿意度</div></div>
         </div>
 
-        <!-- 銳鋒顧問介紹卡片 (半透明毛玻璃) -->
         <div class="about-card-section">
             <div class="about-card" id="aboutCard">
                 <h2>銳鋒顧問</h2>
@@ -1934,7 +1912,6 @@
             </div>
         </div>
 
-        <!-- 核心業務 -->
         <div class="section" id="services">
             <div class="section-title">
                 <div class="section-label"><span class="label-en">✦ Core Services</span></div>
@@ -1949,7 +1926,6 @@
         </div>
     </div>
 
-    <!-- ===== WHY US — 三個卡片整合為一個區塊 + 背景圖片 ===== -->
     <section class="why-us" id="why">
         <div class="section-title">
             <div class="section-label"><span class="label-en">✦ Why Us</span></div>
@@ -1984,9 +1960,7 @@
         </div>
     </section>
 
-    <!-- ===== 業務範圍（合併：市場調研 + 市場咨詢） ===== -->
     <div id="business">
-        <!-- 合併區塊：市場調研與市場咨詢 -->
         <div class="business-block">
             <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/long%20business.jpg');"></div>
             <div class="business-content">
@@ -1996,23 +1970,16 @@
                     <h2><span class="outline">市場調研</span> <span class="fill">與咨詢</span></h2>
                 </div>
                 <div class="info-grid">
-                    <!-- 市場調研：量化調查 -->
                     <div class="info-card"><h3><span class="icon"></span>量化調查</h3><ul><li>網上問卷：消費習慣、價格接受度、品牌認知、選購渠道偏好</li><li>電話抽樣：本地居民及企業採購負責人定向調查</li><li>街頭訪問：商場、街市、屋苑現場面談</li><li>固定訪問小組：長期追蹤消費者習慣轉變</li></ul></div>
-                    <!-- 市場調研：深度採訪 -->
                     <div class="info-card"><h3><span class="icon"></span>深度採訪</h3><ul><li>一對一深度面談：高消費客戶、行業專家、企業決策人</li><li>分享會</li><li>神秘顧客：服務品質、產品體驗、競品比對</li><li>實地觀察：超市、餐廳、化妝品店場景記錄</li></ul></div>
-                    <!-- 市場調研：大數據收集 -->
                     <div class="info-card"><h3><span class="icon"></span>大數據收集</h3><ul><li>社交平台輿論：Facebook、IG、小紅書、抖音、討論區</li><li>電商平台銷售數據：銷量、評價、熱門商品</li><li>政府／行業公開報告整合</li><li>私人定制數據：行業分類、競品對照、地區特徵</li></ul></div>
-                    <!-- 市場咨詢：品牌進入市場策略 -->
                     <div class="info-card"><h3><span class="icon"></span>品牌進入市場策略</h3><ul><li>市場可行性評估：行業規模、增速、競爭度、門檻</li><li>選址風險分析：各區人流、租金、同行密度</li><li>目標客戶特徵：年齡、收入、消費場景與習慣</li><li>競爭品牌全方位拆解，制定差異化定位</li></ul></div>
-                    <!-- 市場咨詢：品牌現況分析及經營策略 -->
                     <div class="info-card"><h3><span class="icon"></span>品牌現況分析及經營策略</h3><ul><li>品牌健康檢查：認知度調查、口碑風險、定位修正</li><li>新產品上市：概念測試、試用反饋、文案測評</li><li>宣傳優化：廣告、直播、社交話題、會員營運</li><li>銷售渠道評估：實體門店、分銷商、網上渠道</li></ul></div>
-                    <!-- 市場咨詢：消費行業專項顧問 -->
                     <div class="info-card"><h3><span class="icon"></span>消費行業專項顧問</h3><ul><li>消費品：食品、飲品、護膚品、日用品潮流研究</li><li>飲食：選址人流分析、口味偏好、回頭客方案</li><li>化妝品：消費觀念調查、熱賣產品拆解、口碑分析</li><li>母嬰家居：家庭決策流程、真實需求發掘、信任度調查</li></ul></div>
                 </div>
             </div>
         </div>
 
-        <!-- 長期合作 -->
         <div class="business-block">
             <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/teamwork.jpg');"></div>
             <div class="business-content">
@@ -2030,9 +1997,7 @@
         </div>
     </div>
 
-    <!-- ===== 成功案例 ===== -->
     <section class="cases-section" id="cases">
-        <!-- 案例一：留學顧問 -->
         <div class="case-screen">
             <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/student.com.jpg');"></div>
             <div class="case-inner">
@@ -2043,11 +2008,11 @@
                 </div>
                 <div class="case-layout">
                     <div class="col-left">
-                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一間香港本地的海外升學顧問公司，成立多年，專注協助中三至中六學生申請英國、澳洲及加拿大等國家的大學。團隊共10名全職顧問，每年服務約200名學生。</p></div>
+                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>香港本地海外升學顧問公司，成立多年，專注協助中三至中六學生申請英國、澳洲及加拿大的大學。團隊共10名全職顧問，每年服務約200名學生。</p></div>
                         <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>競爭環境急劇惡化：行業內已存在上市公司（大地教育，上市編號08417），按2022年收入計算，前四大機構已佔據相當市場份額。</li><li>市場規模持續萎縮：根據香港教育局最新公布的《2025年中六學生出路統計調查》，在43,561名有回覆的2025年中六畢業生中，僅6.5%選擇到香港以外地區升學。</li><li>缺乏決策數據支撐：長期依賴顧問個人經驗判斷家長需求，未能清晰及數據化「家長決策的關鍵」及「客戶流失」，導致市場營銷效率偏低。</li></ul></div>
                     </div>
                     <div class="col-right">
-                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>部署AI引擎，捕捉多個本地論壇及多個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。</li><li>部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。</li><li>建立混合式AI數據分析平台，整合一手調研與多維度公開數據。</li><li>向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。</li><li>進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。</li></ul></div>
+                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>部署AI引擎，捕捉3個本地論壇及數個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。</li><li>部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。</li><li>建立混合式AI數據分析平台，整合一手調研與多維度公開數據。</li><li>向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。</li><li>進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。</li></ul></div>
                         <div class="result-blast">
                             <div class="big-number">+65%</div>
                             <p>網站查詢量於三個月內增長65%；經過我司建議及調整之後，為客戶公司帶來額外120萬港元營收，佔公司全年總營業額的17%。成功避開了加拿大市場的簽證配額大幅削減及最低生活保证金等等的政策風險。</p>
@@ -2057,14 +2022,13 @@
             </div>
         </div>
 
-        <!-- 案例二：日式餐廳 -->
         <div class="case-screen">
             <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/sushi1.jpg');"></div>
             <div class="case-inner">
                 <div class="floating-num">02</div>
                 <div class="case-title-area">
                     <div class="case-kicker">Restaurant Launch</div>
-                    <h2><span class="fill">日式餐廳</span><br><span class="outline">星級開業</span></h2>
+                    <h2><span class="fill">日式餐廳</span><br><span class="outline">無憂開業</span></h2>
                 </div>
                 <div class="case-layout reverse">
                     <div class="col-left">
@@ -2082,14 +2046,13 @@
             </div>
         </div>
 
-        <!-- 案例三：雜貨舖 -->
         <div class="case-screen">
             <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/shop1.jpg');"></div>
             <div class="case-inner">
                 <div class="floating-num">03</div>
                 <div class="case-title-area">
                     <div class="case-kicker">Brand Transformation</div>
-                    <h2><span class="outline">雜貨舖</span><br><span class="fill">數位轉型</span></h2>
+                    <h2><span class="outline">雜貨舖</span><br><span class="fill">電子化轉型</span></h2>
                 </div>
                 <div class="case-layout">
                     <div class="col-left">
@@ -2108,7 +2071,6 @@
         </div>
     </section>
 
-    <!-- ===== 咨詢流程 ===== -->
     <section id="process">
         <div class="process-inner">
             <div class="section-title">
@@ -2169,7 +2131,6 @@
         </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
     <section class="section" id="contact" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/contact%20us.jpg');">
         <div style="position: relative; z-index: 1;">
             <div class="section-title">
@@ -2211,7 +2172,6 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-social">
             <a href="#contact"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg> WeChat</a>
@@ -2221,9 +2181,7 @@
         <p class="copyright">© 2026 銳鋒有限公司 Top Market HK Limited</p>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ----- 導航滾動效果 -----
         window.addEventListener('scroll', () => {
             const h = document.getElementById('header');
             if (window.scrollY > 50) h.classList.add('scrolled');
@@ -2239,7 +2197,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ----- 服務卡片滑動 (點擊跳轉至 #business) -----
         const cardData = [
             { img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop',
                 title: '市場洞察與數據分析',
@@ -2339,7 +2296,6 @@
             sa(); });
         sa();
 
-        // 卡片光暈
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -2357,7 +2313,6 @@
                     'scale(0.92) perspective(800px) rotateX(0deg) rotateY(0deg)'; });
         });
 
-        // 業務範圍卡片光暈 + 動畫觸發
         const businessObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2373,7 +2328,6 @@
             businessObserver.observe(block);
         });
 
-        // 成功案例動畫觸發
         const caseObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2389,7 +2343,6 @@
             caseObserver.observe(screen);
         });
 
-        // 聯絡卡片動畫
         const contactObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2403,7 +2356,6 @@
         document.querySelector('#contact .contact-grid')?.parentElement && contactObserver.observe(document
             .querySelector('#contact'));
 
-        // 時間軸動畫 (新版 process)
         const timelineObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2417,7 +2369,6 @@
                 timelineObserver.observe(el);
             });
 
-        // Why Us 卡片動畫
         const whyObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2430,7 +2381,6 @@
             whyObserver.observe(card);
         });
 
-        // 銳鋒顧問卡片動畫
         const aboutObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2442,7 +2392,6 @@
         const aboutCard = document.getElementById('aboutCard');
         if (aboutCard) aboutObserver.observe(aboutCard);
 
-        // ----- 滾動觸發動畫 (原有) -----
         const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2462,7 +2411,6 @@
         }, { threshold: 0.1 });
         allImages.forEach(img => imageObserver.observe(img));
 
-        // 導航點擊平滑跳轉
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
