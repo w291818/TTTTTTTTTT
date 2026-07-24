@@ -1,1632 +1,2481 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>銳鋒顧問 Top Market | 一站式商業諮詢</title>
-  <style>
-    /* ===== 全域重置 & 字體 ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif; }
-    body { background: #020510; color: #e2e8f0; line-height: 1.8; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; color: inherit; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>銳鋒顧問 Top Market | 一站式商業諮詢</title>
+    <style>
+        /* ===== 全域重置 & 字體 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+        }
+        body {
+            background: #020510;
+            color: #e2e8f0;
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    /* ===== 固定導航 (玻璃) ===== */
-    .header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(2, 5, 16, 0.85); backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      padding: 14px 0; transition: 0.4s;
-    }
-    .header.scrolled { padding: 8px 0; }
-    .nav-container {
-      max-width: 1280px; margin: 0 auto; padding: 0 40px 0 20px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo { display: flex; align-items: baseline; gap: 10px; margin-right: auto; }
-    .logo a { display: flex; align-items: baseline; gap: 8px; }
-    .logo .brand-cn { font-size: 2.6rem; font-weight: 800; color: #fff; letter-spacing: 2px; line-height: 1; }
-    .logo .brand-en { font-size: 1.1rem; font-weight: 600; color: #94a3b8; letter-spacing: 1px; opacity: 0.9; }
+        /* ===== 固定導航 (玻璃) ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(2, 5, 16, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 14px 0;
+            transition: 0.4s;
+        }
+        .header.scrolled {
+            padding: 8px 0;
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-right: auto;
+        }
+        .logo a {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .logo .brand-cn {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        .logo .brand-en {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
 
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      color: #cbd5e1; font-weight: 500; font-size: 0.95rem;
-      padding: 6px 0; position: relative; transition: color 0.3s;
-    }
-    .nav-links a::after {
-      content: ""; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: #3b82f6;
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover { color: #3b82f6; }
-    .nav-links a:hover::after { width: 100%; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .menu-toggle span { width: 26px; height: 2px; background: #e2e8f0; transition: 0.3s; }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 26px;
+            height: 2px;
+            background: #e2e8f0;
+            transition: 0.3s;
+        }
 
-    /* ===== 返回頂部按鈕 ===== */
-    #backToTop {
-      position: fixed; bottom: 40px; right: 30px; z-index: 999;
-      width: 52px; height: 52px; border-radius: 50%;
-      background: rgba(59, 130, 246, 0.85); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2); color: #fff;
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
-      opacity: 0; visibility: hidden; transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-    }
-    #backToTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
-    #backToTop:hover { background: #2563eb; transform: translateY(-4px); box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5); }
-    #backToTop svg { width: 28px; height: 28px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        /* ===== 返回頂部按鈕 ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 40px;
+            right: 30px;
+            z-index: 999;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+        }
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #backToTop:hover {
+            background: #2563eb;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+        }
+        #backToTop svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-    /* ===== 通用區塊 ===== */
-    .section { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
-    .section-title { text-align: center; margin-bottom: 60px; }
-    .section-label .label-en {
-      font-size: 0.8rem; letter-spacing: 6px; text-transform: uppercase;
-      color: #3b82f6; font-weight: 600;
-      display: flex; align-items: center; gap: 15px; justify-content: center; opacity: 0.7;
-    }
-    .section-label .label-en::before,
-    .section-label .label-en::after {
-      content: ""; flex: 1; height: 1px; max-width: 100px;
-      background: linear-gradient(90deg, transparent, #3b82f6);
-    }
-    .section-label .label-en::after { background: linear-gradient(90deg, #3b82f6, transparent); }
-    .section-title h2 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: #fff;
-      letter-spacing: -1px; opacity: 0; transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .section-title h2.visible { opacity: 1; transform: translateY(0); }
-    .section-title .line { width: 60px; height: 3px; background: #3b82f6; margin: 15px auto 0; }
+        /* ===== 通用區塊 ===== */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-label .label-en {
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #3b82f6;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            opacity: 0.7;
+        }
+        .section-label .label-en::before,
+        .section-label .label-en::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            max-width: 100px;
+            background: linear-gradient(90deg, transparent, #3b82f6);
+        }
+        .section-label .label-en::after {
+            background: linear-gradient(90deg, #3b82f6, transparent);
+        }
+        .section-title h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .section-title h2.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-title .line {
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            margin: 15px auto 0;
+        }
 
-    .visible { opacity: 1 !important; transform: translateY(0) !important; }
+        .visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
 
-    /* ===== 主視覺 ===== */
-    .hero {
-      width: 100%; min-height: 100vh; display: flex; align-items: center;
-      padding: 120px 40px 80px; position: relative; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-      background-size: cover;
-      z-index: 0; animation: heroZoom 20s ease-in-out infinite alternate;
-    }
-    @keyframes heroZoom { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
-    .hero-bg::after {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(10,15,30,0.15) 0%, rgba(2,5,16,0.15) 90%);
-      z-index: 1;
-    }
-    .hero-content {
-      max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;
-      display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
-    }
-    .hero-text { flex: 1 1 500px; margin-left: -2.5cm; }
-    .hero-text .label-en { display: none; }
-    .hero-text h1 {
-      font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; color: #fff;
-      line-height: 1; letter-spacing: -1px; margin-bottom: 25px;
-      opacity: 0; transform: translateY(40px);
-      transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1);
-    }
-    .hero-text h1.visible { opacity: 1; transform: translateY(0); }
-    .hero-text h1 .outline-text { 
-      -webkit-text-stroke: 0; 
-      -webkit-text-fill-color: #ffffff; 
-      display: inline-block; 
-      color: #ffffff; 
-    }
-    .hero-text h1 .highlight { color: #3b82f6; display: block; }
-    .hero-text p {
-      font-size: 1.2rem; color: #ffffff;
-      margin-bottom: 20px; max-width: 500px; line-height: 1.9;
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1);
-    }
-    .hero-text p.visible { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
-    .hero-text .btn-primary {
-      display: inline-block; background: #3b82f6; color: #fff; padding: 15px 40px;
-      border-radius: 6px; font-weight: 600; letter-spacing: 0.5px;
-      transition: all 0.3s; border: 2px solid #3b82f6; font-size: 1rem;
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1);
-    }
-    .hero-text .btn-primary.visible { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
-    .hero-text .btn-outline { background: transparent; color: #3b82f6; border: 2px solid #3b82f6; margin-left: 15px; }
-    .btn-primary:hover { background: #2563eb; border-color: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(59,130,246,0.3); }
-    .btn-outline:hover { background: #3b82f6; color: #fff; }
+        /* ===== 主視覺 ===== */
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            background-size: cover;
+            z-index: 0;
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+        @keyframes heroZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.08);
+            }
+        }
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(10, 15, 30, 0.15) 0%, rgba(2, 5, 16, 0.15) 90%);
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .hero-text {
+            flex: 1 1 500px;
+            margin-left: -2.5cm;
+        }
+        .hero-text .label-en {
+            display: none;
+        }
+        .hero-text h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-text h1.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-text h1 .outline-text {
+            -webkit-text-stroke: 0;
+            -webkit-text-fill-color: #ffffff;
+            display: inline-block;
+            color: #ffffff;
+        }
+        .hero-text h1 .highlight {
+            color: #3b82f6;
+            display: block;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            max-width: 500px;
+            line-height: 1.9;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-text p.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+        .hero-text .btn-primary {
+            display: inline-block;
+            background: #3b82f6;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            border: 2px solid #3b82f6;
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-text .btn-primary.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+        .hero-text .btn-outline {
+            background: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+            margin-left: 15px;
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        .btn-outline:hover {
+            background: #3b82f6;
+            color: #fff;
+        }
 
-    /* ===== 統計 + 核心業務 共用背景區塊 ===== */
-    .stats-services-wrapper {
-      background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/about%20us.jpg') center/cover no-repeat fixed;
-      position: relative;
-      padding: 60px 0 40px;
-    }
-    /* 半透明深色疊加層，確保文字清晰 */
-    .stats-services-wrapper::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(2, 5, 16, 0.40);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .stats-services-wrapper > * {
-      position: relative;
-      z-index: 1;
-    }
+        /* ===== 統計 + 核心業務 共用背景區塊 ===== */
+        .stats-services-wrapper {
+            background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/about%20us.jpg') center/cover no-repeat fixed;
+            position: relative;
+            padding: 60px 0 40px;
+        }
+        .stats-services-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(2, 5, 16, 0.40);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .stats-services-wrapper>* {
+            position: relative;
+            z-index: 1;
+        }
 
-    /* ===== 統計 ===== */
-    .stats {
-      max-width: 1200px; margin: 0 auto; padding: 20px 20px 30px;
-      display: flex; justify-content: center; gap: 100px; text-align: center; flex-wrap: wrap;
-    }
-    .stat-item { opacity: 0; transform: scale(0.8); transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .stat-item.visible { opacity: 1; transform: scale(1); }
-    .stat-item:nth-child(2).visible { transition-delay: 0.2s; }
-    .stat-item:nth-child(3).visible { transition-delay: 0.4s; }
-    .stat-number { font-size: 4rem; font-weight: 900; color: #3b82f6; line-height: 1; }
-    .stat-label { font-size: 0.8rem; color: #94a3b8; letter-spacing: 3px; margin-top: 8px; text-transform: uppercase; font-weight: 600; }
+        /* ===== 統計 ===== */
+        .stats {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 20px 30px;
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .stat-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .stat-item:nth-child(2).visible {
+            transition-delay: 0.2s;
+        }
+        .stat-item:nth-child(3).visible {
+            transition-delay: 0.4s;
+        }
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #3b82f6;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            letter-spacing: 3px;
+            margin-top: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
 
-    /* ===== 服務卡片滑動 ===== */
-    .card-scroll-wrapper { position: relative; width: 100%; overflow: hidden; }
-    .card-scroll-wrapper::before, .card-scroll-wrapper::after {
-      content: ""; position: absolute; top: 0; bottom: 0; width: 8%; z-index: 10; pointer-events: none;
-    }
-    .card-scroll-wrapper::before { left: 0; background: linear-gradient(to right, rgba(2,5,16,0.9) 0%, transparent 100%); }
-    .card-scroll-wrapper::after { right: 0; background: linear-gradient(to left, rgba(2,5,16,0.9) 0%, transparent 100%); }
-    .card-scroll-container { overflow: hidden; padding: 20px 8%; position: relative; }
-    .card-track { display: flex; gap: 20px; transition: transform 0.5s ease; will-change: transform; }
-    .service-card {
-      flex: 0 0 60%; max-width: 460px; background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(30px); border-radius: 24px; overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25); transition: all 0.4s ease;
-      opacity: 0.6; transform: scale(0.92);
-      border: 1px solid rgba(255,255,255,0.06); cursor: pointer; position: relative;
-    }
-    .service-card::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(59,130,246,0.08) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-card.active { opacity: 1; transform: scale(1); border-color: rgba(59,130,246,0.4); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-    .service-card:hover { opacity: 1 !important; transform: scale(1) !important; box-shadow: 0 30px 60px rgba(0,0,0,0.4); border-color: rgba(59,130,246,0.4); }
-    .card-img { width: 100%; height: 220px; object-fit: cover; opacity: 0; transition: opacity 2s ease; z-index: 0; }
-    .card-img.visible { opacity: 1; }
-    .card-content { padding: 30px 28px; position: relative; z-index: 2; }
-    .card-content h3 { font-size: 1.7rem; margin-bottom: 12px; color: #fff; }
-    .card-content p { color: #cbd5e1; line-height: 1.9; margin-bottom: 20px; font-size: 0.9rem; }
-    .card-link { color: #3b82f6; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.3s; font-size: 0.95rem; }
-    .card-link:hover { gap: 12px; }
-    .slider-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
-      background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.15); color: #fff;
-      width: 48px; height: 48px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s ease; font-size: 1.6rem; font-weight: 300; line-height: 1;
-    }
-    .slider-arrow:hover { background: rgba(59,130,246,0.3); border-color: rgba(59,130,246,0.6); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-    .left-arrow { left: 15px; }
-    .right-arrow { right: 15px; }
+        /* ===== 服務卡片滑動 ===== */
+        .card-scroll-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .card-scroll-wrapper::before,
+        .card-scroll-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 8%;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .card-scroll-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(2, 5, 16, 0.9) 0%, transparent 100%);
+        }
+        .card-scroll-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(2, 5, 16, 0.9) 0%, transparent 100%);
+        }
+        .card-scroll-container {
+            overflow: hidden;
+            padding: 20px 8%;
+            position: relative;
+        }
+        .card-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+        .service-card {
+            flex: 0 0 60%;
+            max-width: 460px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+            opacity: 0.6;
+            transform: scale(0.92);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer;
+            position: relative;
+        }
+        .service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .service-card.active {
+            opacity: 1;
+            transform: scale(1);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        .service-card:hover {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 2s ease;
+            z-index: 0;
+        }
+        .card-img.visible {
+            opacity: 1;
+        }
+        .card-content {
+            padding: 30px 28px;
+            position: relative;
+            z-index: 2;
+        }
+        .card-content h3 {
+            font-size: 1.7rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .card-content p {
+            color: #cbd5e1;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .card-link {
+            color: #3b82f6;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s;
+            font-size: 0.95rem;
+        }
+        .card-link:hover {
+            gap: 12px;
+        }
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.6rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+        .slider-arrow:hover {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .left-arrow {
+            left: 15px;
+        }
+        .right-arrow {
+            right: 15px;
+        }
 
-    /* ===== Why Us 整合為卡片區塊 + 背景圖片 ===== */
-    .why-us {
-      padding: 80px 20px;
-      background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/y%20US.jpg') center/cover no-repeat fixed;
-      position: relative;
-    }
-    .why-us .section-title h2,
-    .why-us .section-title .label-en {
-      color: #fff;
-    }
-    .why-us .section-title .label-en::before,
-    .why-us .section-title .label-en::after {
-      background: linear-gradient(90deg, transparent, #3b82f6);
-    }
-    .why-us .section-title .label-en::after {
-      background: linear-gradient(90deg, #3b82f6, transparent);
-    }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-    .why-card {
-      background: rgba(10, 15, 30, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      opacity: 0;
-      transform: translateY(40px);
-      cursor: default;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    .why-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .why-card:nth-child(2).visible { transition-delay: 0.15s; }
-    .why-card:nth-child(3).visible { transition-delay: 0.3s; }
-    .why-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(59,130,246,0.5);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-    }
-    .why-card-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .why-card:hover .why-card-img {
-      transform: scale(1.05);
-    }
-    .why-card-body {
-      padding: 30px 28px 35px;
-      text-align: center;
-    }
-    .why-card-body h3 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .why-card-body p {
-      color: #e2e8f0;
-      font-size: 0.95rem;
-      line-height: 1.9;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    }
-    .why-card-body .accent-line {
-      width: 40px;
-      height: 3px;
-      background: #3b82f6;
-      margin: 0 auto 16px;
-      border-radius: 2px;
-    }
+        /* ===== Why Us 整合為卡片區塊 + 背景圖片 ===== */
+        .why-us {
+            padding: 80px 20px;
+            background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/y%20US.jpg') center/cover no-repeat fixed;
+            position: relative;
+        }
+        .why-us .section-title h2,
+        .why-us .section-title .label-en {
+            color: #fff;
+        }
+        .why-us .section-title .label-en::before,
+        .why-us .section-title .label-en::after {
+            background: linear-gradient(90deg, transparent, #3b82f6);
+        }
+        .why-us .section-title .label-en::after {
+            background: linear-gradient(90deg, #3b82f6, transparent);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .why-card {
+            background: rgba(10, 15, 30, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(40px);
+            cursor: default;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .why-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .why-card:nth-child(2).visible {
+            transition-delay: 0.15s;
+        }
+        .why-card:nth-child(3).visible {
+            transition-delay: 0.3s;
+        }
+        .why-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+        .why-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .why-card:hover .why-card-img {
+            transform: scale(1.05);
+        }
+        .why-card-body {
+            padding: 30px 28px 35px;
+            text-align: center;
+        }
+        .why-card-body h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .why-card-body p {
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        .why-card-body .accent-line {
+            width: 40px;
+            height: 3px;
+            background: #3b82f6;
+            margin: 0 auto 16px;
+            border-radius: 2px;
+        }
 
-    /* ===== 業務範圍 (無邊距) ===== */
-    #business {
-      width: 100%;
-    }
-    .business-block {
-      width: 100%;
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .business-block.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .business-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      z-index: 0;
-      transition: transform 12s ease;
-      filter: none;
-    }
-    .business-block:hover .business-bg {
-      transform: scale(1.08);
-    }
-    .business-bg::after {
-      display: none;
-    }
-    .business-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1400px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 120px 60px 80px;
-    }
-    .business-content .floating-num {
-      position: absolute;
-      top: -60px;
-      right: 0;
-      z-index: 3;
-      font-size: 16rem;
-      font-weight: 900;
-      line-height: 0.6;
-      color: rgba(255, 255, 255, 0.08);
-      text-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
-      pointer-events: none;
-      animation: floatNum 6s ease-in-out infinite;
-    }
-    @keyframes floatNum { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(1deg); } }
-    .business-content .section-heading-area {
-      margin-bottom: 60px;
-      position: relative;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .business-content .section-kicker { display: none; }
-    .business-content .section-heading-area h2 {
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1;
-      color: #ffffff;
-      letter-spacing: -1px;
-    }
-    .business-content .section-heading-area h2 .outline {
-      -webkit-text-stroke: 0;
-      -webkit-text-fill-color: #ffffff;
-      color: #ffffff;
-    }
-    .business-content .section-heading-area h2 .fill {
-      color: #3b82f6;
-    }
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      text-align: left;
-    }
-    .info-card {
-      background: rgba(40, 40, 40, 0.5);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      padding: 40px 35px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .info-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .info-card:nth-child(2).visible { transition-delay: 0.15s; }
-    .info-card:nth-child(3).visible { transition-delay: 0.3s; }
-    .info-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(59, 130, 246, 0.08) 0%, transparent 80%);
-      opacity: 0;
-      transition: opacity 0.5s;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .info-card:hover::before { opacity: 1; }
-    .info-card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      transform: translateY(-8px) !important;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-    }
-    .info-card h3 {
-      font-size: 1.2rem;
-      color: #3b82f6;
-      margin-bottom: 18px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      position: relative;
-      z-index: 2;
-    }
-    .info-card h3 .icon {
-      width: 8px;
-      height: 8px;
-      background: #3b82f6;
-      border-radius: 2px;
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
-    .info-card ul {
-      list-style: none;
-      padding: 0;
-      position: relative;
-      z-index: 2;
-    }
-    .info-card ul li {
-      color: #cbd5e1;
-      font-size: 0.9rem;
-      line-height: 1.9;
-      padding: 2px 0 2px 16px;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    .info-card ul li::before {
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: #3b82f6;
-    }
-    .info-card ul li:hover { color: #ffffff; padding-left: 22px; }
+        /* ===== 業務範圍 (無邊距) ===== */
+        #business {
+            width: 100%;
+        }
+        .business-block {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .business-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .business-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            transition: transform 12s ease;
+            filter: none;
+        }
+        .business-block:hover .business-bg {
+            transform: scale(1.08);
+        }
+        .business-bg::after {
+            display: none;
+        }
+        .business-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 120px 60px 80px;
+        }
+        .business-content .floating-num {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            z-index: 3;
+            font-size: 16rem;
+            font-weight: 900;
+            line-height: 0.6;
+            color: rgba(255, 255, 255, 0.08);
+            text-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+            pointer-events: none;
+            animation: floatNum 6s ease-in-out infinite;
+        }
+        @keyframes floatNum {
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+        }
+        .business-content .section-heading-area {
+            margin-bottom: 60px;
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .business-content .section-kicker {
+            display: none;
+        }
+        .business-content .section-heading-area h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+        .business-content .section-heading-area h2 .outline {
+            -webkit-text-stroke: 0;
+            -webkit-text-fill-color: #ffffff;
+            color: #ffffff;
+        }
+        .business-content .section-heading-area h2 .fill {
+            color: #3b82f6;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+        .info-card {
+            background: rgba(40, 40, 40, 0.5);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            padding: 40px 35px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .info-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .info-card:nth-child(2).visible {
+            transition-delay: 0.15s;
+        }
+        .info-card:nth-child(3).visible {
+            transition-delay: 0.3s;
+        }
+        .info-card:nth-child(4).visible {
+            transition-delay: 0.45s;
+        }
+        .info-card:nth-child(5).visible {
+            transition-delay: 0.6s;
+        }
+        .info-card:nth-child(6).visible {
+            transition-delay: 0.75s;
+        }
+        .info-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(59, 130, 246, 0.08) 0%, transparent 80%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .info-card:hover::before {
+            opacity: 1;
+        }
+        .info-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-8px) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        .info-card h3 {
+            font-size: 1.2rem;
+            color: #3b82f6;
+            margin-bottom: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .info-card h3 .icon {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 2px;
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 2;
+        }
+        .info-card ul li {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            padding: 2px 0 2px 16px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .info-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+        }
+        .info-card ul li:hover {
+            color: #ffffff;
+            padding-left: 22px;
+        }
 
-    /* ===== 成功案例 (無邊距) ===== */
-    .cases-section {
-      width: 100%;
-      padding: 0;
-    }
-    .case-screen {
-      width: 100%;
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .case-screen.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .case-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      z-index: 0;
-      transition: transform 12s ease;
-      filter: none;
-    }
-    .case-screen:hover .case-bg {
-      transform: scale(1.08);
-    }
-    .case-bg::after {
-      display: none;
-    }
-    .case-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 1400px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 120px 60px;
-    }
-    .case-inner .floating-num {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      z-index: 3;
-      font-size: 20rem;
-      font-weight: 900;
-      line-height: 0.6;
-      color: rgba(255, 255, 255, 0.20);
-      text-shadow: 0 0 50px rgba(59, 130, 246, 0.4), 0 4px 30px rgba(0,0,0,0.5);
-      pointer-events: none;
-      animation: floatNum 6s ease-in-out infinite;
-    }
-    .case-title-area {
-      margin-bottom: 60px;
-      position: relative;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .case-title-area .case-kicker { display: none; }
-    .case-title-area h2 {
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1;
-      color: #ffffff;
-      letter-spacing: -1px;
-    }
-    .case-title-area h2 .outline {
-      -webkit-text-stroke: 0;
-      -webkit-text-fill-color: #ffffff;
-      color: #ffffff;
-    }
-    .case-title-area h2 .fill {
-      color: #3b82f6;
-    }
-    .case-layout {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .case-layout.reverse {
-      grid-template-columns: 1fr 1.5fr;
-    }
-    .case-layout.reverse .col-left { order: 2; }
-    .case-layout.reverse .col-right { order: 1; }
-    .col-left, .col-right { display: flex; flex-direction: column; gap: 20px; }
-    .fragment {
-      background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border-radius: 24px;
-      padding: 30px;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .fragment.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fragment:nth-child(2).visible { transition-delay: 0.15s; }
-    .fragment::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(59,130,246,0.08) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.5s;
-      pointer-events: none;
-    }
-    .fragment:hover::before { opacity: 1; }
-    .fragment:hover {
-      border-color: rgba(59,130,246,0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-    }
-    .fragment h3 {
-      font-size: 1.1rem;
-      color: #3b82f6;
-      margin-bottom: 12px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .fragment h3 .icon {
-      width: 8px;
-      height: 8px;
-      background: #3b82f6;
-      border-radius: 2px;
-      transform: rotate(45deg);
-    }
-    .fragment p { color: #cbd5e1; font-size: 0.9rem; line-height: 1.9; }
-    .fragment ul { list-style: none; padding: 0; }
-    .fragment ul li {
-      color: #cbd5e1;
-      font-size: 0.9rem;
-      line-height: 1.9;
-      padding: 2px 0 2px 16px;
-      position: relative;
-    }
-    .fragment ul li::before {
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: #3b82f6;
-    }
-    /* 成果卡片 — 毛玻璃效果 */
-    .result-blast {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      border-radius: 30px;
-      padding: 35px;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: scale(0.9);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .result-blast.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .result-blast::after {
-      content: "";
-      position: absolute;
-      top: -30%;
-      right: -20%;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 0;
-    }
-    .result-blast .big-number {
-      font-size: 4rem;
-      font-weight: 900;
-      color: #3b82f6;
-      line-height: 1;
-      position: relative;
-      z-index: 1;
-    }
-    .result-blast p {
-      color: #e2e8f0;
-      font-size: 1rem;
-      line-height: 1.9;
-      margin-top: 10px;
-      position: relative;
-      z-index: 1;
-    }
+        /* ===== 成功案例 (無邊距) ===== */
+        .cases-section {
+            width: 100%;
+            padding: 0;
+        }
+        .case-screen {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .case-screen.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .case-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            transition: transform 12s ease;
+            filter: none;
+        }
+        .case-screen:hover .case-bg {
+            transform: scale(1.08);
+        }
+        .case-bg::after {
+            display: none;
+        }
+        .case-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 120px 60px;
+        }
+        .case-inner .floating-num {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            z-index: 3;
+            font-size: 20rem;
+            font-weight: 900;
+            line-height: 0.6;
+            color: rgba(255, 255, 255, 0.20);
+            text-shadow: 0 0 50px rgba(59, 130, 246, 0.4), 0 4px 30px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            animation: floatNum 6s ease-in-out infinite;
+        }
+        .case-title-area {
+            margin-bottom: 60px;
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .case-title-area .case-kicker {
+            display: none;
+        }
+        .case-title-area h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+        .case-title-area h2 .outline {
+            -webkit-text-stroke: 0;
+            -webkit-text-fill-color: #ffffff;
+            color: #ffffff;
+        }
+        .case-title-area h2 .fill {
+            color: #3b82f6;
+        }
+        .case-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .case-layout.reverse {
+            grid-template-columns: 1fr 1.5fr;
+        }
+        .case-layout.reverse .col-left {
+            order: 2;
+        }
+        .case-layout.reverse .col-right {
+            order: 1;
+        }
+        .col-left,
+        .col-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .fragment {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .fragment.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fragment:nth-child(2).visible {
+            transition-delay: 0.15s;
+        }
+        .fragment::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        .fragment:hover::before {
+            opacity: 1;
+        }
+        .fragment:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        .fragment h3 {
+            font-size: 1.1rem;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .fragment h3 .icon {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 2px;
+            transform: rotate(45deg);
+        }
+        .fragment p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.9;
+        }
+        .fragment ul {
+            list-style: none;
+            padding: 0;
+        }
+        .fragment ul li {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            padding: 2px 0 2px 16px;
+            position: relative;
+        }
+        .fragment ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+        }
+        .result-blast {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 30px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .result-blast.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .result-blast::after {
+            content: "";
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .result-blast .big-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #3b82f6;
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+        }
+        .result-blast p {
+            color: #e2e8f0;
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
 
-    /* ===== 銳鋒顧問介紹卡片 (半透明毛玻璃，無背景圖) ===== */
-    .about-card-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 20px 40px;
-    }
-    .about-card {
-      /* 移除背景圖片，改為半透明毛玻璃效果 */
-      background: rgba(10, 15, 30, 0.55);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 32px;
-      padding: 50px 60px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px) scale(0.98);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .about-card.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    /* 移除偽元素遮罩，讓底層背景透出 */
-    .about-card::after {
-      display: none;
-    }
-    .about-card * {
-      position: relative;
-      z-index: 1;
-    }
-    .about-card h2 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -0.5px;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.2);
-    }
-    .about-card .divider {
-      width: 60px;
-      height: 3px;
-      background: #3b82f6;
-      margin: 0 auto 25px;
-      border-radius: 2px;
-    }
-    .about-card p {
-      color: #e2e8f0;
-      font-size: 1.05rem;
-      line-height: 1.9;
-      max-width: 750px;
-      margin: 0 auto 18px;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.3);
-    }
-    .about-card .quote-tag {
-      display: inline-block;
-      background: rgba(59,130,246,0.2);
-      border: 1px solid rgba(59,130,246,0.3);
-      border-radius: 50px;
-      padding: 10px 32px;
-      color: #93bbfc;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 2px;
-      margin-top: 10px;
-    }
+        /* ===== 銳鋒顧問介紹卡片 (半透明毛玻璃，無背景圖) ===== */
+        .about-card-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 40px;
+        }
+        .about-card {
+            background: rgba(10, 15, 30, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 50px 60px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .about-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .about-card::after {
+            display: none;
+        }
+        .about-card * {
+            position: relative;
+            z-index: 1;
+        }
+        .about-card h2 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+        }
+        .about-card .divider {
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            margin: 0 auto 25px;
+            border-radius: 2px;
+        }
+        .about-card p {
+            color: #e2e8f0;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            max-width: 750px;
+            margin: 0 auto 18px;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+        }
+        .about-card .quote-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            padding: 10px 32px;
+            color: #93bbfc;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
 
-    /* ===== Footer ===== */
-    .footer { background: #fff; color: #1a202c; padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
-    .footer-social { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; flex-wrap: wrap; }
-    .footer-social a { color: #333; font-weight: 500; display: flex; align-items: center; gap: 10px; transition: 0.3s; font-size: 0.95rem; }
-    .footer-social a:hover { color: #2563eb; transform: translateY(-2px); }
-    .footer-social a svg { width: 24px; height: 24px; }
-    .copyright { font-size: 0.9rem; color: #555; }
+        /* ===== Footer ===== */
+        .footer {
+            background: #fff;
+            color: #1a202c;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-social a {
+            color: #333;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .footer-social a:hover {
+            color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .footer-social a svg {
+            width: 24px;
+            height: 24px;
+        }
+        .copyright {
+            font-size: 0.9rem;
+            color: #555;
+        }
 
-    /* ===== 計劃流程（新版設計 + 動畫 + 背景） ===== */
-    #process {
-      width: 100%;
-      max-width: none;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(0deg, rgba(10,15,25,0.0), rgba(10,15,25,0.0)), url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/plan5.jpg') center/cover fixed;
-      position: relative;
-      border-radius: 0;
-    }
-    #process .process-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 80px 20px 80px;
-      position: relative;
-      z-index: 1;
-    }
-    /* 標題保持原風格 */
-    #process .section-title { text-align: center; margin-bottom: 60px; }
-    #process .section-label .label-en {
-      font-size: 0.8rem; letter-spacing: 6px; text-transform: uppercase;
-      color: #3b82f6; font-weight: 600;
-      display: flex; align-items: center; gap: 15px; justify-content: center; opacity: 0.7;
-    }
-    #process .section-label .label-en::before,
-    #process .section-label .label-en::after {
-      content: ""; flex: 1; height: 1px; max-width: 100px;
-      background: linear-gradient(90deg, transparent, #3b82f6);
-    }
-    #process .section-label .label-en::after { background: linear-gradient(90deg, #3b82f6, transparent); }
-    #process .section-title h2 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: #fff;
-      letter-spacing: -1px; opacity: 0; transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    #process .section-title h2.visible { opacity: 1; transform: translateY(0); }
-    #process .section-title .line { width: 60px; height: 3px; background: #3b82f6; margin: 15px auto 0; }
+        /* ===== 計劃流程（新版設計 + 動畫 + 背景） ===== */
+        #process {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(0deg, rgba(10, 15, 25, 0.0), rgba(10, 15, 25, 0.0)), url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/plan5.jpg') center/cover fixed;
+            position: relative;
+            border-radius: 0;
+        }
+        #process .process-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px 80px;
+            position: relative;
+            z-index: 1;
+        }
+        #process .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        #process .section-label .label-en {
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #3b82f6;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            opacity: 0.7;
+        }
+        #process .section-label .label-en::before,
+        #process .section-label .label-en::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            max-width: 100px;
+            background: linear-gradient(90deg, transparent, #3b82f6);
+        }
+        #process .section-label .label-en::after {
+            background: linear-gradient(90deg, #3b82f6, transparent);
+        }
+        #process .section-title h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        #process .section-title h2.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #process .section-title .line {
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            margin: 15px auto 0;
+        }
 
-    .process-intro {
-      background: rgba(26,32,44,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-radius: 20px; padding: 35px 40px; margin-bottom: 50px;
-      border: 1px solid rgba(59,130,246,0.2);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
-      opacity: 0; transform: translateY(30px);
-      text-align: center;
-    }
-    .process-intro.visible { opacity: 1; transform: translateY(0); transition: 0.8s ease; }
-    .process-intro p { color: #ffffff; font-size: 1.05rem; line-height: 1.9; }
-    .process-intro .highlight-note {
-      display: inline-block; background: rgba(59,130,246,0.8); border: 1px solid rgba(59,130,246,0.3);
-      border-radius: 50px; padding: 10px 30px; color: #ffffff; font-weight: 600;
-      letter-spacing: 0.5px; font-size: 0.95rem; margin-top: 20px;
-    }
+        .process-intro {
+            background: rgba(26, 32, 44, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 35px 40px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            opacity: 0;
+            transform: translateY(30px);
+            text-align: center;
+        }
+        .process-intro.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.8s ease;
+        }
+        .process-intro p {
+            color: #ffffff;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+        .process-intro .highlight-note {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            padding: 10px 30px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            margin-top: 20px;
+        }
 
-    .timeline { position: relative; padding: 20px 0; }
-    .timeline::before {
-      content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
-      width: 2px; background: linear-gradient(180deg, #3b82f6 0%, #1e3a8a 100%);
-      transform: translateX(-50%);
-    }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #3b82f6 0%, #1e3a8a 100%);
+            transform: translateX(-50%);
+        }
 
-    .timeline-item {
-      display: flex; align-items: center; margin-bottom: 50px; position: relative;
-      opacity: 0; transform: translateY(30px);
-    }
-    .timeline-item.visible { opacity: 1; transform: translateY(0); transition: 0.8s ease; }
-    .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.8s ease;
+        }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
 
-    .timeline-content {
-      width: 42%; background: rgba(26,32,44,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      padding: 30px 35px; border-radius: 20px;
-      border: 1px solid rgba(59,130,246,0.2);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04);
-      transition: all 0.4s ease;
-    }
-    .timeline-content:hover {
-      border-color: rgba(59,130,246,0.5); box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-      transform: translateY(-5px);
-    }
-    .timeline-content h3 { font-size: 1.5rem; color: #ffffff; margin-bottom: 12px; font-weight: 700; }
-    .timeline-content p { color: #cbd5e1; font-size: 0.95rem; line-height: 1.8; }
-    .timeline-content .step-number {
-      display: inline-block; background: #3b82f6; color: #fff; width: 36px; height: 36px;
-      border-radius: 50%; text-align: center; line-height: 36px; font-weight: 700;
-      font-size: 1rem; margin-bottom: 12px;
-    }
+        .timeline-content {
+            width: 42%;
+            background: rgba(26, 32, 44, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 30px 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            transition: all 0.4s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            transform: translateY(-5px);
+        }
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .timeline-content p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .timeline-content .step-number {
+            display: inline-block;
+            background: #3b82f6;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
 
-    .timeline-dot {
-      width: 16px; height: 16px; background: #3b82f6; border-radius: 50%;
-      position: absolute; left: 50%; transform: translateX(-50%); z-index: 2;
-      box-shadow: 0 0 20px rgba(59,130,246,0.6); flex-shrink: 0;
-    }
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+            flex-shrink: 0;
+        }
 
-    .monitoring-card {
-      background: rgba(26,32,44,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-radius: 20px; padding: 40px 40px; margin-top: 30px; text-align: center;
-      border: 1px solid rgba(59,130,246,0.2);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
-      opacity: 0; transform: translateY(30px);
-    }
-    .monitoring-card.visible { opacity: 1; transform: translateY(0); transition: 0.8s ease; }
-    .monitoring-card h2 { font-size: 1.8rem; color: #3b82f6; margin-bottom: 15px; font-weight: 700; }
-    .monitoring-card p { color: #cbd5e1; font-size: 1rem; line-height: 1.9; }
+        .monitoring-card {
+            background: rgba(26, 32, 44, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px 40px;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .monitoring-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.8s ease;
+        }
+        .monitoring-card h2 {
+            font-size: 1.8rem;
+            color: #3b82f6;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .monitoring-card p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
 
-    /* ===== 聯絡我們內部卡片 ===== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    .contact-card {
-      background: rgba(26,32,44,0.7);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 35px 30px;
-      text-align: center;
-      border: 1px solid rgba(59,130,246,0.15);
-      transition: all 0.4s;
-      display: block;
-      color: inherit;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .contact-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .contact-card:nth-child(2).visible { transition-delay: 0.1s; }
-    .contact-card:nth-child(3).visible { transition-delay: 0.2s; }
-    .contact-card:nth-child(4).visible { transition-delay: 0.3s; }
-    .contact-card:nth-child(5).visible { transition-delay: 0.4s; }
-    .contact-card:nth-child(6).visible { transition-delay: 0.5s; }
-    .contact-card:hover {
-      border-color: rgba(59,130,246,0.5);
-      transform: translateY(-8px);
-    }
-    .contact-card h3 { font-size: 1.3rem; color: #fff; margin: 10px 0 5px; }
-    .contact-card p { color: #94a3b8; }
-    .welcome-block {
-      background: rgba(26,32,44,0.7);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 45px 40px;
-      text-align: center;
-      border: 1px solid rgba(59,130,246,0.2);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .welcome-block.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .welcome-block h2 { font-size: 2rem; color: #3b82f6; margin-bottom: 20px; }
-    .welcome-block p { font-size: 1.1rem; color: #e2e8f0; max-width: 700px; margin: 0 auto 25px; }
-    .welcome-block .badge {
-      display: inline-block;
-      background: rgba(59,130,246,0.15);
-      border: 1px solid rgba(59,130,246,0.3);
-      border-radius: 50px;
-      padding: 10px 30px;
-      color: #60a5fa;
-      font-weight: 600;
-    }
+        /* ===== 聯絡我們內部卡片 ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .contact-card {
+            background: rgba(26, 32, 44, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            transition: all 0.4s;
+            display: block;
+            color: inherit;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .contact-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .contact-card:nth-child(2).visible {
+            transition-delay: 0.1s;
+        }
+        .contact-card:nth-child(3).visible {
+            transition-delay: 0.2s;
+        }
+        .contact-card:nth-child(4).visible {
+            transition-delay: 0.3s;
+        }
+        .contact-card:nth-child(5).visible {
+            transition-delay: 0.4s;
+        }
+        .contact-card:nth-child(6).visible {
+            transition-delay: 0.5s;
+        }
+        .contact-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-8px);
+        }
+        .contact-card h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 10px 0 5px;
+        }
+        .contact-card p {
+            color: #94a3b8;
+        }
+        .welcome-block {
+            background: rgba(26, 32, 44, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 45px 40px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .welcome-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .welcome-block h2 {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+        .welcome-block p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        .welcome-block .badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            padding: 10px 30px;
+            color: #60a5fa;
+            font-weight: 600;
+        }
 
-    /* ===== 聯絡我們 — 背景鋪滿無遮蓋 ===== */
-    #contact {
-      width: 100%;
-      max-width: none;
-      margin: 0;
-      padding: 40px 20px 80px;
-      position: relative;
-      border-radius: 0;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: scroll;
-    }
-    #contact > * {
-      position: relative;
-      z-index: 2;
-    }
+        /* ===== 聯絡我們 — 背景鋪滿無遮蓋 ===== */
+        #contact {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 40px 20px 80px;
+            position: relative;
+            border-radius: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+        #contact>* {
+            position: relative;
+            z-index: 2;
+        }
 
-    /* ===== 手機版響應式 ===== */
-    @media (max-width: 900px) {
-      .hero-text { margin-left: 0; }
-      .hero-text h1 { font-size: 2.5rem; }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-number { font-size: 2.8rem; }
-      .stats { gap: 50px; }
-      .contact-grid { grid-template-columns: repeat(2, 1fr); }
-      .info-grid { grid-template-columns: 1fr; }
-      .business-content { padding: 100px 25px 60px; }
-      .business-content .floating-num { font-size: 10rem; top: -30px; right: 10px; }
-      .business-content .section-heading-area h2 { font-size: 2.5rem; }
-      .case-layout, .case-layout.reverse { grid-template-columns: 1fr; }
-      .case-layout.reverse .col-left, .case-layout.reverse .col-right { order: 0; }
-      .case-inner { padding: 100px 25px 60px; }
-      .case-inner .floating-num { font-size: 10rem; top: 0; right: 10px; }
-      .case-title-area h2 { font-size: 2.5rem; }
-      .about-card { padding: 40px 30px; }
-    }
+        /* ===== 手機版響應式 ===== */
+        @media (max-width: 1024px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-text {
+                margin-left: 0;
+            }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            .stats {
+                gap: 60px;
+            }
+            .stat-number {
+                font-size: 3.2rem;
+            }
+        }
 
-    @media (max-width: 768px) {
-      .nav-links { 
-        display: none; 
-        flex-direction: column; 
-        position: absolute; 
-        top: 100%; 
-        left: 0; 
-        right: 0; 
-        background: #020510; 
-        padding: 20px; 
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
-        gap: 16px;
-      }
-      .nav-links.active { display: flex; }
-      .menu-toggle { display: flex; }
-      .nav-container { padding: 0 16px 0 12px; }
-      .logo .brand-cn { font-size: 1.8rem; }
-      .logo .brand-en { font-size: 0.85rem; }
+        @media (max-width: 900px) {
+            .hero-text {
+                margin-left: 0;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-number {
+                font-size: 2.8rem;
+            }
+            .stats {
+                gap: 50px;
+            }
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .business-content {
+                padding: 100px 25px 60px;
+            }
+            .business-content .floating-num {
+                font-size: 10rem;
+                top: -30px;
+                right: 10px;
+            }
+            .business-content .section-heading-area h2 {
+                font-size: 2.5rem;
+            }
+            .case-layout,
+            .case-layout.reverse {
+                grid-template-columns: 1fr;
+            }
+            .case-layout.reverse .col-left,
+            .case-layout.reverse .col-right {
+                order: 0;
+            }
+            .case-inner {
+                padding: 100px 25px 60px;
+            }
+            .case-inner .floating-num {
+                font-size: 10rem;
+                top: 0;
+                right: 10px;
+            }
+            .case-title-area h2 {
+                font-size: 2.5rem;
+            }
+            .about-card {
+                padding: 40px 30px;
+            }
+        }
 
-      .hero { min-height: auto; padding: 100px 16px 50px; }
-      .hero-content { flex-direction: column; text-align: center; gap: 30px; }
-      .hero-text { margin-left: 0; flex: 1 1 100%; }
-      .hero-text h1 { font-size: 2.2rem; }
-      .hero-text p { margin: 0 auto 20px; font-size: 1rem; max-width: 100%; }
-      .btn-outline { margin-left: 0; margin-top: 12px; }
-      .hero-text .btn-primary { padding: 12px 28px; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #020510;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                gap: 16px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-container {
+                padding: 0 16px 0 12px;
+            }
+            .logo .brand-cn {
+                font-size: 1.8rem;
+            }
+            .logo .brand-en {
+                font-size: 0.85rem;
+            }
 
-      .stats { gap: 24px; padding: 20px 16px 20px; }
-      .stat-number { font-size: 2.2rem; }
-      .stat-label { font-size: 0.65rem; }
+            .hero {
+                min-height: 90vh;
+                padding: 90px 16px 40px;
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            .hero-text {
+                margin-left: 0;
+                flex: 1 1 100%;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero-text p {
+                margin: 0 auto 20px;
+                font-size: 1rem;
+                max-width: 100%;
+            }
+            .hero-text .btn-primary {
+                display: inline-block;
+                padding: 13px 30px;
+                font-size: 0.9rem;
+                margin: 6px;
+            }
+            .btn-outline {
+                margin-left: 6px !important;
+                margin-top: 0;
+            }
 
-      .service-card { flex: 0 0 85%; max-width: 320px; }
-      .card-scroll-container { padding: 16px 4%; }
-      .slider-arrow { display: none; }
-      .card-content h3 { font-size: 1.3rem; }
-      .card-content p { font-size: 0.85rem; }
+            .stats {
+                gap: 30px;
+                padding: 20px 16px 20px;
+            }
+            .stat-number {
+                font-size: 2.4rem;
+            }
+            .stat-label {
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+            }
 
-      .why-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .why-card-img { height: 160px; }
+            .service-card {
+                flex: 0 0 85%;
+                max-width: 320px;
+            }
+            .card-scroll-container {
+                padding: 16px 4%;
+            }
+            .slider-arrow {
+                display: none;
+            }
+            .card-content h3 {
+                font-size: 1.3rem;
+            }
+            .card-content p {
+                font-size: 0.85rem;
+            }
 
-      .business-block { min-height: auto; }
-      .business-content { padding: 80px 16px 50px; }
-      .business-content .floating-num { font-size: 6rem; top: -10px; right: 5px; }
-      .business-content .section-heading-area h2 { font-size: 2rem; }
-      .info-card { padding: 24px 20px; }
-      .info-card h3 { font-size: 1rem; }
-      .info-card ul li { font-size: 0.85rem; }
+            .why-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .why-card-img {
+                height: 160px;
+            }
 
-      .case-screen { min-height: auto; }
-      .case-inner { padding: 60px 16px 40px; }
-      .case-inner .floating-num { font-size: 5rem; top: 0; right: 5px; }
-      .case-title-area h2 { font-size: 1.8rem; margin-bottom: 10px; }
-      .case-title-area { margin-bottom: 30px; }
-      .case-layout, .case-layout.reverse { grid-template-columns: 1fr; gap: 16px; }
-      .case-layout.reverse .col-left, .case-layout.reverse .col-right { order: 0; }
-      .fragment { padding: 20px; }
-      .fragment h3 { font-size: 1rem; }
-      .fragment p, .fragment ul li { font-size: 0.85rem; }
-      .result-blast { padding: 24px 20px; }
-      .result-blast .big-number { font-size: 2.8rem; }
+            .business-block {
+                min-height: auto;
+            }
+            .business-content {
+                padding: 80px 16px 50px;
+            }
+            .business-content .floating-num {
+                font-size: 6rem;
+                top: -10px;
+                right: 5px;
+            }
+            .business-content .section-heading-area h2 {
+                font-size: 2rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .info-card {
+                padding: 24px 20px;
+            }
+            .info-card h3 {
+                font-size: 1rem;
+            }
+            .info-card ul li {
+                font-size: 0.85rem;
+            }
 
-      #process .process-inner { padding: 40px 16px 50px; }
-      #process .section-title h2 { font-size: 2rem; }
+            .case-screen {
+                min-height: auto;
+            }
+            .case-inner {
+                padding: 60px 16px 40px;
+            }
+            .case-inner .floating-num {
+                font-size: 5rem;
+                top: 0;
+                right: 5px;
+            }
+            .case-title-area h2 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            .case-title-area {
+                margin-bottom: 30px;
+            }
+            .case-layout,
+            .case-layout.reverse {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .case-layout.reverse .col-left,
+            .case-layout.reverse .col-right {
+                order: 0;
+            }
+            .fragment {
+                padding: 20px;
+            }
+            .fragment h3 {
+                font-size: 1rem;
+            }
+            .fragment p,
+            .fragment ul li {
+                font-size: 0.85rem;
+            }
+            .result-blast {
+                padding: 24px 20px;
+            }
+            .result-blast .big-number {
+                font-size: 2.8rem;
+            }
 
-      .timeline::before { left: 30px; }
-      .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; align-items: flex-start; padding-left: 60px; }
-      .timeline-content { width: 100%; }
-      .timeline-dot { left: 30px; }
-      .process-intro { padding: 25px 20px; }
-      .monitoring-card { padding: 25px 20px; }
+            #process .process-inner {
+                padding: 40px 16px 50px;
+            }
+            #process .section-title h2 {
+                font-size: 2rem;
+            }
 
-      .about-card-section { padding: 40px 16px 20px; }
-      .about-card { padding: 30px 20px; }
-      .about-card h2 { font-size: 1.8rem; }
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+            .timeline-content {
+                width: 100%;
+            }
+            .timeline-dot {
+                left: 30px;
+            }
+            .process-intro {
+                padding: 25px 20px;
+            }
+            .monitoring-card {
+                padding: 25px 20px;
+            }
 
-      #contact .contact-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .contact-card { padding: 20px 16px; }
-      .contact-card h3 { font-size: 1rem; }
-      .contact-card p { font-size: 0.8rem; }
-      .contact-card svg { width: 30px; height: 30px; }
-      .welcome-block { padding: 28px 20px; }
-      .welcome-block h2 { font-size: 1.5rem; }
-      .welcome-block p { font-size: 0.95rem; }
+            .about-card-section {
+                padding: 40px 16px 20px;
+            }
+            .about-card {
+                padding: 30px 20px;
+            }
+            .about-card h2 {
+                font-size: 1.8rem;
+            }
 
-      .footer { padding: 30px 16px; }
-      .footer-social { gap: 20px; }
-      .footer-social a { font-size: 0.8rem; }
-      .footer-social a svg { width: 20px; height: 20px; }
+            #contact .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .contact-card {
+                padding: 20px 16px;
+            }
+            .contact-card h3 {
+                font-size: 1rem;
+            }
+            .contact-card p {
+                font-size: 0.8rem;
+            }
+            .contact-card svg {
+                width: 30px;
+                height: 30px;
+            }
+            .welcome-block {
+                padding: 28px 20px;
+            }
+            .welcome-block h2 {
+                font-size: 1.5rem;
+            }
+            .welcome-block p {
+                font-size: 0.95rem;
+            }
 
-      #backToTop { bottom: 20px; right: 16px; width: 44px; height: 44px; }
-      #backToTop svg { width: 22px; height: 22px; }
-    }
+            .footer {
+                padding: 30px 16px;
+            }
+            .footer-social {
+                gap: 20px;
+            }
+            .footer-social a {
+                font-size: 0.8rem;
+            }
+            .footer-social a svg {
+                width: 20px;
+                height: 20px;
+            }
 
-    @media (max-width: 480px) {
-      .contact-grid { grid-template-columns: 1fr 1fr; }
-      .logo .brand-cn { font-size: 1.5rem; }
-      .logo .brand-en { font-size: 0.7rem; }
-      .hero-text h1 { font-size: 1.8rem; }
-      .stat-number { font-size: 1.8rem; }
-      .stats { gap: 16px; }
-      .stat-item { flex: 1 1 30%; }
-      .business-content .section-heading-area h2 { font-size: 1.6rem; }
-      .case-title-area h2 { font-size: 1.5rem; }
-      .result-blast .big-number { font-size: 2.2rem; }
-      .why-grid { max-width: 100%; }
-      .about-card h2 { font-size: 1.5rem; }
-      .about-card { padding: 24px 16px; }
-    }
-  </style>
+            #backToTop {
+                bottom: 20px;
+                right: 16px;
+                width: 44px;
+                height: 44px;
+            }
+            #backToTop svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 85vh;
+                padding: 80px 12px 30px;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-text p {
+                font-size: 0.9rem;
+                margin-bottom: 16px;
+            }
+            .hero-text .btn-primary {
+                padding: 11px 22px;
+                font-size: 0.8rem;
+                margin: 4px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .logo .brand-cn {
+                font-size: 1.5rem;
+            }
+            .logo .brand-en {
+                font-size: 0.7rem;
+            }
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            .stats {
+                gap: 16px;
+            }
+            .stat-item {
+                flex: 1 1 30%;
+            }
+            .business-content .section-heading-area h2 {
+                font-size: 1.6rem;
+            }
+            .case-title-area h2 {
+                font-size: 1.5rem;
+            }
+            .result-blast .big-number {
+                font-size: 2.2rem;
+            }
+            .why-grid {
+                max-width: 100%;
+            }
+            .about-card h2 {
+                font-size: 1.5rem;
+            }
+            .about-card {
+                padding: 24px 16px;
+            }
+            .about-card p {
+                font-size: 0.9rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ===== 導航 ===== -->
-<header class="header" id="header">
-  <div class="nav-container">
-    <div class="logo"><a href="#hero"><span class="brand-cn">銳鋒</span><span class="brand-en">The Top Market</span></a></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">業務範圍</a></li>
-      <li><a href="#cases">成功案例</a></li>
-      <li><a href="#process">咨詢流程</a></li>
-      <li><a href="#contact">聯絡我們</a></li>
-    </ul>
-    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
-  </div>
-</header>
-
-<!-- ===== 返回頂部按鈕 ===== -->
-<button id="backToTop" aria-label="返回頂部">
-  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
-</button>
-
-<!-- ===== HERO ===== -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1 class="hero-title"><span class="outline-text">讓商業視野</span><span class="highlight">超越界限</span></h1>
-      <p class="hero-desc">洞悉香港市場，以精準數據驅動商業策略。</p>
-      <p class="hero-desc">銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。</p>
-      <a href="#services" class="btn-primary hero-btn">探索服務</a>
-      <a href="#contact" class="btn-primary btn-outline hero-btn">聯絡我們</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 統計 + 核心業務（共用背景） ===== -->
-<div class="stats-services-wrapper">
-  <div class="stats">
-    <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">成功案例</div></div>
-    <div class="stat-item"><div class="stat-number">10年</div><div class="stat-label">行業經驗</div></div>
-    <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">客戶滿意度</div></div>
-  </div>
-
-  <!-- 銳鋒顧問介紹卡片 (半透明毛玻璃) -->
-  <div class="about-card-section">
-    <div class="about-card" id="aboutCard">
-      <h2>銳鋒顧問</h2>
-      <div class="divider"></div>
-      <p>銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。</p>
-      <p>專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
-      <p>以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。</p>
-      <div class="quote-tag">精準 · 務實 · 可持續</div>
-    </div>
-  </div>
-
-  <!-- 核心業務 -->
-  <div class="section" id="services">
-    <div class="section-title">
-      <div class="section-label"><span class="label-en">✦ Core Services</span></div>
-      <h2 class="service-title">核心業務</h2>
-      <div class="line"></div>
-    </div>
-    <div class="card-scroll-wrapper" id="cardScrollWrapper">
-      <button class="slider-arrow left-arrow" id="leftArrow">‹</button>
-      <div class="card-scroll-container" id="cardScrollContainer"><div class="card-track" id="cardTrack"></div></div>
-      <button class="slider-arrow right-arrow" id="rightArrow">›</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== WHY US — 三個卡片整合為一個區塊 + 背景圖片 ===== -->
-<section class="why-us" id="why">
-  <div class="section-title">
-    <div class="section-label"><span class="label-en">✦ Why Us</span></div>
-    <h2 class="why-title">我們的優勢</h2>
-    <div class="line"></div>
-  </div>
-  <div class="why-grid">
-    <div class="why-card">
-      <img class="why-card-img" src="https://img1.wallspic.com/crops/8/3/6/8/3/138638/138638-red_and_white_bokeh_lights-1980x1060.jpg" alt="數據驅動">
-      <div class="why-card-body">
-        <h3>數據驅動</h3>
-        <div class="accent-line"></div>
-        <p>摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
-      </div>
-    </div>
-    <div class="why-card">
-      <img class="why-card-img" src="https://img3.wallspic.com/crops/0/5/7/8/5/158750/158750-xiang_gang-zi_se_de-dian_li_ta_kuai-ren_ti_nei_de_shui-3840x2160.jpg" alt="本地深耕">
-      <div class="why-card-body">
-        <h3>本地深耕</h3>
-        <div class="accent-line"></div>
-        <p>植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
-      </div>
-    </div>
-    <div class="why-card">
-      <img class="why-card-img" src="https://images.pexels.com/photos/7441079/pexels-photo-7441079.jpeg?_gl=1*c15iy9*_ga*MTAyNDQ1NjIzNS4xNzg0MDc5NjU1*_ga_8JE65Q40S6*czE3ODQwNzk2NTQkbzEkZzEkdDE3ODQwODA1MjAkajEzJGwwJGhw" alt="敏捷反應">
-      <div class="why-card-body">
-        <h3>敏捷反應</h3>
-        <div class="accent-line"></div>
-        <p>面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 業務範圍 ===== -->
-<div id="business">
-  <div class="business-block">
-    <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/biger.jpg');"></div>
-    <div class="business-content">
-      <div class="floating-num">01</div>
-      <div class="section-heading-area">
-        <div class="section-kicker">Market Research</div>
-        <h2><span class="outline">市場</span> <span class="fill">調研</span></h2>
-      </div>
-      <div class="info-grid">
-        <div class="info-card"><h3><span class="icon"></span>量化調查</h3><ul><li>網上問卷：消費習慣、價格接受度、品牌認知、選購渠道偏好</li><li>電話抽樣：本地居民及企業採購負責人定向調查</li><li>街頭訪問：商場、街市、屋苑現場面談</li><li>固定訪問小組：長期追蹤消費者習慣轉變</li></ul></div>
-        <div class="info-card"><h3><span class="icon"></span>深度採訪</h3><ul><li>一對一深度面談：高消費客戶、行業專家、企業決策人</li><li>分享會</li><li>神秘顧客：服務品質、產品體驗、競品比對</li><li>實地觀察：超市、餐廳、化妝品店場景記錄</li></ul></div>
-        <div class="info-card"><h3><span class="icon"></span>大數據收集</h3><ul><li>社交平台輿論：Facebook、IG、小紅書、抖音、討論區</li><li>電商平台銷售數據：銷量、評價、熱門商品</li><li>政府／行業公開報告整合</li><li>私人定制數據：行業分類、競品對照、地區特徵</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="business-block">
-    <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/long%20business.jpg');"></div>
-    <div class="business-content">
-      <div class="floating-num">02</div>
-      <div class="section-heading-area">
-        <div class="section-kicker">Market Consulting</div>
-        <h2><span class="outline">市場</span> <span class="fill">咨詢</span></h2>
-      </div>
-      <div class="info-grid">
-        <div class="info-card"><h3><span class="icon"></span>品牌進入市場策略</h3><ul><li>市場可行性評估：行業規模、增速、競爭度、門檻</li><li>選址風險分析：各區人流、租金、同行密度</li><li>目標客戶特徵：年齡、收入、消費場景與習慣</li><li>競爭品牌全方位拆解，制定差異化定位</li></ul></div>
-        <div class="info-card"><h3><span class="icon"></span>品牌現況分析及經營策略</h3><ul><li>品牌健康檢查：認知度調查、口碑風險、定位修正</li><li>新產品上市：概念測試、試用反饋、文案測評</li><li>宣傳優化：廣告、直播、社交話題、會員營運</li><li>銷售渠道評估：實體門店、分銷商、網上渠道</li></ul></div>
-        <div class="info-card"><h3><span class="icon"></span>消費行業專項顧問</h3><ul><li>消費品：食品、飲品、護膚品、日用品潮流研究</li><li>飲食：選址人流分析、口味偏好、回頭客方案</li><li>化妝品：消費觀念調查、熱賣產品拆解、口碑分析</li><li>母嬰家居：家庭決策流程、真實需求發掘、信任度調查</li></ul></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="business-block">
-    <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/teamwork.jpg');"></div>
-    <div class="business-content">
-      <div class="floating-num">03</div>
-      <div class="section-heading-area">
-        <div class="section-kicker">Long-term Partnership</div>
-        <h2><span class="outline">長期</span> <span class="fill">合作</span></h2>
-      </div>
-      <div class="info-grid">
-        <div class="info-card"><h3><span class="icon"></span>協助企業落實措施</h3><ul><li>調研完成後提供3至6個月跟進服務</li><li>策略顧問團隊協助轉化為具體執行步驟</li><li>根據實際情況動態調整方案</li><li>方案架構、營運邏輯設計及實地路線定制</li></ul></div>
-        <div class="info-card"><h3><span class="icon"></span>監察市場趨勢</h3><ul><li>簽訂長期市場監察合約</li><li>按月或按季度更新行業數據</li><li>固定消費小組持續追蹤消費習慣變化</li><li>量化抽樣調查，實時捕捉市場變化</li></ul></div>
-        <div class="info-card"><h3><span class="icon"></span>定期報告與跟進</h3><ul><li>標準化報告：原始數據表、圖表分析、完整研究報告</li><li>月度／季度專屬會議，深入溝通分析結果</li><li>企業內部培訓：市場團隊數據解讀</li><li>消費者需求分析，強化自主研判能力</li></ul></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 成功案例 ===== -->
-<section class="cases-section" id="cases">
-  <!-- 案例一：留學顧問 -->
-  <div class="case-screen">
-    <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/student.com.jpg');"></div>
-    <div class="case-inner">
-      <div class="floating-num">01</div>
-      <div class="case-title-area">
-        <div class="case-kicker">Market Research</div>
-        <h2><span class="outline">留學顧問</span><br><span class="fill">數據調研</span></h2>
-      </div>
-      <div class="case-layout">
-        <div class="col-left">
-          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>香港本地海外升學顧問公司，成立9年，專注協助中三至中六學生申請英國、澳洲及加拿大的大學。團隊共10名全職顧問，每年服務約200名學生。</p></div>
-          <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>競爭環境急劇惡化：行業內已存在上市公司（大地教育，上市編號08417），按2022年收入計算，前四大機構已佔據相當市場份額。</li><li>市場規模持續萎縮：根據香港教育局最新公布的《2025年中六學生出路統計調查》，在43,561名有回覆的2025年中六畢業生中，僅6.5%選擇到香港以外地區升學。</li><li>缺乏決策數據支撐：長期依賴顧問個人經驗判斷家長需求，未能清晰及數據化「家長決策的關鍵」及「客戶流失」，導致市場營銷效率偏低。</li></ul></div>
+    <!-- ===== 導航 ===== -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo"><a href="#hero"><span class="brand-cn">銳鋒</span><span class="brand-en">The Top Market</span></a></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">業務範圍</a></li>
+                <li><a href="#cases">成功案例</a></li>
+                <li><a href="#process">咨詢流程</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
         </div>
-        <div class="col-right">
-          <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>部署AI引擎，捕捉3個本地論壇及數個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。</li><li>部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。</li><li>建立混合式AI數據分析平台，整合一手調研與多維度公開數據。</li><li>向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。</li><li>進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。</li></ul></div>
-          <div class="result-blast">
-            <div class="big-number">+65%</div>
-            <p>網站查詢量於三個月內增長65%；經過我司建議及調整之後，為客戶公司帶來額外120萬港元營收，佔公司全年總營業額的17%。成功避開了加拿大市場的簽證配額大幅削減及最低生活保证金等等的政策風險。</p>
-          </div>
+    </header>
+
+    <!-- ===== 返回頂部按鈕 ===== -->
+    <button id="backToTop" aria-label="返回頂部">
+        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title"><span class="outline-text">讓商業視野</span><span class="highlight">超越界限</span></h1>
+                <p class="hero-desc">洞悉香港市場，以精準數據驅動商業策略。</p>
+                <p class="hero-desc">銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。</p>
+                <a href="#services" class="btn-primary hero-btn">探索服務</a>
+                <a href="#contact" class="btn-primary btn-outline hero-btn">聯絡我們</a>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- 案例二：日式餐廳 -->
-  <div class="case-screen">
-    <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/chef.com.jpg');"></div>
-    <div class="case-inner">
-      <div class="floating-num">02</div>
-      <div class="case-title-area">
-        <div class="case-kicker">Restaurant Launch</div>
-        <h2><span class="fill">日式餐廳</span><br><span class="outline">星級開業</span></h2>
-      </div>
-      <div class="case-layout reverse">
-        <div class="col-left">
-          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一位曾任職於日式餐廳的廚師，計劃開設其第一餐廳，主打日式料理。雖客戶具備優秀廚藝，但對飲食市場的實務及商業策劃缺乏經驗。</p></div>
-          <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>選址風險：核心商業區及住宅區的街舖及商場舖位租金持續高企，選址決策直接影響客流及租金成本結構，客戶對各區人流特徵、消費力及競爭格局缺乏數據認知。</li><li>牌照及法律：餐飲牌照申請程序複雜，涉及食物環境衞生署、屋宇署及消防處等多個部門的審批，若處理不當，隨時延誤開業進度數月之久。</li><li>供應鏈建立困難：料理對食材新鮮度及品質要求極高，需要建立穩定、合規且具成本效益的食材供應渠道，由日本進口的冷鏈物流及本地供應商的篩選均構成挑戰。</li><li>市場推廣資源有限：新餐廳缺乏品牌知名度，在Instagram、Facebook及小紅書等社交平台上的曝光為零。在競爭激烈的香港餐飲市場中，如何以有限預算有效吸引目標客群，是決定開業成敗的關鍵。</li></ul></div>
+    <!-- ===== 統計 + 核心業務（共用背景） ===== -->
+    <div class="stats-services-wrapper">
+        <div class="stats">
+            <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">成功案例</div></div>
+            <div class="stat-item"><div class="stat-number">10年</div><div class="stat-label">行業經驗</div></div>
+            <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">客戶滿意度</div></div>
         </div>
-        <div class="col-right">
-          <div class="result-blast">
-            <div class="big-number">62%</div>
-            <p>餐廳於六個月內順利開業，營運首年毛利率達到62%，成為區內熱門預約餐廳。開業初期社交媒體曝光量超出預期，首月訂座率達85%，並持續維持高翻桌率。客戶現正籌備第二間分店，並已委託本公司進行新選址的數據分析及市場定位研究。</p>
-          </div>
-          <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>數據選址工具，評估超過10個潛在舖位，綜合分析各選址周邊的人口密度、年齡結構、收入水平、步行人流及方圓500米內同類型餐廳的供應與定價分佈。</li><li>食物環境衞生署、屋宇署及消防處的牌照申請流程及文件要求多及複雜，制定詳細的合規時間表。</li><li>行業網絡及供應商資料庫，篩選及評估多家日本食材進口商及本地供應商，比較其供貨穩定性、價格及冷鏈物流能力。</li><li>分析客群在Instagram、Facebook及小紅書上的內容消費習慣及餐飲相關話題標籤，制定針對性的內容營銷策略。</li></ul></div>
+
+        <!-- 銳鋒顧問介紹卡片 (半透明毛玻璃) -->
+        <div class="about-card-section">
+            <div class="about-card" id="aboutCard">
+                <h2>銳鋒顧問</h2>
+                <div class="divider"></div>
+                <p>銳鋒顧問有限公司是一家整合市場數據搜集、消費者行為研究及品牌營運策略的全方位商業咨詢機構。</p>
+                <p>專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
+                <p>以銳見洞察行業，用鋒利攻破市場。我們不只是顧問，更是你並肩的商業夥伴。</p>
+                <div class="quote-tag">精準 · 務實 · 可持續</div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- 案例三：雜貨舖 -->
-  <div class="case-screen">
-    <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/shop.com.jpg');"></div>
-    <div class="case-inner">
-      <div class="floating-num">03</div>
-      <div class="case-title-area">
-        <div class="case-kicker">Brand Transformation</div>
-        <h2><span class="outline">雜貨舖</span><br><span class="fill">數位轉型</span></h2>
-      </div>
-      <div class="case-layout">
-        <div class="col-left">
-          <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一間位於九龍區的雜貨舖，開業逾10年，多年來憑藉貨品齊全及價格實惠，累積了一班熟客。老店經營方式傳統，所有交易記錄及庫存管理全依賴人手及經驗，隨着創辦人年屆退休，接班人希望引入電子化管理，但對如何着手毫無頭緒。</p></div>
-          <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>庫存管理全憑經驗：店內逾3,000種貨品，一直靠創辦人記憶及肉眼判斷補貨，沒有系統記錄實際庫存數量，亦無法統計各貨品的銷售速度及毛利率，訂貨決策全憑「感覺」。</li><li>店鋪形象過時：裝修及陳列風格停留在30年前，門口貨架堆滿雜物，光線昏暗，衛生問題嚴重。年輕顧客即使有購物需求，亦因店鋪外觀「老舊」、「雜亂」而卻步。</li><li>客源嚴重老化：主要依靠周邊街坊及熟客支持，但消費群以長者及家庭主婦為主，年輕一代對老店缺乏認識。隨着社區人口老化，熟客流失，新客不足，營業額跌。</li><li>會員及客戶數據空白：過往從未記錄客戶聯絡資料或消費習慣，無法進行任何形式的客戶關係管理或精準營銷。即使有意推出促銷活動，亦缺乏有效的通知渠道。</li></ul></div>
+        <!-- 核心業務 -->
+        <div class="section" id="services">
+            <div class="section-title">
+                <div class="section-label"><span class="label-en">✦ Core Services</span></div>
+                <h2 class="service-title">核心業務</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card-scroll-wrapper" id="cardScrollWrapper">
+                <button class="slider-arrow left-arrow" id="leftArrow">‹</button>
+                <div class="card-scroll-container" id="cardScrollContainer"><div class="card-track" id="cardTrack"></div></div>
+                <button class="slider-arrow right-arrow" id="rightArrow">›</button>
+            </div>
         </div>
-        <div class="col-right">
-          <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>提高店鋪形象及進店率：翻新工程完成後，店鋪外觀新净光猛，同時保留老字號的辨識度。年輕路人的進店率明顯提高。整體店鋪日均客流比翻新前增幅超過40%。</li><li>搭建「人工智能庫存周轉系統」：上線後三個月內，整體庫存周轉日數由估計約90至100日縮減至約65日，熱賣款缺貨情況大幅改善，因缺貨導致的銷售損失按月減少約30%。負責人由以往「憑感覺訂貨」改為「睇數據訂貨」，訂貨決策的準確度顯著提升。</li><li>營銷：在店内顯眼處貼不同的營銷廣告，增加商品曝光率。透過WhatsApp及電話接受訂貨，向會員推廣限時優惠，大幅提升顧客復購率。</li></ul></div>
-          <div class="result-blast">
-            <div class="big-number">+18.7%</div>
-            <p>整體業績：在推行電子化轉型後的八個月內，整體營業額按年增長18.7%，毛利率由約38%提升至44.2%（主因是減少滯銷貨品的積壓，降低不必要的庫存成本）。老店舖成功由傳統街坊小店轉型為「現代老字號」，第二代接班人已初步掌握數據主導的營運模式。</p>
-          </div>
+    </div>
+
+    <!-- ===== WHY US — 三個卡片整合為一個區塊 + 背景圖片 ===== -->
+    <section class="why-us" id="why">
+        <div class="section-title">
+            <div class="section-label"><span class="label-en">✦ Why Us</span></div>
+            <h2 class="why-title">我們的優勢</h2>
+            <div class="line"></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 咨詢流程 ===== -->
-<section id="process">
-  <div class="process-inner">
-    <div class="section-title">
-      <div class="section-label"><span class="label-en">✦ Our Process</span></div>
-      <h2 class="process-title">專案咨詢流程</h2>
-      <div class="line"></div>
-    </div>
-    <div class="process-intro">
-      <p>我們建立了一套嚴謹且高效的工作流程，從客戶需求出發，透過多維度市場數據搜集、專業分析與策略制定，到長期監測與合作，確保每一個環節都精準到位。全程監控機制，確保每個環節的數據真實與專業性。</p>
-      <div class="highlight-note">全程監控 · 數據真實 · 專業執行</div>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="step-number">1</div>
-          <h3>需求界定</h3>
-          <p>與企業決策者深度溝通，確立商業目標、專案範圍及關鍵績效指標。</p>
+        <div class="why-grid">
+            <div class="why-card">
+                <img class="why-card-img" src="https://img1.wallspic.com/crops/8/3/6/8/3/138638/138638-red_and_white_bokeh_lights-1980x1060.jpg" alt="數據驅動">
+                <div class="why-card-body">
+                    <h3>數據驅動</h3>
+                    <div class="accent-line"></div>
+                    <p>摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
+                </div>
+            </div>
+            <div class="why-card">
+                <img class="why-card-img" src="https://img3.wallspic.com/crops/0/5/7/8/5/158750/158750-xiang_gang-zi_se_de-dian_li_ta_kuai-ren_ti_nei_de_shui-3840x2160.jpg" alt="本地深耕">
+                <div class="why-card-body">
+                    <h3>本地深耕</h3>
+                    <div class="accent-line"></div>
+                    <p>植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
+                </div>
+            </div>
+            <div class="why-card">
+                <img class="why-card-img" src="https://images.pexels.com/photos/7441079/pexels-photo-7441079.jpeg?_gl=1*c15iy9*_ga*MTAyNDQ1NjIzNS4xNzg0MDc5NjU1*_ga_8JE65Q40S6*czE3ODQwNzk2NTQkbzEkZzEkdDE3ODQwODA1MjAkajEzJGwwJGhw" alt="敏捷反應">
+                <div class="why-card-body">
+                    <h3>敏捷反應</h3>
+                    <div class="accent-line"></div>
+                    <p>面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
+                </div>
+            </div>
         </div>
-        <div class="timeline-dot"></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="step-number">2</div>
-          <h3>蒐集數據</h3>
-          <p>全方位搜集市場情報，採集多維度數據。</p>
+    </section>
+
+    <!-- ===== 業務範圍（合併：市場調研 + 市場咨詢） ===== -->
+    <div id="business">
+        <!-- 合併區塊：市場調研與市場咨詢 -->
+        <div class="business-block">
+            <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/long%20business.jpg');"></div>
+            <div class="business-content">
+                <div class="floating-num">01</div>
+                <div class="section-heading-area">
+                    <div class="section-kicker">Market Research & Consulting</div>
+                    <h2><span class="outline">市場調研</span> <span class="fill">與咨詢</span></h2>
+                </div>
+                <div class="info-grid">
+                    <!-- 市場調研：量化調查 -->
+                    <div class="info-card"><h3><span class="icon"></span>量化調查</h3><ul><li>網上問卷：消費習慣、價格接受度、品牌認知、選購渠道偏好</li><li>電話抽樣：本地居民及企業採購負責人定向調查</li><li>街頭訪問：商場、街市、屋苑現場面談</li><li>固定訪問小組：長期追蹤消費者習慣轉變</li></ul></div>
+                    <!-- 市場調研：深度採訪 -->
+                    <div class="info-card"><h3><span class="icon"></span>深度採訪</h3><ul><li>一對一深度面談：高消費客戶、行業專家、企業決策人</li><li>分享會</li><li>神秘顧客：服務品質、產品體驗、競品比對</li><li>實地觀察：超市、餐廳、化妝品店場景記錄</li></ul></div>
+                    <!-- 市場調研：大數據收集 -->
+                    <div class="info-card"><h3><span class="icon"></span>大數據收集</h3><ul><li>社交平台輿論：Facebook、IG、小紅書、抖音、討論區</li><li>電商平台銷售數據：銷量、評價、熱門商品</li><li>政府／行業公開報告整合</li><li>私人定制數據：行業分類、競品對照、地區特徵</li></ul></div>
+                    <!-- 市場咨詢：品牌進入市場策略 -->
+                    <div class="info-card"><h3><span class="icon"></span>品牌進入市場策略</h3><ul><li>市場可行性評估：行業規模、增速、競爭度、門檻</li><li>選址風險分析：各區人流、租金、同行密度</li><li>目標客戶特徵：年齡、收入、消費場景與習慣</li><li>競爭品牌全方位拆解，制定差異化定位</li></ul></div>
+                    <!-- 市場咨詢：品牌現況分析及經營策略 -->
+                    <div class="info-card"><h3><span class="icon"></span>品牌現況分析及經營策略</h3><ul><li>品牌健康檢查：認知度調查、口碑風險、定位修正</li><li>新產品上市：概念測試、試用反饋、文案測評</li><li>宣傳優化：廣告、直播、社交話題、會員營運</li><li>銷售渠道評估：實體門店、分銷商、網上渠道</li></ul></div>
+                    <!-- 市場咨詢：消費行業專項顧問 -->
+                    <div class="info-card"><h3><span class="icon"></span>消費行業專項顧問</h3><ul><li>消費品：食品、飲品、護膚品、日用品潮流研究</li><li>飲食：選址人流分析、口味偏好、回頭客方案</li><li>化妝品：消費觀念調查、熱賣產品拆解、口碑分析</li><li>母嬰家居：家庭決策流程、真實需求發掘、信任度調查</li></ul></div>
+                </div>
+            </div>
         </div>
-        <div class="timeline-dot"></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="step-number">3</div>
-          <h3>策略制定</h3>
-          <p>深度解析數據，量身定制專屬的商業策略與行動方案。</p>
+
+        <!-- 長期合作 -->
+        <div class="business-block">
+            <div class="business-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/teamwork.jpg');"></div>
+            <div class="business-content">
+                <div class="floating-num">02</div>
+                <div class="section-heading-area">
+                    <div class="section-kicker">Long-term Partnership</div>
+                    <h2><span class="outline">長期</span> <span class="fill">合作</span></h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-card"><h3><span class="icon"></span>協助企業落實措施</h3><ul><li>調研完成後提供3至6個月跟進服務</li><li>策略顧問團隊協助轉化為具體執行步驟</li><li>根據實際情況動態調整方案</li><li>方案架構、營運邏輯設計及實地路線定制</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span>監察市場趨勢</h3><ul><li>簽訂長期市場監察合約</li><li>按月或按季度更新行業數據</li><li>固定消費小組持續追蹤消費習慣變化</li><li>量化抽樣調查，實時捕捉市場變化</li></ul></div>
+                    <div class="info-card"><h3><span class="icon"></span>定期報告與跟進</h3><ul><li>標準化報告：原始數據表、圖表分析、完整研究報告</li><li>月度／季度專屬會議，深入溝通分析結果</li><li>企業內部培訓：市場團隊數據解讀</li><li>消費者需求分析，強化自主研判能力</li></ul></div>
+                </div>
+            </div>
         </div>
-        <div class="timeline-dot"></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="step-number">4</div>
-          <h3>實施支援</h3>
-          <p>根據特定行業場景進行策略優化，提供落地支援。</p>
+    </div>
+
+    <!-- ===== 成功案例 ===== -->
+    <section class="cases-section" id="cases">
+        <!-- 案例一：留學顧問 -->
+        <div class="case-screen">
+            <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/student.com.jpg');"></div>
+            <div class="case-inner">
+                <div class="floating-num">01</div>
+                <div class="case-title-area">
+                    <div class="case-kicker">Market Research</div>
+                    <h2><span class="outline">留學顧問</span><br><span class="fill">數據調研</span></h2>
+                </div>
+                <div class="case-layout">
+                    <div class="col-left">
+                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>香港本地海外升學顧問公司，成立多年，專注協助中三至中六學生申請英國、澳洲及加拿大的大學。團隊共10名全職顧問，每年服務約200名學生。</p></div>
+                        <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>競爭環境急劇惡化：行業內已存在上市公司（大地教育，上市編號08417），按2022年收入計算，前四大機構已佔據相當市場份額。</li><li>市場規模持續萎縮：根據香港教育局最新公布的《2025年中六學生出路統計調查》，在43,561名有回覆的2025年中六畢業生中，僅6.5%選擇到香港以外地區升學。</li><li>缺乏決策數據支撐：長期依賴顧問個人經驗判斷家長需求，未能清晰及數據化「家長決策的關鍵」及「客戶流失」，導致市場營銷效率偏低。</li></ul></div>
+                    </div>
+                    <div class="col-right">
+                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>部署AI引擎，捕捉3個本地論壇及數個Facebook群組的數千則相關討論，結合AI模型識別家長關注的熱點及趨勢。</li><li>部署AI模型，構建風險數據庫，全自動實時追蹤英國、澳洲、加拿大等國簽證政策變動及QS世界百大大學錄取數據，並通過大數據模型預測各國留學市場走勢。</li><li>建立混合式AI數據分析平台，整合一手調研與多維度公開數據。</li><li>向千名有關客戶發放問卷，用人工及AI雙管齊下分析現有客戶的決策思路及關注的重點。</li><li>進行數十場深度訪談，深掘客戶做決策的關鍵詞與特徵。</li></ul></div>
+                        <div class="result-blast">
+                            <div class="big-number">+65%</div>
+                            <p>網站查詢量於三個月內增長65%；經過我司建議及調整之後，為客戶公司帶來額外120萬港元營收，佔公司全年總營業額的17%。成功避開了加拿大市場的簽證配額大幅削減及最低生活保证金等等的政策風險。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="timeline-dot"></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="step-number">5</div>
-          <h3>長效追蹤</h3>
-          <p>建立長期合作關係，持續監測市場變化並動態調整策略。</p>
+
+        <!-- 案例二：日式餐廳 -->
+        <div class="case-screen">
+            <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/chef.com.jpg');"></div>
+            <div class="case-inner">
+                <div class="floating-num">02</div>
+                <div class="case-title-area">
+                    <div class="case-kicker">Restaurant Launch</div>
+                    <h2><span class="fill">日式餐廳</span><br><span class="outline">星級開業</span></h2>
+                </div>
+                <div class="case-layout reverse">
+                    <div class="col-left">
+                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一位曾任職於日式餐廳的廚師，計劃開設其第一餐廳，主打日式料理。雖客戶具備優秀廚藝，但對飲食市場的實務及商業策劃缺乏經驗。</p></div>
+                        <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>選址風險：核心商業區及住宅區的街舖及商場舖位租金持續高企，選址決策直接影響客流及租金成本結構，客戶對各區人流特徵、消費力及競爭格局缺乏數據認知。</li><li>牌照及法律：餐飲牌照申請程序複雜，涉及食物環境衞生署、屋宇署及消防處等多個部門的審批，若處理不當，隨時延誤開業進度數月之久。</li><li>供應鏈建立困難：料理對食材新鮮度及品質要求極高，需要建立穩定、合規且具成本效益的食材供應渠道，由日本進口的冷鏈物流及本地供應商的篩選均構成挑戰。</li><li>市場推廣資源有限：新餐廳缺乏品牌知名度，在Instagram、Facebook及小紅書等社交平台上的曝光為零。在競爭激烈的香港餐飲市場中，如何以有限預算有效吸引目標客群，是決定開業成敗的關鍵。</li></ul></div>
+                    </div>
+                    <div class="col-right">
+                        <div class="result-blast">
+                            <div class="big-number">62%</div>
+                            <p>餐廳於六個月內順利開業，營運首年毛利率達到62%，成為區內熱門預約餐廳。開業初期社交媒體曝光量超出預期，首月訂座率達85%，並持續維持高翻桌率。客戶現正籌備第二間分店，並已委託本公司進行新選址的數據分析及市場定位研究。</p>
+                        </div>
+                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>數據選址工具，評估超過10個潛在舖位，綜合分析各選址周邊的人口密度、年齡結構、收入水平、步行人流及方圓500米內同類型餐廳的供應與定價分佈。</li><li>食物環境衞生署、屋宇署及消防處的牌照申請流程及文件要求多及複雜，制定詳細的合規時間表。</li><li>行業網絡及供應商資料庫，篩選及評估多家日本食材進口商及本地供應商，比較其供貨穩定性、價格及冷鏈物流能力。</li><li>分析客群在Instagram、Facebook及小紅書上的內容消費習慣及餐飲相關話題標籤，制定針對性的內容營銷策略。</li></ul></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="timeline-dot"></div>
-      </div>
-    </div>
-    <div class="monitoring-card">
-      <h2>全程監控機制</h2>
-      <p>我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p>
-    </div>
-  </div>
-</section>
 
-<!-- ===== CONTACT ===== -->
-<section class="section" id="contact" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/contact%20us.jpg');">
-  <div style="position: relative; z-index: 1;">
-    <div class="section-title">
-      <div class="section-label"><span class="label-en">✦ Contact</span></div>
-      <h2 class="contact-title">聯絡我們</h2>
-      <div class="line"></div>
-    </div>
-    <div class="contact-grid">
-      <a href="tel:+85212345678" class="contact-card">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="#3b82f6"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.2 2.2z"/></svg>
-        <h3>電話</h3><p>+852 1234 5678</p>
-      </a>
-      <a href="https://wa.me/85212345678" target="_blank" class="contact-card">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        <h3>WhatsApp</h3><p>+852 1234 5678</p>
-      </a>
-      <a href="https://instagram.com/topmarkethk" target="_blank" class="contact-card">
-        <svg viewBox="0 0 24 24" width="40" height="40"><defs><linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGrad)"/></svg>
-        <h3>Instagram</h3><p>@topmarkethk</p>
-      </a>
-      <a href="#" class="contact-card">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="#07C160"><path d="M8.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7.76 5.27c-.47-.27-.74-.68-.74-1.13 0-.45.27-.86.74-1.13C7.13 13.27 8.5 12.5 12 12.5s4.87.77 6.26 1.51c.47.27.74.68.74 1.13 0 .45-.27.86-.74 1.13-1.39.74-3.76 1.51-6.26 1.51s-4.87-.77-6.26-1.51zM12 2C6.48 2 2 6.48 2 12c0 2.07.63 4 1.7 5.59L2.5 22l4.62-1.29c1.42.82 3.05 1.29 4.88 1.29 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
-        <h3>WeChat</h3><p>TopMarketHK</p>
-      </a>
-      <a href="mailto:info@topmarket.hk" class="contact-card">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-        <h3>電郵</h3><p>info@topmarket.hk</p>
-      </a>
-      <a href="https://www.linkedin.com/company/topmarkethk" target="_blank" class="contact-card">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        <h3>LinkedIn</h3><p>Top Market HK</p>
-      </a>
-    </div>
-    <div class="welcome-block">
-      <h2>歡迎諮詢</h2>
-      <p>啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。</p>
-      <div class="badge">24小時內專人回覆 · 免費初步諮詢</div>
-    </div>
-  </div>
-</section>
+        <!-- 案例三：雜貨舖 -->
+        <div class="case-screen">
+            <div class="case-bg" style="background-image:url('https://raw.githubusercontent.com/w291818/ShanShan-Fruit/refs/heads/main/shop.com.jpg');"></div>
+            <div class="case-inner">
+                <div class="floating-num">03</div>
+                <div class="case-title-area">
+                    <div class="case-kicker">Brand Transformation</div>
+                    <h2><span class="outline">雜貨舖</span><br><span class="fill">數位轉型</span></h2>
+                </div>
+                <div class="case-layout">
+                    <div class="col-left">
+                        <div class="fragment"><h3><span class="icon"></span>客戶背景</h3><p>一間位於九龍區的雜貨舖，開業逾10年，多年來憑藉貨品齊全及價格實惠，累積了一班熟客。老店經營方式傳統，所有交易記錄及庫存管理全依賴人手及經驗，隨着創辦人年屆退休，接班人希望引入電子化管理，但對如何着手毫無頭緒。</p></div>
+                        <div class="fragment"><h3><span class="icon"></span>核心挑戰</h3><ul><li>庫存管理全憑經驗：店內逾3,000種貨品，一直靠創辦人記憶及肉眼判斷補貨，沒有系統記錄實際庫存數量，亦無法統計各貨品的銷售速度及毛利率，訂貨決策全憑「感覺」。</li><li>店鋪形象過時：裝修及陳列風格停留在30年前，門口貨架堆滿雜物，光線昏暗，衛生問題嚴重。年輕顧客即使有購物需求，亦因店鋪外觀「老舊」、「雜亂」而卻步。</li><li>客源嚴重老化：主要依靠周邊街坊及熟客支持，但消費群以長者及家庭主婦為主，年輕一代對老店缺乏認識。隨着社區人口老化，熟客流失，新客不足，營業額跌。</li><li>會員及客戶數據空白：過往從未記錄客戶聯絡資料或消費習慣，無法進行任何形式的客戶關係管理或精準營銷。即使有意推出促銷活動，亦缺乏有效的通知渠道。</li></ul></div>
+                    </div>
+                    <div class="col-right">
+                        <div class="fragment"><h3><span class="icon"></span>解決方案</h3><ul><li>提高店鋪形象及進店率：翻新工程完成後，店鋪外觀新净光猛，同時保留老字號的辨識度。年輕路人的進店率明顯提高。整體店鋪日均客流比翻新前增幅超過40%。</li><li>搭建「人工智能庫存周轉系統」：上線後三個月內，整體庫存周轉日數由估計約90至100日縮減至約65日，熱賣款缺貨情況大幅改善，因缺貨導致的銷售損失按月減少約30%。負責人由以往「憑感覺訂貨」改為「睇數據訂貨」，訂貨決策的準確度顯著提升。</li><li>營銷：在店内顯眼處貼不同的營銷廣告，增加商品曝光率。透過WhatsApp及電話接受訂貨，向會員推廣限時優惠，大幅提升顧客復購率。</li></ul></div>
+                        <div class="result-blast">
+                            <div class="big-number">+18.7%</div>
+                            <p>整體業績：在推行電子化轉型後的八個月內，整體營業額按年增長18.7%，毛利率由約38%提升至44.2%（主因是減少滯銷貨品的積壓，降低不必要的庫存成本）。老店舖成功由傳統街坊小店轉型為「現代老字號」，第二代接班人已初步掌握數據主導的營運模式。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="footer-social">
-    <a href="#contact"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg> WeChat</a>
-    <a href="https://wa.me/85212345678" target="_blank"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
-    <a href="https://instagram.com/topmarkethk" target="_blank"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg> Instagram</a>
-  </div>
-  <p class="copyright">© 2026 銳鋒有限公司 Top Market HK Limited</p>
-</footer>
+    <!-- ===== 咨詢流程 ===== -->
+    <section id="process">
+        <div class="process-inner">
+            <div class="section-title">
+                <div class="section-label"><span class="label-en">✦ Our Process</span></div>
+                <h2 class="process-title">專案咨詢流程</h2>
+                <div class="line"></div>
+            </div>
+            <div class="process-intro">
+                <p>我們建立了一套嚴謹且高效的工作流程，從客戶需求出發，透過多維度市場數據搜集、專業分析與策略制定，到長期監測與合作，確保每一個環節都精準到位。全程監控機制，確保每個環節的數據真實與專業性。</p>
+                <div class="highlight-note">全程監控 · 數據真實 · 專業執行</div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="step-number">1</div>
+                        <h3>需求界定</h3>
+                        <p>與企業決策者深度溝通，確立商業目標、專案範圍及關鍵績效指標。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="step-number">2</div>
+                        <h3>蒐集數據</h3>
+                        <p>全方位搜集市場情報，採集多維度數據。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="step-number">3</div>
+                        <h3>策略制定</h3>
+                        <p>深度解析數據，量身定制專屬的商業策略與行動方案。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="step-number">4</div>
+                        <h3>實施支援</h3>
+                        <p>根據特定行業場景進行策略優化，提供落地支援。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="step-number">5</div>
+                        <h3>長效追蹤</h3>
+                        <p>建立長期合作關係，持續監測市場變化並動態調整策略。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+            <div class="monitoring-card">
+                <h2>全程監控機制</h2>
+                <p>我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== JAVASCRIPT ===== -->
-<script>
-  // ----- 導航滾動效果 -----
-  window.addEventListener('scroll', () => {
-    const h = document.getElementById('header');
-    if (window.scrollY > 50) h.classList.add('scrolled');
-    else h.classList.remove('scrolled');
-    const backBtn = document.getElementById('backToTop');
-    if (window.scrollY > 400) backBtn.classList.add('show');
-    else backBtn.classList.remove('show');
-  });
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('active');
-  });
-  document.getElementById('backToTop').addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact" style="background-image:url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/contact%20us.jpg');">
+        <div style="position: relative; z-index: 1;">
+            <div class="section-title">
+                <div class="section-label"><span class="label-en">✦ Contact</span></div>
+                <h2 class="contact-title">聯絡我們</h2>
+                <div class="line"></div>
+            </div>
+            <div class="contact-grid">
+                <a href="tel:+85212345678" class="contact-card">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#3b82f6"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.2 2.2z"/></svg>
+                    <h3>電話</h3><p>+852 1234 5678</p>
+                </a>
+                <a href="https://wa.me/85212345678" target="_blank" class="contact-card">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    <h3>WhatsApp</h3><p>+852 1234 5678</p>
+                </a>
+                <a href="https://instagram.com/topmarkethk" target="_blank" class="contact-card">
+                    <svg viewBox="0 0 24 24" width="40" height="40"><defs><linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGrad)"/></svg>
+                    <h3>Instagram</h3><p>@topmarkethk</p>
+                </a>
+                <a href="#" class="contact-card">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#07C160"><path d="M8.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7.76 5.27c-.47-.27-.74-.68-.74-1.13 0-.45.27-.86.74-1.13C7.13 13.27 8.5 12.5 12 12.5s4.87.77 6.26 1.51c.47.27.74.68.74 1.13 0 .45-.27.86-.74 1.13-1.39.74-3.76 1.51-6.26 1.51s-4.87-.77-6.26-1.51zM12 2C6.48 2 2 6.48 2 12c0 2.07.63 4 1.7 5.59L2.5 22l4.62-1.29c1.42.82 3.05 1.29 4.88 1.29 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                    <h3>WeChat</h3><p>TopMarketHK</p>
+                </a>
+                <a href="mailto:info@topmarket.hk" class="contact-card">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                    <h3>電郵</h3><p>info@topmarket.hk</p>
+                </a>
+                <a href="https://www.linkedin.com/company/topmarkethk" target="_blank" class="contact-card">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <h3>LinkedIn</h3><p>Top Market HK</p>
+                </a>
+            </div>
+            <div class="welcome-block">
+                <h2>歡迎諮詢</h2>
+                <p>啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。</p>
+                <div class="badge">24小時內專人回覆 · 免費初步諮詢</div>
+            </div>
+        </div>
+    </section>
 
-  // ----- 服務卡片滑動 (點擊跳轉至 #business) -----
-  const cardData = [
-    { img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop', title: '市場洞察與數據分析', desc: '• 多維度研究策略： 結合數據統計與行業深度訪查，精準描繪消費動態與消費者行為模式。<br>• 全渠道大數據情報： 無縫對接多渠道大數據，涵蓋主流社交平台、論壇與電商網絡，實時捕捉市場脈搏與最新競爭情報。' },
-    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop', title: '商業戰略規劃', desc: '• 市場進入與可行性評估： 基於紮實的數據基礎，為企業評估新市場或新產品的潛在回報與風險。<br>• 頂層架構與商業藍圖：從撰寫商業計劃書到提供資源配置的全面咨詢，規劃清晰的商業發展藍圖。' },
-    { img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop', title: '品牌管理與優化', desc: '• 競爭定位與核心優勢： 針對市場現況與競爭形勢，調整品牌定位與敘事，提升品牌核心優勢。<br>• 長效追蹤與動態優化： 建立特定市場趨勢監測機制，透過定期管理會議跟進策略執行成效，確保優化措施精準落地。' }
-  ];
-  const track = document.getElementById('cardTrack');
-  const wrapper = document.getElementById('cardScrollWrapper');
-  const leftArrow = document.getElementById('leftArrow');
-  const rightArrow = document.getElementById('rightArrow');
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-social">
+            <a href="#contact"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg> WeChat</a>
+            <a href="https://wa.me/85212345678" target="_blank"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+            <a href="https://instagram.com/topmarkethk" target="_blank"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg> Instagram</a>
+        </div>
+        <p class="copyright">© 2026 銳鋒有限公司 Top Market HK Limited</p>
+    </footer>
 
-  function createCard(d, i) {
-    const div = document.createElement('div');
-    div.className = 'service-card';
-    div.dataset.card = i;
-    div.innerHTML = `<img class="card-img" src="${d.img}" alt="${d.title}"><div class="card-content"><h3>${d.title}</h3><p>${d.desc}</p><a href="#business" class="card-link">了解更多 →</a></div>`;
-    div.addEventListener('click', function(e) { 
-      if (!e.target.closest('.card-link')) { 
-        document.getElementById('business').scrollIntoView({ behavior: 'smooth' }); 
-      } 
-    });
-    return div;
-  }
-  const realCards = [];
-  for (let i = 0; i < 5; i++) cardData.forEach((d, idx) => realCards.push(createCard(d, i * 3 + idx + 1)));
-  track.appendChild(createCard(cardData[2], 'clone-last'));
-  realCards.forEach(c => track.appendChild(c));
-  track.appendChild(createCard(cardData[0], 'clone-first'));
-  const allCards = track.querySelectorAll('.service-card');
-  let ci = 1, transitioning = false;
-
-  function getOffset(i) {
-    const c = allCards[i]; if (!c) return 0;
-    const cw = track.parentElement.offsetWidth;
-    return -(c.offsetLeft - cw / 2 + c.offsetWidth / 2);
-  }
-  function updateActive(i) { allCards.forEach(c => c.classList.remove('active')); if (allCards[i]) allCards[i].classList.add('active'); }
-  function goTo(i, a = true) {
-    if (i < 0 || i >= allCards.length) return;
-    const o = getOffset(i);
-    track.style.transition = a ? 'transform 0.5s ease' : 'none';
-    track.style.transform = `translateX(${o}px)`;
-    updateActive(i);
-  }
-  function goNext() {
-    if (transitioning) return;
-    transitioning = true;
-    ci++;
-    goTo(ci, true);
-    track.addEventListener('transitionend', function eh() {
-      track.removeEventListener('transitionend', eh);
-      if (ci === allCards.length - 1) { ci = 1; goTo(ci, false); }
-      transitioning = false;
-    });
-  }
-  function goPrev() {
-    if (transitioning) return;
-    transitioning = true;
-    ci--;
-    goTo(ci, true);
-    track.addEventListener('transitionend', function eh() {
-      track.removeEventListener('transitionend', eh);
-      if (ci === 0) { ci = allCards.length - 2; goTo(ci, false); }
-      transitioning = false;
-    });
-  }
-  setTimeout(() => { goTo(1, false); updateActive(1); }, 100);
-  let autoInt;
-  function sa() { clearInterval(autoInt); autoInt = setInterval(goNext, 3000); }
-  function pa() { clearInterval(autoInt); }
-  wrapper.addEventListener('mouseenter', pa);
-  wrapper.addEventListener('mouseleave', sa);
-  leftArrow.addEventListener('click', () => { goPrev(); pa(); sa(); });
-  rightArrow.addEventListener('click', () => { goNext(); pa(); sa(); });
-  sa();
-
-  // 卡片光暈
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty('--mx', x + '%');
-      card.style.setProperty('--my', y + '%');
-      const cx = rect.width/2, cy = rect.height/2;
-      const rx = ((y - 50) / 50) * -8;
-      const ry = ((x - 50) / 50) * 8;
-      card.style.transform = `scale(1) perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.transform = 'scale(0.92) perspective(800px) rotateX(0deg) rotateY(0deg)'; });
-  });
-
-  // 業務範圍卡片光暈 + 動畫觸發
-  const businessObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        entry.target.querySelectorAll('.info-card').forEach((card, idx) => {
-          setTimeout(() => card.classList.add('visible'), idx * 150);
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ----- 導航滾動效果 -----
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('header');
+            if (window.scrollY > 50) h.classList.add('scrolled');
+            else h.classList.remove('scrolled');
+            const backBtn = document.getElementById('backToTop');
+            if (window.scrollY > 400) backBtn.classList.add('show');
+            else backBtn.classList.remove('show');
         });
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.business-block').forEach(block => {
-    businessObserver.observe(block);
-  });
-
-  // 成功案例動畫觸發
-  const caseObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        entry.target.querySelectorAll('.fragment, .result-blast').forEach((el, idx) => {
-          setTimeout(() => el.classList.add('visible'), idx * 150);
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
         });
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.case-screen').forEach(screen => {
-    caseObserver.observe(screen);
-  });
-
-  // 聯絡卡片動畫
-  const contactObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.contact-card, .welcome-block').forEach(el => {
-          el.classList.add('visible');
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-      }
-    });
-  }, { threshold: 0.1 });
 
-  document.querySelector('#contact .contact-grid')?.parentElement && contactObserver.observe(document.querySelector('#contact'));
+        // ----- 服務卡片滑動 (點擊跳轉至 #business) -----
+        const cardData = [
+            { img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop',
+                title: '市場洞察與數據分析',
+                desc: '• 多維度研究策略： 結合數據統計與行業深度訪查，精準描繪消費動態與消費者行為模式。<br>• 全渠道大數據情報： 無縫對接多渠道大數據，涵蓋主流社交平台、論壇與電商網絡，實時捕捉市場脈搏與最新競爭情報。' },
+            { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop',
+                title: '商業戰略規劃',
+                desc: '• 市場進入與可行性評估： 基於紮實的數據基礎，為企業評估新市場或新產品的潛在回報與風險。<br>• 頂層架構與商業藍圖：從撰寫商業計劃書到提供資源配置的全面咨詢，規劃清晰的商業發展藍圖。' },
+            { img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop',
+                title: '品牌管理與優化',
+                desc: '• 競爭定位與核心優勢： 針對市場現況與競爭形勢，調整品牌定位與敘事，提升品牌核心優勢。<br>• 長效追蹤與動態優化： 建立特定市場趨勢監測機制，透過定期管理會議跟進策略執行成效，確保優化措施精準落地。' }
+        ];
+        const track = document.getElementById('cardTrack');
+        const wrapper = document.getElementById('cardScrollWrapper');
+        const leftArrow = document.getElementById('leftArrow');
+        const rightArrow = document.getElementById('rightArrow');
 
-  // 時間軸動畫 (新版 process)
-  const timelineObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('#process .timeline-item, #process .process-intro, #process .monitoring-card').forEach(el => {
-    timelineObserver.observe(el);
-  });
-
-  // Why Us 卡片動畫
-  const whyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.why-card').forEach(card => {
-    whyObserver.observe(card);
-  });
-
-  // 銳鋒顧問卡片動畫
-  const aboutObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  const aboutCard = document.getElementById('aboutCard');
-  if (aboutCard) aboutObserver.observe(aboutCard);
-
-  // ----- 滾動觸發動畫 (原有) -----
-  const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        entry.target.querySelectorAll('img').forEach(img => img.classList.add('visible'));
-      }
-    });
-  }, observerOptions);
-  document.querySelectorAll(
-    '.hero-title, .hero-desc, .hero-btn, .stat-item, .service-title, .case-title, .process-title, .contact-title, .why-title, .about-card'
-  ).forEach(el => observer.observe(el));
-
-  const allImages = document.querySelectorAll('img');
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  allImages.forEach(img => imageObserver.observe(img));
-
-  // 導航點擊平滑跳轉
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId.startsWith('#')) {
-        e.preventDefault();
-        const targetEl = document.querySelector(targetId);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth' });
-          document.getElementById('navLinks').classList.remove('active');
+        function createCard(d, i) {
+            const div = document.createElement('div');
+            div.className = 'service-card';
+            div.dataset.card = i;
+            div.innerHTML =
+                `<img class="card-img" src="${d.img}" alt="${d.title}"><div class="card-content"><h3>${d.title}</h3><p>${d.desc}</p><a href="#business" class="card-link">了解更多 →</a></div>`;
+            div.addEventListener('click', function(e) {
+                if (!e.target.closest('.card-link')) {
+                    document.getElementById('business').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            return div;
         }
-      }
-    });
-  });
-</script>
+        const realCards = [];
+        for (let i = 0; i < 5; i++) cardData.forEach((d, idx) => realCards.push(createCard(d, i * 3 + idx + 1)));
+        track.appendChild(createCard(cardData[2], 'clone-last'));
+        realCards.forEach(c => track.appendChild(c));
+        track.appendChild(createCard(cardData[0], 'clone-first'));
+        const allCards = track.querySelectorAll('.service-card');
+        let ci = 1,
+            transitioning = false;
+
+        function getOffset(i) {
+            const c = allCards[i];
+            if (!c) return 0;
+            const cw = track.parentElement.offsetWidth;
+            return -(c.offsetLeft - cw / 2 + c.offsetWidth / 2);
+        }
+
+        function updateActive(i) { allCards.forEach(c => c.classList.remove('active'));
+            if (allCards[i]) allCards[i].classList.add('active'); }
+
+        function goTo(i, a = true) {
+            if (i < 0 || i >= allCards.length) return;
+            const o = getOffset(i);
+            track.style.transition = a ? 'transform 0.5s ease' : 'none';
+            track.style.transform = `translateX(${o}px)`;
+            updateActive(i);
+        }
+
+        function goNext() {
+            if (transitioning) return;
+            transitioning = true;
+            ci++;
+            goTo(ci, true);
+            track.addEventListener('transitionend', function eh() {
+                track.removeEventListener('transitionend', eh);
+                if (ci === allCards.length - 1) { ci = 1;
+                    goTo(ci, false); }
+                transitioning = false;
+            });
+        }
+
+        function goPrev() {
+            if (transitioning) return;
+            transitioning = true;
+            ci--;
+            goTo(ci, true);
+            track.addEventListener('transitionend', function eh() {
+                track.removeEventListener('transitionend', eh);
+                if (ci === 0) { ci = allCards.length - 2;
+                    goTo(ci, false); }
+                transitioning = false;
+            });
+        }
+        setTimeout(() => { goTo(1, false);
+            updateActive(1); }, 100);
+        let autoInt;
+
+        function sa() { clearInterval(autoInt);
+            autoInt = setInterval(goNext, 3000); }
+
+        function pa() { clearInterval(autoInt); }
+        wrapper.addEventListener('mouseenter', pa);
+        wrapper.addEventListener('mouseleave', sa);
+        leftArrow.addEventListener('click', () => { goPrev();
+            pa();
+            sa(); });
+        rightArrow.addEventListener('click', () => { goNext();
+            pa();
+            sa(); });
+        sa();
+
+        // 卡片光暈
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mx', x + '%');
+                card.style.setProperty('--my', y + '%');
+                const cx = rect.width / 2,
+                    cy = rect.height / 2;
+                const rx = ((y - 50) / 50) * -8;
+                const ry = ((x - 50) / 50) * 8;
+                card.style.transform = `scale(1) perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform =
+                    'scale(0.92) perspective(800px) rotateX(0deg) rotateY(0deg)'; });
+        });
+
+        // 業務範圍卡片光暈 + 動畫觸發
+        const businessObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.info-card').forEach((card, idx) => {
+                        setTimeout(() => card.classList.add('visible'), idx * 150);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.business-block').forEach(block => {
+            businessObserver.observe(block);
+        });
+
+        // 成功案例動畫觸發
+        const caseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.fragment, .result-blast').forEach((el, idx) => {
+                        setTimeout(() => el.classList.add('visible'), idx * 150);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.case-screen').forEach(screen => {
+            caseObserver.observe(screen);
+        });
+
+        // 聯絡卡片動畫
+        const contactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.contact-card, .welcome-block').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelector('#contact .contact-grid')?.parentElement && contactObserver.observe(document
+            .querySelector('#contact'));
+
+        // 時間軸動畫 (新版 process)
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('#process .timeline-item, #process .process-intro, #process .monitoring-card')
+            .forEach(el => {
+                timelineObserver.observe(el);
+            });
+
+        // Why Us 卡片動畫
+        const whyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.why-card').forEach(card => {
+            whyObserver.observe(card);
+        });
+
+        // 銳鋒顧問卡片動畫
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        const aboutCard = document.getElementById('aboutCard');
+        if (aboutCard) aboutObserver.observe(aboutCard);
+
+        // ----- 滾動觸發動畫 (原有) -----
+        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('img').forEach(img => img.classList.add('visible'));
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll(
+            '.hero-title, .hero-desc, .hero-btn, .stat-item, .service-title, .case-title, .process-title, .contact-title, .why-title, .about-card'
+        ).forEach(el => observer.observe(el));
+
+        const allImages = document.querySelectorAll('img');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        allImages.forEach(img => imageObserver.observe(img));
+
+        // 導航點擊平滑跳轉
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                        document.getElementById('navLinks').classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
