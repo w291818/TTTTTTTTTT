@@ -194,10 +194,23 @@
     .left-arrow { left: 15px; }
     .right-arrow { right: 15px; }
 
-    /* ===== Why Us 整合為卡片區塊 ===== */
+    /* ===== Why Us 整合為卡片區塊 + 背景圖片 ===== */
     .why-us {
       padding: 80px 20px;
-      background: #020510;
+      background: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/why%20us.jpg') center/cover no-repeat fixed;
+      position: relative;
+    }
+    /* 背景圖片清晰無遮擋，不加任何遮罩層 */
+    .why-us .section-title h2,
+    .why-us .section-title .label-en {
+      color: #fff;
+    }
+    .why-us .section-title .label-en::before,
+    .why-us .section-title .label-en::after {
+      background: linear-gradient(90deg, transparent, #3b82f6);
+    }
+    .why-us .section-title .label-en::after {
+      background: linear-gradient(90deg, #3b82f6, transparent);
     }
     .why-grid {
       display: grid;
@@ -205,18 +218,21 @@
       gap: 30px;
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
     .why-card {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10, 15, 30, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       opacity: 0;
       transform: translateY(40px);
       cursor: default;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
     .why-card.visible {
       opacity: 1;
@@ -226,8 +242,8 @@
     .why-card:nth-child(3).visible { transition-delay: 0.3s; }
     .why-card:hover {
       transform: translateY(-10px);
-      border-color: rgba(59,130,246,0.4);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
     .why-card-img {
       width: 100%;
@@ -249,11 +265,13 @@
       color: #fff;
       margin-bottom: 12px;
       letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     .why-card-body p {
-      color: #cbd5e1;
+      color: #e2e8f0;
       font-size: 0.95rem;
       line-height: 1.9;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.2);
     }
     .why-card-body .accent-line {
       width: 40px;
@@ -1033,13 +1051,12 @@
   </div>
 </div>
 
-<!-- ===== WHY US — 三個卡片整合為一個區塊 ===== -->
+<!-- ===== WHY US — 三個卡片整合為一個區塊 + 背景圖片 ===== -->
 <section class="why-us" id="why">
   <div class="section-title">
     <div class="section-label"><span class="label-en">✦ Why Us</span></div>
     <h2 class="why-title">我們的優勢</h2>
     <div class="line"></div>
-          <img class="why-card-img" src="https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/why%20us.jpg" alt="">
   </div>
   <div class="why-grid">
     <!-- 卡片 1: 數據驅動 -->
