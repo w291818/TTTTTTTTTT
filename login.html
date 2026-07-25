@@ -144,11 +144,11 @@
         <form id="loginForm">
             <div class="form-group">
                 <label for="email">電郵地址</label>
-                <input type="email" id="email" placeholder="you@example.com" value="demo@topmarket.hk">
+                <input type="email" id="email" placeholder="請輸入您的電郵地址">
             </div>
             <div class="form-group">
                 <label for="password">密碼</label>
-                <input type="password" id="password" placeholder="••••••••" value="password123">
+                <input type="password" id="password" placeholder="請輸入您的密碼">
             </div>
             <button type="submit" class="btn-login">登入</button>
             <div class="error-msg" id="errorMsg">電郵或密碼不正確，請重新輸入。</div>
@@ -156,21 +156,22 @@
         <div class="back-link">
             <a href="index.html">← 返回首頁</a>
         </div>
-        <p style="text-align:center;color:#475569;font-size:0.75rem;margin-top:20px;">示範帳號：demo@topmarket.hk / password123</p>
     </div>
     <script>
+        // =============================================================
+        // 登入驗證（示範用，實際部署時請替換為真實後端 API）
+        // =============================================================
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value.trim();
             const errorEl = document.getElementById('errorMsg');
-            
-            // 示範驗證（可自訂）
+
+            // 此處為示範驗證邏輯，實際部署時應向後端 API 發送請求
+            // 目前保留一個示範帳號供功能測試，但頁面上不顯示任何提示
             if (email === 'demo@topmarket.hk' && password === 'password123') {
-                // 登入成功，儲存 session
                 sessionStorage.setItem('topmarket_logged_in', 'true');
                 sessionStorage.setItem('topmarket_user', email);
-                // 獲取登入前頁面，預設 resources.html
                 const redirect = sessionStorage.getItem('topmarket_redirect') || 'resources.html';
                 window.location.href = redirect;
             } else {
