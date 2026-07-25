@@ -2004,48 +2004,43 @@
                     <span class="brand-en">The Top Market</span>
                 </a>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <!-- 原有導航項 -->
-                <li><a href="#services" data-i18n="nav.services">業務範圍</a></li>
-                <li><a href="#cases" data-i18n="nav.cases">成功案例</a></li>
-                <li><a href="#process" data-i18n="nav.process">咨詢流程</a></li>
+<ul class="nav-links" id="navLinks">
+    <li><a href="#services" data-i18n="nav.services">業務範圍</a></li>
+    <li><a href="#cases" data-i18n="nav.cases">成功案例</a></li>
+    <li><a href="#process" data-i18n="nav.process">咨詢流程</a></li>
 
-                <!-- ===== 資源中心（下拉） ===== -->
-                <li class="dropdown" id="resourcesDropdown">
-                    <a href="resources.html" data-i18n="nav.resources">資源中心 ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="resources.html?tab=reports" data-i18n="nav.resources.reports">市場報告</a></li>
-                        <li><a href="resources.html?tab=policies" data-i18n="nav.resources.policies">政策相關</a></li>
-                        <li><a href="resources.html?tab=news" data-i18n="nav.resources.news">新聞</a></li>
-                        <li><a href="resources.html?tab=articles" data-i18n="nav.resources.articles">文章</a></li>
-                        <li><a href="resources.html?tab=videos" data-i18n="nav.resources.videos">影片</a></li>
-                    </ul>
-                </li>
+    <!-- 資源中心 -->
+    <li class="dropdown" id="resourcesDropdown">
+        <a href="resources.html" data-i18n="nav.resources">資源中心 ▾</a>
+        <ul class="dropdown-menu">
+            <li><a href="resources.html?tab=reports" data-i18n="nav.resources.reports">市場報告</a></li>
+            <li><a href="resources.html?tab=policies" data-i18n="nav.resources.policies">政策相關</a></li>
+            <li><a href="resources.html?tab=news" data-i18n="nav.resources.news">新聞</a></li>
+            <li><a href="resources.html?tab=articles" data-i18n="nav.resources.articles">文章</a></li>
+            <li><a href="resources.html?tab=videos" data-i18n="nav.resources.videos">影片</a></li>
+        </ul>
+    </li>
 
-                <!-- ===== 會員中心（下拉） ===== -->
-                <li class="dropdown" id="memberDropdown">
-                    <a href="member.html" data-i18n="nav.member">會員中心 ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="member.html#profile" data-i18n="nav.member.profile">個人資料</a></li>
-                        <li><a href="member.html#downloads" data-i18n="nav.member.downloads">我的下載</a></li>
-                        <li><a href="member.html#saved" data-i18n="nav.member.saved">我的收藏</a></li>
-                        <li><a href="#" id="logoutBtn" data-i18n="nav.member.logout">登出</a></li>
-                    </ul>
-                </li>
+    <!-- 會員中心（已簡化，僅保留登錄） -->
+    <li class="dropdown" id="memberDropdown">
+        <a href="login.html" data-i18n="nav.member">會員中心 ▾</a>
+        <ul class="dropdown-menu">
+            <li><a href="login.html" data-i18n="nav.member.login">登錄</a></li>
+        </ul>
+    </li>
 
-                <li><a href="#contact" data-i18n="nav.contact">聯絡我們</a></li>
-                <li><a href="join.html" target="_blank" data-i18n="nav.join">加入我們</a></li>
-                <li><a href="faq.html" target="_blank" data-i18n="nav.faq">常見問題</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">聯絡我們</a></li>
+    <li><a href="join.html" data-i18n="nav.join">加入我們</a></li>
+    <li><a href="faq.html" data-i18n="nav.faq">常見問題</a></li>
 
-                <!-- 語言切換 -->
-                <li style="display:flex;align-items:center;margin-left:8px;">
-                    <div class="lang-switch" id="langSwitch">
-                        <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
-                        <span class="lang-divider">/</span>
-                        <span class="lang-opt" data-lang="en">EN</span>
-                    </div>
-                </li>
-            </ul>
+    <li style="display:flex;align-items:center;margin-left:8px;">
+        <div class="lang-switch" id="langSwitch">
+            <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
+            <span class="lang-divider">/</span>
+            <span class="lang-opt" data-lang="en">EN</span>
+        </div>
+    </li>
+</ul>
             <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
         </div>
     </header>
