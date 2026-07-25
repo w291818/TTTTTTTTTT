@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>資源中心 | 銳鋒顧問</title>
     <style>
-        /* ---------- 與主頁一致的基礎樣式 ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -94,9 +93,7 @@
         .nav-links a:hover { color: #3b82f6; }
         .nav-links a:hover::after { width: 100%; }
 
-        .dropdown {
-            position: relative;
-        }
+        .dropdown { position: relative; }
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -222,7 +219,6 @@
             stroke-linejoin: round;
         }
 
-        /* ---------- 資源中心專用 ---------- */
         .hero {
             width: 100%;
             min-height: 50vh;
@@ -394,7 +390,6 @@
         }
         .resource-card .meta .download-btn:hover { color: #60a5fa; }
 
-        /* 頁腳 */
         .footer {
             background: #fff;
             color: #1a202c;
@@ -425,7 +420,6 @@
         .footer-social a svg { width: 24px; height: 24px; }
         .copyright { font-size: 0.9rem; color: #555; }
 
-        /* 響應式 */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -475,7 +469,6 @@
     </style>
 </head>
 <body>
-    <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <div class="nav-container">
             <div class="logo">
@@ -501,12 +494,9 @@
                 </li>
 
                 <li class="dropdown" id="memberDropdown">
-                    <a href="member.html">會員中心 ▾</a>
+                    <a href="login.html">會員中心 ▾</a>
                     <ul class="dropdown-menu">
-                        <li><a href="member.html#profile">個人資料</a></li>
-                        <li><a href="member.html#downloads">我的下載</a></li>
-                        <li><a href="member.html#saved">我的收藏</a></li>
-                        <li><a href="#" id="logoutBtn">登出</a></li>
+                        <li><a href="login.html">登錄</a></li>
                     </ul>
                 </li>
 
@@ -526,10 +516,8 @@
         </div>
     </header>
 
-    <!-- ===== BACK TO TOP ===== -->
     <button id="backToTop"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
 
-    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
@@ -540,13 +528,11 @@
         </div>
     </section>
 
-    <!-- ===== 資源內容 ===== -->
     <div class="section" id="resourcesSection">
         <div class="section-title">
             <h2>瀏覽資源</h2>
             <div class="line"></div>
         </div>
-
         <div class="resource-tabs" id="tabContainer">
             <button class="tab-btn active" data-tab="reports">市場報告</button>
             <button class="tab-btn" data-tab="policies">政策相關</button>
@@ -554,11 +540,9 @@
             <button class="tab-btn" data-tab="articles">文章</button>
             <button class="tab-btn" data-tab="videos">影片</button>
         </div>
-
         <div class="resource-grid" id="resourceGrid"></div>
     </div>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-social">
             <a href="#"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg><span>WeChat</span></a>
@@ -569,22 +553,14 @@
     </footer>
 
     <script>
-        // =============================================================
-        // 1. 登入檢查
-        // =============================================================
         (function checkLogin() {
-            const isLoggedIn = sessionStorage.getItem('topmarket_logged_in') === 'true';
-            if (!isLoggedIn) {
+            if (sessionStorage.getItem('topmarket_logged_in') !== 'true') {
                 sessionStorage.setItem('topmarket_redirect', window.location.pathname + window.location.search);
                 window.location.href = 'login.html';
                 return;
             }
-            console.log('✅ 已登入：', sessionStorage.getItem('topmarket_user') || '會員');
         })();
 
-        // =============================================================
-        // 2. 資源數據
-        // =============================================================
         const resourceData = {
             reports: {
                 label: '市場報告',
@@ -628,16 +604,12 @@
             }
         };
 
-        // =============================================================
-        // 3. 渲染資源
-        // =============================================================
         const grid = document.getElementById('resourceGrid');
         const tabs = document.querySelectorAll('.tab-btn');
 
         function renderResources(tabKey) {
             const data = resourceData[tabKey];
             if (!data) return;
-
             grid.innerHTML = '';
             data.items.forEach((item, index) => {
                 const card = document.createElement('div');
@@ -654,15 +626,11 @@
                 `;
                 grid.appendChild(card);
             });
-
             setTimeout(() => {
                 document.querySelectorAll('.resource-card').forEach(el => el.classList.add('visible'));
             }, 100);
         }
 
-        // =============================================================
-        // 4. 標籤切換
-        // =============================================================
         tabs.forEach(tab => {
             tab.addEventListener('click', function() {
                 tabs.forEach(t => t.classList.remove('active'));
@@ -688,9 +656,6 @@
             }
         })();
 
-        // =============================================================
-        // 5. 其他互動
-        // =============================================================
         window.addEventListener('scroll', () => {
             const h = document.getElementById('header');
             if (window.scrollY > 50) h.classList.add('scrolled');
@@ -706,14 +671,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.hero-title, .hero-desc').forEach(el => heroObserver.observe(el));
-
-        // 移動端下拉
         document.querySelectorAll('.dropdown > a').forEach(link => {
             link.addEventListener('click', function(e) {
                 if (window.innerWidth <= 768) {
@@ -730,13 +687,12 @@
             }
         });
 
-        document.getElementById('logoutBtn')?.addEventListener('click', function(e) {
-            e.preventDefault();
-            sessionStorage.removeItem('topmarket_logged_in');
-            sessionStorage.removeItem('topmarket_user');
-            alert('您已成功登出。');
-            window.location.href = 'index.html';
-        });
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.hero-title, .hero-desc').forEach(el => heroObserver.observe(el));
 
         console.log('✅ 資源中心已載入');
     </script>
