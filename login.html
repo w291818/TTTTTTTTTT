@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>會員登入 | 銳鋒顧問</title>
+    <title id="pageTitle">會員登入 | 銳鋒顧問</title>
     <style>
         * {
             margin: 0;
@@ -20,12 +20,14 @@
             justify-content: center;
             padding: 20px;
         }
+
         .login-wrapper {
+            position: relative;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 32px;
-            padding: 50px 45px;
+            padding: 50px 45px 45px;
             max-width: 420px;
             width: 100%;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
@@ -34,36 +36,87 @@
             animation: fadeUp 0.8s ease forwards;
         }
         @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        /* ---- 語言切換（右上角） ---- */
+        .lang-switch {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 30px;
+            padding: 4px 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            z-index: 10;
+        }
+        .lang-switch:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .lang-switch .lang-opt {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+        .lang-switch .lang-opt.active {
+            background: #3b82f6;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
+        }
+        .lang-switch .lang-divider {
+            color: #334155;
+            font-weight: 300;
+            font-size: 0.8rem;
+        }
+
         .login-wrapper .logo {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
+            margin-top: 6px;
         }
         .login-wrapper .logo .brand-cn {
             font-size: 2.4rem;
             font-weight: 800;
             color: #fff;
             letter-spacing: 2px;
+            display: inline;
         }
         .login-wrapper .logo .brand-en {
             font-size: 0.95rem;
             color: #94a3b8;
             letter-spacing: 1px;
+            display: block;
+            margin-top: 2px;
         }
         .login-wrapper h1 {
             font-size: 1.6rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .login-wrapper .sub {
             color: #94a3b8;
             font-size: 0.9rem;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .form-group label {
             display: block;
@@ -100,6 +153,7 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-top: 6px;
         }
         .btn-login:hover {
             background: #2563eb;
@@ -109,7 +163,7 @@
         .error-msg {
             color: #ef4444;
             font-size: 0.85rem;
-            margin-top: 12px;
+            margin-top: 14px;
             text-align: center;
             display: none;
         }
@@ -118,7 +172,7 @@
         }
         .login-wrapper .back-link {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 22px;
         }
         .login-wrapper .back-link a {
             color: #64748b;
@@ -128,38 +182,193 @@
         .login-wrapper .back-link a:hover {
             color: #3b82f6;
         }
+
+        /* ---- 響應式 ---- */
         @media (max-width: 480px) {
-            .login-wrapper { padding: 30px 20px; }
+            .login-wrapper {
+                padding: 44px 20px 30px;
+            }
+            .lang-switch {
+                top: 12px;
+                right: 12px;
+                padding: 3px 5px;
+            }
+            .lang-switch .lang-opt {
+                padding: 3px 10px;
+                font-size: 0.7rem;
+            }
+            .login-wrapper .logo .brand-cn {
+                font-size: 1.8rem;
+            }
+            .login-wrapper .logo .brand-en {
+                font-size: 0.8rem;
+            }
+            .login-wrapper h1 {
+                font-size: 1.3rem;
+            }
+            .login-wrapper .sub {
+                font-size: 0.8rem;
+            }
+            .form-group input {
+                padding: 10px 14px;
+                font-size: 0.9rem;
+            }
+            .btn-login {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="login-wrapper">
-        <div class="logo">
-            <div class="brand-cn">銳鋒</div>
-            <div class="brand-en">Top Market Consulting</div>
+        <!-- 語言切換按鈕（右上角） -->
+        <div class="lang-switch" id="langSwitch">
+            <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
+            <span class="lang-divider">/</span>
+            <span class="lang-opt" data-lang="en">EN</span>
         </div>
-        <h1>會員登入</h1>
-        <p class="sub">請登入以存取會員專屬內容</p>
+
+        <div class="logo">
+            <div class="brand-cn" id="brandCn">銳鋒</div>
+            <div class="brand-en" id="brandEn">Top Market Consulting</div>
+        </div>
+
+        <h1 data-i18n="login.title">會員登入</h1>
+        <p class="sub" data-i18n="login.sub">請登入以存取會員專屬內容</p>
+
         <form id="loginForm">
             <div class="form-group">
-                <label for="email">電郵地址</label>
-                <input type="email" id="email" placeholder="請輸入您的電郵地址">
+                <label for="email" data-i18n="login.email">電郵地址</label>
+                <input type="email" id="email" data-i18n-placeholder="login.email_placeholder" placeholder="請輸入您的電郵地址">
             </div>
             <div class="form-group">
-                <label for="password">密碼</label>
-                <input type="password" id="password" placeholder="請輸入您的密碼">
+                <label for="password" data-i18n="login.password">密碼</label>
+                <input type="password" id="password" data-i18n-placeholder="login.password_placeholder" placeholder="請輸入您的密碼">
             </div>
-            <button type="submit" class="btn-login">登入</button>
-            <div class="error-msg" id="errorMsg">電郵或密碼不正確，請重新輸入。</div>
+            <button type="submit" class="btn-login" data-i18n="login.btn">登入</button>
+            <div class="error-msg" id="errorMsg" data-i18n="login.error">電郵或密碼不正確，請重新輸入。</div>
         </form>
+
         <div class="back-link">
-            <a href="index.html">← 返回首頁</a>
+            <a href="index.html" data-i18n="login.back">← 返回首頁</a>
         </div>
     </div>
+
     <script>
         // =============================================================
-        // 登入驗證（示範用，實際部署時請替換為真實後端 API）
+        // 多語言數據
+        // =============================================================
+        const i18n = {
+            'zh': {
+                'login.page_title': '會員登入 | 銳鋒顧問',
+                'login.title': '會員登入',
+                'login.sub': '請登入以存取會員專屬內容',
+                'login.email': '電郵地址',
+                'login.email_placeholder': '請輸入您的電郵地址',
+                'login.password': '密碼',
+                'login.password_placeholder': '請輸入您的密碼',
+                'login.btn': '登入',
+                'login.error': '電郵或密碼不正確，請重新輸入。',
+                'login.back': '← 返回首頁'
+            },
+            'en': {
+                'login.page_title': 'Member Login | Top Market Consulting',
+                'login.title': 'Member Login',
+                'login.sub': 'Please log in to access member-only content',
+                'login.email': 'Email Address',
+                'login.email_placeholder': 'Please enter your email address',
+                'login.password': 'Password',
+                'login.password_placeholder': 'Please enter your password',
+                'login.btn': 'Login',
+                'login.error': 'Incorrect email or password. Please try again.',
+                'login.back': '← Back to Home'
+            }
+        };
+
+        let currentLang = 'zh';
+
+        // =============================================================
+        // 應用語言
+        // =============================================================
+        function applyLanguage(lang) {
+            currentLang = lang;
+            const dict = i18n[lang];
+            if (!dict) return;
+
+            // 更新頁面標題
+            document.title = dict['login.page_title'];
+
+            // 更新 data-i18n 文本
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            // 更新 placeholder
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (dict[key] !== undefined) {
+                    el.placeholder = dict[key];
+                }
+            });
+
+            // 品牌名：中文模式下顯示「銳鋒」，英文模式下隱藏
+            const brandCn = document.getElementById('brandCn');
+            if (brandCn) {
+                brandCn.style.display = (lang === 'zh') ? 'inline' : 'none';
+            }
+
+            // 語言按鈕高亮
+            document.querySelectorAll('.lang-opt').forEach(opt => {
+                opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+            });
+
+            // 切換頁面語言屬性
+            document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+
+            // 保存偏好
+            try {
+                localStorage.setItem('topmarket-lang', lang);
+            } catch (e) { /* ignore */ }
+        }
+
+        // =============================================================
+        // 語言切換事件
+        // =============================================================
+        document.querySelectorAll('.lang-opt').forEach(opt => {
+            opt.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const lang = this.getAttribute('data-lang');
+                if (lang !== currentLang) {
+                    applyLanguage(lang);
+                    // 錯誤訊息若顯示中，切換語言後保持隱藏或清除狀態
+                    const errorEl = document.getElementById('errorMsg');
+                    if (errorEl) errorEl.classList.remove('show');
+                }
+            });
+        });
+
+        // =============================================================
+        // 恢復語言偏好（預設英文）
+        // =============================================================
+        (function restoreLang() {
+            try {
+                const saved = localStorage.getItem('topmarket-lang');
+                if (saved && (saved === 'zh' || saved === 'en')) {
+                    applyLanguage(saved);
+                    return;
+                }
+            } catch (e) { /* ignore */ }
+            // ✅ 預設為英文
+            applyLanguage('en');
+        })();
+
+        // =============================================================
+        // 登入驗證（示範用）
         // =============================================================
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -167,14 +376,14 @@
             const password = document.getElementById('password').value.trim();
             const errorEl = document.getElementById('errorMsg');
 
-            // 此處為示範驗證邏輯，實際部署時應向後端 API 發送請求
-            // 目前保留一個示範帳號供功能測試，但頁面上不顯示任何提示
+            // 示範帳號：demo@topmarket.hk / password123
             if (email === 'demo@topmarket.hk' && password === 'password123') {
                 sessionStorage.setItem('topmarket_logged_in', 'true');
                 sessionStorage.setItem('topmarket_user', email);
                 const redirect = sessionStorage.getItem('topmarket_redirect') || 'resources.html';
                 window.location.href = redirect;
             } else {
+                // 顯示錯誤（會自動使用當前語言的翻譯）
                 errorEl.classList.add('show');
                 setTimeout(() => errorEl.classList.remove('show'), 3000);
             }
@@ -186,5 +395,6 @@
             window.location.href = redirect;
         }
     </script>
+
 </body>
 </html>
