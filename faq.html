@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>常見問題 | 銳鋒顧問</title>
+    <title>加入我們 | 銳鋒顧問</title>
     <style>
         /* ---------- 與主頁完全一致的基礎樣式 ---------- */
         * {
@@ -200,7 +200,7 @@
             stroke-linejoin: round;
         }
 
-        /* ---------- FAQ 頁面專用內容樣式 ---------- */
+        /* ---------- 招聘頁面專用內容樣式 ---------- */
         .section {
             max-width: 1200px;
             margin: 0 auto;
@@ -255,7 +255,7 @@
 
         .hero {
             width: 100%;
-            min-height: 55vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             padding: 120px 40px 80px;
@@ -265,7 +265,7 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
             z-index: 0;
             animation: heroZoom 20s ease-in-out infinite alternate;
         }
@@ -322,97 +322,77 @@
             transition-delay: 0.2s;
         }
 
-        .faq-container {
+        .join-content {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px 60px;
         }
-
-        .faq-item {
+        .join-block {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(30px);
-            border-radius: 20px;
-            padding: 30px 35px;
-            margin-bottom: 20px;
+            border-radius: 24px;
+            padding: 40px 45px;
+            margin-bottom: 40px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.4s ease, box-shadow 0.4s ease;
-            cursor: pointer;
-            position: relative;
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .faq-item.visible {
+        .join-block.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        .faq-item:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-        }
-        .faq-item .q {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #3b82f6;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 0;
-            transition: margin-bottom 0.4s ease;
-        }
-        .faq-item .q .num {
-            color: #3b82f6;
+        .join-block h2 {
+            font-size: 1.8rem;
             font-weight: 800;
-            font-size: 1.2rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .join-block h2 .icon {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 2px;
+            transform: rotate(45deg);
             flex-shrink: 0;
-            min-width: 28px;
-            opacity: 0.6;
         }
-        .faq-item .q .icon-arrow {
-            margin-left: auto;
-            transition: transform 0.4s ease;
-            color: #64748b;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+        .join-block p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 15px;
         }
-        .faq-item.open .q .icon-arrow {
-            transform: rotate(180deg);
+        .join-block ul {
+            list-style: none;
+            padding: 0;
         }
-        .faq-item .a {
+        .join-block ul li {
             color: #cbd5e1;
             font-size: 0.95rem;
             line-height: 1.9;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding-top 0.4s ease, opacity 0.4s ease;
-            opacity: 0;
-            padding-top: 0;
-        }
-        .faq-item.open .a {
-            max-height: 600px;
-            opacity: 1;
-            padding-top: 18px;
-        }
-        .faq-item .a p {
-            margin-bottom: 10px;
-        }
-        .faq-item .a ul {
-            list-style: none;
-            padding: 0;
-            margin: 8px 0;
-        }
-        .faq-item .a ul li {
-            padding: 3px 0 3px 20px;
+            padding: 4px 0 4px 20px;
             position: relative;
-            font-size: 0.95rem;
-            color: #cbd5e1;
         }
-        .faq-item .a ul li::before {
+        .join-block ul li::before {
             content: "—";
             position: absolute;
             left: 0;
             color: #3b82f6;
+        }
+        .join-block .highlight-box {
+            background: rgba(59, 130, 246, 0.08);
+            border-left: 4px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 10px;
+        }
+        .join-block .highlight-box p {
+            margin-bottom: 0;
+            color: #e2e8f0;
         }
 
         /* ----- 頁腳 (與主頁一致) ----- */
@@ -490,7 +470,7 @@
                 font-size: 0.7rem;
             }
             .hero {
-                min-height: 45vh;
+                min-height: 50vh;
                 padding: 90px 16px 40px;
             }
             .hero-text h1 {
@@ -499,14 +479,11 @@
             .hero-text p {
                 font-size: 1rem;
             }
-            .faq-item {
-                padding: 22px 20px;
+            .join-block {
+                padding: 30px 20px;
             }
-            .faq-item .q {
-                font-size: 0.95rem;
-            }
-            .faq-item .a {
-                font-size: 0.9rem;
+            .join-block h2 {
+                font-size: 1.4rem;
             }
             .footer {
                 padding: 30px 16px;
@@ -529,12 +506,8 @@
             .hero-text h1 {
                 font-size: 1.8rem;
             }
-            .faq-item {
-                padding: 18px 16px;
-            }
-            .faq-item .q {
-                font-size: 0.9rem;
-                gap: 10px;
+            .join-block {
+                padding: 24px 16px;
             }
         }
     </style>
@@ -556,7 +529,6 @@
                 <li><a href="index.html#process" data-i18n="nav.process">咨詢流程</a></li>
                 <li><a href="index.html#contact" data-i18n="nav.contact">聯絡我們</a></li>
                 <li><a href="join.html" data-i18n="nav.join">加入我們</a></li>
-                <li><a href="faq.html" data-i18n="nav.faq">常見問題</a></li>
                 <li style="display:flex;align-items:center;margin-left:8px;">
                     <div class="lang-switch" id="langSwitch">
                         <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
@@ -579,15 +551,70 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title" data-i18n="faq.hero.title"><span class="highlight">常見問題</span></h1>
-                <p class="hero-desc" data-i18n="faq.hero.desc">以下是客戶經常查詢的問題及解答。如您有進一步疑問，歡迎隨時與我們聯絡。</p>
+                <h1 class="hero-title" data-i18n="join.hero.title"><span class="highlight">加入銳鋒</span> <br>共創卓越</h1>
+                <p class="hero-desc" data-i18n="join.hero.desc">我們正在尋找對市場調查與商業分析充滿熱忱的專才，與我們一同為客戶提供精準、可靠的策略洞察。</p>
             </div>
         </div>
     </section>
 
-    <!-- ===== FAQ 列表 ===== -->
-    <div class="faq-container" id="faqContainer">
-        <!-- 由 JavaScript 動態生成 -->
+    <!-- ===== 招聘內容 ===== -->
+    <div class="join-content">
+
+        <!-- 職位簡介 -->
+        <div class="join-block" id="block1">
+            <h2><span class="icon"></span><span data-i18n="join.role.title">職位：市場調查員</span></h2>
+            <p data-i18n="join.role.desc1">銳鋒顧問現正招募全職市場調查員，主要負責執行各類市場研究項目，包括數據搜集、問卷調查、深度訪談及實地觀察等工作。您將成為我們研究團隊的核心成員，參與從項目策劃到報告撰寫的完整流程。</p>
+            <p data-i18n="join.role.desc2">此職位適合對消費行為、行業趨勢具備敏銳觸覺，且擅長與人溝通、細心嚴謹的人士。我們提供完善的在職培訓及清晰的晉升階梯。</p>
+        </div>
+
+        <!-- 職責 -->
+        <div class="join-block" id="block2">
+            <h2><span class="icon"></span><span data-i18n="join.duties.title">主要職責</span></h2>
+            <ul>
+                <li data-i18n="join.duties.l1">設計並執行量化問卷調查（電話、網上、街頭訪問）</li>
+                <li data-i18n="join.duties.l2">進行一對一深度訪談及焦點小組討論，記錄關鍵洞見</li>
+                <li data-i18n="join.duties.l3">執行神秘顧客及實地觀察任務，收集第一手市場情報</li>
+                <li data-i18n="join.duties.l4">整理及分析數據，協助撰寫研究報告與簡報</li>
+                <li data-i18n="join.duties.l5">與團隊協作，確保項目按時、按質完成</li>
+                <li data-i18n="join.duties.l6">定期更新行業資訊，追蹤市場動態</li>
+            </ul>
+        </div>
+
+        <!-- 要求 -->
+        <div class="join-block" id="block3">
+            <h2><span class="icon"></span><span data-i18n="join.requirements.title">入職要求</span></h2>
+            <ul>
+                <li data-i18n="join.requirements.l1">持有香港認可的學士學位（市場學、社會科學、統計學或相關學科優先）</li>
+                <li data-i18n="join.requirements.l2">具備一年或以上市場研究、數據分析或客戶服務相關工作經驗（應屆畢業生亦會考慮）</li>
+                <li data-i18n="join.requirements.l3">良好中英文書寫及會話能力，能操流利廣東話</li>
+                <li data-i18n="join.requirements.l4">熟悉 Microsoft Office，具基本統計軟件知識（如 SPSS、Excel 分析工具）更佳</li>
+                <li data-i18n="join.requirements.l5">主動、細心、善於溝通，具備團隊合作精神</li>
+                <li data-i18n="join.requirements.l6">能適應戶外工作及彈性工作時間（包括週末及假日）</li>
+            </ul>
+        </div>
+
+        <!-- 我們提供 -->
+        <div class="join-block" id="block4">
+            <h2><span class="icon"></span><span data-i18n="join.offer.title">我們提供</span></h2>
+            <ul>
+                <li data-i18n="join.offer.l1">具競爭力的薪酬及績效獎金</li>
+                <li data-i18n="join.offer.l2">醫療保險及強積金供款</li>
+                <li data-i18n="join.offer.l3">在職專業培訓及持續進修資助</li>
+                <li data-i18n="join.offer.l4">良好的工作環境及團隊氛圍</li>
+                <li data-i18n="join.offer.l5">清晰的職業發展路徑，表現優異者可晉升為研究經理</li>
+            </ul>
+            <div class="highlight-box">
+                <p data-i18n="join.offer.highlight">✧ 我們重視每位員工的成長，提供多元化的項目參與機會，讓您接觸不同行業的市場研究實戰。</p>
+            </div>
+        </div>
+
+        <!-- 申請方法（已移除「立即申請」按鈕） -->
+        <div class="join-block" id="block5">
+            <h2><span class="icon"></span><span data-i18n="join.apply.title">申請方法</span></h2>
+            <p data-i18n="join.apply.desc">請將您的個人履歷（CV）及求職信電郵至 <strong style="color:#3b82f6;">hr@topmarket.hk</strong>，郵件標題請註明「應徵市場調查員 – 您的姓名」。我們會於一星期內聯絡合適的申請者安排面試。</p>
+            <p data-i18n="join.apply.note">* 所有收集的個人資料只作招聘用途，並會嚴格保密。</p>
+        </div>
+
     </div>
 
     <!-- ===== FOOTER ===== -->
@@ -605,7 +632,7 @@
     <!-- ============================================================ -->
     <script>
         // =============================================================
-        // 1. 語言切換系統（與主頁一致，但加入 faq 專屬翻譯）
+        // 1. 語言切換系統（與主頁一致，但加入 join 專屬翻譯）
         // =============================================================
         const i18n = {
             'zh': {
@@ -615,35 +642,41 @@
                 'nav.process': '咨詢流程',
                 'nav.contact': '聯絡我們',
                 'nav.join': '加入我們',
-                'nav.faq': '常見問題',
                 // Hero
-                'faq.hero.title': '常見問題',
-                'faq.hero.desc': '以下是客戶經常查詢的問題及解答。如您有進一步疑問，歡迎隨時與我們聯絡。',
-                // FAQ 問題（共12條）
-                'faq.q1': '銳鋒顧問提供哪些服務？',
-                'faq.a1': '我們提供全面的市場研究與商業諮詢服務，涵蓋量化問卷調查、深度訪談、焦點小組、神秘顧客調查、大數據分析、品牌策略規劃、市場進入可行性評估，以及長期市場監測等。服務對象包括零售、餐飲、美妝、消費品及商業服務等多個行業。',
-                'faq.q2': '調查結果是否具有法律效力？',
-                'faq.a2': '我們的調查報告主要用於商業決策參考，而非法律訴訟用途。所有調查均嚴格按照市場研究的專業標準執行，數據收集過程嚴謹可靠，可為企業策略提供堅實的數據基礎。如客戶有特定法律相關需求，我們可協助轉介專業法律顧問。',
-                'faq.q3': '如何確保調查的客觀性與中立性？',
-                'faq.a3': '我們秉持獨立、客觀的原則進行所有調查項目。研究設計、問卷擬定、樣本抽樣及數據分析均遵循國際市場研究標準，確保結果不受任何第三方干預。所有研究人員均簽署專業操守承諾書。',
-                'faq.q4': '調查一般需時多久？',
-                'faq.a4': '項目時間視乎研究規模及複雜程度而定。一般而言，標準的量化問卷調查（約500個樣本）需時2至4星期；包含深度訪談的綜合性研究項目則約需6至8星期。我們會在項目啟動前與客戶協商具體時間表。',
-                'faq.q5': '你們的調查涵蓋哪些地區？',
-                'faq.a5': '我們的核心服務範圍以香港為主，涵蓋港島、九龍及新界各區。同時，我們亦具備跨境研究能力，可因應客戶需求延伸至澳門、大灣區及其他亞太市場。具體覆蓋範圍可於項目初期商討確定。',
-                'faq.q6': '調查樣本是怎樣挑選的？',
-                'faq.a6': '樣本挑選方式取決於研究目標。我們採用多種抽樣方法，包括隨機抽樣、配額抽樣及滾雪球抽樣等，確保樣本具備代表性。對於特定目標群體（如高消費客戶、行業專家等），我們會採用針對性的招募策略。',
-                'faq.q7': '你們如何確保數據的準確性？',
-                'faq.a7': '我們設有多重數據驗證機制：問卷設計階段進行預試（pilot test）；數據收集期間進行實時監控及邏輯檢查；數據輸入後進行清洗及交叉驗證。此外，我們會對部分受訪者進行回訪覆核，確保數據真實可靠。',
-                'faq.q8': '調查完成後會提供哪些報告？',
-                'faq.a8': '我們提供多層次的報告產出，包括：原始數據表（Excel格式）、圖表分析摘要（PPT）、完整研究報告（PDF），以及針對管理層的匯報簡報。我們亦可按客戶需求定制報告格式及內容深淺。',
-                'faq.q9': '你們如何處理保密及私隱問題？',
-                'faq.a9': '我們嚴格遵守香港《個人資料（私隱）條例》（第486章）的規定。所有受訪者的個人資料僅供研究用途，不會向第三方披露。客戶商業機密亦會受到嚴格保護，我們可應要求簽署保密協議（NDA）。',
-                'faq.q10': '收費模式是怎樣的？',
-                'faq.a10': '我們的收費模式靈活透明，主要分為三種：項目制收費（按研究規模及複雜度報價）、按月／季度訂閱制（適用於長期市場監測），以及顧問時數制（適用於策略諮詢）。我們會在項目啟動前提供詳細報價單，確保客戶清楚了解所有費用。',
-                'faq.q11': '如何開始與銳鋒顧問合作？',
-                'faq.a11': '合作流程非常簡單：首先透過電話、電郵或網站表格與我們聯絡，初步溝通您的需求及研究目標；我們會安排一次免費的諮詢會議，深入了解您的業務背景；隨後我們會提交項目建議書及報價；雙方確認後即正式啟動項目。',
-                'faq.q12': '你們會否提供長期市場監測服務？',
-                'faq.a12': '會的。我們提供靈活的長期市場監測方案，包括按月或按季度追蹤行業數據、消費者信心指數、競爭動態等。客戶可選擇標準化的監測套餐，或根據自身需求定制監測指標及報告頻率。',
+                'join.hero.title': '加入銳鋒 <br>共創卓越',
+                'join.hero.desc': '我們正在尋找對市場調查與商業分析充滿熱忱的專才，與我們一同為客戶提供精準、可靠的策略洞察。',
+                // 職位
+                'join.role.title': '職位：市場調查員',
+                'join.role.desc1': '銳鋒顧問現正招募全職市場調查員，主要負責執行各類市場研究項目，包括數據搜集、問卷調查、深度訪談及實地觀察等工作。您將成為我們研究團隊的核心成員，參與從項目策劃到報告撰寫的完整流程。',
+                'join.role.desc2': '此職位適合對消費行為、行業趨勢具備敏銳觸覺，且擅長與人溝通、細心嚴謹的人士。我們提供完善的在職培訓及清晰的晉升階梯。',
+                // 職責
+                'join.duties.title': '主要職責',
+                'join.duties.l1': '設計並執行量化問卷調查（電話、網上、街頭訪問）',
+                'join.duties.l2': '進行一對一深度訪談及焦點小組討論，記錄關鍵洞見',
+                'join.duties.l3': '執行神秘顧客及實地觀察任務，收集第一手市場情報',
+                'join.duties.l4': '整理及分析數據，協助撰寫研究報告與簡報',
+                'join.duties.l5': '與團隊協作，確保項目按時、按質完成',
+                'join.duties.l6': '定期更新行業資訊，追蹤市場動態',
+                // 要求
+                'join.requirements.title': '入職要求',
+                'join.requirements.l1': '持有香港認可的副學士學位或以上（市場學、社會科學、統計學或相關學科優先）',
+                'join.requirements.l2': '具備一年或以上市場研究、數據分析或客戶服務相關工作經驗（應屆畢業生亦會考慮）',
+                'join.requirements.l3': '良好中英文書寫及會話能力，能操流利廣東話或普通話',
+                'join.requirements.l4': '熟悉 Microsoft Office，具基本統計軟件知識（如 SPSS、Excel 分析工具）',
+                'join.requirements.l5': '主動、細心、善於溝通，具備團隊合作精神',
+                'join.requirements.l6': '能適應戶外工作及彈性工作時間（包括週末及假日）',
+                // 我們提供
+                'join.offer.title': '福利',
+                'join.offer.l1': '具競爭力的薪酬及績效獎金',
+                'join.offer.l2': '醫療保險及強積金供款',
+                'join.offer.l3': '在職專業培訓及持續進修資助',
+                'join.offer.l4': '良好的工作環境及團隊氛圍',
+                'join.offer.l5': '清晰的職業發展路徑，表現優異者可晉升為研究經理',
+                'join.offer.highlight': '✧ 我們重視每位員工的成長，提供多元化的項目參與機會，讓您接觸不同行業的市場研究實戰。',
+                // 申請
+                'join.apply.title': '申請方法',
+                'join.apply.desc': '請將您的個人履歷（CV）及求職信電郵至 <strong style="color:#3b82f6;">hr@topmarket.hk</strong>，郵件標題請註明「應徵市場調查員 – 您的姓名」。我們會於一星期內聯絡合適的申請者安排面試。',
+                'join.apply.note': '* 所有收集的個人資料只作招聘用途，並會嚴格保密。',
                 // Footer
                 'footer.wechat': 'WeChat',
                 'footer.whatsapp': 'WhatsApp',
@@ -657,35 +690,41 @@
                 'nav.process': 'Our Process',
                 'nav.contact': 'Contact Us',
                 'nav.join': 'Join Us',
-                'nav.faq': 'FAQ',
                 // Hero
-                'faq.hero.title': 'Frequently Asked Questions',
-                'faq.hero.desc': 'Here are answers to the most common questions from our clients. If you have further inquiries, please do not hesitate to contact us.',
-                // FAQ
-                'faq.q1': 'What services does Top Market Consulting provide?',
-                'faq.a1': 'We offer comprehensive market research and business consulting services, including quantitative surveys, in-depth interviews, focus groups, mystery shopping, big data analytics, brand strategy planning, market entry feasibility studies, and long-term market monitoring. Our clients span retail, F&B, beauty, consumer goods, and commercial services industries.',
-                'faq.q2': 'Are the survey results legally admissible?',
-                'faq.a2': 'Our reports are designed for business decision-making reference, not for legal proceedings. All surveys are conducted to professional market research standards, providing a reliable data foundation for strategic planning. If legal-specific needs arise, we can assist in referring you to qualified legal counsel.',
-                'faq.q3': 'How do you ensure objectivity and neutrality in research?',
-                'faq.a3': 'We adhere strictly to independent and objective principles in all projects. Research design, questionnaire development, sampling, and data analysis follow international market research standards, free from third-party interference. All researchers sign a professional code of conduct.',
-                'faq.q4': 'How long does a typical survey project take?',
-                'faq.a4': 'Project duration depends on the scope and complexity. Generally, a standard quantitative survey (approx. 500 samples) takes 2–4 weeks, while comprehensive studies including in-depth interviews require 6–8 weeks. A detailed timeline will be agreed upon before project commencement.',
-                'faq.q5': 'Which geographic areas do your surveys cover?',
-                'faq.a5': 'Our core service coverage is Hong Kong, spanning Hong Kong Island, Kowloon, and the New Territories. We also have cross-border research capabilities for Macau, the Greater Bay Area, and other Asia-Pacific markets upon request. Specific coverage can be discussed at the project initiation stage.',
-                'faq.q6': 'How are survey samples selected?',
-                'faq.a6': 'Sample selection methods depend on research objectives. We employ various sampling approaches including random sampling, quota sampling, and snowball sampling to ensure representativeness. For specific target groups (e.g., high-value consumers, industry experts), we use targeted recruitment strategies.',
-                'faq.q7': 'How do you ensure data accuracy?',
-                'faq.a7': 'We implement multiple data validation mechanisms: pilot testing during questionnaire design, real-time monitoring and logic checks during data collection, and data cleaning and cross-verification after entry. We also conduct follow-up calls with a portion of respondents to confirm data authenticity.',
-                'faq.q8': 'What reports do you deliver after a survey?',
-                'faq.a8': 'We provide multi-level deliverables including: raw data tables (Excel format), graphical analysis summaries (PPT), comprehensive research reports (PDF), and executive presentations. Reports can be customized in format and depth according to client needs.',
-                'faq.q9': 'How do you handle confidentiality and privacy?',
-                'faq.a9': 'We strictly comply with Hong Kong\'s Personal Data (Privacy) Ordinance (Cap. 486). All respondent data is used solely for research purposes and is not disclosed to third parties. Client business information is also protected, and we can sign Non-Disclosure Agreements (NDAs) upon request.',
-                'faq.q10': 'What is your pricing structure?',
-                'faq.a10': 'We offer flexible and transparent pricing models: project-based fees (quoted according to research scope and complexity), monthly/quarterly subscription (for ongoing market monitoring), and hourly consulting rates (for strategic advisory). A detailed quote is provided before project initiation.',
-                'faq.q11': 'How do I start working with Top Market Consulting?',
-                'faq.a11': 'Getting started is simple: contact us via phone, email, or website form for an initial discussion of your needs and research objectives; we will arrange a free consultation meeting to understand your business context; we will then submit a project proposal and quotation; the project commences upon mutual agreement.',
-                'faq.q12': 'Do you offer long-term market monitoring services?',
-                'faq.a12': 'Yes. We offer flexible long-term market monitoring solutions, including monthly or quarterly tracking of industry data, consumer confidence indices, and competitive dynamics. Clients can choose standardized monitoring packages or custom-tailored indicators and reporting frequencies.',
+                'join.hero.title': 'Join Top Market <br>Excel Together',
+                'join.hero.desc': 'We are looking for passionate talents in market research and business analytics to join us in delivering precise, reliable strategic insights for our clients.',
+                // Role
+                'join.role.title': 'Position: Market Research Executive',
+                'join.role.desc1': 'Top Market Consulting is hiring a full-time Market Research Executive to conduct various research projects, including data collection, surveys, in-depth interviews, and field observations. You will be a core member of our research team, involved in the entire process from planning to reporting.',
+                'join.role.desc2': 'This role suits individuals with a keen sense of consumer behavior and industry trends, strong communication skills, and attention to detail. We offer comprehensive on-the-job training and clear career progression.',
+                // Duties
+                'join.duties.title': 'Key Responsibilities',
+                'join.duties.l1': 'Design and execute quantitative surveys (telephone, online, street interviews)',
+                'join.duties.l2': 'Conduct one-on-one in-depth interviews and focus group discussions, capturing key insights',
+                'join.duties.l3': 'Perform mystery shopping and field observation to gather first-hand market intelligence',
+                'join.duties.l4': 'Compile and analyze data, assist in writing research reports and presentations',
+                'join.duties.l5': 'Collaborate with the team to ensure projects are completed on time and to quality standards',
+                'join.duties.l6': 'Regularly update industry knowledge and monitor market trends',
+                // Requirements
+                'join.requirements.title': 'Requirements',
+                'join.requirements.l1': 'Bachelor\'s degree from a recognized institution (Marketing, Social Science, Statistics, or related fields preferred)',
+                'join.requirements.l2': '1+ year of experience in market research, data analysis, or customer service (fresh graduates will also be considered)',
+                'join.requirements.l3': 'Proficient in written and spoken English and Chinese (Cantonese fluency required)',
+                'join.requirements.l4': 'Familiar with Microsoft Office; knowledge of statistical software (SPSS, Excel analysis tools) is a plus',
+                'join.requirements.l5': 'Proactive, detail-oriented, excellent communication skills, and a team player',
+                'join.requirements.l6': 'Able to work outdoors and with flexible hours (including weekends and public holidays)',
+                // Offer
+                'join.offer.title': 'We Offer',
+                'join.offer.l1': 'Competitive salary and performance bonus',
+                'join.offer.l2': 'Medical insurance and MPF contributions',
+                'join.offer.l3': 'On-the-job professional training and continuing education sponsorship',
+                'join.offer.l4': 'A positive work environment and team culture',
+                'join.offer.l5': 'Clear career development path – high performers can advance to Research Manager',
+                'join.offer.highlight': '✧ We value every employee\'s growth and provide diverse project opportunities to gain hands-on experience across various industries.',
+                // Apply
+                'join.apply.title': 'How to Apply',
+                'join.apply.desc': 'Please send your CV and cover letter to <strong style="color:#3b82f6;">hr@topmarket.hk</strong> with the subject line "Application for Market Research Executive – Your Name". Shortlisted candidates will be contacted within one week for an interview.',
+                'join.apply.note': '* All personal data collected will be used for recruitment purposes only and treated with strict confidentiality.',
                 // Footer
                 'footer.wechat': 'WeChat',
                 'footer.whatsapp': 'WhatsApp',
@@ -768,148 +807,22 @@
         });
 
         // =============================================================
-        // 3. 動態生成 FAQ 列表（支援語言切換後自動更新）
+        // 3. 滾動觸發動畫 (Intersection Observer)
         // =============================================================
-        const faqKeys = [
-            'q1', 'q2', 'q3', 'q4', 'q5', 'q6',
-            'q7', 'q8', 'q9', 'q10', 'q11', 'q12'
-        ];
-
-        const container = document.getElementById('faqContainer');
-
-        function renderFAQ(lang) {
-            const dict = i18n[lang];
-            if (!dict) return;
-            let html = '';
-            faqKeys.forEach((key, idx) => {
-                const qKey = `faq.${key}`;
-                const aKey = `faq.a${key.slice(1)}`;
-                const qText = dict[qKey] || qKey;
-                const aText = dict[aKey] || aKey;
-                const num = (idx + 1).toString().padStart(2, '0');
-                html += `
-                    <div class="faq-item" data-key="${key}">
-                        <div class="q">
-                            <span class="num">${num}</span>
-                            <span>${qText}</span>
-                            <span class="icon-arrow">▾</span>
-                        </div>
-                        <div class="a">
-                            <p>${aText}</p>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-
-            // 重新綁定點擊展開事件
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    // 如果點擊的是箭頭或文字，切換開合
-                    this.classList.toggle('open');
-                });
-            });
-
-            // 觸發可見性動畫（稍後由 Observer 處理）
-            observeFAQItems();
-        }
-
-        // =============================================================
-        // 4. Intersection Observer 觸發可見性
-        // =============================================================
-        let faqObserver = null;
-
-        function observeFAQItems() {
-            if (faqObserver) {
-                faqObserver.disconnect();
-            }
-            faqObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-            document.querySelectorAll('.faq-item').forEach(el => {
-                faqObserver.observe(el);
-            });
-        }
-
-        // =============================================================
-        // 5. 初始化：渲染 FAQ + 監測 Hero 標題
-        // =============================================================
-        // 首次渲染（使用當前語言）
-        renderFAQ(currentLang);
-
-        // 監測 Hero 標題及描述
-        const heroObserver = new IntersectionObserver((entries) => {
+        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.hero-title, .hero-desc').forEach(el => {
-            heroObserver.observe(el);
+        }, observerOptions);
+
+        document.querySelectorAll('.hero-title, .hero-desc, .join-block').forEach(el => {
+            observer.observe(el);
         });
 
-        // =============================================================
-        // 6. 語言切換時重新渲染 FAQ（保留已展開狀態可選，此處簡單重新渲染）
-        // =============================================================
-        // 擴展 applyLanguage 以重新渲染 FAQ
-        const originalApply = applyLanguage;
-        applyLanguage = function(lang) {
-            originalApply(lang);
-            renderFAQ(lang);
-        };
-
-        // 覆蓋語言切換事件，使用新的 applyLanguage
-        document.querySelectorAll('.lang-opt').forEach(opt => {
-            opt.removeEventListener('click', () => {});
-            opt.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const lang = this.getAttribute('data-lang');
-                if (lang !== currentLang) {
-                    applyLanguage(lang);
-                }
-            });
-        });
-
-        // 重新綁定一次確保生效
-        // 由於上面已經綁定，但被覆蓋了，重新綁定
-        // 此處簡單重新執行一次綁定
-        (function rebindLang() {
-            const opts = document.querySelectorAll('.lang-opt');
-            // 移除所有監聽 (簡單方式：克隆替換)
-            const parent = opts[0]?.parentNode;
-            if (parent) {
-                const newParent = parent.cloneNode(true);
-                parent.parentNode.replaceChild(newParent, parent);
-                // 重新綁定
-                newParent.querySelectorAll('.lang-opt').forEach(opt => {
-                    opt.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const lang = this.getAttribute('data-lang');
-                        if (lang !== currentLang) {
-                            applyLanguage(lang);
-                        }
-                    });
-                });
-                // 更新 active 狀態
-                newParent.querySelectorAll('.lang-opt').forEach(opt => {
-                    const l = opt.getAttribute('data-lang');
-                    opt.classList.toggle('active', l === currentLang);
-                });
-                // 更新 zhLabel
-                const zhLabel = document.getElementById('langZhLabel');
-                if (zhLabel) {
-                    zhLabel.textContent = (currentLang === 'zh') ? '中' : 'CH';
-                }
-            }
-        })();
-
-        console.log('✅ FAQ 頁面已載入，語言:', currentLang);
+        console.log('✅ 招聘頁面已載入，語言:', currentLang);
     </script>
 </body>
 </html>
