@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>加入我們 | 銳鋒顧問</title>
     <style>
-        /* ---------- 與主頁完全一致的基礎樣式 ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -19,12 +18,8 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
-        /* ----- 頂部導航 (與主頁一致) ----- */
         .header {
             position: fixed;
             top: 0;
@@ -37,9 +32,7 @@
             padding: 14px 0;
             transition: 0.4s;
         }
-        .header.scrolled {
-            padding: 8px 0;
-        }
+        .header.scrolled { padding: 8px 0; }
         .nav-container {
             max-width: 1280px;
             margin: 0 auto;
@@ -73,7 +66,6 @@
             letter-spacing: 1px;
             opacity: 0.9;
         }
-
         .nav-links {
             display: flex;
             gap: 32px;
@@ -98,12 +90,40 @@
             background: #3b82f6;
             transition: width 0.3s ease;
         }
-        .nav-links a:hover {
+        .nav-links a:hover { color: #3b82f6; }
+        .nav-links a:hover::after { width: 100%; }
+
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 210px;
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px 0;
+            list-style: none;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+        .dropdown-menu li { padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 24px;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+        .dropdown-menu a::after { display: none; }
+        .dropdown-menu a:hover {
+            background: rgba(59, 130, 246, 0.12);
             color: #3b82f6;
         }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .dropdown:hover .dropdown-menu { display: block; }
 
         .lang-switch {
             display: flex;
@@ -143,7 +163,6 @@
             font-weight: 300;
             font-size: 0.8rem;
         }
-
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -200,59 +219,6 @@
             stroke-linejoin: round;
         }
 
-        /* ---------- 招聘頁面專用內容樣式 ---------- */
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-label .label-en {
-            font-size: 0.8rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: #3b82f6;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            justify-content: center;
-            opacity: 0.7;
-        }
-        .section-label .label-en::before,
-        .section-label .label-en::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            max-width: 100px;
-            background: linear-gradient(90deg, transparent, #3b82f6);
-        }
-        .section-label .label-en::after {
-            background: linear-gradient(90deg, #3b82f6, transparent);
-        }
-        .section-title h2 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 900;
-            color: #fff;
-            letter-spacing: -1px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-        .section-title h2.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section-title .line {
-            width: 60px;
-            height: 3px;
-            background: #3b82f6;
-            margin: 15px auto 0;
-        }
-
         .hero {
             width: 100%;
             min-height: 60vh;
@@ -299,13 +265,8 @@
             transform: translateY(40px);
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .hero-text h1.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .hero-text h1 .highlight {
-            color: #3b82f6;
-        }
+        .hero-text h1.visible { opacity: 1; transform: translateY(0); }
+        .hero-text h1 .highlight { color: #3b82f6; }
         .hero-text p {
             font-size: 1.2rem;
             color: #e2e8f0;
@@ -316,11 +277,7 @@
             transform: translateY(30px);
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .hero-text p.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.2s;
-        }
+        .hero-text p.visible { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
 
         .join-content {
             max-width: 900px;
@@ -339,10 +296,7 @@
             transform: translateY(30px);
             transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .join-block.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .join-block.visible { opacity: 1; transform: translateY(0); }
         .join-block h2 {
             font-size: 1.8rem;
             font-weight: 800;
@@ -395,35 +349,6 @@
             color: #e2e8f0;
         }
 
-        .apply-btn {
-            display: inline-block;
-            background: #3b82f6;
-            color: #fff;
-            padding: 16px 50px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: 2px solid #3b82f6;
-            margin-top: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s, box-shadow 0.3s;
-        }
-        .apply-btn.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.4s;
-        }
-        .apply-btn:hover {
-            background: #2563eb;
-            border-color: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        /* ----- 頁腳 (與主頁一致) ----- */
         .footer {
             background: #fff;
             color: #1a202c;
@@ -451,16 +376,9 @@
             color: #2563eb;
             transform: translateY(-2px);
         }
-        .footer-social a svg {
-            width: 24px;
-            height: 24px;
-        }
-        .copyright {
-            font-size: 0.9rem;
-            color: #555;
-        }
+        .footer-social a svg { width: 24px; height: 24px; }
+        .copyright { font-size: 0.9rem; color: #555; }
 
-        /* ----- 響應式 (與主頁一致) ----- */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -471,78 +389,46 @@
                 right: 0;
                 background: #020510;
                 padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
                 gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .nav-container { padding: 0 16px 0 12px; }
+            .logo .brand-cn { font-size: 1.8rem; }
+            .logo .brand-en { font-size: 0.85rem; }
+            .lang-switch { margin-left: 10px; padding: 2px 4px; }
+            .lang-switch .lang-opt { padding: 2px 10px; font-size: 0.7rem; }
+
+            .dropdown-menu {
+                position: static;
+                background: transparent;
+                backdrop-filter: none;
+                border: none;
+                box-shadow: none;
+                padding-left: 20px;
+                display: none;
             }
-            .menu-toggle {
-                display: flex;
-            }
-            .nav-container {
-                padding: 0 16px 0 12px;
-            }
-            .logo .brand-cn {
-                font-size: 1.8rem;
-            }
-            .logo .brand-en {
-                font-size: 0.85rem;
-            }
-            .lang-switch {
-                margin-left: 10px;
-                padding: 2px 4px;
-            }
-            .lang-switch .lang-opt {
-                padding: 2px 10px;
-                font-size: 0.7rem;
-            }
-            .hero {
-                min-height: 50vh;
-                padding: 90px 16px 40px;
-            }
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-            .hero-text p {
-                font-size: 1rem;
-            }
-            .join-block {
-                padding: 30px 20px;
-            }
-            .join-block h2 {
-                font-size: 1.4rem;
-            }
-            .footer {
-                padding: 30px 16px;
-            }
-            .footer-social {
-                gap: 20px;
-            }
-            #backToTop {
-                bottom: 20px;
-                right: 16px;
-                width: 44px;
-                height: 44px;
-            }
-            #backToTop svg {
-                width: 22px;
-                height: 22px;
-            }
+            .dropdown.active .dropdown-menu { display: block; }
+            .dropdown-menu a { padding: 6px 16px; font-size: 0.85rem; }
+
+            .hero { min-height: 50vh; padding: 90px 16px 40px; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text p { font-size: 1rem; }
+            .join-block { padding: 30px 20px; }
+            .join-block h2 { font-size: 1.4rem; }
+            .footer { padding: 30px 16px; }
+            .footer-social { gap: 20px; }
+            #backToTop { bottom: 20px; right: 16px; width: 44px; height: 44px; }
+            #backToTop svg { width: 22px; height: 22px; }
         }
         @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 1.8rem;
-            }
-            .join-block {
-                padding: 24px 16px;
-            }
+            .hero-text h1 { font-size: 1.8rem; }
+            .join-block { padding: 24px 16px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <div class="nav-container">
             <div class="logo">
@@ -552,11 +438,32 @@
                 </a>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html#services" data-i18n="nav.services">業務範圍</a></li>
-                <li><a href="index.html#cases" data-i18n="nav.cases">成功案例</a></li>
-                <li><a href="index.html#process" data-i18n="nav.process">咨詢流程</a></li>
-                <li><a href="index.html#contact" data-i18n="nav.contact">聯絡我們</a></li>
-                <li><a href="join.html" data-i18n="nav.join">加入我們</a></li>
+                <li><a href="index.html#services">業務範圍</a></li>
+                <li><a href="index.html#cases">成功案例</a></li>
+                <li><a href="index.html#process">咨詢流程</a></li>
+
+                <li class="dropdown" id="resourcesDropdown">
+                    <a href="resources.html">資源中心 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="resources.html?tab=reports">市場報告</a></li>
+                        <li><a href="resources.html?tab=policies">政策相關</a></li>
+                        <li><a href="resources.html?tab=news">新聞</a></li>
+                        <li><a href="resources.html?tab=articles">文章</a></li>
+                        <li><a href="resources.html?tab=videos">影片</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown" id="memberDropdown">
+                    <a href="login.html">會員中心 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="login.html">登錄</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="index.html#contact">聯絡我們</a></li>
+                <li><a href="join.html">加入我們</a></li>
+                <li><a href="faq.html">常見問題</a></li>
+
                 <li style="display:flex;align-items:center;margin-left:8px;">
                     <div class="lang-switch" id="langSwitch">
                         <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
@@ -569,116 +476,101 @@
         </div>
     </header>
 
-    <!-- ===== BACK TO TOP ===== -->
-    <button id="backToTop" aria-label="返回頂部">
-        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
+    <button id="backToTop"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
 
-    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title" data-i18n="join.hero.title"><span class="highlight">加入銳鋒</span> <br>共創卓越</h1>
-                <p class="hero-desc" data-i18n="join.hero.desc">我們正在尋找對市場調查與商業分析充滿熱忱的專才，與我們一同為客戶提供精準、可靠的策略洞察。</p>
+                <h1 class="hero-title"><span class="highlight">加入銳鋒</span> <br>共創卓越</h1>
+                <p class="hero-desc">我們正在尋找對市場調查與商業分析充滿熱忱的專才，與我們一同為客戶提供精準、可靠的策略洞察。</p>
             </div>
         </div>
     </section>
 
-    <!-- ===== 招聘內容 ===== -->
     <div class="join-content">
-
-        <!-- 職位簡介 -->
         <div class="join-block" id="block1">
-            <h2><span class="icon"></span><span data-i18n="join.role.title">職位：市場調查員</span></h2>
-            <p data-i18n="join.role.desc1">銳鋒顧問現正招募全職市場調查員，主要負責執行各類市場研究項目，包括數據搜集、問卷調查、深度訪談及實地觀察等工作。您將成為我們研究團隊的核心成員，參與從項目策劃到報告撰寫的完整流程。</p>
-            <p data-i18n="join.role.desc2">此職位適合對消費行為、行業趨勢具備敏銳觸覺，且擅長與人溝通、細心嚴謹的人士。我們提供完善的在職培訓及清晰的晉升階梯。</p>
+            <h2><span class="icon"></span>職位：市場調查員</h2>
+            <p>銳鋒顧問現正招募全職市場調查員，主要負責執行各類市場研究項目，包括數據搜集、問卷調查、深度訪談及實地觀察等工作。您將成為我們研究團隊的核心成員，參與從項目策劃到報告撰寫的完整流程。</p>
+            <p>此職位適合對消費行為、行業趨勢具備敏銳觸覺，且擅長與人溝通、細心嚴謹的人士。我們提供完善的在職培訓及清晰的晉升階梯。</p>
         </div>
 
-        <!-- 職責 -->
         <div class="join-block" id="block2">
-            <h2><span class="icon"></span><span data-i18n="join.duties.title">主要職責</span></h2>
+            <h2><span class="icon"></span>主要職責</h2>
             <ul>
-                <li data-i18n="join.duties.l1">設計並執行量化問卷調查（電話、網上、街頭訪問）</li>
-                <li data-i18n="join.duties.l2">進行一對一深度訪談及焦點小組討論，記錄關鍵洞見</li>
-                <li data-i18n="join.duties.l3">執行神秘顧客及實地觀察任務，收集第一手市場情報</li>
-                <li data-i18n="join.duties.l4">整理及分析數據，協助撰寫研究報告與簡報</li>
-                <li data-i18n="join.duties.l5">與團隊協作，確保項目按時、按質完成</li>
-                <li data-i18n="join.duties.l6">定期更新行業資訊，追蹤市場動態</li>
+                <li>設計並執行量化問卷調查（電話、網上、街頭訪問）</li>
+                <li>進行一對一深度訪談及焦點小組討論，記錄關鍵洞見</li>
+                <li>執行神秘顧客及實地觀察任務，收集第一手市場情報</li>
+                <li>整理及分析數據，協助撰寫研究報告與簡報</li>
+                <li>與團隊協作，確保項目按時、按質完成</li>
+                <li>定期更新行業資訊，追蹤市場動態</li>
             </ul>
         </div>
 
-        <!-- 要求 -->
         <div class="join-block" id="block3">
-            <h2><span class="icon"></span><span data-i18n="join.requirements.title">入職要求</span></h2>
+            <h2><span class="icon"></span>入職要求</h2>
             <ul>
-                <li data-i18n="join.requirements.l1">持有香港認可的學士學位（市場學、社會科學、統計學或相關學科優先）</li>
-                <li data-i18n="join.requirements.l2">具備一年或以上市場研究、數據分析或客戶服務相關工作經驗（應屆畢業生亦會考慮）</li>
-                <li data-i18n="join.requirements.l3">良好中英文書寫及會話能力，能操流利廣東話</li>
-                <li data-i18n="join.requirements.l4">熟悉 Microsoft Office，具基本統計軟件知識（如 SPSS、Excel 分析工具）更佳</li>
-                <li data-i18n="join.requirements.l5">主動、細心、善於溝通，具備團隊合作精神</li>
-                <li data-i18n="join.requirements.l6">能適應戶外工作及彈性工作時間（包括週末及假日）</li>
+                <li>持有香港認可的學士學位（市場學、社會科學、統計學或相關學科優先）</li>
+                <li>具備一年或以上市場研究、數據分析或客戶服務相關工作經驗（應屆畢業生亦會考慮）</li>
+                <li>良好中英文書寫及會話能力，能操流利廣東話</li>
+                <li>熟悉 Microsoft Office，具基本統計軟件知識（如 SPSS、Excel 分析工具）更佳</li>
+                <li>主動、細心、善於溝通，具備團隊合作精神</li>
+                <li>能適應戶外工作及彈性工作時間（包括週末及假日）</li>
             </ul>
         </div>
 
-        <!-- 我們提供 -->
         <div class="join-block" id="block4">
-            <h2><span class="icon"></span><span data-i18n="join.offer.title">我們提供</span></h2>
+            <h2><span class="icon"></span>我們提供</h2>
             <ul>
-                <li data-i18n="join.offer.l1">具競爭力的薪酬及績效獎金</li>
-                <li data-i18n="join.offer.l2">醫療保險及強積金供款</li>
-                <li data-i18n="join.offer.l3">在職專業培訓及持續進修資助</li>
-                <li data-i18n="join.offer.l4">良好的工作環境及團隊氛圍</li>
-                <li data-i18n="join.offer.l5">清晰的職業發展路徑，表現優異者可晉升為研究經理</li>
+                <li>具競爭力的薪酬及績效獎金</li>
+                <li>醫療保險及強積金供款</li>
+                <li>在職專業培訓及持續進修資助</li>
+                <li>良好的工作環境及團隊氛圍</li>
+                <li>清晰的職業發展路徑，表現優異者可晉升為研究經理</li>
             </ul>
             <div class="highlight-box">
-                <p data-i18n="join.offer.highlight">✧ 我們重視每位員工的成長，提供多元化的項目參與機會，讓您接觸不同行業的市場研究實戰。</p>
+                <p>✧ 我們重視每位員工的成長，提供多元化的項目參與機會，讓您接觸不同行業的市場研究實戰。</p>
             </div>
         </div>
 
-        <!-- 申請方法 -->
         <div class="join-block" id="block5">
-            <h2><span class="icon"></span><span data-i18n="join.apply.title">申請方法</span></h2>
-            <p data-i18n="join.apply.desc">請將您的個人履歷（CV）及求職信電郵至 <strong style="color:#3b82f6;">hr@topmarket.hk</strong>，郵件標題請註明「應徵市場調查員 – 您的姓名」。我們會於一星期內聯絡合適的申請者安排面試。</p>
-            <p data-i18n="join.apply.note">* 所有收集的個人資料只作招聘用途，並會嚴格保密。</p>
-            <a href="mailto:hr@topmarket.hk?subject=應徵市場調查員" class="apply-btn" data-i18n="join.apply.btn">立即申請</a>
+            <h2><span class="icon"></span>申請方法</h2>
+            <p>請將您的個人履歷（CV）及求職信電郵至 <strong style="color:#3b82f6;">hr@topmarket.hk</strong>，郵件標題請註明「應徵市場調查員 – 您的姓名」。我們會於一星期內聯絡合適的申請者安排面試。</p>
+            <p>* 所有收集的個人資料只作招聘用途，並會嚴格保密。</p>
         </div>
-
     </div>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-social">
-            <a href="#"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg><span data-i18n="footer.wechat">WeChat</span></a>
-            <a href="#"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span data-i18n="footer.whatsapp">WhatsApp</span></a>
-            <a href="#"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg><span data-i18n="footer.ig">Instagram</span></a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg><span>WeChat</span></a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span>WhatsApp</span></a>
+            <a href="#"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg><span>Instagram</span></a>
         </div>
-        <p class="copyright" data-i18n="footer.copy">© 2026 銳鋒有限公司 Top Market HK Limited</p>
+        <p class="copyright">© 2026 銳鋒有限公司 Top Market HK Limited</p>
     </footer>
 
-    <!-- ============================================================ -->
-    <!-- JAVASCRIPT -->
-    <!-- ============================================================ -->
     <script>
-        // =============================================================
-        // 1. 語言切換系統（與主頁一致，但加入 join 專屬翻譯）
-        // =============================================================
         const i18n = {
             'zh': {
-                // 導航
                 'nav.services': '業務範圍',
                 'nav.cases': '成功案例',
                 'nav.process': '咨詢流程',
                 'nav.contact': '聯絡我們',
                 'nav.join': '加入我們',
-                // Hero
+                'nav.faq': '常見問題',
+                'nav.resources': '資源中心',
+                'nav.resources.reports': '市場報告',
+                'nav.resources.policies': '政策相關',
+                'nav.resources.news': '新聞',
+                'nav.resources.articles': '文章',
+                'nav.resources.videos': '影片',
+                'nav.member': '會員中心',
+                'nav.member.login': '登錄',
                 'join.hero.title': '加入銳鋒 <br>共創卓越',
                 'join.hero.desc': '我們正在尋找對市場調查與商業分析充滿熱忱的專才，與我們一同為客戶提供精準、可靠的策略洞察。',
-                // 職位
                 'join.role.title': '職位：市場調查員',
                 'join.role.desc1': '銳鋒顧問現正招募全職市場調查員，主要負責執行各類市場研究項目，包括數據搜集、問卷調查、深度訪談及實地觀察等工作。您將成為我們研究團隊的核心成員，參與從項目策劃到報告撰寫的完整流程。',
                 'join.role.desc2': '此職位適合對消費行為、行業趨勢具備敏銳觸覺，且擅長與人溝通、細心嚴謹的人士。我們提供完善的在職培訓及清晰的晉升階梯。',
-                // 職責
                 'join.duties.title': '主要職責',
                 'join.duties.l1': '設計並執行量化問卷調查（電話、網上、街頭訪問）',
                 'join.duties.l2': '進行一對一深度訪談及焦點小組討論，記錄關鍵洞見',
@@ -686,7 +578,6 @@
                 'join.duties.l4': '整理及分析數據，協助撰寫研究報告與簡報',
                 'join.duties.l5': '與團隊協作，確保項目按時、按質完成',
                 'join.duties.l6': '定期更新行業資訊，追蹤市場動態',
-                // 要求
                 'join.requirements.title': '入職要求',
                 'join.requirements.l1': '持有香港認可的學士學位（市場學、社會科學、統計學或相關學科優先）',
                 'join.requirements.l2': '具備一年或以上市場研究、數據分析或客戶服務相關工作經驗（應屆畢業生亦會考慮）',
@@ -694,7 +585,6 @@
                 'join.requirements.l4': '熟悉 Microsoft Office，具基本統計軟件知識（如 SPSS、Excel 分析工具）更佳',
                 'join.requirements.l5': '主動、細心、善於溝通，具備團隊合作精神',
                 'join.requirements.l6': '能適應戶外工作及彈性工作時間（包括週末及假日）',
-                // 我們提供
                 'join.offer.title': '我們提供',
                 'join.offer.l1': '具競爭力的薪酬及績效獎金',
                 'join.offer.l2': '醫療保險及強積金供款',
@@ -702,32 +592,34 @@
                 'join.offer.l4': '良好的工作環境及團隊氛圍',
                 'join.offer.l5': '清晰的職業發展路徑，表現優異者可晉升為研究經理',
                 'join.offer.highlight': '✧ 我們重視每位員工的成長，提供多元化的項目參與機會，讓您接觸不同行業的市場研究實戰。',
-                // 申請
                 'join.apply.title': '申請方法',
                 'join.apply.desc': '請將您的個人履歷（CV）及求職信電郵至 <strong style="color:#3b82f6;">hr@topmarket.hk</strong>，郵件標題請註明「應徵市場調查員 – 您的姓名」。我們會於一星期內聯絡合適的申請者安排面試。',
                 'join.apply.note': '* 所有收集的個人資料只作招聘用途，並會嚴格保密。',
-                'join.apply.btn': '立即申請',
-                // Footer
                 'footer.wechat': 'WeChat',
                 'footer.whatsapp': 'WhatsApp',
                 'footer.ig': 'Instagram',
                 'footer.copy': '© 2026 銳鋒有限公司 Top Market HK Limited'
             },
             'en': {
-                // Nav
                 'nav.services': 'Services',
                 'nav.cases': 'Case Studies',
                 'nav.process': 'Our Process',
                 'nav.contact': 'Contact Us',
                 'nav.join': 'Join Us',
-                // Hero
+                'nav.faq': 'FAQ',
+                'nav.resources': 'Resources',
+                'nav.resources.reports': 'Market Reports',
+                'nav.resources.policies': 'Policy Updates',
+                'nav.resources.news': 'News',
+                'nav.resources.articles': 'Articles',
+                'nav.resources.videos': 'Videos',
+                'nav.member': 'Member Centre',
+                'nav.member.login': 'Login',
                 'join.hero.title': 'Join Top Market <br>Excel Together',
                 'join.hero.desc': 'We are looking for passionate talents in market research and business analytics to join us in delivering precise, reliable strategic insights for our clients.',
-                // Role
                 'join.role.title': 'Position: Market Research Executive',
                 'join.role.desc1': 'Top Market Consulting is hiring a full-time Market Research Executive to conduct various research projects, including data collection, surveys, in-depth interviews, and field observations. You will be a core member of our research team, involved in the entire process from planning to reporting.',
                 'join.role.desc2': 'This role suits individuals with a keen sense of consumer behavior and industry trends, strong communication skills, and attention to detail. We offer comprehensive on-the-job training and clear career progression.',
-                // Duties
                 'join.duties.title': 'Key Responsibilities',
                 'join.duties.l1': 'Design and execute quantitative surveys (telephone, online, street interviews)',
                 'join.duties.l2': 'Conduct one-on-one in-depth interviews and focus group discussions, capturing key insights',
@@ -735,7 +627,6 @@
                 'join.duties.l4': 'Compile and analyze data, assist in writing research reports and presentations',
                 'join.duties.l5': 'Collaborate with the team to ensure projects are completed on time and to quality standards',
                 'join.duties.l6': 'Regularly update industry knowledge and monitor market trends',
-                // Requirements
                 'join.requirements.title': 'Requirements',
                 'join.requirements.l1': 'Bachelor\'s degree from a recognized institution (Marketing, Social Science, Statistics, or related fields preferred)',
                 'join.requirements.l2': '1+ year of experience in market research, data analysis, or customer service (fresh graduates will also be considered)',
@@ -743,7 +634,6 @@
                 'join.requirements.l4': 'Familiar with Microsoft Office; knowledge of statistical software (SPSS, Excel analysis tools) is a plus',
                 'join.requirements.l5': 'Proactive, detail-oriented, excellent communication skills, and a team player',
                 'join.requirements.l6': 'Able to work outdoors and with flexible hours (including weekends and public holidays)',
-                // Offer
                 'join.offer.title': 'We Offer',
                 'join.offer.l1': 'Competitive salary and performance bonus',
                 'join.offer.l2': 'Medical insurance and MPF contributions',
@@ -751,12 +641,9 @@
                 'join.offer.l4': 'A positive work environment and team culture',
                 'join.offer.l5': 'Clear career development path – high performers can advance to Research Manager',
                 'join.offer.highlight': '✧ We value every employee\'s growth and provide diverse project opportunities to gain hands-on experience across various industries.',
-                // Apply
                 'join.apply.title': 'How to Apply',
                 'join.apply.desc': 'Please send your CV and cover letter to <strong style="color:#3b82f6;">hr@topmarket.hk</strong> with the subject line "Application for Market Research Executive – Your Name". Shortlisted candidates will be contacted within one week for an interview.',
                 'join.apply.note': '* All personal data collected will be used for recruitment purposes only and treated with strict confidentiality.',
-                'join.apply.btn': 'Apply Now',
-                // Footer
                 'footer.wechat': 'WeChat',
                 'footer.whatsapp': 'WhatsApp',
                 'footer.ig': 'Instagram',
@@ -770,58 +657,21 @@
             currentLang = lang;
             const dict = i18n[lang];
             if (!dict) return;
-
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (dict[key] !== undefined) {
-                    el.innerHTML = dict[key];
-                }
+                if (dict[key] !== undefined) el.innerHTML = dict[key];
             });
-
             const brandCn = document.getElementById('brandCn');
-            if (brandCn) {
-                brandCn.style.display = (lang === 'zh') ? 'inline' : 'none';
-            }
-
+            if (brandCn) brandCn.style.display = (lang === 'zh') ? 'inline' : 'none';
             const zhLabel = document.getElementById('langZhLabel');
-            if (zhLabel) {
-                zhLabel.textContent = (lang === 'zh') ? '中' : 'CH';
-            }
-
+            if (zhLabel) zhLabel.textContent = (lang === 'zh') ? '中' : 'CH';
             document.querySelectorAll('.lang-opt').forEach(opt => {
-                const l = opt.getAttribute('data-lang');
-                opt.classList.toggle('active', l === lang);
+                opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
             });
-
             document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
             try { localStorage.setItem('topmarket-lang', lang); } catch (e) {}
         }
 
-        document.querySelectorAll('.lang-opt').forEach(opt => {
-            opt.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const lang = this.getAttribute('data-lang');
-                if (lang !== currentLang) {
-                    applyLanguage(lang);
-                }
-            });
-        });
-
-        // 恢復語言（與主頁一致，默認英文）
-        (function restoreLang() {
-            try {
-                const saved = localStorage.getItem('topmarket-lang');
-                if (saved && (saved === 'zh' || saved === 'en')) {
-                    applyLanguage(saved);
-                    return;
-                }
-            } catch (e) {}
-            applyLanguage('en');
-        })();
-
-        // =============================================================
-        // 2. 滾動監聽、返回頂部、菜單切換（與主頁一致）
-        // =============================================================
         window.addEventListener('scroll', () => {
             const h = document.getElementById('header');
             if (window.scrollY > 50) h.classList.add('scrolled');
@@ -837,24 +687,52 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // =============================================================
-        // 3. 滾動觸發動畫 (Intersection Observer)
-        // =============================================================
+        document.querySelectorAll('.dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.closest('.dropdown').classList.toggle('active');
+                }
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (!d.contains(e.target)) d.classList.remove('active');
+                });
+            }
+        });
+
+        document.querySelectorAll('.lang-opt').forEach(opt => {
+            opt.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const lang = this.getAttribute('data-lang');
+                if (lang !== currentLang) {
+                    applyLanguage(lang);
+                }
+            });
+        });
+
+        (function restoreLang() {
+            try {
+                const saved = localStorage.getItem('topmarket-lang');
+                if (saved && (saved === 'zh' || saved === 'en')) {
+                    applyLanguage(saved);
+                    return;
+                }
+            } catch (e) {}
+            applyLanguage('en');
+        })();
+
         const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, observerOptions);
-
-        // 監測英雄區標題、段落、以及所有 join-block 和申請按鈕
-        document.querySelectorAll('.hero-title, .hero-desc, .join-block, .apply-btn').forEach(el => {
+        document.querySelectorAll('.hero-title, .hero-desc, .join-block').forEach(el => {
             observer.observe(el);
         });
-
-        // 另外，將 .join-block 內的內容也觸發 visible（由父級觸發即可，無需額外）
 
         console.log('✅ 招聘頁面已載入，語言:', currentLang);
     </script>
