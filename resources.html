@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>資源中心 | 銳鋒顧問</title>
+    <style>
+        /* ---------- 與主頁一致的基礎樣式 ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+        }
+        body {
+            background: #020510;
+            color: #e2e8f0;
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(2, 5, 16, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 14px 0;
+            transition: 0.4s;
+        }
+        .header.scrolled { padding: 8px 0; }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-right: auto;
+        }
+        .logo a {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .logo .brand-cn {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        .logo .brand-en {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: #3b82f6; }
+        .nav-links a:hover::after { width: 100%; }
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 30px;
+            padding: 4px 6px;
+            margin-left: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            user-select: none;
+        }
+        .lang-switch:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .lang-switch .lang-opt {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        .lang-switch .lang-opt.active {
+            background: #3b82f6;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
+        }
+        .lang-switch .lang-divider {
+            color: #334155;
+            font-weight: 300;
+            font-size: 0.8rem;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+        .menu-toggle span {
+            width: 26px;
+            height: 2px;
+            background: #e2e8f0;
+            transition: 0.3s;
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 40px;
+            right: 30px;
+            z-index: 999;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+        }
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #backToTop:hover {
+            background: #2563eb;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+        }
+        #backToTop svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ---------- 資源中心專用 ---------- */
+        .hero {
+            width: 100%;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            z-index: 0;
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+        @keyframes heroZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(10, 15, 30, 0.15) 0%, rgba(2, 5, 16, 0.15) 90%);
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        .hero-text h1 {
+            font-size: clamp(3rem, 6vw, 4rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+        .hero-text h1.visible { opacity: 1; transform: translateY(0); }
+        .hero-text h1 .highlight { color: #3b82f6; }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.9;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+        .hero-text p.visible { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+        .section-title .line {
+            width: 60px;
+            height: 3px;
+            background: #3b82f6;
+            margin: 12px auto 0;
+        }
+
+        .resource-tabs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .resource-tabs .tab-btn {
+            padding: 10px 28px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            color: #94a3b8;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .resource-tabs .tab-btn:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #e2e8f0;
+        }
+        .resource-tabs .tab-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: #fff;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .resource-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            border-radius: 20px;
+            padding: 30px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .resource-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .resource-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        .resource-card .tag {
+            display: inline-block;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+        }
+        .resource-card h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .resource-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .resource-card .meta {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+        .resource-card .meta .download-btn {
+            color: #3b82f6;
+            font-weight: 600;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .resource-card .meta .download-btn:hover { color: #60a5fa; }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        .empty-state h3 {
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+
+        /* 頁腳 */
+        .footer {
+            background: #fff;
+            color: #1a202c;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-social a {
+            color: #333;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .footer-social a:hover {
+            color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .footer-social a svg { width: 24px; height: 24px; }
+        .copyright { font-size: 0.9rem; color: #555; }
+
+        /* 響應式 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #020510;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+                gap: 16px;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .nav-container { padding: 0 16px 0 12px; }
+            .logo .brand-cn { font-size: 1.8rem; }
+            .logo .brand-en { font-size: 0.85rem; }
+            .lang-switch { margin-left: 10px; padding: 2px 4px; }
+            .lang-switch .lang-opt { padding: 2px 10px; font-size: 0.7rem; }
+            .hero { min-height: 40vh; padding: 90px 16px 40px; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .resource-grid { grid-template-columns: 1fr; }
+            .resource-tabs .tab-btn { padding: 8px 18px; font-size: 0.8rem; }
+            .footer { padding: 30px 16px; }
+            .footer-social { gap: 20px; }
+            #backToTop { bottom: 20px; right: 16px; width: 44px; height: 44px; }
+            #backToTop svg { width: 22px; height: 22px; }
+        }
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 1.8rem; }
+            .resource-card { padding: 22px 18px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="brand-cn" id="brandCn">銳鋒</span>
+                    <span class="brand-en">The Top Market</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#services">業務範圍</a></li>
+                <li><a href="index.html#cases">成功案例</a></li>
+                <li><a href="index.html#process">咨詢流程</a></li>
+                <li><a href="resources.html">資源中心</a></li>
+                <li><a href="member.html">會員中心</a></li>
+                <li><a href="index.html#contact">聯絡我們</a></li>
+                <li style="display:flex;align-items:center;margin-left:8px;">
+                    <div class="lang-switch" id="langSwitch">
+                        <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
+                        <span class="lang-divider">/</span>
+                        <span class="lang-opt" data-lang="en">EN</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button id="backToTop"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title"><span class="highlight">資源中心</span></h1>
+                <p class="hero-desc">精選市場報告、政策分析、行業新聞及專家觀點，助您掌握市場脈搏。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 資源內容 ===== -->
+    <div class="section" id="resourcesSection">
+        <div class="section-title">
+            <h2>瀏覽資源</h2>
+            <div class="line"></div>
+        </div>
+
+        <!-- 分類標籤 -->
+        <div class="resource-tabs" id="tabContainer">
+            <button class="tab-btn active" data-tab="reports">市場報告</button>
+            <button class="tab-btn" data-tab="policies">政策相關</button>
+            <button class="tab-btn" data-tab="news">新聞</button>
+            <button class="tab-btn" data-tab="articles">文章</button>
+            <button class="tab-btn" data-tab="videos">影片與網絡研討會</button>
+        </div>
+
+        <!-- 資源網格 -->
+        <div class="resource-grid" id="resourceGrid">
+            <!-- 由 JavaScript 動態生成 -->
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-social">
+            <a href="#"><svg viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18z"/></svg><span>WeChat</span></a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.54-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span>WhatsApp</span></a>
+            <a href="#"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradFooter" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#DD2A7B"/><stop offset="100%" style="stop-color:#8134AF"/></linearGradient></defs><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm0 2C5.8 4 4 5.8 4 7.8v8.4C4 18.2 5.8 20 7.8 20h8.4c2 0 3.8-1.8 3.8-3.8V7.8C20 5.8 18.2 4 16.2 4H7.8zm9.2 2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="url(#igGradFooter)"/></svg><span>Instagram</span></a>
+        </div>
+        <p class="copyright">© 2026 銳鋒有限公司 Top Market HK Limited</p>
+    </footer>
+
+    <script>
+        // =============================================================
+        // 1. 登入檢查（所有資源頁面必須）
+        // =============================================================
+        (function checkLogin() {
+            const isLoggedIn = sessionStorage.getItem('topmarket_logged_in') === 'true';
+            if (!isLoggedIn) {
+                // 儲存當前頁面，登入後跳轉回來
+                sessionStorage.setItem('topmarket_redirect', window.location.pathname + window.location.search);
+                window.location.href = 'login.html';
+                return;
+            }
+            // 顯示用戶資訊（可選）
+            const user = sessionStorage.getItem('topmarket_user') || '會員';
+            console.log(`✅ 已登入：${user}`);
+        })();
+
+        // =============================================================
+        // 2. 資源數據（五個分類）
+        // =============================================================
+        const resourceData = {
+            reports: {
+                label: '市場報告',
+                items: [
+                    { title: '2026年香港零售市場趨勢報告', desc: '深入分析本地零售業的消費模式轉變及增長動力。', date: '2026-07-15', tag: '最新' },
+                    { title: '香港餐飲業消費者行為研究', desc: '涵蓋用餐習慣、價格敏感度及品牌忠誠度調查。', date: '2026-06-28', tag: '熱門' },
+                    { title: '大灣區消費市場交叉分析', desc: '比較香港、深圳、廣州三地消費特徵與機遇。', date: '2026-06-10', tag: '區域' },
+                ]
+            },
+            policies: {
+                label: '政策相關',
+                items: [
+                    { title: '2026年財政預算案對中小企的影響', desc: '解讀稅務優惠、資助計劃及對營商環境的潛在影響。', date: '2026-07-01', tag: '焦點' },
+                    { title: '香港競爭條例最新執法動向', desc: '回顧近期案例及企業合規要點。', date: '2026-06-20', tag: '合規' },
+                    { title: '大灣區跨境數據流通政策解讀', desc: '分析政策框架及對企業數據策略的啟示。', date: '2026-05-15', tag: '跨境' },
+                ]
+            },
+            news: {
+                label: '新聞',
+                items: [
+                    { title: '銳鋒顧問發布2026年Q2市場信心指數', desc: '受訪企業對未來12個月的營商前景看法趨於審慎樂觀。', date: '2026-07-10', tag: '公司' },
+                    { title: '香港零售銷售額連續三季錄得增長', desc: '受惠於旅客回升及本地消費氣氛改善。', date: '2026-07-05', tag: '行業' },
+                    { title: '數碼轉型成中小企首要策略焦點', desc: '調查顯示超過六成企業計劃增加科技投資。', date: '2026-06-25', tag: '趨勢' },
+                ]
+            },
+            articles: {
+                label: '文章',
+                items: [
+                    { title: '如何運用市場調查提升品牌競爭力', desc: '從數據搜集到策略制定的實戰指南。', date: '2026-07-08', tag: '策略' },
+                    { title: '消費者決策旅程中的關鍵觸點分析', desc: '拆解顧客由認知到購買的每個階段。', date: '2026-06-18', tag: '消費者' },
+                    { title: '中小企市場研究：資源有限下的高效方法', desc: '預算有限時仍可進行的低成本研究技巧。', date: '2026-06-02', tag: '中小企' },
+                ]
+            },
+            videos: {
+                label: '影片與網絡研討會',
+                items: [
+                    { title: '網絡研討會：2026年香港零售展望', desc: '專家小組討論消費趨勢、數碼轉型及競爭策略。', date: '2026-07-12', tag: '研討會' },
+                    { title: '市場調查入門：從零開始設計問卷', desc: '15分鐘教學影片，涵蓋問卷設計的基本原則。', date: '2026-07-01', tag: '教學' },
+                    { title: '焦點小組訪談實戰示範', desc: '完整模擬訪談過程，展示如何發掘消費者深層需求。', date: '2026-06-22', tag: '示範' },
+                ]
+            }
+        };
+
+        // =============================================================
+        // 3. 渲染資源
+        // =============================================================
+        const grid = document.getElementById('resourceGrid');
+        const tabs = document.querySelectorAll('.tab-btn');
+
+        function renderResources(tabKey) {
+            const data = resourceData[tabKey];
+            if (!data) return;
+
+            grid.innerHTML = '';
+            data.items.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'resource-card';
+                card.style.transitionDelay = `${index * 0.08}s`;
+                card.innerHTML = `
+                    <span class="tag">${item.tag}</span>
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p>
+                    <div class="meta">
+                        <span>📅 ${item.date}</span>
+                        <span class="download-btn">下載 →</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // 觸發卡片動畫（Intersection Observer）
+            setTimeout(() => {
+                document.querySelectorAll('.resource-card').forEach(el => el.classList.add('visible'));
+            }, 100);
+        }
+
+        // =============================================================
+        // 4. 標籤切換
+        // =============================================================
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const tabKey = this.getAttribute('data-tab');
+                renderResources(tabKey);
+                // 更新 URL 參數（方便分享）
+                const url = new URL(window.location);
+                url.searchParams.set('tab', tabKey);
+                window.history.replaceState({}, '', url);
+            });
+        });
+
+        // =============================================================
+        // 5. 從 URL 參數讀取初始分類
+        // =============================================================
+        (function initFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const tabParam = params.get('tab');
+            if (tabParam && resourceData[tabParam]) {
+                // 激活對應標籤
+                tabs.forEach(tab => {
+                    if (tab.getAttribute('data-tab') === tabParam) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+                renderResources(tabParam);
+            } else {
+                // 默認顯示「市場報告」
+                renderResources('reports');
+            }
+        })();
+
+        // =============================================================
+        // 6. 其他互動（返回頂部、菜單等）
+        // =============================================================
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('header');
+            if (window.scrollY > 50) h.classList.add('scrolled');
+            else h.classList.remove('scrolled');
+            const backBtn = document.getElementById('backToTop');
+            if (window.scrollY > 400) backBtn.classList.add('show');
+            else backBtn.classList.remove('show');
+        });
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Hero 標題動畫
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.hero-title, .hero-desc').forEach(el => heroObserver.observe(el));
+
+        // 語言切換（簡化版，與主頁保持一致）
+        const langSwitch = document.getElementById('langSwitch');
+        if (langSwitch) {
+            langSwitch.querySelectorAll('.lang-opt').forEach(opt => {
+                opt.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const lang = this.getAttribute('data-lang');
+                    // 可擴充多語言支援
+                    console.log('語言切換:', lang);
+                });
+            });
+        }
+
+        console.log('✅ 資源中心已載入，登入狀態：', sessionStorage.getItem('topmarket_logged_in') === 'true');
+    </script>
+</body>
+</html>
