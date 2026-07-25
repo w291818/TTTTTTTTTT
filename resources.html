@@ -93,6 +93,41 @@
         }
         .nav-links a:hover { color: #3b82f6; }
         .nav-links a:hover::after { width: 100%; }
+
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 210px;
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px 0;
+            list-style: none;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+        .dropdown-menu li { padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 24px;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+        .dropdown-menu a::after { display: none; }
+        .dropdown-menu a:hover {
+            background: rgba(59, 130, 246, 0.12);
+            color: #3b82f6;
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+
         .lang-switch {
             display: flex;
             align-items: center;
@@ -359,22 +394,6 @@
         }
         .resource-card .meta .download-btn:hover { color: #60a5fa; }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748b;
-        }
-        .empty-state svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-        .empty-state h3 {
-            color: #94a3b8;
-            margin-bottom: 8px;
-        }
-
         /* 頁腳 */
         .footer {
             background: #fff;
@@ -427,6 +446,19 @@
             .logo .brand-en { font-size: 0.85rem; }
             .lang-switch { margin-left: 10px; padding: 2px 4px; }
             .lang-switch .lang-opt { padding: 2px 10px; font-size: 0.7rem; }
+
+            .dropdown-menu {
+                position: static;
+                background: transparent;
+                backdrop-filter: none;
+                border: none;
+                box-shadow: none;
+                padding-left: 20px;
+                display: none;
+            }
+            .dropdown.active .dropdown-menu { display: block; }
+            .dropdown-menu a { padding: 6px 16px; font-size: 0.85rem; }
+
             .hero { min-height: 40vh; padding: 90px 16px 40px; }
             .hero-text h1 { font-size: 2.2rem; }
             .resource-grid { grid-template-columns: 1fr; }
@@ -456,9 +488,32 @@
                 <li><a href="index.html#services">業務範圍</a></li>
                 <li><a href="index.html#cases">成功案例</a></li>
                 <li><a href="index.html#process">咨詢流程</a></li>
-                <li><a href="resources.html">資源中心</a></li>
-                <li><a href="member.html">會員中心</a></li>
+
+                <li class="dropdown" id="resourcesDropdown">
+                    <a href="resources.html">資源中心 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="resources.html?tab=reports">市場報告</a></li>
+                        <li><a href="resources.html?tab=policies">政策相關</a></li>
+                        <li><a href="resources.html?tab=news">新聞</a></li>
+                        <li><a href="resources.html?tab=articles">文章</a></li>
+                        <li><a href="resources.html?tab=videos">影片</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown" id="memberDropdown">
+                    <a href="member.html">會員中心 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="member.html#profile">個人資料</a></li>
+                        <li><a href="member.html#downloads">我的下載</a></li>
+                        <li><a href="member.html#saved">我的收藏</a></li>
+                        <li><a href="#" id="logoutBtn">登出</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="index.html#contact">聯絡我們</a></li>
+                <li><a href="join.html">加入我們</a></li>
+                <li><a href="faq.html">常見問題</a></li>
+
                 <li style="display:flex;align-items:center;margin-left:8px;">
                     <div class="lang-switch" id="langSwitch">
                         <span class="lang-opt active" data-lang="zh" id="langZhLabel">中</span>
@@ -492,19 +547,15 @@
             <div class="line"></div>
         </div>
 
-        <!-- 分類標籤 -->
         <div class="resource-tabs" id="tabContainer">
             <button class="tab-btn active" data-tab="reports">市場報告</button>
             <button class="tab-btn" data-tab="policies">政策相關</button>
             <button class="tab-btn" data-tab="news">新聞</button>
             <button class="tab-btn" data-tab="articles">文章</button>
-            <button class="tab-btn" data-tab="videos">影片與網絡研討會</button>
+            <button class="tab-btn" data-tab="videos">影片</button>
         </div>
 
-        <!-- 資源網格 -->
-        <div class="resource-grid" id="resourceGrid">
-            <!-- 由 JavaScript 動態生成 -->
-        </div>
+        <div class="resource-grid" id="resourceGrid"></div>
     </div>
 
     <!-- ===== FOOTER ===== -->
@@ -519,23 +570,20 @@
 
     <script>
         // =============================================================
-        // 1. 登入檢查（所有資源頁面必須）
+        // 1. 登入檢查
         // =============================================================
         (function checkLogin() {
             const isLoggedIn = sessionStorage.getItem('topmarket_logged_in') === 'true';
             if (!isLoggedIn) {
-                // 儲存當前頁面，登入後跳轉回來
                 sessionStorage.setItem('topmarket_redirect', window.location.pathname + window.location.search);
                 window.location.href = 'login.html';
                 return;
             }
-            // 顯示用戶資訊（可選）
-            const user = sessionStorage.getItem('topmarket_user') || '會員';
-            console.log(`✅ 已登入：${user}`);
+            console.log('✅ 已登入：', sessionStorage.getItem('topmarket_user') || '會員');
         })();
 
         // =============================================================
-        // 2. 資源數據（五個分類）
+        // 2. 資源數據
         // =============================================================
         const resourceData = {
             reports: {
@@ -571,7 +619,7 @@
                 ]
             },
             videos: {
-                label: '影片與網絡研討會',
+                label: '影片',
                 items: [
                     { title: '網絡研討會：2026年香港零售展望', desc: '專家小組討論消費趨勢、數碼轉型及競爭策略。', date: '2026-07-12', tag: '研討會' },
                     { title: '市場調查入門：從零開始設計問卷', desc: '15分鐘教學影片，涵蓋問卷設計的基本原則。', date: '2026-07-01', tag: '教學' },
@@ -607,7 +655,6 @@
                 grid.appendChild(card);
             });
 
-            // 觸發卡片動畫（Intersection Observer）
             setTimeout(() => {
                 document.querySelectorAll('.resource-card').forEach(el => el.classList.add('visible'));
             }, 100);
@@ -622,37 +669,27 @@
                 this.classList.add('active');
                 const tabKey = this.getAttribute('data-tab');
                 renderResources(tabKey);
-                // 更新 URL 參數（方便分享）
                 const url = new URL(window.location);
                 url.searchParams.set('tab', tabKey);
                 window.history.replaceState({}, '', url);
             });
         });
 
-        // =============================================================
-        // 5. 從 URL 參數讀取初始分類
-        // =============================================================
         (function initFromURL() {
             const params = new URLSearchParams(window.location.search);
             const tabParam = params.get('tab');
             if (tabParam && resourceData[tabParam]) {
-                // 激活對應標籤
                 tabs.forEach(tab => {
-                    if (tab.getAttribute('data-tab') === tabParam) {
-                        tab.classList.add('active');
-                    } else {
-                        tab.classList.remove('active');
-                    }
+                    tab.classList.toggle('active', tab.getAttribute('data-tab') === tabParam);
                 });
                 renderResources(tabParam);
             } else {
-                // 默認顯示「市場報告」
                 renderResources('reports');
             }
         })();
 
         // =============================================================
-        // 6. 其他互動（返回頂部、菜單等）
+        // 5. 其他互動
         // =============================================================
         window.addEventListener('scroll', () => {
             const h = document.getElementById('header');
@@ -669,7 +706,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Hero 標題動畫
         const heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -677,20 +713,32 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.hero-title, .hero-desc').forEach(el => heroObserver.observe(el));
 
-        // 語言切換（簡化版，與主頁保持一致）
-        const langSwitch = document.getElementById('langSwitch');
-        if (langSwitch) {
-            langSwitch.querySelectorAll('.lang-opt').forEach(opt => {
-                opt.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const lang = this.getAttribute('data-lang');
-                    // 可擴充多語言支援
-                    console.log('語言切換:', lang);
-                });
+        // 移動端下拉
+        document.querySelectorAll('.dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.closest('.dropdown').classList.toggle('active');
+                }
             });
-        }
+        });
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (!d.contains(e.target)) d.classList.remove('active');
+                });
+            }
+        });
 
-        console.log('✅ 資源中心已載入，登入狀態：', sessionStorage.getItem('topmarket_logged_in') === 'true');
+        document.getElementById('logoutBtn')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            sessionStorage.removeItem('topmarket_logged_in');
+            sessionStorage.removeItem('topmarket_user');
+            alert('您已成功登出。');
+            window.location.href = 'index.html';
+        });
+
+        console.log('✅ 資源中心已載入');
     </script>
 </body>
 </html>
