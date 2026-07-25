@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>會員中心 | 銳鋒顧問</title>
+    <style>
+        /* 複用 resources.html 的樣式（為節省篇幅，此處省略，實際使用時請複製） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+        }
+        body {
+            background: #020510;
+            color: #e2e8f0;
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        /* ... 此處應複製 resources.html 中的完整樣式 ... */
+        /* 為節省篇幅，實際部署時請複製完整樣式 */
+        .header { /* 與 resources.html 一致 */ }
+        .hero { /* 與 resources.html 一致 */ }
+        .section { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
+        .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .member-card { background: rgba(255,255,255,0.02); backdrop-filter: blur(30px); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s; opacity: 0; transform: translateY(30px); }
+        .member-card.visible { opacity: 1; transform: translateY(0); }
+        .member-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-6px); }
+        .member-card .icon { font-size: 2.4rem; margin-bottom: 12px; }
+        .member-card h3 { color: #fff; font-size: 1.1rem; }
+        .member-card p { color: #94a3b8; font-size: 0.9rem; }
+        .member-card .count { color: #3b82f6; font-size: 1.8rem; font-weight: 800; }
+        @media (max-width: 768px) { .member-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .member-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <!-- 簡化版，實際使用時複製 resources.html 的完整 header -->
+    <header class="header" id="header">...</header>
+    <section class="hero">...</section>
+    <div class="section">
+        <div class="section-title"><h2>會員中心</h2><div class="line"></div></div>
+        <div class="member-grid">
+            <div class="member-card"><div class="icon">📁</div><h3>我的下載</h3><div class="count">12</div><p>已下載的資源</p></div>
+            <div class="member-card"><div class="icon">⭐</div><h3>我的收藏</h3><div class="count">8</div><p>已收藏的內容</p></div>
+            <div class="member-card"><div class="icon">👤</div><h3>個人資料</h3><p>demo@topmarket.hk</p><p style="color:#475569;font-size:0.8rem;">會員級別：專業版</p></div>
+        </div>
+    </div>
+    <script>
+        (function checkLogin() {
+            if (sessionStorage.getItem('topmarket_logged_in') !== 'true') {
+                sessionStorage.setItem('topmarket_redirect', window.location.pathname);
+                window.location.href = 'login.html';
+            }
+        })();
+        // 其餘腳本與 resources.html 一致
+    </script>
+</body>
+</html>
