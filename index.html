@@ -41,6 +41,7 @@
         };
     </script>
     <style>
+        /* ========== 原有样式（保留） ========== */
         *,
         *::before,
         *::after {
@@ -287,81 +288,25 @@
             width: 6px;
         }
 
-        /* 资源中心二级菜单扩展 */
         .has-submenu {
             position: relative;
         }
         .submenu-dropdown {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: max-height 0.4s ease;
             padding-left: 16px;
-            border-left: 1px solid rgba(201, 169, 110, 0.2);
-            margin-top: 4px;
-            margin-bottom: 4px;
         }
         .submenu-dropdown.open {
             max-height: 200px;
         }
         .submenu-dropdown a {
             font-size: 13px;
-            color: #8a8a95;
+            color: #555560;
             padding: 8px 0;
         }
         .submenu-dropdown a:hover {
             color: #c9a96e;
-            padding-left: 8px;
-        }
-        .submenu-dropdown a::before {
-            display: none;
-        }
-
-        /* ========== 登录模态框样式 ========== */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 10, 12, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .modal-container {
-            background: #16161c;
-            border: 1px solid #1e1e26;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 400px;
-            padding: 32px;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .modal-overlay.active .modal-container {
-            transform: translateY(0);
-        }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #8a8a95;
-            background: transparent;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .modal-close:hover {
-            color: #ffffff;
         }
 
         /* ========== Hero ========== */
@@ -476,7 +421,7 @@
             will-change: transform;
         }
 
-        /* ========== 服务范围 - 手风琴 ========== */
+        /* ========== 服务范围 - 竖条手风琴 ========== */
         .accordion-bars {
             display: flex;
             gap: 2px;
@@ -732,6 +677,109 @@
             letter-spacing: -0.02em;
         }
 
+        /* ========== 登录模态框 ========== */
+        .login-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .login-modal-overlay.active {
+            display: flex;
+        }
+        .login-modal {
+            background: #16161c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 40px 32px;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        }
+        .login-modal .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #8a8a95;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .login-modal .close-btn:hover {
+            color: #ffffff;
+        }
+        .login-modal h2 {
+            font-family: "Noto Serif HK", serif;
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 24px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .login-modal .form-group {
+            margin-bottom: 18px;
+        }
+        .login-modal label {
+            display: block;
+            color: #8a8a95;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+        .login-modal input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            padding: 12px 16px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .login-modal input:focus {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .login-modal .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #c9a96e;
+            color: #0a0a0c;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 8px;
+        }
+        .login-modal .login-btn:hover {
+            background: #d4b87a;
+            transform: translateY(-2px);
+        }
+        .login-modal .login-error {
+            color: #ef4444;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 16px;
+            min-height: 24px;
+            display: none;
+        }
+        .login-modal .login-error.show {
+            display: block;
+        }
+
+        /* ========== 响应式补充 ========== */
         @media (max-width: 768px) {
             .timeline-line {
                 display: none;
@@ -741,6 +789,9 @@
             }
             .deco-big-text {
                 font-size: 60px;
+            }
+            .login-modal {
+                padding: 32px 20px;
             }
         }
     </style>
@@ -775,47 +826,23 @@
                         <a href="#business">核心業務</a>
                         <a href="#services">業務範圍</a>
                         <a href="#process">咨詢流程</a>
-                        
-                        <!-- 資源中心及展開子選單 -->
-                        <div class="has-submenu md:col-span-1">
-                            <a href="#" id="resourcesTrigger" class="flex items-center justify-between">
-                                <span>資源中心</span>
-                                <span class="text-xs transition-transform duration-300" id="resourcesArrow">▾</span>
+                        <div class="has-submenu">
+                            <a href="#" class="nav-item" id="resourcesTrigger">
+                                資源中心 <span class="inline-block ml-1 text-xs transition-transform duration-300" id="resourcesArrow">▾</span>
                             </a>
                             <div class="submenu-dropdown" id="resourcesSubmenu">
-                                <a href="#" id="marketReportLink">市場報告</a>
-                                <a href="#" id="companyReportLink">公司報告</a>
+                                <a href="#" class="report-link">市場報告</a>
+                                <a href="#" class="report-link">公司報告</a>
                             </div>
                         </div>
-
                         <a href="#contact">聯絡我們</a>
-                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">加入我們</a>
-                        <a href="#" id="loginNavTrigger">登入</a>
+                        <a href="#" id="loginTrigger">登入</a>
+                        <a href="https://www.linkedin.com/company/topmarkethk" target="_blank">加入我們</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-
-    <!-- ========== 登入模態框 ========== -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal-container">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h3 class="font-serif font-bold text-xl text-white mb-6" id="modalTitle">帳戶登入</h3>
-            <form id="loginForm" class="space-y-4">
-                <div>
-                    <label class="block text-white/40 text-[10px] tracking-widest mb-2">帳號</label>
-                    <input type="text" id="loginUser" class="form-input" placeholder="請輸入帳號" required autocomplete="off">
-                </div>
-                <div>
-                    <label class="block text-white/40 text-[10px] tracking-widest mb-2">密碼</label>
-                    <input type="password" id="loginPass" class="form-input" placeholder="請輸入密碼" required autocomplete="off">
-                </div>
-                <div id="loginErrorMsg" class="text-red-500 text-xs hidden">登錄錯誤</div>
-                <button type="submit" class="btn-primary w-full justify-center">確認</button>
-            </form>
-        </div>
-    </div>
 
     <!-- ========== Hero ========== -->
     <section id="top" class="hero">
@@ -944,7 +971,7 @@
         </div>
     </section>
 
-    <!-- 斜切分隔 -->
+    <!-- 波浪分隔 -->
     <div class="section-divider bg-bg-soft">
         <div class="divider-slant bg-bg" style="clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);"></div>
     </div>
@@ -967,7 +994,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 md:gap-8 relative">
-                <div class="reveal reveal-up">
+                <div class="reveal reveal-up md:mt-0">
                     <div class="bg-bg-card border border-border rounded-sm p-8 md:p-10 h-full tilt-card group" data-tilt data-tilt-max="10">
                         <div class="tilt-card-inner">
                             <div class="w-14 h-14 rounded-sm border border-white/15 flex items-center justify-center mb-8 bg-bg-deep tilt-parallax" data-tilt-depth="0.15">
@@ -1017,7 +1044,7 @@
         <div class="divider-slant bg-bg-soft" style="clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);"></div>
     </div>
 
-    <!-- ========== 核心業務 ========== -->
+    <!-- ========== 核心業務（已删除“了解更多”按钮） ========== -->
     <section id="business" class="py-24 md:py-32 bg-bg-soft relative overflow-hidden">
         <div class="float-shape" style="top:10%;right:5%;width:120px;height:120px;border:1px solid white;border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;animation-delay:-4s;"></div>
 
@@ -1029,6 +1056,7 @@
                 <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl">核心業務</h2>
             </div>
 
+            <!-- 业务1 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
                 <div class="lg:col-span-7 reveal reveal-left">
                     <div class="relative overflow-hidden rounded-sm tilt-card" data-tilt data-tilt-max="6">
@@ -1043,27 +1071,19 @@
                         <div class="font-display text-xs tracking-widest text-white/30 mb-4">01 / BRAND MANAGEMENT</div>
                         <h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">品牌管理與優化</h3>
                         <p class="text-white/50 text-sm leading-relaxed mb-6">從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。</p>
-                        <div class="flex items-center gap-3 text-white/70 text-sm font-medium group cursor-pointer w-fit">
-                            <span></span>
-                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </div>
+                        <!-- 已删除“了解更多”链接 -->
                     </div>
                 </div>
             </div>
 
+            <!-- 业务2 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
                 <div class="lg:col-span-5 lg:order-1 order-2">
                     <div class="reveal reveal-left">
                         <div class="font-display text-xs tracking-widest text-white/30 mb-4">02 / STRATEGY PLANNING</div>
                         <h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">商業戰略規劃</h3>
-                        <ul class="text-white/50 text-sm leading-loose space-y-2 mb-6">
-                            <li>以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</li>
-                          
-                        </ul>
-                        <div class="flex items-center gap-3 text-white/70 text-sm font-medium group cursor-pointer w-fit">
-                            <span>了解更多</span>
-                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </div>
+                        <p class="text-white/50 text-sm leading-relaxed mb-6">以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</p>
+                        <!-- 已删除“了解更多”链接 -->
                     </div>
                 </div>
                 <div class="lg:col-span-7 lg:order-2 order-1 reveal reveal-right">
@@ -1076,6 +1096,7 @@
                 </div>
             </div>
 
+            <!-- 业务3 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div class="lg:col-span-7 reveal reveal-left">
                     <div class="relative overflow-hidden rounded-sm tilt-card" data-tilt data-tilt-max="6">
@@ -1089,20 +1110,15 @@
                     <div class="reveal reveal-right">
                         <div class="font-display text-xs tracking-widest text-white/30 mb-4">03 / MARKET INSIGHTS</div>
                         <h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">市場洞察與數據分析</h3>
-                        <ul class="text-white/50 text-sm leading-loose space-y-2 mb-6">
-                            <li>以市場洞察與數據分析為根基，透過商業戰略規劃與可行性評估，為企業指引最優發展路徑。</li>
-                        </ul>
-                        <div class="flex items-center gap-3 text-white/70 text-sm font-medium group cursor-pointer w-fit">
-                            <span>了解更多</span>
-                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </div>
+                        <p class="text-white/50 text-sm leading-relaxed mb-6">從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。</p>
+                        <!-- 已删除“了解更多”链接 -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== 業務範圍 ========== -->
+    <!-- ========== 業務範圍（竖条手风琴） ========== -->
     <section id="services" class="py-24 md:py-32 bg-bg relative overflow-hidden">
         <div class="deco-big-text absolute -right-4 top-10">SERVICES</div>
 
@@ -1141,7 +1157,7 @@
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">03</div>
-                        <div class="acc-bar-title">大數據收集</div>
+                        <div class="acc-bar-title">AI大數據收集</div>
                     </div>
                 </div>
                 <div class="acc-bar">
@@ -1322,7 +1338,7 @@
                             </div>
                             <div>
                                 <div class="text-white/40 text-[10px] tracking-widest mb-1">LINKEDIN</div>
-                                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="text-white text-sm hover:text-white/80 transition-colors">TOP MARKET 銳鋒顧問</a>
+                                <a href="#" class="text-white text-sm hover:text-white/80 transition-colors">TOP MARKET 銳鋒顧問</a>
                             </div>
                         </div>
                     </div>
@@ -1410,6 +1426,26 @@
         </div>
     </footer>
 
+    <!-- ========== 登录模态框 ========== -->
+    <div class="login-modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <button class="close-btn" id="loginModalClose">&times;</button>
+            <h2>登入</h2>
+            <form id="loginForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="loginUsername">帳號</label>
+                    <input type="text" id="loginUsername" placeholder="請輸入帳號">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">密碼</label>
+                    <input type="password" id="loginPassword" placeholder="請輸入密碼">
+                </div>
+                <button type="submit" class="login-btn">登 入</button>
+                <div class="login-error" id="loginError">登錄錯誤，請重新輸入</div>
+            </form>
+        </div>
+    </div>
+
     <script>
         (function() {
             // ========== Header 滚动效果 ==========
@@ -1418,7 +1454,7 @@
                 header.classList.toggle('scrolled', window.scrollY > 30);
             });
 
-            // ========== 下拉导航主菜单 ==========
+            // ========== 下拉导航 ==========
             const menuToggle = document.getElementById('menuToggle');
             const dropdownNav = document.getElementById('dropdownNav');
 
@@ -1427,66 +1463,71 @@
                 dropdownNav.classList.toggle('open');
             });
 
-            // ========== 资源中心子菜单折叠/展开交互 ==========
-            const resourcesTrigger = document.getElementById('resourcesTrigger');
-            const resourcesSubmenu = document.getElementById('resourcesSubmenu');
-            const resourcesArrow = document.getElementById('resourcesArrow');
-
-            if (resourcesTrigger) {
-                resourcesTrigger.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    resourcesSubmenu.classList.toggle('open');
-                    resourcesArrow.style.transform = resourcesSubmenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            // 点击导航项（非特殊）关闭菜单
+            document.querySelectorAll('.dropdown-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.id === 'resourcesTrigger') {
+                        e.preventDefault();
+                        const submenu = document.getElementById('resourcesSubmenu');
+                        const arrow = document.getElementById('resourcesArrow');
+                        submenu.classList.toggle('open');
+                        arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' :
+                            'rotate(0deg)';
+                        return;
+                    }
+                    if (link.classList.contains('report-link') || link.id === 'loginTrigger') {
+                        return; // 由单独事件处理
+                    }
+                    if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+                        // 允许锚点跳转
+                    }
+                    menuToggle.classList.remove('active');
+                    dropdownNav.classList.remove('open');
                 });
-            }
-
-            // ========== 登录/报告模态框逻辑 ==========
-            const loginModal = document.getElementById('loginModal');
-            const loginNavTrigger = document.getElementById('loginNavTrigger');
-            const marketReportLink = document.getElementById('marketReportLink');
-            const companyReportLink = document.getElementById('companyReportLink');
-            const modalClose = document.getElementById('modalClose');
-            const loginForm = document.getElementById('loginForm');
-            const loginErrorMsg = document.getElementById('loginErrorMsg');
-            const modalTitle = document.getElementById('modalTitle');
-
-            function openModal(titleText, e) {
-                if (e) e.preventDefault();
-                modalTitle.textContent = titleText;
-                loginErrorMsg.classList.add('hidden');
-                loginForm.reset();
-                loginModal.classList.add('active');
-                
-                // 关闭汉堡导航
-                menuToggle.classList.remove('active');
-                dropdownNav.classList.remove('open');
-            }
-
-            function closeModal() {
-                loginModal.classList.remove('active');
-            }
-
-            if (loginNavTrigger) {
-                loginNavTrigger.addEventListener('click', (e) => openModal('帳戶登入', e));
-            }
-            if (marketReportLink) {
-                marketReportLink.addEventListener('click', (e) => openModal('市場報告登入 / 查閱', e));
-            }
-            if (companyReportLink) {
-                companyReportLink.addEventListener('click', (e) => openModal('公司報告登入 / 查閱', e));
-            }
-
-            if (modalClose) modalClose.addEventListener('click', closeModal);
-            
-            loginModal.addEventListener('click', (e) => {
-                if (e.target === loginModal) {
-                    closeModal();
-                }
             });
 
-            loginForm.addEventListener('submit', (e) => {
+            // ========== 登录模态框 ==========
+            const loginModal = document.getElementById('loginModal');
+            const loginForm = document.getElementById('loginForm');
+            const loginError = document.getElementById('loginError');
+
+            function showLoginModal() {
+                loginModal.classList.add('active');
+                loginError.classList.remove('show');
+                loginForm.reset();
+            }
+
+            function hideLoginModal() {
+                loginModal.classList.remove('active');
+                loginError.classList.remove('show');
+            }
+
+            document.getElementById('loginModalClose').addEventListener('click', hideLoginModal);
+
+            loginModal.addEventListener('click', function(e) {
+                if (e.target === this) hideLoginModal();
+            });
+
+            loginForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                loginErrorMsg.classList.remove('hidden');
+                loginError.textContent = '登錄錯誤，請重新輸入';
+                loginError.classList.add('show');
+            });
+
+            document.getElementById('loginTrigger').addEventListener('click', function(e) {
+                e.preventDefault();
+                menuToggle.classList.remove('active');
+                dropdownNav.classList.remove('open');
+                showLoginModal();
+            });
+
+            document.querySelectorAll('.report-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    menuToggle.classList.remove('active');
+                    dropdownNav.classList.remove('open');
+                    showLoginModal();
+                });
             });
 
             // ========== 滚动入场动画 ==========
@@ -1562,8 +1603,11 @@
 
             // ========== Hero 标题 3D 鼠标跟随 ==========
             const heroTitle = document.getElementById('heroTitle');
-            let targetX = 0, targetY = 0;
-            let currentX = 0, currentY = 0;
+            let rafId;
+            let targetX = 0,
+                targetY = 0;
+            let currentX = 0,
+                currentY = 0;
 
             document.addEventListener('mousemove', (e) => {
                 targetX = (e.clientX / window.innerWidth - 0.5) * 6;
@@ -1577,7 +1621,7 @@
                     heroTitle.style.transform =
                         `perspective(800px) rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
                 }
-                requestAnimationFrame(animateTitle);
+                rafId = requestAnimationFrame(animateTitle);
             }
             animateTitle();
 
