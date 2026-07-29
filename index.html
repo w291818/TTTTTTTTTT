@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOP MARKET 銳鋒顧問 | 讓商業視野 超越界限</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,19 +13,19 @@
             theme: {
                 extend: {
                     colors: {
-                        bg: '#0a0a0c',
-                        'bg-soft': '#0f0f13',
-                        'bg-card': '#16161c',
-                        'bg-deep': '#07070a',
+                        bg: '#08090c',
+                        'bg-soft': '#0e1017',
+                        'bg-card': '#131620',
+                        'bg-deep': '#050608',
                         gold: '#c9a96e',
-                        'gold-light': '#d4b87a',
+                        'gold-light': '#f0d78c',
                         'gold-dark': '#a88c54',
                         navy: '#0f1a2e',
                         text: '#ffffff',
                         'text-muted': '#8a8a95',
                         'text-dim': '#555560',
-                        border: '#1e1e26',
-                        'border-soft': '#15151a',
+                        border: '#1e2230',
+                        'border-soft': '#151822',
                     },
                     fontFamily: {
                         serif: ['"Noto Serif HK"', 'serif'],
@@ -41,7 +40,7 @@
         };
     </script>
     <style>
-        /* ========== 原有样式（保留） ========== */
+        /* ========== 原有樣式與高質感擴展 ========== */
         *,
         *::before,
         *::after {
@@ -55,32 +54,44 @@
         }
         body {
             overflow-wrap: break-word;
+            background: #08090c;
+            color: #ffffff;
+            font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ambient light background glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 20%, rgba(201, 169, 110, 0.05) 0%, rgba(15, 26, 46, 0.15) 50%, transparent 80%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         html {
             scroll-behavior: smooth;
         }
 
-        body {
-            background: #0a0a0c;
-            color: #ffffff;
-            font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
         ::-webkit-scrollbar {
             width: 4px;
         }
         ::-webkit-scrollbar-track {
-            background: #0a0a0c;
+            background: #08090c;
         }
         ::-webkit-scrollbar-thumb {
             background: #c9a96e;
             border-radius: 2px;
         }
 
-        /* ========== 入场动画 ========== */
+        /* ========== 入場動畫 ========== */
         .reveal {
             opacity: 0;
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -101,28 +112,16 @@
             opacity: 1;
             transform: translate(0, 0) scale(1);
         }
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
-        .reveal-delay-5 {
-            transition-delay: 0.5s;
-        }
-        .reveal-delay-6 {
-            transition-delay: 0.6s;
-        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+        .reveal-delay-6 { transition-delay: 0.6s; }
 
-        /* ========== 金色渐变 ========== */
+        /* ========== 金色漸變與流光 ========== */
         .text-gold-gradient {
-            background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 40%, #a88c54 70%, #c9a96e 100%);
+            background: linear-gradient(135deg, #f3e5ad 0%, #c9a96e 40%, #a88c54 70%, #f0d78c 100%);
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -130,30 +129,73 @@
             animation: metalShine 5s ease-in-out infinite;
         }
         @keyframes metalShine {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
-        /* ========== 按钮 ========== */
+        /* 高級感金色卡片樣式 (優勢區域專用) */
+        .gold-advantage-card {
+            background: linear-gradient(145deg, rgba(25, 28, 40, 0.85) 0%, rgba(14, 16, 23, 0.95) 100%);
+            border: 1px solid rgba(201, 169, 110, 0.25);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(201, 169, 110, 0.03);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+        .gold-advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+            opacity: 0.7;
+            z-index: 2;
+        }
+        .gold-advantage-card:hover {
+            border-color: rgba(201, 169, 110, 0.6) !important;
+            box-shadow: 0 20px 40px -15px rgba(201, 169, 110, 0.25), inset 0 0 20px rgba(201, 169, 110, 0.08) !important;
+        }
+        .gold-advantage-card .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        .gold-advantage-card .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gold-advantage-card:hover .card-img-wrapper img {
+            transform: scale(1.08);
+        }
+        .gold-advantage-card .card-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8, 9, 12, 0.2) 0%, rgba(19, 22, 32, 0.95) 100%);
+        }
+
+        /* ========== 按鈕 ========== */
         .btn-primary {
-            background: #ffffff;
-            color: #0a0a0c;
-            font-weight: 600;
+            background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%);
+            color: #08090c;
+            font-weight: 700;
             padding: 14px 36px;
             border-radius: 999px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid #ffffff;
+            border: 1px solid #f0d78c;
             position: relative;
             overflow: hidden;
             font-size: 14px;
+            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.25);
         }
         .btn-primary::after {
             content: '';
@@ -162,16 +204,14 @@
             left: -100%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
             transform: skewX(-25deg);
             transition: left 0.6s ease;
         }
-        .btn-primary:hover::after {
-            left: 120%;
-        }
+        .btn-primary:hover::after { left: 120%; }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 30px rgba(201, 169, 110, 0.4);
         }
 
         .btn-outline {
@@ -184,16 +224,17 @@
             align-items: center;
             gap: 8px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(201, 169, 110, 0.4);
             font-size: 14px;
         }
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(201, 169, 110, 0.1);
+            border-color: rgba(201, 169, 110, 0.8);
+            color: #f0d78c;
             transform: translateY(-3px);
         }
 
-        /* ========== Header & 下拉导航 ========== */
+        /* ========== Header & 下拉導航 ========== */
         .site-header {
             position: fixed;
             top: 0;
@@ -203,10 +244,10 @@
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .site-header.scrolled {
-            background: rgba(10, 10, 12, 0.85);
+            background: rgba(8, 9, 12, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
         }
 
         .menu-toggle {
@@ -246,20 +287,16 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(10, 10, 12, 0.95);
+            background: rgba(8, 9, 12, 0.96);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .dropdown-nav.open {
-            max-height: 600px;
-        }
-        .dropdown-nav-inner {
-            padding: 20px 0 30px;
-        }
+        .dropdown-nav.open { max-height: 600px; }
+        .dropdown-nav-inner { padding: 20px 0 30px; }
         .dropdown-nav a {
             display: block;
             padding: 12px 0;
@@ -284,30 +321,22 @@
             background: #c9a96e;
             transition: width 0.3s ease;
         }
-        .dropdown-nav a:hover::before {
-            width: 6px;
-        }
+        .dropdown-nav a:hover::before { width: 6px; }
 
-        .has-submenu {
-            position: relative;
-        }
+        .has-submenu { position: relative; }
         .submenu-dropdown {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease;
             padding-left: 16px;
         }
-        .submenu-dropdown.open {
-            max-height: 200px;
-        }
+        .submenu-dropdown.open { max-height: 200px; }
         .submenu-dropdown a {
             font-size: 13px;
             color: #555560;
             padding: 8px 0;
         }
-        .submenu-dropdown a:hover {
-            color: #c9a96e;
-        }
+        .submenu-dropdown a:hover { color: #c9a96e; }
 
         /* ========== Hero ========== */
         .hero {
@@ -321,7 +350,7 @@
         .hero-bg-img {
             position: absolute;
             inset: 0;
-            background-image: url('https://picsum.photos/1920/1080?random=1');
+            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             z-index: 0;
@@ -331,7 +360,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(10, 10, 12, 0.85) 0%, rgba(10, 10, 12, 0.5) 50%, rgba(10, 10, 12, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(8, 9, 12, 0.92) 0%, rgba(14, 16, 23, 0.75) 50%, rgba(8, 9, 12, 0.95) 100%);
         }
 
         .hero-slice {
@@ -340,7 +369,7 @@
             top: 0;
             bottom: 0;
             width: 40%;
-            background: linear-gradient(135deg, rgba(15, 26, 46, 0.6) 0%, rgba(10, 10, 12, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.08) 0%, rgba(8, 9, 12, 0.4) 100%);
             clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
             z-index: 1;
         }
@@ -350,7 +379,7 @@
             inset: 0;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.06;
+            opacity: 0.08;
         }
         .deco-lines::before {
             content: '';
@@ -375,7 +404,7 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(201, 169, 110, 0.25) 1px, transparent 1px);
             background-size: 12px 12px;
             pointer-events: none;
         }
@@ -402,7 +431,7 @@
             left: -10%;
         }
 
-        /* ========== 3D 卡片倾斜 ========== */
+        /* ========== 3D 卡片傾斜 ========== */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1200px;
@@ -411,17 +440,19 @@
         .tilt-card-inner {
             transition: transform 0.1s ease-out;
             will-change: transform;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .tilt-card:hover {
-            border-color: rgba(255, 255, 255, 0.15) !important;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
         }
         .tilt-parallax {
             transition: transform 0.15s ease-out;
             will-change: transform;
         }
 
-        /* ========== 服务范围 - 竖条手风琴 ========== */
+        /* ========== 服務範圍 - 豎條手風琴 ========== */
         .accordion-bars {
             display: flex;
             gap: 2px;
@@ -435,9 +466,11 @@
             cursor: pointer;
             transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             border-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .acc-bar:hover {
             flex: 4;
+            border-color: rgba(201, 169, 110, 0.4);
         }
         .acc-bar-img {
             position: absolute;
@@ -446,13 +479,11 @@
             background-position: center;
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .acc-bar:hover .acc-bar-img {
-            transform: scale(1.1);
-        }
+        .acc-bar:hover .acc-bar-img { transform: scale(1.1); }
         .acc-bar-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(10, 10, 12, 0.3) 0%, rgba(10, 10, 12, 0.8) 100%);
+            background: linear-gradient(180deg, rgba(8, 9, 12, 0.3) 0%, rgba(8, 9, 12, 0.88) 100%);
         }
         .acc-bar-content {
             position: absolute;
@@ -467,7 +498,7 @@
             font-family: "Space Grotesk", sans-serif;
             font-size: 13px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(201, 169, 110, 0.8);
             letter-spacing: 0.1em;
         }
         .acc-bar-title {
@@ -485,6 +516,7 @@
             writing-mode: horizontal-tb;
             align-self: flex-start;
             font-size: 22px;
+            color: #f0d78c;
         }
 
         @media (max-width: 768px) {
@@ -517,32 +549,30 @@
                 align-items: flex-start;
                 justify-content: space-between;
             }
-            .acc-bar-num {
-                font-size: 11px;
-            }
+            .acc-bar-num { font-size: 11px; }
         }
 
-        /* ========== 时间线 ========== */
+        /* ========== 時間線 ========== */
         .timeline-dot {
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #16161c;
-            border: 2px solid #2a2a33;
+            background: #131620;
+            border: 2px solid #2a2d3d;
             position: relative;
             z-index: 2;
             transition: all 0.5s ease;
         }
         .timeline-step.visible .timeline-dot {
             border-color: #c9a96e;
-            box-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
+            box-shadow: 0 0 20px rgba(201, 169, 110, 0.5);
         }
         .timeline-dot::after {
             content: '';
             position: absolute;
             inset: -6px;
             border-radius: 50%;
-            border: 1px solid rgba(201, 169, 110, 0.2);
+            border: 1px solid rgba(201, 169, 110, 0.3);
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -551,15 +581,8 @@
             animation: pulse 2.5s infinite;
         }
         @keyframes pulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.4;
-            }
-            50% {
-                transform: scale(1.4);
-                opacity: 0;
-            }
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.4); opacity: 0; }
         }
 
         .timeline-line {
@@ -568,7 +591,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #1e1e26 15%, #1e1e26 85%, transparent);
+            background: linear-gradient(90deg, transparent, #1e2230 15%, #1e2230 85%, transparent);
         }
         .timeline-line::after {
             content: '';
@@ -577,23 +600,19 @@
             left: 0;
             height: 100%;
             width: 25%;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.6), transparent);
             animation: timelineFlow 4s ease-in-out infinite;
         }
         @keyframes timelineFlow {
-            0% {
-                left: -25%;
-            }
-            100% {
-                left: 100%;
-            }
+            0% { left: -25%; }
+            100% { left: 100%; }
         }
 
-        /* ========== 表单 ========== */
+        /* ========== 表單 ========== */
         .form-input {
             width: 100%;
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(201, 169, 110, 0.15);
             border-radius: 4px;
             padding: 14px 18px;
             color: #ffffff;
@@ -603,46 +622,35 @@
             font-family: inherit;
         }
         .form-input:focus {
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(201, 169, 110, 0.5);
             background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 15px rgba(201, 169, 110, 0.1);
         }
-        .form-input::placeholder {
-            color: #44444c;
-        }
+        .form-input::placeholder { color: #44444c; }
 
-        /* ========== 数字统计 ========== */
-        .stat-number {
-            font-variant-numeric: tabular-nums;
-        }
+        .stat-number { font-variant-numeric: tabular-nums; }
 
-        /* ========== 浮动几何 ========== */
+        /* ========== 浮動幾何 ========== */
         .float-shape {
             position: absolute;
             pointer-events: none;
-            opacity: 0.05;
+            opacity: 0.04;
             animation: floatShape 18s ease-in-out infinite;
         }
         @keyframes floatShape {
-            0%,
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% {
-                transform: translate(20px, -15px) rotate(120deg);
-            }
-            66% {
-                transform: translate(-15px, 10px) rotate(240deg);
-            }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(20px, -15px) rotate(120deg); }
+            66% { transform: translate(-15px, 10px) rotate(240deg); }
         }
 
-        /* ========== 大号装饰文字 ========== */
+        /* ========== 大號裝飾文字 ========== */
         .deco-big-text {
             font-family: "Space Grotesk", sans-serif;
             font-weight: 900;
             font-size: clamp(80px, 15vw, 200px);
             line-height: 0.85;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+            -webkit-text-stroke: 1px rgba(201, 169, 110, 0.06);
             letter-spacing: -0.02em;
             user-select: none;
             pointer-events: none;
@@ -652,12 +660,13 @@
         .logo-mark {
             width: 38px;
             height: 38px;
-            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border: 1.5px solid rgba(201, 169, 110, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 2px;
             position: relative;
+            background: rgba(201, 169, 110, 0.05);
         }
         .logo-mark::before {
             content: '';
@@ -666,8 +675,8 @@
             right: -3px;
             width: 8px;
             height: 8px;
-            border-top: 1.5px solid #c9a96e;
-            border-right: 1.5px solid #c9a96e;
+            border-top: 1.5px solid #f0d78c;
+            border-right: 1.5px solid #f0d78c;
         }
         .logo-mark span {
             font-family: "Space Grotesk", sans-serif;
@@ -677,12 +686,12 @@
             letter-spacing: -0.02em;
         }
 
-        /* ========== 登录模态框 ========== */
+        /* ========== 登入模態框 ========== */
         .login-modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 200;
@@ -690,18 +699,16 @@
             align-items: center;
             padding: 20px;
         }
-        .login-modal-overlay.active {
-            display: flex;
-        }
+        .login-modal-overlay.active { display: flex; }
         .login-modal {
-            background: #16161c;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #131620;
+            border: 1px solid rgba(201, 169, 110, 0.3);
             border-radius: 8px;
             padding: 40px 32px;
             max-width: 420px;
             width: 100%;
             position: relative;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 110, 0.1);
         }
         .login-modal .close-btn {
             position: absolute;
@@ -715,9 +722,7 @@
             transition: color 0.3s;
             line-height: 1;
         }
-        .login-modal .close-btn:hover {
-            color: #ffffff;
-        }
+        .login-modal .close-btn:hover { color: #ffffff; }
         .login-modal h2 {
             font-family: "Noto Serif HK", serif;
             font-weight: 700;
@@ -726,9 +731,7 @@
             text-align: center;
             color: #ffffff;
         }
-        .login-modal .form-group {
-            margin-bottom: 18px;
-        }
+        .login-modal .form-group { margin-bottom: 18px; }
         .login-modal label {
             display: block;
             color: #8a8a95;
@@ -739,7 +742,7 @@
         .login-modal input {
             width: 100%;
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(201, 169, 110, 0.2);
             border-radius: 4px;
             padding: 12px 16px;
             color: #ffffff;
@@ -747,15 +750,13 @@
             outline: none;
             transition: border-color 0.3s;
         }
-        .login-modal input:focus {
-            border-color: rgba(255, 255, 255, 0.3);
-        }
+        .login-modal input:focus { border-color: rgba(201, 169, 110, 0.6); }
         .login-modal .login-btn {
             width: 100%;
             padding: 14px;
-            background: #c9a96e;
-            color: #0a0a0c;
-            font-weight: 600;
+            background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%);
+            color: #08090c;
+            font-weight: 700;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -764,8 +765,8 @@
             margin-top: 8px;
         }
         .login-modal .login-btn:hover {
-            background: #d4b87a;
             transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 169, 110, 0.4);
         }
         .login-modal .login-error {
             color: #ef4444;
@@ -775,24 +776,13 @@
             min-height: 24px;
             display: none;
         }
-        .login-modal .login-error.show {
-            display: block;
-        }
+        .login-modal .login-error.show { display: block; }
 
-        /* ========== 响应式补充 ========== */
         @media (max-width: 768px) {
-            .timeline-line {
-                display: none;
-            }
-            .hero-slice {
-                display: none;
-            }
-            .deco-big-text {
-                font-size: 60px;
-            }
-            .login-modal {
-                padding: 32px 20px;
-            }
+            .timeline-line { display: none; }
+            .hero-slice { display: none; }
+            .deco-big-text { font-size: 60px; }
+            .login-modal { padding: 32px 20px; }
         }
     </style>
 </head>
@@ -808,7 +798,7 @@
                     </div>
                     <div class="hidden sm:block">
                         <div class="text-white font-display font-bold text-sm tracking-widest">TOP MARKET</div>
-                        <div class="text-text-dim text-[10px] tracking-widest mt-0.5">銳鋒顧問有限公司</div>
+                        <div class="text-gold-light/60 text-[10px] tracking-widest mt-0.5">銳鋒顧問有限公司</div>
                     </div>
                 </a>
                 <div class="menu-toggle" id="menuToggle">
@@ -825,7 +815,7 @@
                         <a href="#advantages">專業優勢</a>
                         <a href="#business">核心業務</a>
                         <a href="#services">業務範圍</a>
-                        <a href="#process">咨詢流程</a>
+                        <a href="#process">諮詢流程</a>
                         <div class="has-submenu">
                             <a href="#" class="nav-item" id="resourcesTrigger">
                                 資源中心 <span class="inline-block ml-1 text-xs transition-transform duration-300" id="resourcesArrow">▾</span>
@@ -857,8 +847,8 @@
             <div class="grid lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-8">
                     <div class="reveal reveal-up flex items-center gap-4 mb-10">
-                        <div class="w-10 h-px bg-white/40"></div>
-                        <span class="text-white/60 text-xs tracking-widest-xl uppercase font-display font-medium">Business Intelligence</span>
+                        <div class="w-10 h-px bg-gold/60"></div>
+                        <span class="text-gold-light/80 text-xs tracking-widest-xl uppercase font-display font-medium">Business Intelligence</span>
                     </div>
 
                     <h1 class="reveal reveal-up reveal-delay-1 hero-title text-5xl md:text-7xl lg:text-8xl mb-8" id="heroTitle">
@@ -866,7 +856,7 @@
                         <span class="text-gold-gradient">超越界限</span>
                     </h1>
 
-                    <p class="reveal reveal-up reveal-delay-2 text-lg md:text-xl text-white/60 font-light mb-3 max-w-xl">
+                    <p class="reveal reveal-up reveal-delay-2 text-lg md:text-xl text-white/70 font-light mb-3 max-w-xl">
                         洞悉香港市場，以精準數據驅動商業策略。
                     </p>
                     <p class="reveal reveal-up reveal-delay-3 text-sm text-white/40 max-w-xl mb-12 leading-relaxed">
@@ -884,25 +874,25 @@
 
                 <div class="lg:col-span-4 hidden lg:block">
                     <div class="reveal reveal-right reveal-delay-5 space-y-4">
-                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6">
-                            <div class="font-display font-bold text-4xl text-white mb-1 stat-number" data-target="200">0</div>
-                            <div class="text-white/40 text-xs tracking-wider">+ 成功案例</div>
+                        <div class="bg-bg-card/70 backdrop-blur-md border border-gold/20 rounded-sm p-6 shadow-xl">
+                            <div class="font-display font-bold text-4xl text-gold-light mb-1 stat-number" data-target="200">0</div>
+                            <div class="text-white/50 text-xs tracking-wider">+ 成功案例</div>
                         </div>
-                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6 ml-12">
-                            <div class="font-display font-bold text-4xl text-white mb-1 stat-number" data-target="10">0</div>
-                            <div class="text-white/40 text-xs tracking-wider">年行業經驗</div>
+                        <div class="bg-bg-card/70 backdrop-blur-md border border-gold/20 rounded-sm p-6 ml-12 shadow-xl">
+                            <div class="font-display font-bold text-4xl text-gold-light mb-1 stat-number" data-target="10">0</div>
+                            <div class="text-white/50 text-xs tracking-wider">年行業經驗</div>
                         </div>
-                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6 ml-6">
-                            <div class="font-display font-bold text-4xl text-white mb-1 stat-number" data-target="98">0</div>
-                            <div class="text-white/40 text-xs tracking-wider">% 客戶滿意度</div>
+                        <div class="bg-bg-card/70 backdrop-blur-md border border-gold/20 rounded-sm p-6 ml-6 shadow-xl">
+                            <div class="font-display font-bold text-4xl text-gold-light mb-1 stat-number" data-target="98">0</div>
+                            <div class="text-white/50 text-xs tracking-wider">% 客戶滿意度</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="reveal reveal-up reveal-delay-6 absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-                <span class="text-white/30 text-xs tracking-widest font-display">SCROLL</span>
-                <div class="w-px h-10 bg-gradient-to-b from-white/30 to-transparent"></div>
+                <span class="text-gold/50 text-xs tracking-widest font-display">SCROLL</span>
+                <div class="w-px h-10 bg-gradient-to-b from-gold/50 to-transparent"></div>
             </div>
         </div>
     </section>
@@ -916,14 +906,14 @@
     <section id="about" class="py-24 md:py-32 bg-bg-soft relative overflow-hidden">
         <div class="deco-big-text absolute -right-4 top-10">ABOUT</div>
 
-        <div class="float-shape" style="top:20%;left:5%;width:150px;height:150px;border:1px solid white;border-radius:50%;"></div>
-        <div class="float-shape" style="bottom:15%;right:15%;width:100px;height:100px;border:1px solid white;animation-delay:-6s;"></div>
+        <div class="float-shape" style="top:20%;left:5%;width:150px;height:150px;border:1px solid rgba(201,169,110,0.2);border-radius:50%;"></div>
+        <div class="float-shape" style="bottom:15%;right:15%;width:100px;height:100px;border:1px solid rgba(201,169,110,0.2);animation-delay:-6s;"></div>
 
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5 lg:pt-24">
                     <div class="reveal reveal-left mb-6">
-                        <span class="text-white/40 text-xs tracking-widest-xl uppercase font-display">01 / About Us</span>
+                        <span class="text-gold-light/60 text-xs tracking-widest-xl uppercase font-display">01 / About Us</span>
                     </div>
                     <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-8 leading-tight">
                         以銳見洞察行業<br>
@@ -940,12 +930,12 @@
                     </div>
 
                     <div class="reveal reveal-left reveal-delay-3 mt-10 flex items-center gap-5">
-                        <div class="w-12 h-px bg-white/20"></div>
-                        <div class="flex items-center gap-4 text-white/80 font-serif text-sm tracking-wider">
+                        <div class="w-12 h-px bg-gold/30"></div>
+                        <div class="flex items-center gap-4 text-gold-light/80 font-serif text-sm tracking-wider">
                             <span>精準</span>
-                            <span class="w-1 h-1 rounded-full bg-white/30"></span>
+                            <span class="w-1 h-1 rounded-full bg-gold/40"></span>
                             <span>務實</span>
-                            <span class="w-1 h-1 rounded-full bg-white/30"></span>
+                            <span class="w-1 h-1 rounded-full bg-gold/40"></span>
                             <span>可持續</span>
                         </div>
                     </div>
@@ -953,18 +943,18 @@
 
                 <div class="lg:col-span-7 relative">
                     <div class="reveal reveal-scale relative">
-                        <div class="relative overflow-hidden rounded-sm tilt-card" data-tilt data-tilt-max="8">
+                        <div class="relative overflow-hidden rounded-sm tilt-card border border-gold/20" data-tilt data-tilt-max="8">
                             <div class="tilt-card-inner">
-                                <img src="https://picsum.photos/700/500?random=2" alt="商業顧問" class="w-full h-[450px] md:h-[550px] object-cover">
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="商業顧問團隊" class="w-full h-[450px] md:h-[550px] object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-bg-soft/90 via-transparent to-transparent"></div>
                             </div>
                         </div>
-                        <div class="absolute -bottom-6 -right-6 w-full h-full border border-white/10 -z-10 rounded-sm"></div>
-                        <div class="absolute -bottom-8 -left-8 bg-bg-card border border-white/10 rounded-sm px-8 py-6 backdrop-blur-md">
-                            <div class="font-display font-bold text-3xl text-white mb-1">TOP MARKET</div>
+                        <div class="absolute -bottom-6 -right-6 w-full h-full border border-gold/15 -z-10 rounded-sm"></div>
+                        <div class="absolute -bottom-8 -left-8 bg-bg-card border border-gold/30 rounded-sm px-8 py-6 backdrop-blur-md shadow-2xl">
+                            <div class="font-display font-bold text-3xl text-gold-light mb-1">TOP MARKET</div>
                             <div class="text-white/40 text-xs tracking-widest">SINCE 2014 · HONG KONG</div>
                         </div>
-                        <div class="absolute -top-6 right-10 font-display font-black text-8xl text-white/[0.03] leading-none">01</div>
+                        <div class="absolute -top-6 right-10 font-display font-black text-8xl text-gold/[0.04] leading-none">01</div>
                     </div>
                 </div>
             </div>
@@ -976,7 +966,7 @@
         <div class="divider-slant bg-bg" style="clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);"></div>
     </div>
 
-    <!-- ========== 專業優勢 ========== -->
+    <!-- ========== 專業優勢（含圖片） ========== -->
     <section id="advantages" class="py-24 md:py-32 bg-bg relative overflow-hidden">
         <div class="deco-big-text absolute left-0 top-20">ADVANTAGE</div>
 
@@ -984,54 +974,81 @@
             <div class="flex justify-end mb-20">
                 <div class="text-right max-w-lg">
                     <div class="reveal reveal-right mb-4">
-                        <span class="text-white/40 text-xs tracking-widest-xl uppercase font-display">02 / Our Advantages</span>
+                        <span class="text-gold-light/60 text-xs tracking-widest-xl uppercase font-display">02 / Our Advantages</span>
                     </div>
                     <h2 class="reveal reveal-right reveal-delay-1 font-serif font-bold text-3xl md:text-5xl leading-tight">
                         三大核心優勢<br>
-                        驅動商業增長
+                        <span class="text-gold-gradient">驅動商業增長</span>
                     </h2>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 md:gap-8 relative">
+                <!-- 優勢 1 -->
                 <div class="reveal reveal-up md:mt-0">
-                    <div class="bg-bg-card border border-border rounded-sm p-8 md:p-10 h-full tilt-card group" data-tilt data-tilt-max="10">
+                    <div class="gold-advantage-card rounded-sm h-full tilt-card group" data-tilt data-tilt-max="8">
                         <div class="tilt-card-inner">
-                            <div class="w-14 h-14 rounded-sm border border-white/15 flex items-center justify-center mb-8 bg-bg-deep tilt-parallax" data-tilt-depth="0.15">
-                                <span class="font-display font-bold text-xl text-white/80">01</span>
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="數據驅動">
+                                <div class="card-img-overlay"></div>
+                                <div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-gold/40 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner">
+                                    <span class="font-display font-bold text-sm text-gold-light">01</span>
+                                </div>
                             </div>
-                            <h3 class="font-serif font-bold text-xl mb-4 text-white tilt-parallax" data-tilt-depth="0.08">數據驅動</h3>
-                            <p class="text-white/50 leading-relaxed text-sm tilt-parallax" data-tilt-depth="0.05">
-                                摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。
-                            </p>
+                            <div class="p-8 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">數據驅動</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm">
+                                        摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="reveal reveal-up reveal-delay-1 md:mt-16">
-                    <div class="bg-bg-card border border-border rounded-sm p-8 md:p-10 h-full tilt-card group" data-tilt data-tilt-max="10">
+                <!-- 優勢 2 -->
+                <div class="reveal reveal-up reveal-delay-1 md:mt-8">
+                    <div class="gold-advantage-card rounded-sm h-full tilt-card group" data-tilt data-tilt-max="8">
                         <div class="tilt-card-inner">
-                            <div class="w-14 h-14 rounded-sm border border-white/15 flex items-center justify-center mb-8 bg-bg-deep tilt-parallax" data-tilt-depth="0.15">
-                                <span class="font-display font-bold text-xl text-white/80">02</span>
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800&auto=format&fit=crop" alt="本地深耕">
+                                <div class="card-img-overlay"></div>
+                                <div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-gold/40 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner">
+                                    <span class="font-display font-bold text-sm text-gold-light">02</span>
+                                </div>
                             </div>
-                            <h3 class="font-serif font-bold text-xl mb-4 text-white tilt-parallax" data-tilt-depth="0.08">本地深耕</h3>
-                            <p class="text-white/50 leading-relaxed text-sm tilt-parallax" data-tilt-depth="0.05">
-                                植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。
-                            </p>
+                            <div class="p-8 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">本地深耕</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm">
+                                        植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="reveal reveal-up reveal-delay-2 md:mt-8">
-                    <div class="bg-bg-card border border-border rounded-sm p-8 md:p-10 h-full tilt-card group" data-tilt data-tilt-max="10">
+                <!-- 優勢 3 -->
+                <div class="reveal reveal-up reveal-delay-2 md:mt-4">
+                    <div class="gold-advantage-card rounded-sm h-full tilt-card group" data-tilt data-tilt-max="8">
                         <div class="tilt-card-inner">
-                            <div class="w-14 h-14 rounded-sm border border-white/15 flex items-center justify-center mb-8 bg-bg-deep tilt-parallax" data-tilt-depth="0.15">
-                                <span class="font-display font-bold text-xl text-white/80">03</span>
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop" alt="敏捷反應">
+                                <div class="card-img-overlay"></div>
+                                <div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-gold/40 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner">
+                                    <span class="font-display font-bold text-sm text-gold-light">03</span>
+                                </div>
                             </div>
-                            <h3 class="font-serif font-bold text-xl mb-4 text-white tilt-parallax" data-tilt-depth="0.08">敏捷反應</h3>
-                            <p class="text-white/50 leading-relaxed text-sm tilt-parallax" data-tilt-depth="0.05">
-                                面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。
-                            </p>
+                            <div class="p-8 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">敏捷反應</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm">
+                                        面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1044,81 +1061,78 @@
         <div class="divider-slant bg-bg-soft" style="clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);"></div>
     </div>
 
-    <!-- ========== 核心業務（已删除“了解更多”按钮） ========== -->
+    <!-- ========== 核心業務 ========== -->
     <section id="business" class="py-24 md:py-32 bg-bg-soft relative overflow-hidden">
-        <div class="float-shape" style="top:10%;right:5%;width:120px;height:120px;border:1px solid white;border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;animation-delay:-4s;"></div>
+        <div class="float-shape" style="top:10%;right:5%;width:120px;height:120px;border:1px solid rgba(201,169,110,0.15);border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;animation-delay:-4s;"></div>
 
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="text-center mb-20">
                 <div class="reveal reveal-up mb-4">
-                    <span class="text-white/40 text-xs tracking-widest-xl uppercase font-display">03 / Core Business</span>
+                    <span class="text-gold-light/60 text-xs tracking-widest-xl uppercase font-display">03 / Core Business</span>
                 </div>
                 <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl">核心業務</h2>
             </div>
 
-            <!-- 业务1 -->
+            <!-- 業務1 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
                 <div class="lg:col-span-7 reveal reveal-left">
-                    <div class="relative overflow-hidden rounded-sm tilt-card" data-tilt data-tilt-max="6">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-gold/20" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
-                            <img src="https://picsum.photos/700/450?random=6" alt="品牌管理與優化" class="w-full h-[350px] md:h-[420px] object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="品牌管理與優化" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/80 to-transparent"></div>
                         </div>
                     </div>
                 </div>
                 <div class="lg:col-span-5">
                     <div class="reveal reveal-right">
-                        <div class="font-display text-xs tracking-widest text-white/30 mb-4">01 / BRAND MANAGEMENT</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-4">01 / BRAND MANAGEMENT</div>
                         <h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">品牌管理與優化</h3>
                         <p class="text-white/50 text-sm leading-relaxed mb-6">從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。</p>
-                        <!-- 已删除“了解更多”链接 -->
                     </div>
                 </div>
             </div>
 
-            <!-- 业务2 -->
+            <!-- 業務2 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
                 <div class="lg:col-span-5 lg:order-1 order-2">
                     <div class="reveal reveal-left">
-                        <div class="font-display text-xs tracking-widest text-white/30 mb-4">02 / STRATEGY PLANNING</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-4">02 / STRATEGY PLANNING</div>
                         <h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">商業戰略規劃</h3>
                         <p class="text-white/50 text-sm leading-relaxed mb-6">以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</p>
-                        <!-- 已删除“了解更多”链接 -->
                     </div>
                 </div>
                 <div class="lg:col-span-7 lg:order-2 order-1 reveal reveal-right">
-                    <div class="relative overflow-hidden rounded-sm tilt-card" data-tilt data-tilt-max="6">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-gold/20" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
-                            <img src="https://picsum.photos/700/450?random=7" alt="商業戰略規劃" class="w-full h-[350px] md:h-[420px] object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-l from-bg-soft/60 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt="商業戰略規劃" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-l from-bg-soft/80 to-transparent"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 业务3 -->
+            <!-- 業務3 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div class="lg:col-span-7 reveal reveal-left">
-                    <div class="relative overflow-hidden rounded-sm tilt-card" data-tilt data-tilt-max="6">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-gold/20" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
-                            <img src="https://picsum.photos/700/450?random=8" alt="市場洞察與數據分析" class="w-full h-[350px] md:h-[420px] object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop" alt="市場洞察與數據分析" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/80 to-transparent"></div>
                         </div>
                     </div>
                 </div>
                 <div class="lg:col-span-5">
                     <div class="reveal reveal-right">
-                        <div class="font-display text-xs tracking-widest text-white/30 mb-4">03 / MARKET INSIGHTS</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-4">03 / MARKET INSIGHTS</div>
                         <h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">市場洞察與數據分析</h3>
                         <p class="text-white/50 text-sm leading-relaxed mb-6">從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。</p>
-                        <!-- 已删除“了解更多”链接 -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== 業務範圍（竖条手风琴） ========== -->
+    <!-- ========== 業務範圍（豎條手風琴） ========== -->
     <section id="services" class="py-24 md:py-32 bg-bg relative overflow-hidden">
         <div class="deco-big-text absolute -right-4 top-10">SERVICES</div>
 
@@ -1126,7 +1140,7 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                     <div class="reveal reveal-up mb-4">
-                        <span class="text-white/40 text-xs tracking-widest-xl uppercase font-display">04 / Service Scope</span>
+                        <span class="text-gold-light/60 text-xs tracking-widest-xl uppercase font-display">04 / Service Scope</span>
                     </div>
                     <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl">業務範圍</h2>
                 </div>
@@ -1137,7 +1151,7 @@
 
             <div class="accordion-bars reveal reveal-up reveal-delay-3">
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=11');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">01</div>
@@ -1145,7 +1159,7 @@
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=12');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">02</div>
@@ -1153,15 +1167,15 @@
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=13');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">03</div>
-                        <div class="acc-bar-title">AI大數據收集</div>
+                        <div class="acc-bar-title">大數據收集</div>
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=14');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">04</div>
@@ -1169,7 +1183,7 @@
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=15');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">05</div>
@@ -1177,7 +1191,7 @@
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=16');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">06</div>
@@ -1185,7 +1199,7 @@
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=17');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">07</div>
@@ -1193,7 +1207,7 @@
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=18');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">08</div>
@@ -1201,7 +1215,7 @@
                     </div>
                 </div>
                 <div class="acc-bar">
-                    <div class="acc-bar-img" style="background-image: url('https://picsum.photos/400/600?random=19');"></div>
+                    <div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop');"></div>
                     <div class="acc-bar-overlay"></div>
                     <div class="acc-bar-content">
                         <div class="acc-bar-num">09</div>
@@ -1219,14 +1233,14 @@
 
     <!-- ========== 專案流程 ========== -->
     <section id="process" class="py-24 md:py-32 bg-bg-soft relative overflow-hidden">
-        <div class="float-shape" style="bottom:10%;left:8%;width:130px;height:130px;border:1px solid white;animation-delay:-8s;"></div>
+        <div class="float-shape" style="bottom:10%;left:8%;width:130px;height:130px;border:1px solid rgba(201,169,110,0.15);animation-delay:-8s;"></div>
 
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="text-center mb-20">
                 <div class="reveal reveal-up mb-4">
-                    <span class="text-white/40 text-xs tracking-widest-xl uppercase font-display">05 / Consulting Process</span>
+                    <span class="text-gold-light/60 text-xs tracking-widest-xl uppercase font-display">05 / Consulting Process</span>
                 </div>
-                <div class="reveal reveal-up reveal-delay-1 text-white/60 font-serif text-sm tracking-widest mb-4">
+                <div class="reveal reveal-up reveal-delay-1 text-gold-light/80 font-serif text-sm tracking-widest mb-4">
                     全程監控 · 數據真實 · 專業執行
                 </div>
                 <h2 class="reveal reveal-up reveal-delay-2 font-serif font-bold text-3xl md:text-5xl">專案流程</h2>
@@ -1237,27 +1251,27 @@
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
                     <div class="timeline-step reveal reveal-up flex flex-col items-center text-center">
                         <div class="timeline-dot mb-6"></div>
-                        <div class="font-display text-xs tracking-widest text-white/40 mb-2">STEP 01</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-2">STEP 01</div>
                         <h4 class="font-serif font-bold text-lg mb-2 text-white">界定需求</h4>
                     </div>
                     <div class="timeline-step reveal reveal-up reveal-delay-1 flex flex-col items-center text-center">
                         <div class="timeline-dot mb-6"></div>
-                        <div class="font-display text-xs tracking-widest text-white/40 mb-2">STEP 02</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-2">STEP 02</div>
                         <h4 class="font-serif font-bold text-lg mb-2 text-white">蒐集數據</h4>
                     </div>
                     <div class="timeline-step reveal reveal-up reveal-delay-2 flex flex-col items-center text-center">
                         <div class="timeline-dot mb-6"></div>
-                        <div class="font-display text-xs tracking-widest text-white/40 mb-2">STEP 03</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-2">STEP 03</div>
                         <h4 class="font-serif font-bold text-lg mb-2 text-white">制定策略</h4>
                     </div>
                     <div class="timeline-step reveal reveal-up reveal-delay-3 flex flex-col items-center text-center">
                         <div class="timeline-dot mb-6"></div>
-                        <div class="font-display text-xs tracking-widest text-white/40 mb-2">STEP 04</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-2">STEP 04</div>
                         <h4 class="font-serif font-bold text-lg mb-2 text-white">實施支援</h4>
                     </div>
                     <div class="timeline-step reveal reveal-up reveal-delay-4 flex flex-col items-center text-center">
                         <div class="timeline-dot mb-6"></div>
-                        <div class="font-display text-xs tracking-widest text-white/40 mb-2">STEP 05</div>
+                        <div class="font-display text-xs tracking-widest text-gold-light/50 mb-2">STEP 05</div>
                         <h4 class="font-serif font-bold text-lg mb-2 text-white">持續追蹤</h4>
                     </div>
                 </div>
@@ -1272,20 +1286,20 @@
                         從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。
                     </p>
                     <div class="mt-8 flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-sm border border-white/15 flex items-center justify-center bg-bg-deep">
-                            <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <div class="w-12 h-12 rounded-sm border border-gold/30 flex items-center justify-center bg-bg-deep shadow-lg">
+                            <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                         </div>
                         <div>
                             <div class="text-white text-sm font-medium">品質保證</div>
-                            <div class="text-white/40 text-xs">三重驗證機制 · 數據真實可靠</div>
+                            <div class="text-gold-light/50 text-xs">三重驗證機制 · 數據真實可靠</div>
                         </div>
                     </div>
                 </div>
                 <div class="reveal reveal-right reveal-delay-2 order-1 lg:order-2">
-                    <div class="relative overflow-hidden rounded-sm tilt-card" data-tilt data-tilt-max="5">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-gold/20" data-tilt data-tilt-max="5">
                         <div class="tilt-card-inner">
-                            <img src="https://picsum.photos/700/400?random=9" alt="專案流程" class="w-full h-72 md:h-80 object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-bg-soft/40 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=1200&auto=format&fit=crop" alt="專案流程" class="w-full h-72 md:h-80 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-bg-soft/60 to-transparent"></div>
                         </div>
                     </div>
                 </div>
@@ -1301,7 +1315,7 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
                 <div class="lg:col-span-5">
                     <div class="reveal reveal-left mb-4">
-                        <span class="text-white/40 text-xs tracking-widest-xl uppercase font-display">06 / Contact Us</span>
+                        <span class="text-gold-light/60 text-xs tracking-widest-xl uppercase font-display">06 / Contact Us</span>
                     </div>
                     <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-6 leading-tight">
                         歡迎諮詢
@@ -1312,56 +1326,56 @@
 
                     <div class="reveal reveal-left reveal-delay-3 flex items-center gap-4 mb-10 text-white/60 text-sm">
                         <span class="inline-flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                             24小時內專人回覆
                         </span>
                         <span class="w-1 h-1 rounded-full bg-white/20"></span>
                         <span>免費初步諮詢</span>
                     </div>
 
-                    <div class="reveal reveal-left reveal-delay-4 mb-5 p-5 border border-white/10 rounded-sm hover:border-white/20 transition-colors group cursor-pointer">
+                    <div class="reveal reveal-left reveal-delay-4 mb-5 p-5 border border-gold/20 rounded-sm hover:border-gold/40 transition-colors group cursor-pointer bg-bg-card/50 backdrop-blur-sm">
                         <div class="flex items-center gap-4">
-                            <div class="w-11 h-11 rounded-sm border border-white/15 flex items-center justify-center bg-bg-deep group-hover:border-white/30 transition-colors">
-                                <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <div class="w-11 h-11 rounded-sm border border-gold/30 flex items-center justify-center bg-bg-deep group-hover:border-gold/60 transition-colors">
+                                <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             </div>
                             <div>
-                                <div class="text-white/40 text-[10px] tracking-widest mb-1">EMAIL</div>
-                                <a href="mailto:contact@topmarket.com.hk" class="text-white text-sm hover:text-white/80 transition-colors">contact@topmarket.com.hk</a>
+                                <div class="text-gold-light/50 text-[10px] tracking-widest mb-1">EMAIL</div>
+                                <a href="mailto:contact@topmarket.com.hk" class="text-white text-sm hover:text-gold-light transition-colors">contact@topmarket.com.hk</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="reveal reveal-left reveal-delay-5 p-5 border border-white/10 rounded-sm hover:border-white/20 transition-colors group cursor-pointer">
+                    <div class="reveal reveal-left reveal-delay-5 p-5 border border-gold/20 rounded-sm hover:border-gold/40 transition-colors group cursor-pointer bg-bg-card/50 backdrop-blur-sm">
                         <div class="flex items-center gap-4">
-                            <div class="w-11 h-11 rounded-sm border border-white/15 flex items-center justify-center bg-bg-deep group-hover:border-white/30 transition-colors">
-                                <svg class="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            <div class="w-11 h-11 rounded-sm border border-gold/30 flex items-center justify-center bg-bg-deep group-hover:border-gold/60 transition-colors">
+                                <svg class="w-5 h-5 text-gold-light" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </div>
                             <div>
-                                <div class="text-white/40 text-[10px] tracking-widest mb-1">LINKEDIN</div>
-                                <a href="#" class="text-white text-sm hover:text-white/80 transition-colors">TOP MARKET 銳鋒顧問</a>
+                                <div class="text-gold-light/50 text-[10px] tracking-widest mb-1">LINKEDIN</div>
+                                <a href="#" class="text-white text-sm hover:text-gold-light transition-colors">TOP MARKET 銳鋒顧問</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:col-span-7">
-                    <form class="reveal reveal-right reveal-delay-2 bg-bg-card border border-border rounded-sm p-8 md:p-10 space-y-5" id="contactForm">
+                    <form class="reveal reveal-right reveal-delay-2 bg-bg-card/80 backdrop-blur-md border border-gold/20 rounded-sm p-8 md:p-10 space-y-5 shadow-2xl" id="contactForm">
                         <div class="grid md:grid-cols-2 gap-5">
                             <div>
-                                <label class="block text-white/40 text-[10px] tracking-widest mb-3">姓名</label>
+                                <label class="block text-gold-light/60 text-[10px] tracking-widest mb-3">姓名</label>
                                 <input type="text" class="form-input" placeholder="請輸入您的姓名" required>
                             </div>
                             <div>
-                                <label class="block text-white/40 text-[10px] tracking-widest mb-3">電郵</label>
+                                <label class="block text-gold-light/60 text-[10px] tracking-widest mb-3">電郵</label>
                                 <input type="email" class="form-input" placeholder="請輸入您的電郵" required>
                             </div>
                         </div>
                         <div>
-                            <label class="block text-white/40 text-[10px] tracking-widest mb-3">公司</label>
+                            <label class="block text-gold-light/60 text-[10px] tracking-widest mb-3">公司</label>
                             <input type="text" class="form-input" placeholder="請輸入公司名稱">
                         </div>
                         <div>
-                            <label class="block text-white/40 text-[10px] tracking-widest mb-3">留言</label>
+                            <label class="block text-gold-light/60 text-[10px] tracking-widest mb-3">留言</label>
                             <textarea class="form-input min-h-[120px] resize-none" placeholder="請簡述您的需求或問題..." required></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full justify-center">
@@ -1377,8 +1391,8 @@
         </div>
     </section>
 
-    <!-- ========== 页脚 ========== -->
-    <footer class="bg-bg-deep border-t border-white/5 py-16">
+    <!-- ========== 頁腳 ========== -->
+    <footer class="bg-bg-deep border-t border-gold/15 py-16">
         <div class="max-w-7xl mx-auto px-6 md:px-10">
             <div class="grid md:grid-cols-12 gap-10 mb-12">
                 <div class="md:col-span-5">
@@ -1388,7 +1402,7 @@
                         </div>
                         <div>
                             <div class="text-white font-display font-bold text-sm tracking-widest">TOP MARKET</div>
-                            <div class="text-white/40 text-[10px] tracking-widest mt-0.5">銳鋒顧問有限公司</div>
+                            <div class="text-gold-light/50 text-[10px] tracking-widest mt-0.5">銳鋒顧問有限公司</div>
                         </div>
                     </div>
                     <p class="text-white/40 text-sm leading-relaxed max-w-md">
@@ -1397,17 +1411,17 @@
                 </div>
 
                 <div class="md:col-span-3">
-                    <h5 class="text-white/60 font-medium text-xs tracking-widest mb-5">快速連結</h5>
+                    <h5 class="text-gold-light/70 font-medium text-xs tracking-widest mb-5">快速連結</h5>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="#about" class="text-white/40 hover:text-white transition-colors">關於我們</a></li>
-                        <li><a href="#business" class="text-white/40 hover:text-white transition-colors">核心業務</a></li>
-                        <li><a href="#services" class="text-white/40 hover:text-white transition-colors">業務範圍</a></li>
-                        <li><a href="#contact" class="text-white/40 hover:text-white transition-colors">聯絡我們</a></li>
+                        <li><a href="#about" class="text-white/40 hover:text-gold-light transition-colors">關於我們</a></li>
+                        <li><a href="#business" class="text-white/40 hover:text-gold-light transition-colors">核心業務</a></li>
+                        <li><a href="#services" class="text-white/40 hover:text-gold-light transition-colors">業務範圍</a></li>
+                        <li><a href="#contact" class="text-white/40 hover:text-gold-light transition-colors">聯絡我們</a></li>
                     </ul>
                 </div>
 
                 <div class="md:col-span-4">
-                    <h5 class="text-white/60 font-medium text-xs tracking-widest mb-5">聯絡資訊</h5>
+                    <h5 class="text-gold-light/70 font-medium text-xs tracking-widest mb-5">聯絡資訊</h5>
                     <ul class="space-y-3 text-sm text-white/40">
                         <li>contact@topmarket.com.hk</li>
                         <li>TOP MARKET Consulting Limited</li>
@@ -1419,14 +1433,14 @@
             <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-white/30 text-xs">© 2024 TOP MARKET 銳鋒顧問有限公司. All Rights Reserved.</p>
                 <div class="flex items-center gap-6">
-                    <a href="#" class="text-white/30 hover:text-white transition-colors text-xs">隱私政策</a>
-                    <a href="#" class="text-white/30 hover:text-white transition-colors text-xs">服務條款</a>
+                    <a href="#" class="text-white/30 hover:text-gold-light transition-colors text-xs">隱私政策</a>
+                    <a href="#" class="text-white/30 hover:text-gold-light transition-colors text-xs">服務條款</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ========== 登录模态框 ========== -->
+    <!-- ========== 登入模態框 ========== -->
     <div class="login-modal-overlay" id="loginModal">
         <div class="login-modal">
             <button class="close-btn" id="loginModalClose">&times;</button>
@@ -1448,13 +1462,13 @@
 
     <script>
         (function() {
-            // ========== Header 滚动效果 ==========
+            // ========== Header 滾動效果 ==========
             const header = document.getElementById('siteHeader');
             window.addEventListener('scroll', () => {
                 header.classList.toggle('scrolled', window.scrollY > 30);
             });
 
-            // ========== 下拉导航 ==========
+            // ========== 下拉導航 ==========
             const menuToggle = document.getElementById('menuToggle');
             const dropdownNav = document.getElementById('dropdownNav');
 
@@ -1463,7 +1477,7 @@
                 dropdownNav.classList.toggle('open');
             });
 
-            // 点击导航项（非特殊）关闭菜单
+            // 點擊導航項關閉菜單
             document.querySelectorAll('.dropdown-nav a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     if (link.id === 'resourcesTrigger') {
@@ -1471,22 +1485,18 @@
                         const submenu = document.getElementById('resourcesSubmenu');
                         const arrow = document.getElementById('resourcesArrow');
                         submenu.classList.toggle('open');
-                        arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' :
-                            'rotate(0deg)';
+                        arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
                         return;
                     }
                     if (link.classList.contains('report-link') || link.id === 'loginTrigger') {
-                        return; // 由单独事件处理
-                    }
-                    if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
-                        // 允许锚点跳转
+                        return;
                     }
                     menuToggle.classList.remove('active');
                     dropdownNav.classList.remove('open');
                 });
             });
 
-            // ========== 登录模态框 ==========
+            // ========== 登入模態框 ==========
             const loginModal = document.getElementById('loginModal');
             const loginForm = document.getElementById('loginForm');
             const loginError = document.getElementById('loginError');
@@ -1530,7 +1540,7 @@
                 });
             });
 
-            // ========== 滚动入场动画 ==========
+            // ========== 滾動入場動畫 ==========
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1540,7 +1550,7 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             document.querySelectorAll('.timeline-step').forEach(el => observer.observe(el));
 
-            // ========== 数字增长动画 ==========
+            // ========== 數字增長動畫 ==========
             const numberObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
@@ -1562,7 +1572,7 @@
             }, { threshold: 0.5 });
             document.querySelectorAll('.stat-number').forEach(el => numberObserver.observe(el));
 
-            // ========== 3D 卡片倾斜 ==========
+            // ========== 3D 卡片傾斜 ==========
             function initTilt() {
                 if (window.innerWidth < 768) return;
                 document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -1580,13 +1590,11 @@
                         const rotateY = ((x - cx) / cx) * maxTilt;
 
                         const inner = card.querySelector('.tilt-card-inner');
-                        if (inner) inner.style.transform =
-                            `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+                        if (inner) inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
 
                         card.querySelectorAll('.tilt-parallax').forEach(el => {
                             const depth = parseFloat(el.dataset.tiltDepth) || 0.1;
-                            el.style.transform =
-                                `translateX(${rotateY * depth}px) translateY(${-rotateX * depth}px)`;
+                            el.style.transform = `translateX(${rotateY * depth}px) translateY(${-rotateX * depth}px)`;
                         });
                     });
 
@@ -1601,13 +1609,10 @@
             }
             initTilt();
 
-            // ========== Hero 标题 3D 鼠标跟随 ==========
+            // ========== Hero 標題 3D 滑鼠跟隨 ==========
             const heroTitle = document.getElementById('heroTitle');
-            let rafId;
-            let targetX = 0,
-                targetY = 0;
-            let currentX = 0,
-                currentY = 0;
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
 
             document.addEventListener('mousemove', (e) => {
                 targetX = (e.clientX / window.innerWidth - 0.5) * 6;
@@ -1618,14 +1623,13 @@
                 currentX += (targetX - currentX) * 0.08;
                 currentY += (targetY - currentY) * 0.08;
                 if (heroTitle) {
-                    heroTitle.style.transform =
-                        `perspective(800px) rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
+                    heroTitle.style.transform = `perspective(800px) rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
                 }
-                rafId = requestAnimationFrame(animateTitle);
+                requestAnimationFrame(animateTitle);
             }
             animateTitle();
 
-            // ========== 视差滚动 ==========
+            // ========== 視差滾動 ==========
             const heroBg = document.getElementById('heroBg');
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
@@ -1634,15 +1638,15 @@
                 }
             });
 
-            // ========== 表单提交 ==========
+            // ========== 表單提交 ==========
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const btn = contactForm.querySelector('button[type="submit"]');
                 const originalHTML = btn.innerHTML;
                 btn.innerHTML = '已提交 ✓';
-                btn.style.background = '#22c55e';
-                btn.style.borderColor = '#22c55e';
+                btn.style.background = '#10b981';
+                btn.style.borderColor = '#10b981';
                 setTimeout(() => {
                     btn.innerHTML = originalHTML;
                     btn.style.background = '';
@@ -1652,6 +1656,5 @@
             });
         })();
     </script>
-
 </body>
 </html>
