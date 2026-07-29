@@ -87,27 +87,15 @@
             border-radius: 2px;
         }
 
-        /* 入场动画 */
         .reveal {
             opacity: 0;
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal-up {
-            transform: translateY(50px);
-        }
-        .reveal-left {
-            transform: translateX(-60px);
-        }
-        .reveal-right {
-            transform: translateX(60px);
-        }
-        .reveal-scale {
-            transform: scale(0.95);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translate(0, 0) scale(1);
-        }
+        .reveal-up { transform: translateY(50px); }
+        .reveal-left { transform: translateX(-60px); }
+        .reveal-right { transform: translateX(60px); }
+        .reveal-scale { transform: scale(0.95); }
+        .reveal.visible { opacity: 1; transform: translate(0, 0) scale(1); }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
@@ -115,7 +103,6 @@
         .reveal-delay-5 { transition-delay: 0.5s; }
         .reveal-delay-6 { transition-delay: 0.6s; }
 
-        /* 金色渐变 */
         .text-gold-gradient {
             background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 40%, #a88c54 70%, #c9a96e 100%);
             background-size: 200% 100%;
@@ -129,7 +116,6 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* 优势卡片 */
         .gold-advantage-card {
             background: linear-gradient(145deg, rgba(42, 35, 29, 0.9) 0%, rgba(26, 20, 16, 0.96) 100%);
             border: 1px solid rgba(201, 169, 110, 0.3);
@@ -177,7 +163,6 @@
             background: linear-gradient(180deg, rgba(26, 20, 16, 0.2) 0%, rgba(42, 35, 29, 0.95) 100%);
         }
 
-        /* 按钮 */
         .btn-primary {
             background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%);
             color: #1a1410;
@@ -231,7 +216,6 @@
             transform: translateY(-3px);
         }
 
-        /* Header */
         .site-header {
             position: fixed;
             top: 0;
@@ -247,276 +231,81 @@
             border-bottom: 1px solid rgba(201, 169, 110, 0.2);
         }
 
-        .menu-toggle {
-            width: 32px;
-            height: 20px;
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .menu-toggle span {
-            width: 100%;
-            height: 1.5px;
-            background: #ffffff;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-origin: center;
-        }
-        .menu-toggle span:nth-child(2) {
-            width: 70%;
-            margin-left: auto;
-        }
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-            width: 100%;
-        }
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-        }
+        .menu-toggle { width: 32px; height: 20px; position: relative; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
+        .menu-toggle span { width: 100%; height: 1.5px; background: #ffffff; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform-origin: center; }
+        .menu-toggle span:nth-child(2) { width: 70%; margin-left: auto; }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); width: 100%; }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
         .dropdown-nav {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(26, 20, 16, 0.97);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(201, 169, 110, 0.2);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute; top: 100%; left: 0; right: 0;
+            background: rgba(26, 20, 16, 0.97); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+            max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .dropdown-nav.open { max-height: 600px; }
         .dropdown-nav-inner { padding: 20px 0 30px; }
-        .dropdown-nav a {
-            display: block;
-            padding: 12px 0;
-            color: #b0a89c;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease, padding-left 0.3s ease;
-            position: relative;
-        }
-        .dropdown-nav a:hover {
-            color: #ffffff;
-            padding-left: 12px;
-        }
-        .dropdown-nav a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 0;
-            height: 1px;
-            background: #c9a96e;
-            transition: width 0.3s ease;
-        }
+        .dropdown-nav a { display: block; padding: 12px 0; color: #b0a89c; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s ease, padding-left 0.3s ease; position: relative; }
+        .dropdown-nav a:hover { color: #ffffff; padding-left: 12px; }
+        .dropdown-nav a::before { content: ''; position: absolute; left: 0; top: 50%; width: 0; height: 1px; background: #c9a96e; transition: width 0.3s ease; }
         .dropdown-nav a:hover::before { width: 6px; }
-
         .has-submenu { position: relative; }
-        .submenu-dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            padding-left: 16px;
-        }
+        .submenu-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding-left: 16px; }
         .submenu-dropdown.open { max-height: 200px; }
-        .submenu-dropdown a {
-            font-size: 13px;
-            color: #7a7063;
-            padding: 8px 0;
-        }
+        .submenu-dropdown a { font-size: 13px; color: #7a7063; padding: 8px 0; }
         .submenu-dropdown a:hover { color: #c9a96e; }
 
-        /* Hero - 香港天际线背景图 */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding-top: 100px;
+            position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 100px;
         }
         .hero-bg-img {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background-image: url('https://img1.wallspic.com/crops/8/8/0/8/18088/18088-tian_kong-dou-de_ping_xian-shi_qu-xiang_gang-1920x1080.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: 0;
-            will-change: transform;
+            background-size: cover; background-position: center; z-index: 0; will-change: transform;
         }
         .hero-bg-img::before {
             content: '';
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(135deg, rgba(26, 20, 16, 0.85) 0%, rgba(26, 20, 16, 0.55) 50%, rgba(26, 20, 16, 0.92) 100%);
         }
 
         .hero-slice {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 40%;
+            position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
             background: linear-gradient(135deg, rgba(44, 36, 30, 0.6) 0%, rgba(26, 20, 16, 0.35) 100%);
-            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
-            z-index: 1;
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%); z-index: 1;
         }
 
-        .deco-lines {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.07;
-        }
-        .deco-lines::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10%;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, #ffffff, transparent);
-        }
-        .deco-lines::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 20%;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, #c9a96e, transparent);
-        }
+        .deco-lines { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.07; }
+        .deco-lines::before { content: ''; position: absolute; top: 0; left: 10%; width: 1px; height: 100%; background: linear-gradient(180deg, transparent, #ffffff, transparent); }
+        .deco-lines::after { content: ''; position: absolute; top: 0; right: 20%; width: 1px; height: 100%; background: linear-gradient(180deg, transparent, #c9a96e, transparent); }
 
-        .dot-grid {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
-            background-size: 12px 12px;
-            pointer-events: none;
-        }
+        .dot-grid { position: absolute; width: 200px; height: 200px; background-image: radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px); background-size: 12px 12px; pointer-events: none; }
 
         .hero-title {
-            font-family: "Noto Serif HK", serif;
-            font-weight: 900;
-            line-height: 1.05;
+            font-family: "Noto Serif HK", serif; font-weight: 900; line-height: 1.05;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 10px 40px rgba(0, 0, 0, 0.3);
-            will-change: transform;
-            transition: transform 0.15s ease-out;
-            color: #ffffff;
+            will-change: transform; transition: transform 0.15s ease-out; color: #ffffff;
         }
 
-        /* 斜切分隔 */
-        .section-divider {
-            height: 120px;
-            position: relative;
-            overflow: hidden;
-        }
-        .divider-slant {
-            position: absolute;
-            width: 120%;
-            height: 100%;
-            left: -10%;
-        }
+        .section-divider { height: 120px; position: relative; overflow: hidden; }
+        .divider-slant { position: absolute; width: 120%; height: 100%; left: -10%; }
 
-        /* 3D卡片 */
-        .tilt-card {
-            transform-style: preserve-3d;
-            perspective: 1200px;
-            transition: box-shadow 0.4s ease, border-color 0.4s ease;
-        }
-        .tilt-card-inner {
-            transition: transform 0.1s ease-out;
-            will-change: transform;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .tilt-card:hover {
-            border-color: rgba(255, 255, 255, 0.18) !important;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
-        }
-        .tilt-parallax {
-            transition: transform 0.15s ease-out;
-            will-change: transform;
-        }
+        .tilt-card { transform-style: preserve-3d; perspective: 1200px; transition: box-shadow 0.4s ease, border-color 0.4s ease; }
+        .tilt-card-inner { transition: transform 0.1s ease-out; will-change: transform; height: 100%; display: flex; flex-direction: column; }
+        .tilt-card:hover { border-color: rgba(255, 255, 255, 0.18) !important; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7); }
+        .tilt-parallax { transition: transform 0.15s ease-out; will-change: transform; }
 
-        /* 手风琴 */
-        .accordion-bars {
-            display: flex;
-            gap: 2px;
-            height: 520px;
-            width: 100%;
-        }
-        .acc-bar {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 2px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .acc-bar:hover {
-            flex: 4;
-            border-color: rgba(201, 169, 110, 0.5);
-        }
-        .acc-bar-img {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        .accordion-bars { display: flex; gap: 2px; height: 520px; width: 100%; }
+        .acc-bar { flex: 1; position: relative; overflow: hidden; cursor: pointer; transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 2px; border: 1px solid rgba(255, 255, 255, 0.06); }
+        .acc-bar:hover { flex: 4; border-color: rgba(201, 169, 110, 0.5); }
+        .acc-bar-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .acc-bar:hover .acc-bar-img { transform: scale(1.1); }
-        .acc-bar-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(26, 20, 16, 0.3) 0%, rgba(26, 20, 16, 0.88) 100%);
-        }
-        .acc-bar-content {
-            position: absolute;
-            inset: 0;
-            padding: 24px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            color: white;
-        }
-        .acc-bar-num {
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(201, 169, 110, 0.85);
-            letter-spacing: 0.1em;
-        }
-        .acc-bar-title {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-family: "Noto Serif HK", serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            align-self: center;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            white-space: nowrap;
-        }
-        .acc-bar:hover .acc-bar-title {
-            writing-mode: horizontal-tb;
-            align-self: flex-start;
-            font-size: 22px;
-            color: #f0d78c;
-        }
+        .acc-bar-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26, 20, 16, 0.3) 0%, rgba(26, 20, 16, 0.88) 100%); }
+        .acc-bar-content { position: absolute; inset: 0; padding: 24px 20px; display: flex; flex-direction: column; justify-content: space-between; color: white; }
+        .acc-bar-num { font-family: "Space Grotesk", sans-serif; font-size: 13px; font-weight: 600; color: rgba(201, 169, 110, 0.85); letter-spacing: 0.1em; }
+        .acc-bar-title { writing-mode: vertical-rl; text-orientation: mixed; font-family: "Noto Serif HK", serif; font-size: 18px; font-weight: 700; letter-spacing: 0.1em; align-self: center; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; }
+        .acc-bar:hover .acc-bar-title { writing-mode: horizontal-tb; align-self: flex-start; font-size: 22px; color: #f0d78c; }
 
         @media (max-width: 768px) {
             .accordion-bars { flex-direction: column; height: auto; gap: 2px; }
@@ -528,226 +317,43 @@
             .acc-bar-num { font-size: 11px; }
         }
 
-        /* 时间线 */
-        .timeline-dot {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #2a231d;
-            border: 2px solid #3a3229;
-            position: relative;
-            z-index: 2;
-            transition: all 0.5s ease;
-        }
-        .timeline-step.visible .timeline-dot {
-            border-color: #c9a96e;
-            box-shadow: 0 0 20px rgba(201, 169, 110, 0.4);
-        }
-        .timeline-dot::after {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 50%;
-            border: 1px solid rgba(201, 169, 110, 0.25);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .timeline-step.visible .timeline-dot::after {
-            opacity: 1;
-            animation: pulse 2.5s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.4); opacity: 0; }
-        }
+        .timeline-dot { width: 18px; height: 18px; border-radius: 50%; background: #2a231d; border: 2px solid #3a3229; position: relative; z-index: 2; transition: all 0.5s ease; }
+        .timeline-step.visible .timeline-dot { border-color: #c9a96e; box-shadow: 0 0 20px rgba(201, 169, 110, 0.4); }
+        .timeline-dot::after { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 1px solid rgba(201, 169, 110, 0.25); opacity: 0; transition: opacity 0.5s ease; }
+        .timeline-step.visible .timeline-dot::after { opacity: 1; animation: pulse 2.5s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.4); opacity: 0; } }
 
-        .timeline-line {
-            position: absolute;
-            top: 30px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #3a3229 15%, #3a3229 85%, transparent);
-        }
-        .timeline-line::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 25%;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.5), transparent);
-            animation: timelineFlow 4s ease-in-out infinite;
-        }
-        @keyframes timelineFlow {
-            0% { left: -25%; }
-            100% { left: 100%; }
-        }
+        .timeline-line { position: absolute; top: 30px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #3a3229 15%, #3a3229 85%, transparent); }
+        .timeline-line::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 25%; background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.5), transparent); animation: timelineFlow 4s ease-in-out infinite; }
+        @keyframes timelineFlow { 0% { left: -25%; } 100% { left: 100%; } }
 
-        /* 表单 */
-        .form-input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(201, 169, 110, 0.2);
-            border-radius: 4px;
-            padding: 14px 18px;
-            color: #ffffff;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            outline: none;
-            font-family: inherit;
-        }
-        .form-input:focus {
-            border-color: rgba(201, 169, 110, 0.6);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 0 15px rgba(201, 169, 110, 0.1);
-        }
+        .form-input { width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(201, 169, 110, 0.2); border-radius: 4px; padding: 14px 18px; color: #ffffff; font-size: 14px; transition: all 0.3s ease; outline: none; font-family: inherit; }
+        .form-input:focus { border-color: rgba(201, 169, 110, 0.6); background: rgba(255, 255, 255, 0.06); box-shadow: 0 0 15px rgba(201, 169, 110, 0.1); }
         .form-input::placeholder { color: #6b5f52; }
         .stat-number { font-variant-numeric: tabular-nums; }
 
-        .float-shape {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.05;
-            animation: floatShape 18s ease-in-out infinite;
-        }
-        @keyframes floatShape {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(20px, -15px) rotate(120deg); }
-            66% { transform: translate(-15px, 10px) rotate(240deg); }
-        }
+        .float-shape { position: absolute; pointer-events: none; opacity: 0.05; animation: floatShape 18s ease-in-out infinite; }
+        @keyframes floatShape { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(20px, -15px) rotate(120deg); } 66% { transform: translate(-15px, 10px) rotate(240deg); } }
 
-        .deco-big-text {
-            font-family: "Space Grotesk", sans-serif;
-            font-weight: 900;
-            font-size: clamp(80px, 15vw, 200px);
-            line-height: 0.85;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(201, 169, 110, 0.07);
-            letter-spacing: -0.02em;
-            user-select: none;
-            pointer-events: none;
-        }
+        .deco-big-text { font-family: "Space Grotesk", sans-serif; font-weight: 900; font-size: clamp(80px, 15vw, 200px); line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(201, 169, 110, 0.07); letter-spacing: -0.02em; user-select: none; pointer-events: none; }
 
-        .logo-mark {
-            width: 38px;
-            height: 38px;
-            border: 1.5px solid rgba(201, 169, 110, 0.45);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2px;
-            position: relative;
-            background: rgba(201, 169, 110, 0.06);
-        }
-        .logo-mark::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            right: -3px;
-            width: 8px;
-            height: 8px;
-            border-top: 1.5px solid #f0d78c;
-            border-right: 1.5px solid #f0d78c;
-        }
-        .logo-mark span {
-            font-family: "Space Grotesk", sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-        }
+        .logo-mark { width: 38px; height: 38px; border: 1.5px solid rgba(201, 169, 110, 0.45); display: flex; align-items: center; justify-content: center; border-radius: 2px; position: relative; background: rgba(201, 169, 110, 0.06); }
+        .logo-mark::before { content: ''; position: absolute; top: -3px; right: -3px; width: 8px; height: 8px; border-top: 1.5px solid #f0d78c; border-right: 1.5px solid #f0d78c; }
+        .logo-mark span { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 14px; color: #ffffff; letter-spacing: -0.02em; }
 
-        /* 登录模态框 */
-        .login-modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 200;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+        .login-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 200; justify-content: center; align-items: center; padding: 20px; }
         .login-modal-overlay.active { display: flex; }
-        .login-modal {
-            background: #2a231d;
-            border: 1px solid rgba(201, 169, 110, 0.35);
-            border-radius: 8px;
-            padding: 40px 32px;
-            max-width: 420px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 110, 0.15);
-        }
-        .login-modal .close-btn {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #b0a89c;
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s;
-            line-height: 1;
-        }
+        .login-modal { background: #2a231d; border: 1px solid rgba(201, 169, 110, 0.35); border-radius: 8px; padding: 40px 32px; max-width: 420px; width: 100%; position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 110, 0.15); }
+        .login-modal .close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; color: #b0a89c; font-size: 24px; cursor: pointer; transition: color 0.3s; line-height: 1; }
         .login-modal .close-btn:hover { color: #ffffff; }
-        .login-modal h2 {
-            font-family: "Noto Serif HK", serif;
-            font-weight: 700;
-            font-size: 28px;
-            margin-bottom: 24px;
-            text-align: center;
-            color: #ffffff;
-        }
+        .login-modal h2 { font-family: "Noto Serif HK", serif; font-weight: 700; font-size: 28px; margin-bottom: 24px; text-align: center; color: #ffffff; }
         .login-modal .form-group { margin-bottom: 18px; }
-        .login-modal label {
-            display: block;
-            color: #b0a89c;
-            font-size: 12px;
-            letter-spacing: 0.05em;
-            margin-bottom: 6px;
-        }
-        .login-modal input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(201, 169, 110, 0.25);
-            border-radius: 4px;
-            padding: 12px 16px;
-            color: #ffffff;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
+        .login-modal label { display: block; color: #b0a89c; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 6px; }
+        .login-modal input { width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(201, 169, 110, 0.25); border-radius: 4px; padding: 12px 16px; color: #ffffff; font-size: 14px; outline: none; transition: border-color 0.3s; }
         .login-modal input:focus { border-color: rgba(201, 169, 110, 0.6); }
-        .login-modal .login-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%);
-            color: #1a1410;
-            font-weight: 700;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s, transform 0.2s;
-            margin-top: 8px;
-        }
-        .login-modal .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(201, 169, 110, 0.5);
-        }
-        .login-modal .login-error {
-            color: #ef4444;
-            font-size: 13px;
-            text-align: center;
-            margin-top: 16px;
-            min-height: 24px;
-            display: none;
-        }
+        .login-modal .login-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%); color: #1a1410; font-weight: 700; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s, transform 0.2s; margin-top: 8px; }
+        .login-modal .login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(201, 169, 110, 0.5); }
+        .login-modal .login-error { color: #ef4444; font-size: 13px; text-align: center; margin-top: 16px; min-height: 24px; display: none; }
         .login-modal .login-error.show { display: block; }
 
         @media (max-width: 768px) {
@@ -869,7 +475,10 @@
                 <div class="lg:col-span-7 relative">
                     <div class="reveal reveal-scale relative">
                         <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="8">
-                            <div class="tilt-card-inner"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="商業顧問團隊" class="w-full h-[450px] md:h-[550px] object-cover"><div class="absolute inset-0 bg-gradient-to-t from-bg-soft/90 via-transparent to-transparent"></div></div>
+                            <div class="tilt-card-inner">
+                                <img src="https://p0.hippopx.com/preview/322/549/188/eagle-rabbit-hunt-wildlife.jpg" alt="銳見洞察" class="w-full h-[450px] md:h-[550px] object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-bg-soft/90 via-transparent to-transparent"></div>
+                            </div>
                         </div>
                         <div class="absolute -bottom-6 -right-6 w-full h-full border border-[#c9a96e]/18 -z-10 rounded-sm"></div>
                         <div class="absolute -bottom-8 -left-8 bg-bg-card border border-[#c9a96e]/35 rounded-sm px-8 py-6 backdrop-blur-md shadow-2xl">
@@ -897,9 +506,66 @@
                 </div>
             </div>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8 relative">
-                <div class="reveal reveal-up md:mt-0"><div class="gold-advantage-card h-full tilt-card group" data-tilt data-tilt-max="8"><div class="tilt-card-inner"><div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="數據驅動"><div class="card-img-overlay"></div><div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-[#c9a96e]/50 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner"><span class="font-display font-bold text-sm text-[#d4b87a]">01</span></div></div><div class="p-8 flex-1 flex flex-col justify-between"><div><h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">數據驅動</h3><p class="text-white/60 leading-relaxed text-sm">摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p></div></div></div></div></div>
-                <div class="reveal reveal-up reveal-delay-1 md:mt-8"><div class="gold-advantage-card h-full tilt-card group" data-tilt data-tilt-max="8"><div class="tilt-card-inner"><div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800&auto=format&fit=crop" alt="本地深耕"><div class="card-img-overlay"></div><div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-[#c9a96e]/50 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner"><span class="font-display font-bold text-sm text-[#d4b87a]">02</span></div></div><div class="p-8 flex-1 flex flex-col justify-between"><div><h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">本地深耕</h3><p class="text-white/60 leading-relaxed text-sm">植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p></div></div></div></div></div>
-                <div class="reveal reveal-up reveal-delay-2 md:mt-4"><div class="gold-advantage-card h-full tilt-card group" data-tilt data-tilt-max="8"><div class="tilt-card-inner"><div class="card-img-wrapper"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop" alt="敏捷反應"><div class="card-img-overlay"></div><div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-[#c9a96e]/50 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner"><span class="font-display font-bold text-sm text-[#d4b87a]">03</span></div></div><div class="p-8 flex-1 flex flex-col justify-between"><div><h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">敏捷反應</h3><p class="text-white/60 leading-relaxed text-sm">面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p></div></div></div></div></div>
+                <!-- 數據驅動 -->
+                <div class="reveal reveal-up md:mt-0">
+                    <div class="gold-advantage-card h-full tilt-card group" data-tilt data-tilt-max="8">
+                        <div class="tilt-card-inner">
+                            <div class="card-img-wrapper">
+                                <img src="https://p1.hippopx.com/preview/176/282/359/source-code-software-computer-programming-language-data-center.jpg" alt="數據驅動">
+                                <div class="card-img-overlay"></div>
+                                <div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-[#c9a96e]/50 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner">
+                                    <span class="font-display font-bold text-sm text-[#d4b87a]">01</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">數據驅動</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm">摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 本地深耕 -->
+                <div class="reveal reveal-up reveal-delay-1 md:mt-8">
+                    <div class="gold-advantage-card h-full tilt-card group" data-tilt data-tilt-max="8">
+                        <div class="tilt-card-inner">
+                            <div class="card-img-wrapper">
+                                <img src="https://p3.hippopx.com/preview/526/166/business-envelopes-close-up-shot-essential-documents-solopreneurs-thriving-business-from-idea-pie-chart-to-do-list-start-a-business-professional-documents.jpg" alt="核心業務">
+                                <div class="card-img-overlay"></div>
+                                <div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-[#c9a96e]/50 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner">
+                                    <span class="font-display font-bold text-sm text-[#d4b87a]">02</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">本地深耕</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm">植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 敏捷反應 -->
+                <div class="reveal reveal-up reveal-delay-2 md:mt-4">
+                    <div class="gold-advantage-card h-full tilt-card group" data-tilt data-tilt-max="8">
+                        <div class="tilt-card-inner">
+                            <div class="card-img-wrapper">
+                                <img src="https://p1.hippopx.com/preview/965/815/785/motorsport-racing-car-sport-lamborghini-audi-nurburgring.jpg" alt="敏捷反應">
+                                <div class="card-img-overlay"></div>
+                                <div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-[#c9a96e]/50 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner">
+                                    <span class="font-display font-bold text-sm text-[#d4b87a]">03</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">敏捷反應</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm">面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -911,9 +577,42 @@
         <div class="float-shape" style="top:10%;right:5%;width:120px;height:120px;border:1px solid rgba(201,169,110,0.2);border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;animation-delay:-4s;"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="text-center mb-20"><div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">03 / Core Business</span></div><h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white">核心業務</h2></div>
-            <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24"><div class="lg:col-span-7 reveal reveal-left"><div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6"><div class="tilt-card-inner"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="品牌管理與優化" class="w-full h-[350px] md:h-[420px] object-cover"><div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div></div></div></div><div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">01 / BRAND MANAGEMENT</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">品牌管理與優化</h3><p class="text-white/50 text-sm leading-relaxed mb-6">從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。</p></div></div></div>
-            <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24"><div class="lg:col-span-5 lg:order-1 order-2"><div class="reveal reveal-left"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">02 / STRATEGY PLANNING</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">商業戰略規劃</h3><p class="text-white/50 text-sm leading-relaxed mb-6">以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</p></div></div><div class="lg:col-span-7 lg:order-2 order-1 reveal reveal-right"><div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6"><div class="tilt-card-inner"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt="商業戰略規劃" class="w-full h-[350px] md:h-[420px] object-cover"><div class="absolute inset-0 bg-gradient-to-l from-bg-soft/60 to-transparent"></div></div></div></div></div>
-            <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center"><div class="lg:col-span-7 reveal reveal-left"><div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6"><div class="tilt-card-inner"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop" alt="市場洞察與數據分析" class="w-full h-[350px] md:h-[420px] object-cover"><div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div></div></div></div><div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">03 / MARKET INSIGHTS</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">市場洞察與數據分析</h3><p class="text-white/50 text-sm leading-relaxed mb-6">從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。</p></div></div></div>
+            <!-- 品牌管理與優化 -->
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
+                <div class="lg:col-span-7 reveal reveal-left">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
+                        <div class="tilt-card-inner">
+                            <img src="https://p3.hippopx.com/preview/380/684/new-life-plant-growing-newborn-nature-motivation-achievement-smal-weak.jpg" alt="品牌管理與優化" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">01 / BRAND MANAGEMENT</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">品牌管理與優化</h3><p class="text-white/50 text-sm leading-relaxed mb-6">從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。</p></div></div>
+            </div>
+            <!-- 商業戰略規劃 -->
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
+                <div class="lg:col-span-5 lg:order-1 order-2"><div class="reveal reveal-left"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">02 / STRATEGY PLANNING</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">商業戰略規劃</h3><p class="text-white/50 text-sm leading-relaxed mb-6">以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</p></div></div>
+                <div class="lg:col-span-7 lg:order-2 order-1 reveal reveal-right">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
+                        <div class="tilt-card-inner">
+                            <img src="https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg" alt="品牌進入市場策略" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-l from-bg-soft/60 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 市場洞察與數據分析 -->
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <div class="lg:col-span-7 reveal reveal-left">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
+                        <div class="tilt-card-inner">
+                            <img src="https://p0.hippopx.com/preview/747/632/926/smart-city-communication-network.jpg" alt="市場洞察與數據分析" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">03 / MARKET INSIGHTS</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">市場洞察與數據分析</h3><p class="text-white/50 text-sm leading-relaxed mb-6">從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。</p></div></div>
+            </div>
         </div>
     </section>
 
@@ -923,13 +622,13 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"><div><div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">04 / Service Scope</span></div><h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white">業務範圍</h2></div><p class="reveal reveal-up reveal-delay-2 text-white/40 text-sm max-w-sm leading-relaxed">九大專業服務領域，覆蓋從數據蒐集到策略落地的全鏈路。</p></div>
             <div class="accordion-bars reveal reveal-up reveal-delay-3">
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">01</div><div class="acc-bar-title">量化調查</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/862/767/detective-mysterious-crime-man-smoking-magnifying-glass-magnifier-suit-hat-cigar.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">01</div><div class="acc-bar-title">量化調查</div></div></div>
                 <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">02</div><div class="acc-bar-title">深度採訪</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">03</div><div class="acc-bar-title">大數據收集</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">04</div><div class="acc-bar-title">品牌進入市場策略</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/629/256/ai-data-collection-ai-data-annotation-data-collection-data-annotation-ai-data-generation-ai-proofreading-data-collection-services.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">03</div><div class="acc-bar-title">大數據收集</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">04</div><div class="acc-bar-title">品牌進入市場策略</div></div></div>
                 <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">05</div><div class="acc-bar-title">品牌現況及經營策略分析</div></div></div>
                 <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">06</div><div class="acc-bar-title">行業專項顧問</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">07</div><div class="acc-bar-title">協助企業落實措施</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/8/776/korea-bio-park-buildling-it-blue-sky-technology-gyeonggido-gyeonggi-do-pangyo.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">07</div><div class="acc-bar-title">協助企業落實措施</div></div></div>
                 <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">08</div><div class="acc-bar-title">監察市場趨勢</div></div></div>
                 <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">09</div><div class="acc-bar-title">定期報告與跟進</div></div></div>
             </div>
@@ -952,7 +651,14 @@
             </div></div>
             <div class="grid lg:grid-cols-2 gap-10 items-center">
                 <div class="reveal reveal-left order-2 lg:order-1"><p class="text-white/50 leading-loose text-sm">我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。</p><p class="text-white/50 leading-loose text-sm mt-4">從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p><div class="mt-8 flex items-center gap-4"><div class="w-12 h-12 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep shadow-lg"><svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><div><div class="text-white text-sm font-medium">品質保證</div><div class="text-[#d4b87a]/50 text-xs">三重驗證機制 · 數據真實可靠</div></div></div></div>
-                <div class="reveal reveal-right reveal-delay-2 order-1 lg:order-2"><div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="5"><div class="tilt-card-inner"><img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=1200&auto=format&fit=crop" alt="專案流程" class="w-full h-72 md:h-80 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-bg-soft/60 to-transparent"></div></div></div></div>
+                <div class="reveal reveal-right reveal-delay-2 order-1 lg:order-2">
+                    <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="5">
+                        <div class="tilt-card-inner">
+                            <img src="https://p1.hippopx.com/preview/775/502/332/construction-drawing-engineering-architect.jpg" alt="專案流程" class="w-full h-72 md:h-80 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-bg-soft/60 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
