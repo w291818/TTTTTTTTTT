@@ -39,6 +39,16 @@
             }
         };
     </script>
+
+    <!-- ===== GA4 基础追踪代码 ===== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8FY38SYMQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K8FY38SYMQ');
+    </script>
+
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         img, video { max-width: 100%; height: auto; display: block; }
@@ -78,12 +88,10 @@
         }
         @keyframes metalShine { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-        /* --- 三大優勢標題與區塊高亮優化 --- */
         .advantage-glow-title {
             text-shadow: 0 0 25px rgba(240, 215, 140, 0.4), 0 0 50px rgba(201, 169, 110, 0.2);
         }
 
-        /* --- 三大優勢長方形卡片樣式亮化 --- */
         .advantage-box-container {
             display: flex;
             width: 100%;
@@ -114,7 +122,6 @@
             clip-path: none;
         }
 
-        /* 滑鼠 Hover 伸展擠壓效果 */
         .advantage-box-container:hover .rect-card {
             flex: 0.6;
             opacity: 0.5;
@@ -125,7 +132,6 @@
             z-index: 10;
         }
 
-        /* 卡片正反面與背景圖片 */
         .rect-card-front, .rect-card-back {
             position: absolute;
             inset: 0;
@@ -152,7 +158,6 @@
             transform: scale(1.08);
         }
 
-        /* 正面內容：預覽狀態 */
         .rect-card-front {
             z-index: 2;
             text-align: center;
@@ -170,7 +175,6 @@
             filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
         }
 
-        /* 背面內容：Hover後的細節內容 */
         .rect-card-back {
             z-index: 3;
             background: rgba(35, 27, 21, 0.92);
@@ -203,7 +207,6 @@
             pointer-events: auto;
         }
 
-        /* 手機端響應式排佈優化：徹底解決文字裁切與擠壓問題 */
         @media (max-width: 768px) {
             .advantage-box-container {
                 flex-direction: column;
@@ -252,14 +255,14 @@
                 box-shadow: none;
             }
             .rect-card-back h3 {
-                display: none; /* 隱藏重複標題 */
+                display: none;
             }
             .rect-card-back p {
                 font-size: 0.9rem;
                 line-height: 1.6;
             }
             .rect-card-bg {
-                display: none; /* 手機端隱藏暗色背景圖，增強閱讀性 */
+                display: none;
             }
         }
 
@@ -615,17 +618,15 @@
                 </div>
             </div>
 
-            <!-- 三大板塊在大方框內（高亮長方形卡片） -->
+            <!-- 三大板塊在大方框內 -->
             <div class="reveal reveal-up advantage-box-container">
                 <!-- 板塊 1: 數據驅動 -->
                 <div class="rect-card">
                     <div class="rect-card-inner">
                         <div class="rect-card-bg" style="background-image: url('https://p1.hippopx.com/preview/176/282/359/source-code-software-computer-programming-language-data-center.jpg');"></div>
-                        <!-- 預覽狀態 -->
                         <div class="rect-card-front">
                             <h3 class="rect-card-title text-gold-gradient" data-i18n="adv1Title">Data-Driven</h3>
                         </div>
-                        <!-- 懸停/展開狀態 -->
                         <div class="rect-card-back">
                             <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv1Title">Data-Driven</h3>
                             <p class="leading-relaxed" data-i18n="adv1Desc">Eliminating gut feelings, we extract key market signals from complex data, ensuring every strategy is backed by evidence.</p>
@@ -637,11 +638,9 @@
                 <div class="rect-card">
                     <div class="rect-card-inner">
                         <div class="rect-card-bg" style="background-image: url('https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800&auto=format&fit=crop');"></div>
-                        <!-- 預覽狀態 -->
                         <div class="rect-card-front">
                             <h3 class="rect-card-title text-gold-gradient" data-i18n="adv2Title">Local Expertise</h3>
                         </div>
-                        <!-- 懸停/展開狀態 -->
                         <div class="rect-card-back">
                             <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv2Title">Local Expertise</h3>
                             <p class="leading-relaxed" data-i18n="adv2Desc">Rooted in Hong Kong, we possess deep understanding of local regulations and business environments, helping enterprises navigate market fluctuations and precisely mitigate potential risks.</p>
@@ -653,11 +652,9 @@
                 <div class="rect-card">
                     <div class="rect-card-inner">
                         <div class="rect-card-bg" style="background-image: url('https://p1.hippopx.com/preview/965/815/785/motorsport-racing-car-sport-lamborghini-audi-nurburgring.jpg');"></div>
-                        <!-- 預覽狀態 -->
                         <div class="rect-card-front">
                             <h3 class="rect-card-title text-gold-gradient" data-i18n="adv3Title">Agile Response</h3>
                         </div>
-                        <!-- 懸停/展開狀態 -->
                         <div class="rect-card-back">
                             <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv3Title">Agile Response</h3>
                             <p class="leading-relaxed" data-i18n="adv3Desc">Facing a rapidly changing business landscape, we maintain high market acuity, offering flexible and efficient consulting services to help clients swiftly adjust strategies and capture fleeting opportunities.</p>
@@ -823,7 +820,6 @@
                     </div>
                 </div>
                 <div class="lg:col-span-7">
-                    <!-- 表單已綁定 Formspree 連結 -->
                     <form action="https://formspree.io/f/xvzeyybe" method="POST" class="reveal reveal-right reveal-delay-2 bg-bg-card border border-[#c9a96e]/25 rounded-sm p-6 sm:p-8 md:p-10 space-y-5 shadow-2xl" id="contactForm">
                         <div class="grid md:grid-cols-2 gap-5">
                             <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblTitle">Name</label><input type="text" name="name" class="form-input" id="inputName" placeholder="Enter your name" required></div>
@@ -902,6 +898,7 @@
     </div>
 
     <script>
+        // 语言翻译对象（仅保留英文和中文）
         const translations = {
             zh: {
                 docTitle: "TOP MARKET 銳鋒顧問 | 讓商業視野 超越界限",
@@ -1121,6 +1118,7 @@
                 }
             });
 
+            // 更新 placeholder
             const nameInput = document.getElementById('inputName');
             const emailInput = document.getElementById('inputEmail');
             const companyInput = document.getElementById('inputCompany');
@@ -1137,7 +1135,7 @@
         }
 
         (function() {
-            // 預設切換為英文版面
+            // 默认英文
             switchLanguage('en');
 
             const langBtn = document.getElementById('langSwitchBtn');
@@ -1155,16 +1153,24 @@
                 dropdownNav.classList.toggle('open'); 
             });
             
+            // 导航链接点击处理（资源中心特殊处理）
             document.querySelectorAll('.dropdown-nav a').forEach(link => {
                 link.addEventListener('click', (e) => {
+                    // 资源中心：展开下拉并触发 GA 事件
                     if (link.id === 'resourcesTrigger') { 
                         e.preventDefault(); 
+                        // ===== GA4 事件追踪（资源中心） =====
+                        gtag('event', 'resource_center_click', {
+                            'event_category': 'navigation',
+                            'event_label': 'resources_dropdown'
+                        });
                         const submenu = document.getElementById('resourcesSubmenu'); 
                         const arrow = document.getElementById('resourcesArrow');
                         submenu.classList.toggle('open'); 
                         arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; 
                         return; 
                     }
+                    // 其他链接：关闭菜单
                     if (link.classList.contains('report-link') || link.id === 'loginTrigger') return;
                     menuToggle.classList.remove('active');
                     dropdownNav.classList.remove('open');
@@ -1195,22 +1201,31 @@
                 loginError.classList.add('show'); 
             });
 
+            // ===== 登录按钮事件追踪 =====
             document.getElementById('loginTrigger').addEventListener('click', function(e) { 
                 e.preventDefault();
+                // GA4 事件
+                gtag('event', 'login_click', {
+                    'event_category': 'engagement',
+                    'event_label': 'header_login'
+                });
                 menuToggle.classList.remove('active');
                 dropdownNav.classList.remove('open');
                 showLoginModal(); 
             });
 
+            // 资源中心报告链接（点击时触发登录弹窗，同时追踪）
             document.querySelectorAll('.report-link').forEach(link => { 
                 link.addEventListener('click', function(e) { 
                     e.preventDefault();
+                    // 也可以添加 GA 事件，但为了简单，这里不重复添加
                     menuToggle.classList.remove('active');
                     dropdownNav.classList.remove('open');
                     showLoginModal(); 
                 }); 
             });
 
+            // 交互动画
             const observer = new IntersectionObserver((entries) => { 
                 entries.forEach(entry => { 
                     if (entry.isIntersecting) entry.target.classList.add('visible'); 
@@ -1220,6 +1235,7 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             document.querySelectorAll('.timeline-step').forEach(el => observer.observe(el));
 
+            // 数字动画
             const numberObserver = new IntersectionObserver((entries) => { 
                 entries.forEach(entry => { 
                     if (!entry.isIntersecting) return; 
@@ -1242,6 +1258,7 @@
 
             document.querySelectorAll('.stat-number').forEach(el => numberObserver.observe(el));
 
+            // 3D 卡片效果
             function initTilt() { 
                 if (window.innerWidth < 768) return; 
                 document.querySelectorAll('[data-tilt]').forEach(card => { 
@@ -1267,6 +1284,7 @@
             }
             initTilt();
 
+            // 标题视差
             const heroTitle = document.getElementById('heroTitle');
             let targetX = 0, targetY = 0;
             let currentX = 0, currentY = 0;
@@ -1283,13 +1301,14 @@
             }
             animateTitle();
 
+            // 英雄背景滚动
             const heroBg = document.getElementById('heroBg');
             window.addEventListener('scroll', () => { 
                 const scrollY = window.scrollY; 
                 if (heroBg && scrollY < window.innerHeight) heroBg.style.transform = `translateY(${scrollY * 0.3}px)`; 
             });
 
-            // AJAX 提交 Formspree 表單
+            // 联系表单 AJAX 提交（Formspree）
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', async function(e) { 
                 e.preventDefault(); 
