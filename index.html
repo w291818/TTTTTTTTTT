@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="docTitle">TOP MARKET 銳鋒顧問 | 讓商業視野 超越界限</title>
+    <title data-i18n="docTitle">TOP MARKET Consulting | Expanding Business Horizons</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,10 +90,10 @@
             height: 480px;
             position: relative;
             background: #2a231d;
-            border: 1px solid rgba(240, 215, 140, 0.6); /* 提升邊框亮度的黃金高光 */
+            border: 1px solid rgba(240, 215, 140, 0.6);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 35px rgba(201, 169, 110, 0.25), 0 20px 50px rgba(0,0,0,0.5); /* 增加背景金色輝光 */
+            box-shadow: 0 0 35px rgba(201, 169, 110, 0.25), 0 20px 50px rgba(0,0,0,0.5);
             gap: 2px;
         }
 
@@ -142,13 +142,13 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            filter: brightness(0.65) contrast(1.15); /* 調高背景圖亮度與對比 */
+            filter: brightness(0.65) contrast(1.15);
             transition: filter 0.5s ease, transform 0.7s ease;
             z-index: 0;
         }
 
         .rect-card:hover .rect-card-bg {
-            filter: brightness(0.35) blur(1px); /* Hover時適度降低亮度突顯文字 */
+            filter: brightness(0.35) blur(1px);
             transform: scale(1.08);
         }
 
@@ -157,7 +157,7 @@
             z-index: 2;
             text-align: center;
             opacity: 1;
-            background: rgba(26, 20, 16, 0.3); /* 輕微加深底色確保文字清晰 */
+            background: rgba(26, 20, 16, 0.3);
         }
 
         .rect-card-title {
@@ -173,10 +173,10 @@
         /* 背面內容：Hover後的細節內容 */
         .rect-card-back {
             z-index: 3;
-            background: rgba(35, 27, 21, 0.92); /* 提升卡片背景亮色 */
+            background: rgba(35, 27, 21, 0.92);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(240, 215, 140, 0.7); /* 明亮金色邊框 */
-            box-shadow: inset 0 0 30px rgba(201, 169, 110, 0.15); /* 內部光圈效果 */
+            border: 1px solid rgba(240, 215, 140, 0.7);
+            box-shadow: inset 0 0 30px rgba(201, 169, 110, 0.15);
             align-items: flex-start;
             justify-content: center;
             text-align: left;
@@ -203,32 +203,63 @@
             pointer-events: auto;
         }
 
-        /* 手機端響應式堆疊 */
+        /* 手機端響應式排佈優化：徹底解決文字裁切與擠壓問題 */
         @media (max-width: 768px) {
             .advantage-box-container {
                 flex-direction: column;
                 height: auto;
-                gap: 12px;
+                gap: 16px;
                 background: transparent;
                 border: none;
                 box-shadow: none;
             }
             .rect-card {
                 height: auto;
-                min-height: 200px;
+                min-height: unset;
                 flex: none !important;
                 opacity: 1 !important;
                 border: 1px solid rgba(240, 215, 140, 0.5);
                 border-radius: 8px;
                 box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+                background: rgba(35, 27, 21, 0.95);
             }
-            .rect-card-front { display: none; }
+            .rect-card-inner {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+            .rect-card-front { 
+                position: relative;
+                opacity: 1; 
+                padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+                background: transparent;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .rect-card-title {
+                white-space: normal;
+                word-break: break-word;
+                font-size: 1.35rem;
+            }
             .rect-card-back {
                 opacity: 1;
                 position: relative;
-                background: rgba(35, 27, 21, 0.95);
-                height: 100%;
-                padding: 2rem !important;
+                pointer-events: auto;
+                background: transparent;
+                height: auto;
+                padding: 0 1.25rem 1.25rem 1.25rem !important;
+                border: none;
+                box-shadow: none;
+            }
+            .rect-card-back h3 {
+                display: none; /* 隱藏重複標題 */
+            }
+            .rect-card-back p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            .rect-card-bg {
+                display: none; /* 手機端隱藏暗色背景圖，增強閱讀性 */
             }
         }
 
@@ -275,7 +306,7 @@
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201, 169, 110, 0.2);
             max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .dropdown-nav.open { max-height: 600px; }
+        .dropdown-nav.open { max-height: 800px; }
         .dropdown-nav-inner { padding: 20px 0 30px; }
         .dropdown-nav a {
             display: block; padding: 12px 0; color: #b0a89c; font-size: 14px; font-weight: 500;
@@ -345,13 +376,14 @@
         .acc-bar:hover .acc-bar-title { writing-mode: horizontal-tb; align-self: flex-start; font-size: 22px; color: #f0d78c; }
 
         @media (max-width: 768px) {
-            .accordion-bars { flex-direction: column; height: auto; gap: 2px; }
-            .acc-bar { height: 80px; flex: none; transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-            .acc-bar:hover { flex: none; height: 160px; }
-            .acc-bar-title { writing-mode: horizontal-tb; align-self: flex-start; font-size: 16px; }
-            .acc-bar-content { flex-direction: row; align-items: center; padding: 16px 20px; }
-            .acc-bar:hover .acc-bar-content { flex-direction: column; align-items: flex-start; justify-content: space-between; }
-            .acc-bar-num { font-size: 11px; }
+            .accordion-bars { flex-direction: column; height: auto; gap: 8px; }
+            .acc-bar { height: auto; min-height: 64px; flex: none; transition: background 0.3s ease; background: rgba(42, 35, 29, 0.8); }
+            .acc-bar:hover { flex: none; height: auto; }
+            .acc-bar-img { display: none; }
+            .acc-bar-title { writing-mode: horizontal-tb; align-self: center; font-size: 15px; white-space: normal; word-break: break-word; }
+            .acc-bar-content { position: relative; inset: auto; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; padding: 14px 18px; }
+            .acc-bar:hover .acc-bar-content { flex-direction: row; align-items: center; justify-content: flex-start; }
+            .acc-bar-num { font-size: 12px; flex-shrink: 0; }
         }
 
         .timeline-dot { width: 18px; height: 18px; border-radius: 50%; background: #2a231d; border: 2px solid #3a3229; position: relative; z-index: 2; transition: all 0.5s ease; }
@@ -423,7 +455,7 @@
         @media (max-width: 768px) {
             .timeline-line { display: none; }
             .hero-slice { display: none; }
-            .deco-big-text { font-size: 60px; }
+            .deco-big-text { font-size: 50px; }
             .login-modal { padding: 32px 20px; }
         }
     </style>
@@ -438,7 +470,7 @@
                     <div class="logo-mark"><span>TM</span></div>
                     <div class="hidden sm:block">
                         <div class="text-white font-display font-bold text-sm tracking-widest">TOP MARKET</div>
-                        <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mt-0.5" data-i18n="companySub">銳鋒顧問有限公司</div>
+                        <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mt-0.5" data-i18n="companySub">TOP MARKET Consulting Limited</div>
                     </div>
                 </a>
                 
@@ -449,22 +481,22 @@
             </div>
             <nav class="dropdown-nav" id="dropdownNav">
                 <div class="dropdown-nav-inner max-w-7xl mx-auto px-6 md:px-10">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-1">
-                        <a href="#about" data-i18n="navAbout">關於我們</a>
-                        <a href="#advantages" data-i18n="navAdvantages">專業優勢</a>
-                        <a href="#business" data-i18n="navBusiness">核心業務</a>
-                        <a href="#services" data-i18n="navServices">業務範圍</a>
-                        <a href="#process" data-i18n="navProcess">諮詢流程</a>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-1">
+                        <a href="#about" data-i18n="navAbout">About Us</a>
+                        <a href="#advantages" data-i18n="navAdvantages">Advantages</a>
+                        <a href="#business" data-i18n="navBusiness">Core Business</a>
+                        <a href="#services" data-i18n="navServices">Services</a>
+                        <a href="#process" data-i18n="navProcess">Process</a>
                         <div class="has-submenu">
-                            <a href="#" class="nav-item" id="resourcesTrigger"><span data-i18n="navResources">資源中心</span> <span class="inline-block ml-1 text-xs transition-transform duration-300" id="resourcesArrow">▾</span></a>
+                            <a href="#" class="nav-item" id="resourcesTrigger"><span data-i18n="navResources">Resources</span> <span class="inline-block ml-1 text-xs transition-transform duration-300" id="resourcesArrow">▾</span></a>
                             <div class="submenu-dropdown" id="resourcesSubmenu">
-                                <a href="#" class="report-link" data-i18n="navMarketReports">市場報告</a>
-                                <a href="#" class="report-link" data-i18n="navCompanyReports">公司報告</a>
+                                <a href="#" class="report-link" data-i18n="navMarketReports">Market Reports</a>
+                                <a href="#" class="report-link" data-i18n="navCompanyReports">Company Reports</a>
                             </div>
                         </div>
-                        <a href="#contact" data-i18n="navContact">聯絡我們</a>
-                        <a href="#" id="loginTrigger" data-i18n="navLogin">登入</a>
-                        <a href="https://www.linkedin.com/company/topmarkethk" target="_blank" data-i18n="navCareers">加入我們</a>
+                        <a href="#contact" data-i18n="navContact">Contact Us</a>
+                        <a href="#" id="loginTrigger" data-i18n="navLogin">Login</a>
+                        <a href="https://www.linkedin.com/company/topmarkethk" target="_blank" data-i18n="navCareers">Careers</a>
                     </div>
                 </div>
             </nav>
@@ -485,30 +517,30 @@
                         <div class="w-10 h-px bg-[#c9a96e]/60"></div>
                         <span class="text-[#d4b87a]/80 text-xs tracking-widest-xl uppercase font-display font-medium">Business Intelligence</span>
                     </div>
-                    <h1 class="reveal reveal-up reveal-delay-1 hero-title text-5xl md:text-7xl lg:text-8xl mb-8" id="heroTitle">
-                        <span data-i18n="heroTitleLine1">讓商業視野</span><br>
-                        <span class="text-gold-gradient" data-i18n="heroTitleLine2">超越界限</span>
+                    <h1 class="reveal reveal-up reveal-delay-1 hero-title text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-8" id="heroTitle">
+                        <span data-i18n="heroTitleLine1">Expanding Horizons,</span><br>
+                        <span class="text-gold-gradient" data-i18n="heroTitleLine2">Beyond Limits</span>
                     </h1>
-                    <p class="reveal reveal-up reveal-delay-2 text-lg md:text-xl text-white/70 font-light mb-3 max-w-xl" data-i18n="heroSub1">洞悉香港市場，以精準數據驅動商業策略。</p>
-                    <p class="reveal reveal-up reveal-delay-3 text-sm text-white/45 max-w-xl mb-12 leading-relaxed" data-i18n="heroSub2">銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。</p>
+                    <p class="reveal reveal-up reveal-delay-2 text-base md:text-xl text-white/70 font-light mb-3 max-w-xl" data-i18n="heroSub1">In-depth Insights into HK Market, Driving Business Strategy with Data.</p>
+                    <p class="reveal reveal-up reveal-delay-3 text-sm text-white/45 max-w-xl mb-12 leading-relaxed" data-i18n="heroSub2">TOP MARKET is committed to helping businesses navigate complex environments, clarify strategic directions, and achieve sustainable growth.</p>
                     <div class="reveal reveal-up reveal-delay-4 flex flex-wrap gap-4">
-                        <a href="#business" class="btn-primary"><span data-i18n="btnExplore">探索服務</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
-                        <a href="#contact" class="btn-outline" data-i18n="btnContact">聯絡我們</a>
+                        <a href="#business" class="btn-primary"><span data-i18n="btnExplore">Explore Services</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+                        <a href="#contact" class="btn-outline" data-i18n="btnContact">Contact Us</a>
                     </div>
                 </div>
                 <div class="lg:col-span-4 hidden lg:block">
                     <div class="reveal reveal-right reveal-delay-5 space-y-4">
                         <div class="bg-white/5 backdrop-blur-sm border border-[#c9a96e]/20 rounded-sm p-6 shadow-xl">
                             <div class="font-display font-bold text-4xl text-[#d4b87a] mb-1 stat-number" data-target="200">0</div>
-                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statCases">+ 成功案例</div>
+                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statCases">+ Successful Cases</div>
                         </div>
                         <div class="bg-white/5 backdrop-blur-sm border border-[#c9a96e]/20 rounded-sm p-6 ml-12 shadow-xl">
                             <div class="font-display font-bold text-4xl text-[#d4b87a] mb-1 stat-number" data-target="10">0</div>
-                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statYears">年行業經驗</div>
+                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statYears">Years Experience</div>
                         </div>
                         <div class="bg-white/5 backdrop-blur-sm border border-[#c9a96e]/20 rounded-sm p-6 ml-6 shadow-xl">
                             <div class="font-display font-bold text-4xl text-[#d4b87a] mb-1 stat-number" data-target="98">0</div>
-                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statSat">% 客戶滿意度</div>
+                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statSat">% Client Satisfaction</div>
                         </div>
                     </div>
                 </div>
@@ -532,18 +564,18 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5 lg:pt-24">
                     <div class="reveal reveal-left mb-6"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="aboutTag">01 / About Us</span></div>
-                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-8 leading-tight text-white" data-i18n="aboutHeading">以銳見洞察行業<br>用鋒利攻破市場</h2>
+                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-8 leading-tight text-white" data-i18n="aboutHeading">Sharpen Insights,<br>Conquer the Market</h2>
                     <div class="reveal reveal-left reveal-delay-2 space-y-5 text-white/60 leading-relaxed text-sm">
-                        <p data-i18n="aboutP1"><span class="text-white font-medium">銳鋒顧問有限公司</span>是一家整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。</p>
-                        <p data-i18n="aboutP2">專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
-                        <p data-i18n="aboutP3">我們不只是顧問，更是你並肩的商業夥伴。</p>
+                        <p data-i18n="aboutP1"><span class='text-white font-medium'>TOP MARKET Consulting Limited</span> is a full-service business consultancy integrating data collection, consumer behavior research, and brand operations.</p>
+                        <p data-i18n="aboutP2">Focusing on end-to-end solutions for local commercial services, retail, F&B, and beauty industries.</p>
+                        <p data-i18n="aboutP3">We are not just consultants; we are your dedicated strategic partners.</p>
                     </div>
                     <div class="reveal reveal-left reveal-delay-3 mt-10 flex items-center gap-5">
                         <div class="w-12 h-px bg-[#c9a96e]/30"></div>
                         <div class="flex items-center gap-4 text-[#d4b87a]/80 font-serif text-sm tracking-wider">
-                            <span data-i18n="aboutPillar1">精準</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span>
-                            <span data-i18n="aboutPillar2">務實</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span>
-                            <span data-i18n="aboutPillar3">可持續</span>
+                            <span data-i18n="aboutPillar1">Precision</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span>
+                            <span data-i18n="aboutPillar2">Pragmatism</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span>
+                            <span data-i18n="aboutPillar3">Sustainability</span>
                         </div>
                     </div>
                 </div>
@@ -551,16 +583,16 @@
                     <div class="reveal reveal-scale relative">
                         <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="8">
                             <div class="tilt-card-inner">
-                                <img src="https://p0.hippopx.com/preview/322/549/188/eagle-rabbit-hunt-wildlife.jpg" alt="銳見洞察" class="w-full h-[450px] md:h-[550px] object-cover">
+                                <img src="https://p0.hippopx.com/preview/322/549/188/eagle-rabbit-hunt-wildlife.jpg" alt="銳見洞察" class="w-full h-[350px] md:h-[550px] object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-bg-soft/90 via-transparent to-transparent"></div>
                             </div>
                         </div>
-                        <div class="absolute -bottom-6 -right-6 w-full h-full border border-[#c9a96e]/18 -z-10 rounded-sm"></div>
-                        <div class="absolute -bottom-8 -left-8 bg-bg-card border border-[#c9a96e]/35 rounded-sm px-8 py-6 backdrop-blur-md shadow-2xl">
-                            <div class="font-display font-bold text-3xl text-[#d4b87a] mb-1">TOP MARKET</div>
-                            <div class="text-white/40 text-xs tracking-widest">SINCE 2014 · HONG KONG</div>
+                        <div class="absolute -bottom-6 -right-6 w-full h-full border border-[#c9a96e]/18 -z-10 rounded-sm hidden sm:block"></div>
+                        <div class="absolute -bottom-8 -left-4 sm:-left-8 bg-bg-card border border-[#c9a96e]/35 rounded-sm px-6 sm:px-8 py-4 sm:py-6 backdrop-blur-md shadow-2xl">
+                            <div class="font-display font-bold text-2xl sm:text-3xl text-[#d4b87a] mb-1">TOP MARKET</div>
+                            <div class="text-white/40 text-[10px] sm:text-xs tracking-widest">SINCE 2014 · HONG KONG</div>
                         </div>
-                        <div class="absolute -top-6 right-10 font-display font-black text-8xl text-[#c9a96e]/[0.04] leading-none">01</div>
+                        <div class="absolute -top-6 right-10 font-display font-black text-8xl text-[#c9a96e]/[0.04] leading-none hidden sm:block">01</div>
                     </div>
                 </div>
             </div>
@@ -574,12 +606,12 @@
     <section id="advantages" class="py-24 md:py-32 bg-bg relative overflow-hidden">
         <div class="deco-big-text absolute left-0 top-20">ADVANTAGE</div>
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
-            <div class="flex justify-end mb-16">
-                <div class="text-right max-w-lg">
+            <div class="flex justify-start md:justify-end mb-12 md:mb-16">
+                <div class="text-left md:text-right max-w-lg">
                     <div class="reveal reveal-right mb-4"><span class="text-[#f0d78c] text-xs tracking-widest-xl uppercase font-display font-semibold" data-i18n="advTag">02 / Our Advantages</span></div>
                     <h2 class="reveal reveal-right reveal-delay-1 font-serif font-bold text-3xl md:text-5xl leading-tight text-white advantage-glow-title">
-                        <span data-i18n="advHeadingLine1">三大核心優勢</span><br>
-                        <span class="text-gold-gradient" data-i18n="advHeadingLine2">驅動商業增長</span>
+                        <span data-i18n="advHeadingLine1">Three Core Advantages</span><br>
+                        <span class="text-gold-gradient" data-i18n="advHeadingLine2">Driving Business Growth</span>
                     </h2>
                 </div>
             </div>
@@ -592,12 +624,12 @@
                         <div class="rect-card-bg" style="background-image: url('https://p1.hippopx.com/preview/176/282/359/source-code-software-computer-programming-language-data-center.jpg');"></div>
                         <!-- 預覽狀態 -->
                         <div class="rect-card-front">
-                            <h3 class="rect-card-title text-gold-gradient" data-i18n="adv1Title">數據驅動</h3>
+                            <h3 class="rect-card-title text-gold-gradient" data-i18n="adv1Title">Data-Driven</h3>
                         </div>
-                        <!-- 懸停展開狀態 -->
+                        <!-- 懸停/展開狀態 -->
                         <div class="rect-card-back">
-                            <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv1Title">數據驅動</h3>
-                            <p class="leading-relaxed" data-i18n="adv1Desc">摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
+                            <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv1Title">Data-Driven</h3>
+                            <p class="leading-relaxed" data-i18n="adv1Desc">Eliminating gut feelings, we extract key market signals from complex data, ensuring every strategy is backed by evidence.</p>
                         </div>
                     </div>
                 </div>
@@ -608,12 +640,12 @@
                         <div class="rect-card-bg" style="background-image: url('https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800&auto=format&fit=crop');"></div>
                         <!-- 預覽狀態 -->
                         <div class="rect-card-front">
-                            <h3 class="rect-card-title text-gold-gradient" data-i18n="adv2Title">本地深耕</h3>
+                            <h3 class="rect-card-title text-gold-gradient" data-i18n="adv2Title">Local Expertise</h3>
                         </div>
-                        <!-- 懸停展開狀態 -->
+                        <!-- 懸停/展開狀態 -->
                         <div class="rect-card-back">
-                            <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv2Title">本地深耕</h3>
-                            <p class="leading-relaxed" data-i18n="adv2Desc">植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
+                            <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv2Title">Local Expertise</h3>
+                            <p class="leading-relaxed" data-i18n="adv2Desc">Rooted in Hong Kong, we possess deep understanding of local regulations and business environments, helping enterprises navigate market fluctuations and precisely mitigate potential risks.</p>
                         </div>
                     </div>
                 </div>
@@ -624,12 +656,12 @@
                         <div class="rect-card-bg" style="background-image: url('https://p1.hippopx.com/preview/965/815/785/motorsport-racing-car-sport-lamborghini-audi-nurburgring.jpg');"></div>
                         <!-- 預覽狀態 -->
                         <div class="rect-card-front">
-                            <h3 class="rect-card-title text-gold-gradient" data-i18n="adv3Title">敏捷反應</h3>
+                            <h3 class="rect-card-title text-gold-gradient" data-i18n="adv3Title">Agile Response</h3>
                         </div>
-                        <!-- 懸停展開狀態 -->
+                        <!-- 懸停/展開狀態 -->
                         <div class="rect-card-back">
-                            <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv3Title">敏捷反應</h3>
-                            <p class="leading-relaxed" data-i18n="adv3Desc">面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
+                            <h3 class="font-serif font-bold text-2xl text-gold-gradient mb-4" data-i18n="adv3Title">Agile Response</h3>
+                            <p class="leading-relaxed" data-i18n="adv3Desc">Facing a rapidly changing business landscape, we maintain high market acuity, offering flexible and efficient consulting services to help clients swiftly adjust strategies and capture fleeting opportunities.</p>
                         </div>
                     </div>
                 </div>
@@ -646,27 +678,27 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="text-center mb-20">
                 <div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="bizTag">03 / Core Business</span></div>
-                <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="bizTitle">核心業務</h2>
+                <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="bizTitle">Core Business</h2>
             </div>
             <!-- 品牌管理與優化 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
                 <div class="lg:col-span-7 reveal reveal-left">
                     <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
-                            <img src="https://p3.hippopx.com/preview/713/838/business-strategy-report-white-paper-hands-reviewing-close-up-view-graphs-setting-up-business-stages-business-stages-report-with-graphs-person-holding-business-report.jpg" alt="品牌管理與優化" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <img src="https://p3.hippopx.com/preview/713/838/business-strategy-report-white-paper-hands-reviewing-close-up-view-graphs-setting-up-business-stages-business-stages-report-with-graphs-person-holding-business-report.jpg" alt="品牌管理與優化" class="w-full h-[260px] sm:h-[350px] md:h-[420px] object-cover">
                             <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div>
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">01 / BRAND MANAGEMENT</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz1Title">品牌管理與優化</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz1Desc">從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。</p></div></div>
+                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">01 / BRAND MANAGEMENT</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz1Title">Brand Management & Optimization</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz1Desc">From brand positioning to process optimization, we provide comprehensive growth solutions to turn strategies into revenue.</p></div></div>
             </div>
             <!-- 商業戰略規劃 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
-                <div class="lg:col-span-5 lg:order-1 order-2"><div class="reveal reveal-left"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">02 / STRATEGY PLANNING</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz2Title">商業戰略規劃</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz2Desc">以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</p></div></div>
+                <div class="lg:col-span-5 lg:order-1 order-2"><div class="reveal reveal-left"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">02 / STRATEGY PLANNING</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz2Title">Business Strategy Planning</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz2Desc">Driven by AI and omnichannel intelligence, we assist companies in constructing top-level blueprints for sustainable success.</p></div></div>
                 <div class="lg:col-span-7 lg:order-2 order-1 reveal reveal-right">
                     <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
-                            <img src="https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg" alt="品牌進入市場策略" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <img src="https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg" alt="品牌進入市場策略" class="w-full h-[260px] sm:h-[350px] md:h-[420px] object-cover">
                             <div class="absolute inset-0 bg-gradient-to-l from-bg-soft/60 to-transparent"></div>
                         </div>
                     </div>
@@ -677,12 +709,12 @@
                 <div class="lg:col-span-7 reveal reveal-left">
                     <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
-                            <img src="https://p0.hippopx.com/preview/747/632/926/smart-city-communication-network.jpg" alt="市場洞察與數據分析" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <img src="https://p0.hippopx.com/preview/747/632/926/smart-city-communication-network.jpg" alt="市場洞察與數據分析" class="w-full h-[260px] sm:h-[350px] md:h-[420px] object-cover">
                             <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div>
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">03 / MARKET INSIGHTS</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz3Title">市場洞察與數據分析</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz3Desc">從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。</p></div></div>
+                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">03 / MARKET INSIGHTS</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz3Title">Market Insights & Data Analytics</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz3Desc">Combining rigorous analytics with market feasibility studies, we provide solid foundations for high-level decision-making.</p></div></div>
             </div>
         </div>
     </section>
@@ -694,20 +726,20 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                     <div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="svcTag">04 / Service Scope</span></div>
-                    <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="svcTitle">業務範圍</h2>
+                    <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="svcTitle">Services</h2>
                 </div>
-                <p class="reveal reveal-up reveal-delay-2 text-white/40 text-sm max-w-sm leading-relaxed" data-i18n="svcSub">九大專業服務領域，覆蓋從數據蒐集到策略落地的全鏈路。</p>
+                <p class="reveal reveal-up reveal-delay-2 text-white/40 text-sm max-w-sm leading-relaxed" data-i18n="svcSub">Nine professional service areas, covering the end-to-end consulting lifecycle.</p>
             </div>
             <div class="accordion-bars reveal reveal-up reveal-delay-3">
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/862/767/detective-mysterious-crime-man-smoking-magnifying-glass-magnifier-suit-hat-cigar.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">01</div><div class="acc-bar-title" data-i18n="svc1">量化調查</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">02</div><div class="acc-bar-title" data-i18n="svc2">深度採訪</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/629/256/ai-data-collection-ai-data-annotation-data-collection-data-annotation-ai-data-generation-ai-proofreading-data-collection-services.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">03</div><div class="acc-bar-title" data-i18n="svc3">大數據收集</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">04</div><div class="acc-bar-title" data-i18n="svc4">品牌進入市場策略</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">05</div><div class="acc-bar-title" data-i18n="svc5">品牌現況及經營策略分析</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">06</div><div class="acc-bar-title" data-i18n="svc6">行業專項顧問</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/8/776/korea-bio-park-buildling-it-blue-sky-technology-gyeonggido-gyeonggi-do-pangyo.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">07</div><div class="acc-bar-title" data-i18n="svc7">協助企業落實措施</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">08</div><div class="acc-bar-title" data-i18n="svc8">監察市場趨勢</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">09</div><div class="acc-bar-title" data-i18n="svc9">定期報告與跟進</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/862/767/detective-mysterious-crime-man-smoking-magnifying-glass-magnifier-suit-hat-cigar.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">01</div><div class="acc-bar-title" data-i18n="svc1">Quantitative Surveys</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">02</div><div class="acc-bar-title" data-i18n="svc2">In-depth Interviews</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/629/256/ai-data-collection-ai-data-annotation-data-collection-data-annotation-ai-data-generation-ai-proofreading-data-collection-services.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">03</div><div class="acc-bar-title" data-i18n="svc3">Big Data Collection</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">04</div><div class="acc-bar-title" data-i18n="svc4">Go-to-Market Strategy</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">05</div><div class="acc-bar-title" data-i18n="svc5">Brand Audit & Strategy</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">06</div><div class="acc-bar-title" data-i18n="svc6">Industry Advisory</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/8/776/korea-bio-park-buildling-it-blue-sky-technology-gyeonggido-gyeonggi-do-pangyo.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">07</div><div class="acc-bar-title" data-i18n="svc7">Implementation Support</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">08</div><div class="acc-bar-title" data-i18n="svc8">Market Trend Monitoring</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">09</div><div class="acc-bar-title" data-i18n="svc9">Reporting & Follow-up</div></div></div>
             </div>
         </div>
     </section>
@@ -720,37 +752,37 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="text-center mb-20">
                 <div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="procTag">05 / Consulting Process</span></div>
-                <div class="reveal reveal-up reveal-delay-1 text-[#d4b87a]/80 font-serif text-sm tracking-widest mb-4" data-i18n="procSub">全程監控 · 數據真實 · 專業執行</div>
-                <h2 class="reveal reveal-up reveal-delay-2 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="procTitle">專案流程</h2>
+                <div class="reveal reveal-up reveal-delay-1 text-[#d4b87a]/80 font-serif text-sm tracking-widest mb-4" data-i18n="procSub">Full Monitoring · Verified Data · Professional Execution</div>
+                <h2 class="reveal reveal-up reveal-delay-2 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="procTitle">Our Process</h2>
             </div>
             <div class="relative mb-20">
                 <div class="timeline-line hidden md:block"></div>
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
-                    <div class="timeline-step reveal reveal-up flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 01</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step1">界定需求</h4></div>
-                    <div class="timeline-step reveal reveal-up reveal-delay-1 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 02</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step2">蒐集數據</h4></div>
-                    <div class="timeline-step reveal reveal-up reveal-delay-2 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 03</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step3">制定策略</h4></div>
-                    <div class="timeline-step reveal reveal-up reveal-delay-3 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 04</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step4">實施支援</h4></div>
-                    <div class="timeline-step reveal reveal-up reveal-delay-4 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 05</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step5">持續追蹤</h4></div>
+                    <div class="timeline-step reveal reveal-up flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 01</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step1">Define Needs</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-1 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 02</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step2">Data Collection</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-2 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 03</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step3">Formulate Strategy</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-3 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 04</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step4">Implementation</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-4 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 05</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step5">Continuous Tracking</h4></div>
                 </div>
             </div>
             <div class="grid lg:grid-cols-2 gap-10 items-center">
                 <div class="reveal reveal-left order-2 lg:order-1">
-                    <p class="text-white/50 leading-loose text-sm" data-i18n="procDesc1">我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。</p>
-                    <p class="text-white/50 leading-loose text-sm mt-4" data-i18n="procDesc2">從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p>
+                    <p class="text-white/50 leading-loose text-sm" data-i18n="procDesc1">Our in-house quality control team employs random audits, cross-validation, and interview sampling to guarantee maximum accuracy and professionalism.</p>
+                    <p class="text-white/50 leading-loose text-sm mt-4" data-i18n="procDesc2">From kick-off to final deliverable, every step undergoes strict quality control, ensuring trustworthy solutions.</p>
                     <div class="mt-8 flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep shadow-lg">
+                        <div class="w-12 h-12 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep shadow-lg flex-shrink-0">
                             <svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                         </div>
                         <div>
-                            <div class="text-white text-sm font-medium" data-i18n="qaTitle">品質保證</div>
-                            <div class="text-[#d4b87a]/50 text-xs" data-i18n="qaSub">三重驗證機制 · 數據真實可靠</div>
+                            <div class="text-white text-sm font-medium" data-i18n="qaTitle">Quality Assurance</div>
+                            <div class="text-[#d4b87a]/50 text-xs" data-i18n="qaSub">Triple Validation Mechanism · Verified Data</div>
                         </div>
                     </div>
                 </div>
                 <div class="reveal reveal-right reveal-delay-2 order-1 lg:order-2">
                     <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="5">
                         <div class="tilt-card-inner">
-                            <img src="https://p1.hippopx.com/preview/775/502/332/construction-drawing-engineering-architect.jpg" alt="專案流程" class="w-full h-72 md:h-80 object-cover">
+                            <img src="https://p1.hippopx.com/preview/775/502/332/construction-drawing-engineering-architect.jpg" alt="專案流程" class="w-full h-60 sm:h-72 md:h-80 object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-bg-soft/60 to-transparent"></div>
                         </div>
                     </div>
@@ -766,46 +798,41 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
                 <div class="lg:col-span-5">
                     <div class="reveal reveal-left mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="cntTag">06 / Contact Us</span></div>
-                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-6 leading-tight text-white" data-i18n="cntTitle">歡迎諮詢</h2>
-                    <p class="reveal reveal-left reveal-delay-2 text-white/50 leading-relaxed text-sm mb-10" data-i18n="cntDesc">啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長欄的無限可能。</p>
-                    <div class="reveal reveal-left reveal-delay-3 flex items-center gap-4 mb-10 text-white/60 text-sm">
-                        <span class="inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span data-i18n="cntBadge1">24小時內專人回覆</span></span>
-                        <span class="w-1 h-1 rounded-full bg-white/20"></span>
-                        <span data-i18n="cntBadge2">免費初步諮詢</span>
-                    </div>
+                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-6 leading-tight text-white" data-i18n="cntTitle">Contact Us</h2>
+                    <p class="reveal reveal-left reveal-delay-2 text-white/50 leading-relaxed text-sm mb-10" data-i18n="cntDesc">Start your data-driven growth journey: Connect with our experts today to unlock unlimited growth potential.</p>
                     <div class="reveal reveal-left reveal-delay-4 mb-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm">
                         <div class="flex items-center gap-4">
-                            <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors">
+                            <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors flex-shrink-0">
                                 <svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             </div>
-                            <div>
+                            <div class="min-w-0 flex-1">
                                 <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">EMAIL</div>
-                                <a href="mailto:contact@topmarket.com.hk" class="text-white text-sm hover:text-[#d4b87a] transition-colors">contact@topmarket.com.hk</a>
+                                <a href="mailto:contact@topmarket.com.hk" class="text-white text-sm hover:text-[#d4b87a] transition-colors break-all">contact@topmarket.com.hk</a>
                             </div>
                         </div>
                     </div>
                     <div class="reveal reveal-left reveal-delay-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm">
                         <div class="flex items-center gap-4">
-                            <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors">
+                            <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors flex-shrink-0">
                                 <svg class="w-5 h-5 text-[#d4b87a]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </div>
-                            <div>
+                            <div class="min-w-0 flex-1">
                                 <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">LINKEDIN</div>
-                                <a href="#" class="text-white text-sm hover:text-[#d4b87a] transition-colors" data-i18n="linkedinText">TOP MARKET 銳鋒顧問</a>
+                                <a href="#" class="text-white text-sm hover:text-[#d4b87a] transition-colors" data-i18n="linkedinText">TOP MARKET Consulting</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="lg:col-span-7">
-                    <form class="reveal reveal-right reveal-delay-2 bg-bg-card border border-[#c9a96e]/25 rounded-sm p-8 md:p-10 space-y-5 shadow-2xl" id="contactForm">
+                    <form class="reveal reveal-right reveal-delay-2 bg-bg-card border border-[#c9a96e]/25 rounded-sm p-6 sm:p-8 md:p-10 space-y-5 shadow-2xl" id="contactForm">
                         <div class="grid md:grid-cols-2 gap-5">
-                            <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblTitle">姓名</label><input type="text" class="form-input" id="inputName" placeholder="請輸入您的姓名" required></div>
-                            <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblEmail">電郵</label><input type="email" class="form-input" id="inputEmail" placeholder="請輸入您的電郵" required></div>
+                            <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblTitle">Name</label><input type="text" class="form-input" id="inputName" placeholder="Enter your name" required></div>
+                            <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblEmail">Email</label><input type="email" class="form-input" id="inputEmail" placeholder="Enter your email" required></div>
                         </div>
-                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblCompany">公司</label><input type="text" class="form-input" id="inputCompany" placeholder="請輸入公司名稱"></div>
-                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblMessage">留言</label><textarea class="form-input min-h-[120px] resize-none" id="inputMsg" placeholder="請簡述您的需求或問題..." required></textarea></div>
-                        <button type="submit" class="btn-primary w-full justify-center" id="btnSubmit"><span data-i18n="btnSubmit">提交諮詢</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></button>
-                        <p class="text-white/30 text-xs text-center" data-i18n="formNotice">提交即表示您同意我們的隱私政策，我們將於 24 小時內與您聯絡。</p>
+                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblCompany">Company</label><input type="text" class="form-input" id="inputCompany" placeholder="Enter company name"></div>
+                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblMessage">Message</label><textarea class="form-input min-h-[120px] resize-none" id="inputMsg" placeholder="Briefly describe your requirements..." required></textarea></div>
+                        <button type="submit" class="btn-primary w-full justify-center" id="btnSubmit"><span data-i18n="btnSubmit">Submit Inquiry</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></button>
+                        <p class="text-white/30 text-xs text-center" data-i18n="formNotice">By submitting, you agree to our privacy policy. We will contact you within 24 hours.</p>
                     </form>
                 </div>
             </div>
@@ -821,34 +848,34 @@
                         <div class="logo-mark"><span>TM</span></div>
                         <div>
                             <div class="text-white font-display font-bold text-sm tracking-widest">TOP MARKET</div>
-                            <div class="text-[#d4b87a]/50 text-[10px] tracking-widest mt-0.5" data-i18n="companySub">銳鋒顧問有限公司</div>
+                            <div class="text-[#d4b87a]/50 text-[10px] tracking-widest mt-0.5" data-i18n="companySub">TOP MARKET Consulting Limited</div>
                         </div>
                     </div>
-                    <p class="text-white/40 text-sm leading-relaxed max-w-md" data-i18n="ftDesc">整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。以銳見洞察行業，用鋒利攻破市場。</p>
+                    <p class="text-white/40 text-sm leading-relaxed max-w-md" data-i18n="ftDesc">Comprehensive business advisory specializing in data research, consumer behavior analysis, and growth strategies.</p>
                 </div>
                 <div class="md:col-span-3">
-                    <h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5" data-i18n="ftQuickLinks">快速連結</h5>
+                    <h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5" data-i18n="ftQuickLinks">Quick Links</h5>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="#about" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navAbout">關於我們</a></li>
-                        <li><a href="#business" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navBusiness">核心業務</a></li>
-                        <li><a href="#services" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navServices">業務範圍</a></li>
-                        <li><a href="#contact" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navContact">聯絡我們</a></li>
+                        <li><a href="#about" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navAbout">About Us</a></li>
+                        <li><a href="#business" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navBusiness">Core Business</a></li>
+                        <li><a href="#services" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navServices">Services</a></li>
+                        <li><a href="#contact" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navContact">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="md:col-span-4">
-                    <h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5" data-i18n="ftContactInfo">聯絡資訊</h5>
+                    <h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5" data-i18n="ftContactInfo">Contact Info</h5>
                     <ul class="space-y-3 text-sm text-white/40">
-                        <li>contact@topmarket.com.hk</li>
+                        <li class="break-all">contact@topmarket.com.hk</li>
                         <li>TOP MARKET Consulting Limited</li>
                         <li>Hong Kong</li>
                     </ul>
                 </div>
             </div>
             <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-white/30 text-xs" data-i18n="ftRights">© 2024 TOP MARKET 銳鋒顧問有限公司. All Rights Reserved.</p>
+                <p class="text-white/30 text-xs text-center md:text-left" data-i18n="ftRights">© 2024 TOP MARKET Consulting Limited. All Rights Reserved.</p>
                 <div class="flex items-center gap-6">
-                    <a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs" data-i18n="ftPrivacy">隱私政策</a>
-                    <a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs" data-i18n="ftTerms">服務條款</a>
+                    <a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs" data-i18n="ftPrivacy">Privacy Policy</a>
+                    <a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs" data-i18n="ftTerms">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -858,18 +885,18 @@
     <div class="login-modal-overlay" id="loginModal">
         <div class="login-modal">
             <button class="close-btn" id="loginModalClose">&times;</button>
-            <h2 data-i18n="loginModalTitle">登入</h2>
+            <h2 data-i18n="loginModalTitle">Login</h2>
             <form id="loginForm" autocomplete="off">
                 <div class="form-group">
-                    <label for="loginUsername" data-i18n="loginUsernameLabel">帳號</label>
-                    <input type="text" id="loginUsername" placeholder="請輸入帳號">
+                    <label for="loginUsername" data-i18n="loginUsernameLabel">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter username">
                 </div>
                 <div class="form-group">
-                    <label for="loginPassword" data-i18n="loginPasswordLabel">密碼</label>
-                    <input type="password" id="loginPassword" placeholder="請輸入密碼">
+                    <label for="loginPassword" data-i18n="loginPasswordLabel">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password">
                 </div>
-                <button type="submit" class="login-btn" data-i18n="loginBtnText">登 入</button>
-                <div class="login-error" id="loginError" data-i18n="loginErrText">登錄錯誤，請重新輸入</div>
+                <button type="submit" class="login-btn" data-i18n="loginBtnText">Sign In</button>
+                <div class="login-error" id="loginError" data-i18n="loginErrText">Invalid login credentials, please try again.</div>
             </form>
         </div>
     </div>
@@ -951,8 +978,6 @@
                 cntTag: "06 / Contact Us",
                 cntTitle: "歡迎諮詢",
                 cntDesc: "啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長欄的無限可能。",
-                cntBadge1: "24小時內專人回覆",
-                cntBadge2: "免費初步諮詢",
                 linkedinText: "TOP MARKET 銳鋒顧問",
                 lblTitle: "姓名",
                 lblEmail: "電郵",
@@ -1054,8 +1079,6 @@
                 cntTag: "06 / Contact Us",
                 cntTitle: "Contact Us",
                 cntDesc: "Start your data-driven growth journey: Connect with our experts today to unlock unlimited growth potential.",
-                cntBadge1: "Response within 24 Hours",
-                cntBadge2: "Free Initial Consultation",
                 linkedinText: "TOP MARKET Consulting",
                 lblTitle: "Name",
                 lblEmail: "Email",
@@ -1084,7 +1107,7 @@
             }
         };
 
-        let currentLang = 'zh';
+        let currentLang = 'en';
 
         function switchLanguage(lang) {
             currentLang = lang;
@@ -1114,6 +1137,9 @@
         }
 
         (function() {
+            // 預設切換為英文版面
+            switchLanguage('en');
+
             const langBtn = document.getElementById('langSwitchBtn');
             langBtn.addEventListener('click', () => {
                 const nextLang = currentLang === 'zh' ? 'en' : 'zh';
