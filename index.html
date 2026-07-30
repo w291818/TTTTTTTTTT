@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOP MARKET 銳鋒顧問 | 讓商業視野 超越界限</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <title data-i18n="docTitle">TOP MARKET 銳鋒顧問 | 讓商業視野 超越界限</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,56 +40,25 @@
         };
     </script>
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-        img,
-        video {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
+        img, video { max-width: 100%; height: auto; display: block; }
         body {
-            overflow-wrap: break-word;
-            background: #1a1410;
-            color: #ffffff;
+            overflow-wrap: break-word; background: #1a1410; color: #ffffff;
             font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            position: relative;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative;
         }
         body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 100vh;
+            content: ''; position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+            width: 100vw; height: 100vh;
             background: radial-gradient(circle at 50% 20%, rgba(201, 169, 110, 0.06) 0%, rgba(44, 36, 30, 0.2) 50%, transparent 80%);
-            pointer-events: none;
-            z-index: 0;
+            pointer-events: none; z-index: 0;
         }
-        html {
-            scroll-behavior: smooth;
-        }
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a1410;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c9a96e;
-            border-radius: 2px;
-        }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #1a1410; }
+        ::-webkit-scrollbar-thumb { background: #c9a96e; border-radius: 2px; }
 
-        .reveal {
-            opacity: 0;
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        .reveal { opacity: 0; transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal-up { transform: translateY(50px); }
         .reveal-left { transform: translateX(-60px); }
         .reveal-right { transform: translateX(60px); }
@@ -105,130 +73,73 @@
 
         .text-gold-gradient {
             background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 40%, #a88c54 70%, #c9a96e 100%);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: metalShine 5s ease-in-out infinite;
+            background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; animation: metalShine 5s ease-in-out infinite;
         }
-        @keyframes metalShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+        @keyframes metalShine { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
         .gold-advantage-card {
             background: linear-gradient(145deg, rgba(42, 35, 29, 0.9) 0%, rgba(26, 20, 16, 0.96) 100%);
             border: 1px solid rgba(201, 169, 110, 0.3);
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(201, 169, 110, 0.04);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            border-radius: 2px;
+            position: relative; overflow: hidden; backdrop-filter: blur(10px); display: flex; flex-direction: column; border-radius: 2px;
         }
         .gold-advantage-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #c9a96e, transparent);
-            opacity: 0.7;
-            z-index: 2;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a96e, transparent); opacity: 0.7; z-index: 2;
         }
         .gold-advantage-card:hover {
             border-color: rgba(201, 169, 110, 0.65) !important;
             box-shadow: 0 20px 40px -15px rgba(201, 169, 110, 0.3), inset 0 0 20px rgba(201, 169, 110, 0.1) !important;
         }
-        .gold-advantage-card .card-img-wrapper {
-            position: relative;
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-        .gold-advantage-card .card-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .gold-advantage-card:hover .card-img-wrapper img {
-            transform: scale(1.08);
-        }
-        .gold-advantage-card .card-img-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(26, 20, 16, 0.2) 0%, rgba(42, 35, 29, 0.95) 100%);
-        }
+        .gold-advantage-card .card-img-wrapper { position: relative; width: 100%; height: 180px; overflow: hidden; }
+        .gold-advantage-card .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .gold-advantage-card:hover .card-img-wrapper img { transform: scale(1.08); }
+        .gold-advantage-card .card-img-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26, 20, 16, 0.2) 0%, rgba(42, 35, 29, 0.95) 100%); }
 
         .btn-primary {
-            background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%);
-            color: #1a1410;
-            font-weight: 700;
-            padding: 14px 36px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid #f0d78c;
-            position: relative;
-            overflow: hidden;
-            font-size: 14px;
-            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.35);
+            background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%); color: #1a1410; font-weight: 700;
+            padding: 14px 36px; border-radius: 999px; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid #f0d78c; position: relative;
+            overflow: hidden; font-size: 14px; box-shadow: 0 4px 20px rgba(201, 169, 110, 0.35);
         }
         .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-            transform: skewX(-25deg);
-            transition: left 0.6s ease;
+            transform: skewX(-25deg); transition: left 0.6s ease;
         }
         .btn-primary:hover::after { left: 120%; }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(201, 169, 110, 0.5);
-        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(201, 169, 110, 0.5); }
 
         .btn-outline {
-            background: transparent;
-            color: #ffffff;
-            font-weight: 500;
-            padding: 14px 36px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(201, 169, 110, 0.5);
-            font-size: 14px;
+            background: transparent; color: #ffffff; font-weight: 500; padding: 14px 36px; border-radius: 999px;
+            display: inline-flex; align-items: center; gap: 8px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(201, 169, 110, 0.5); font-size: 14px;
         }
-        .btn-outline:hover {
-            background: rgba(201, 169, 110, 0.12);
-            border-color: rgba(201, 169, 110, 0.9);
-            color: #f0d78c;
-            transform: translateY(-3px);
-        }
+        .btn-outline:hover { background: rgba(201, 169, 110, 0.12); border-color: rgba(201, 169, 110, 0.9); color: #f0d78c; transform: translateY(-3px); }
 
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .site-header.scrolled { background: rgba(26, 20, 16, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201, 169, 110, 0.2); }
+
+        /* 語言切換按鈕樣式 */
+        .lang-switch-btn {
+            background: rgba(201, 169, 110, 0.08);
+            border: 1px solid rgba(201, 169, 110, 0.4);
+            color: #d4b87a;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: "Space Grotesk", sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
         }
-        .site-header.scrolled {
-            background: rgba(26, 20, 16, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+        .lang-switch-btn:hover {
+            background: rgba(201, 169, 110, 0.2);
+            border-color: #f0d78c;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(201, 169, 110, 0.2);
         }
 
         .menu-toggle { width: 32px; height: 20px; position: relative; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
@@ -239,14 +150,16 @@
         .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
         .dropdown-nav {
-            position: absolute; top: 100%; left: 0; right: 0;
-            background: rgba(26, 20, 16, 0.97); backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+            position: absolute; top: 100%; left: 0; right: 0; background: rgba(26, 20, 16, 0.97);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201, 169, 110, 0.2);
             max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .dropdown-nav.open { max-height: 600px; }
         .dropdown-nav-inner { padding: 20px 0 30px; }
-        .dropdown-nav a { display: block; padding: 12px 0; color: #b0a89c; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s ease, padding-left 0.3s ease; position: relative; }
+        .dropdown-nav a {
+            display: block; padding: 12px 0; color: #b0a89c; font-size: 14px; font-weight: 500;
+            letter-spacing: 0.02em; transition: color 0.3s ease, padding-left 0.3s ease; position: relative;
+        }
         .dropdown-nav a:hover { color: #ffffff; padding-left: 12px; }
         .dropdown-nav a::before { content: ''; position: absolute; left: 0; top: 50%; width: 0; height: 1px; background: #c9a96e; transition: width 0.3s ease; }
         .dropdown-nav a:hover::before { width: 6px; }
@@ -256,23 +169,20 @@
         .submenu-dropdown a { font-size: 13px; color: #7a7063; padding: 8px 0; }
         .submenu-dropdown a:hover { color: #c9a96e; }
 
-        .hero {
-            position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 100px;
-        }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 100px; }
         .hero-bg-img {
             position: absolute; inset: 0;
             background-image: url('https://img1.wallspic.com/crops/8/8/0/8/18088/18088-tian_kong-dou-de_ping_xian-shi_qu-xiang_gang-1920x1080.jpg');
             background-size: cover; background-position: center; z-index: 0; will-change: transform;
         }
         .hero-bg-img::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(26, 20, 16, 0.85) 0%, rgba(26, 20, 16, 0.55) 50%, rgba(26, 20, 16, 0.92) 100%);
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(26, 20, 16, 0.50) 0%, rgba(26, 20, 16, 0.20) 50%, rgba(26, 20, 16, 0.60) 100%);
         }
 
         .hero-slice {
             position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
-            background: linear-gradient(135deg, rgba(44, 36, 30, 0.6) 0%, rgba(26, 20, 16, 0.35) 100%);
+            background: linear-gradient(135deg, rgba(44, 36, 30, 0.25) 0%, rgba(26, 20, 16, 0.12) 100%);
             clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%); z-index: 1;
         }
 
@@ -297,14 +207,21 @@
         .tilt-parallax { transition: transform 0.15s ease-out; will-change: transform; }
 
         .accordion-bars { display: flex; gap: 2px; height: 520px; width: 100%; }
-        .acc-bar { flex: 1; position: relative; overflow: hidden; cursor: pointer; transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 2px; border: 1px solid rgba(255, 255, 255, 0.06); }
+        .acc-bar {
+            flex: 1; position: relative; overflow: hidden; cursor: pointer;
+            transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 2px; border: 1px solid rgba(255, 255, 255, 0.06);
+        }
         .acc-bar:hover { flex: 4; border-color: rgba(201, 169, 110, 0.5); }
         .acc-bar-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .acc-bar:hover .acc-bar-img { transform: scale(1.1); }
         .acc-bar-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26, 20, 16, 0.3) 0%, rgba(26, 20, 16, 0.88) 100%); }
         .acc-bar-content { position: absolute; inset: 0; padding: 24px 20px; display: flex; flex-direction: column; justify-content: space-between; color: white; }
         .acc-bar-num { font-family: "Space Grotesk", sans-serif; font-size: 13px; font-weight: 600; color: rgba(201, 169, 110, 0.85); letter-spacing: 0.1em; }
-        .acc-bar-title { writing-mode: vertical-rl; text-orientation: mixed; font-family: "Noto Serif HK", serif; font-size: 18px; font-weight: 700; letter-spacing: 0.1em; align-self: center; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; }
+        .acc-bar-title {
+            writing-mode: vertical-rl; text-orientation: mixed; font-family: "Noto Serif HK", serif;
+            font-size: 18px; font-weight: 700; letter-spacing: 0.1em; align-self: center;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap;
+        }
         .acc-bar:hover .acc-bar-title { writing-mode: horizontal-tb; align-self: flex-start; font-size: 22px; color: #f0d78c; }
 
         @media (max-width: 768px) {
@@ -324,10 +241,17 @@
         @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.4); opacity: 0; } }
 
         .timeline-line { position: absolute; top: 30px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #3a3229 15%, #3a3229 85%, transparent); }
-        .timeline-line::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 25%; background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.5), transparent); animation: timelineFlow 4s ease-in-out infinite; }
+        .timeline-line::after {
+            content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 25%;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.5), transparent); animation: timelineFlow 4s ease-in-out infinite;
+        }
         @keyframes timelineFlow { 0% { left: -25%; } 100% { left: 100%; } }
 
-        .form-input { width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(201, 169, 110, 0.2); border-radius: 4px; padding: 14px 18px; color: #ffffff; font-size: 14px; transition: all 0.3s ease; outline: none; font-family: inherit; }
+        .form-input {
+            width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: 4px; padding: 14px 18px; color: #ffffff; font-size: 14px; transition: all 0.3s ease;
+            outline: none; font-family: inherit;
+        }
         .form-input:focus { border-color: rgba(201, 169, 110, 0.6); background: rgba(255, 255, 255, 0.06); box-shadow: 0 0 15px rgba(201, 169, 110, 0.1); }
         .form-input::placeholder { color: #6b5f52; }
         .stat-number { font-variant-numeric: tabular-nums; }
@@ -335,23 +259,43 @@
         .float-shape { position: absolute; pointer-events: none; opacity: 0.05; animation: floatShape 18s ease-in-out infinite; }
         @keyframes floatShape { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(20px, -15px) rotate(120deg); } 66% { transform: translate(-15px, 10px) rotate(240deg); } }
 
-        .deco-big-text { font-family: "Space Grotesk", sans-serif; font-weight: 900; font-size: clamp(80px, 15vw, 200px); line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(201, 169, 110, 0.07); letter-spacing: -0.02em; user-select: none; pointer-events: none; }
+        .deco-big-text {
+            font-family: "Space Grotesk", sans-serif; font-weight: 900; font-size: clamp(80px, 15vw, 200px);
+            line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(201, 169, 110, 0.07);
+            letter-spacing: -0.02em; user-select: none; pointer-events: none;
+        }
 
-        .logo-mark { width: 38px; height: 38px; border: 1.5px solid rgba(201, 169, 110, 0.45); display: flex; align-items: center; justify-content: center; border-radius: 2px; position: relative; background: rgba(201, 169, 110, 0.06); }
+        .logo-mark {
+            width: 38px; height: 38px; border: 1.5px solid rgba(201, 169, 110, 0.45); display: flex;
+            align-items: center; justify-content: center; border-radius: 2px; position: relative; background: rgba(201, 169, 110, 0.06);
+        }
         .logo-mark::before { content: ''; position: absolute; top: -3px; right: -3px; width: 8px; height: 8px; border-top: 1.5px solid #f0d78c; border-right: 1.5px solid #f0d78c; }
         .logo-mark span { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 14px; color: #ffffff; letter-spacing: -0.02em; }
 
-        .login-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 200; justify-content: center; align-items: center; padding: 20px; }
+        .login-modal-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px); z-index: 200; justify-content: center; align-items: center; padding: 20px;
+        }
         .login-modal-overlay.active { display: flex; }
-        .login-modal { background: #2a231d; border: 1px solid rgba(201, 169, 110, 0.35); border-radius: 8px; padding: 40px 32px; max-width: 420px; width: 100%; position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 110, 0.15); }
+        .login-modal {
+            background: #2a231d; border: 1px solid rgba(201, 169, 110, 0.35); border-radius: 8px; padding: 40px 32px;
+            max-width: 420px; width: 100%; position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 110, 0.15);
+        }
         .login-modal .close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; color: #b0a89c; font-size: 24px; cursor: pointer; transition: color 0.3s; line-height: 1; }
         .login-modal .close-btn:hover { color: #ffffff; }
         .login-modal h2 { font-family: "Noto Serif HK", serif; font-weight: 700; font-size: 28px; margin-bottom: 24px; text-align: center; color: #ffffff; }
         .login-modal .form-group { margin-bottom: 18px; }
         .login-modal label { display: block; color: #b0a89c; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 6px; }
-        .login-modal input { width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(201, 169, 110, 0.25); border-radius: 4px; padding: 12px 16px; color: #ffffff; font-size: 14px; outline: none; transition: border-color 0.3s; }
+        .login-modal input {
+            width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(201, 169, 110, 0.25);
+            border-radius: 4px; padding: 12px 16px; color: #ffffff; font-size: 14px; outline: none; transition: border-color 0.3s;
+        }
         .login-modal input:focus { border-color: rgba(201, 169, 110, 0.6); }
-        .login-modal .login-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%); color: #1a1410; font-weight: 700; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s, transform 0.2s; margin-top: 8px; }
+        .login-modal .login-btn {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #f0d78c 0%, #c9a96e 100%);
+            color: #1a1410; font-weight: 700; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;
+            transition: background 0.3s, transform 0.2s; margin-top: 8px;
+        }
         .login-modal .login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(201, 169, 110, 0.5); }
         .login-modal .login-error { color: #ef4444; font-size: 13px; text-align: center; margin-top: 16px; min-height: 24px; display: none; }
         .login-modal .login-error.show { display: block; }
@@ -374,29 +318,34 @@
                     <div class="logo-mark"><span>TM</span></div>
                     <div class="hidden sm:block">
                         <div class="text-white font-display font-bold text-sm tracking-widest">TOP MARKET</div>
-                        <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mt-0.5">銳鋒顧問有限公司</div>
+                        <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mt-0.5" data-i18n="companySub">銳鋒顧問有限公司</div>
                     </div>
                 </a>
-                <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+                
+                <!-- 右上角：語言切換按鈕 + 導航切換按鈕 -->
+                <div class="flex items-center gap-4">
+                    <button id="langSwitchBtn" class="lang-switch-btn">ZH / EN</button>
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+                </div>
             </div>
             <nav class="dropdown-nav" id="dropdownNav">
                 <div class="dropdown-nav-inner max-w-7xl mx-auto px-6 md:px-10">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-1">
-                        <a href="#about">關於我們</a>
-                        <a href="#advantages">專業優勢</a>
-                        <a href="#business">核心業務</a>
-                        <a href="#services">業務範圍</a>
-                        <a href="#process">諮詢流程</a>
+                        <a href="#about" data-i18n="navAbout">關於我們</a>
+                        <a href="#advantages" data-i18n="navAdvantages">專業優勢</a>
+                        <a href="#business" data-i18n="navBusiness">核心業務</a>
+                        <a href="#services" data-i18n="navServices">業務範圍</a>
+                        <a href="#process" data-i18n="navProcess">諮詢流程</a>
                         <div class="has-submenu">
-                            <a href="#" class="nav-item" id="resourcesTrigger">資源中心 <span class="inline-block ml-1 text-xs transition-transform duration-300" id="resourcesArrow">▾</span></a>
+                            <a href="#" class="nav-item" id="resourcesTrigger"><span data-i18n="navResources">資源中心</span> <span class="inline-block ml-1 text-xs transition-transform duration-300" id="resourcesArrow">▾</span></a>
                             <div class="submenu-dropdown" id="resourcesSubmenu">
-                                <a href="#" class="report-link">市場報告</a>
-                                <a href="#" class="report-link">公司報告</a>
+                                <a href="#" class="report-link" data-i18n="navMarketReports">市場報告</a>
+                                <a href="#" class="report-link" data-i18n="navCompanyReports">公司報告</a>
                             </div>
                         </div>
-                        <a href="#contact">聯絡我們</a>
-                        <a href="#" id="loginTrigger">登入</a>
-                        <a href="https://www.linkedin.com/company/topmarkethk" target="_blank">加入我們</a>
+                        <a href="#contact" data-i18n="navContact">聯絡我們</a>
+                        <a href="#" id="loginTrigger" data-i18n="navLogin">登入</a>
+                        <a href="https://www.linkedin.com/company/topmarkethk" target="_blank" data-i18n="navCareers">加入我們</a>
                     </div>
                 </div>
             </nav>
@@ -417,27 +366,30 @@
                         <div class="w-10 h-px bg-[#c9a96e]/60"></div>
                         <span class="text-[#d4b87a]/80 text-xs tracking-widest-xl uppercase font-display font-medium">Business Intelligence</span>
                     </div>
-                    <h1 class="reveal reveal-up reveal-delay-1 hero-title text-5xl md:text-7xl lg:text-8xl mb-8" id="heroTitle">讓商業視野<br><span class="text-gold-gradient">超越界限</span></h1>
-                    <p class="reveal reveal-up reveal-delay-2 text-lg md:text-xl text-white/70 font-light mb-3 max-w-xl">洞悉香港市場，以精準數據驅動商業策略。</p>
-                    <p class="reveal reveal-up reveal-delay-3 text-sm text-white/45 max-w-xl mb-12 leading-relaxed">銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。</p>
+                    <h1 class="reveal reveal-up reveal-delay-1 hero-title text-5xl md:text-7xl lg:text-8xl mb-8" id="heroTitle">
+                        <span data-i18n="heroTitleLine1">讓商業視野</span><br>
+                        <span class="text-gold-gradient" data-i18n="heroTitleLine2">超越界限</span>
+                    </h1>
+                    <p class="reveal reveal-up reveal-delay-2 text-lg md:text-xl text-white/70 font-light mb-3 max-w-xl" data-i18n="heroSub1">洞悉香港市場，以精準數據驅動商業策略。</p>
+                    <p class="reveal reveal-up reveal-delay-3 text-sm text-white/45 max-w-xl mb-12 leading-relaxed" data-i18n="heroSub2">銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。</p>
                     <div class="reveal reveal-up reveal-delay-4 flex flex-wrap gap-4">
-                        <a href="#business" class="btn-primary">探索服務<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
-                        <a href="#contact" class="btn-outline">聯絡我們</a>
+                        <a href="#business" class="btn-primary"><span data-i18n="btnExplore">探索服務</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+                        <a href="#contact" class="btn-outline" data-i18n="btnContact">聯絡我們</a>
                     </div>
                 </div>
                 <div class="lg:col-span-4 hidden lg:block">
                     <div class="reveal reveal-right reveal-delay-5 space-y-4">
                         <div class="bg-white/5 backdrop-blur-sm border border-[#c9a96e]/20 rounded-sm p-6 shadow-xl">
                             <div class="font-display font-bold text-4xl text-[#d4b87a] mb-1 stat-number" data-target="200">0</div>
-                            <div class="text-white/50 text-xs tracking-wider">+ 成功案例</div>
+                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statCases">+ 成功案例</div>
                         </div>
                         <div class="bg-white/5 backdrop-blur-sm border border-[#c9a96e]/20 rounded-sm p-6 ml-12 shadow-xl">
                             <div class="font-display font-bold text-4xl text-[#d4b87a] mb-1 stat-number" data-target="10">0</div>
-                            <div class="text-white/50 text-xs tracking-wider">年行業經驗</div>
+                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statYears">年行業經驗</div>
                         </div>
                         <div class="bg-white/5 backdrop-blur-sm border border-[#c9a96e]/20 rounded-sm p-6 ml-6 shadow-xl">
                             <div class="font-display font-bold text-4xl text-[#d4b87a] mb-1 stat-number" data-target="98">0</div>
-                            <div class="text-white/50 text-xs tracking-wider">% 客戶滿意度</div>
+                            <div class="text-white/50 text-xs tracking-wider" data-i18n="statSat">% 客戶滿意度</div>
                         </div>
                     </div>
                 </div>
@@ -460,16 +412,20 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5 lg:pt-24">
-                    <div class="reveal reveal-left mb-6"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">01 / About Us</span></div>
-                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-8 leading-tight text-white">以銳見洞察行業<br>用鋒利攻破市場</h2>
+                    <div class="reveal reveal-left mb-6"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="aboutTag">01 / About Us</span></div>
+                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-8 leading-tight text-white" data-i18n="aboutHeading">以銳見洞察行業<br>用鋒利攻破市場</h2>
                     <div class="reveal reveal-left reveal-delay-2 space-y-5 text-white/60 leading-relaxed text-sm">
-                        <p><span class="text-white font-medium">銳鋒顧問有限公司</span>是一家整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。</p>
-                        <p>專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
-                        <p>我們不只是顧問，更是你並肩的商業夥伴。</p>
+                        <p data-i18n="aboutP1"><span class="text-white font-medium">銳鋒顧問有限公司</span>是一家整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。</p>
+                        <p data-i18n="aboutP2">專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。</p>
+                        <p data-i18n="aboutP3">我們不只是顧問，更是你並肩的商業夥伴。</p>
                     </div>
                     <div class="reveal reveal-left reveal-delay-3 mt-10 flex items-center gap-5">
                         <div class="w-12 h-px bg-[#c9a96e]/30"></div>
-                        <div class="flex items-center gap-4 text-[#d4b87a]/80 font-serif text-sm tracking-wider"><span>精準</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span><span>務實</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span><span>可持續</span></div>
+                        <div class="flex items-center gap-4 text-[#d4b87a]/80 font-serif text-sm tracking-wider">
+                            <span data-i18n="aboutPillar1">精準</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span>
+                            <span data-i18n="aboutPillar2">務實</span><span class="w-1 h-1 rounded-full bg-[#c9a96e]/40"></span>
+                            <span data-i18n="aboutPillar3">可持續</span>
+                        </div>
                     </div>
                 </div>
                 <div class="lg:col-span-7 relative">
@@ -501,8 +457,11 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="flex justify-end mb-20">
                 <div class="text-right max-w-lg">
-                    <div class="reveal reveal-right mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">02 / Our Advantages</span></div>
-                    <h2 class="reveal reveal-right reveal-delay-1 font-serif font-bold text-3xl md:text-5xl leading-tight text-white">三大核心優勢<br><span class="text-gold-gradient">驅動商業增長</span></h2>
+                    <div class="reveal reveal-right mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="advTag">02 / Our Advantages</span></div>
+                    <h2 class="reveal reveal-right reveal-delay-1 font-serif font-bold text-3xl md:text-5xl leading-tight text-white">
+                        <span data-i18n="advHeadingLine1">三大核心優勢</span><br>
+                        <span class="text-gold-gradient" data-i18n="advHeadingLine2">驅動商業增長</span>
+                    </h2>
                 </div>
             </div>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8 relative">
@@ -519,8 +478,8 @@
                             </div>
                             <div class="p-8 flex-1 flex flex-col justify-between">
                                 <div>
-                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">數據驅動</h3>
-                                    <p class="text-white/60 leading-relaxed text-sm">摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient" data-i18n="adv1Title">數據驅動</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm" data-i18n="adv1Desc">摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。</p>
                                 </div>
                             </div>
                         </div>
@@ -531,7 +490,7 @@
                     <div class="gold-advantage-card h-full tilt-card group" data-tilt data-tilt-max="8">
                         <div class="tilt-card-inner">
                             <div class="card-img-wrapper">
-                                <img src="https://p3.hippopx.com/preview/526/166/business-envelopes-close-up-shot-essential-documents-solopreneurs-thriving-business-from-idea-pie-chart-to-do-list-start-a-business-professional-documents.jpg" alt="核心業務">
+                                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800&auto=format&fit=crop" alt="本地深耕">
                                 <div class="card-img-overlay"></div>
                                 <div class="absolute top-4 left-4 w-10 h-10 rounded-sm border border-[#c9a96e]/50 flex items-center justify-center bg-bg/80 backdrop-blur-md shadow-inner">
                                     <span class="font-display font-bold text-sm text-[#d4b87a]">02</span>
@@ -539,8 +498,8 @@
                             </div>
                             <div class="p-8 flex-1 flex flex-col justify-between">
                                 <div>
-                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">本地深耕</h3>
-                                    <p class="text-white/60 leading-relaxed text-sm">植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient" data-i18n="adv2Title">本地深耕</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm" data-i18n="adv2Desc">植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。</p>
                                 </div>
                             </div>
                         </div>
@@ -559,8 +518,8 @@
                             </div>
                             <div class="p-8 flex-1 flex flex-col justify-between">
                                 <div>
-                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient">敏捷反應</h3>
-                                    <p class="text-white/60 leading-relaxed text-sm">面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
+                                    <h3 class="font-serif font-bold text-2xl mb-4 text-gold-gradient" data-i18n="adv3Title">敏捷反應</h3>
+                                    <p class="text-white/60 leading-relaxed text-sm" data-i18n="adv3Desc">面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。</p>
                                 </div>
                             </div>
                         </div>
@@ -576,22 +535,25 @@
     <section id="business" class="py-24 md:py-32 bg-bg-soft relative overflow-hidden">
         <div class="float-shape" style="top:10%;right:5%;width:120px;height:120px;border:1px solid rgba(201,169,110,0.2);border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;animation-delay:-4s;"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
-            <div class="text-center mb-20"><div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">03 / Core Business</span></div><h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white">核心業務</h2></div>
+            <div class="text-center mb-20">
+                <div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="bizTag">03 / Core Business</span></div>
+                <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="bizTitle">核心業務</h2>
+            </div>
             <!-- 品牌管理與優化 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
                 <div class="lg:col-span-7 reveal reveal-left">
                     <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
-                            <img src="https://p3.hippopx.com/preview/380/684/new-life-plant-growing-newborn-nature-motivation-achievement-smal-weak.jpg" alt="品牌管理與優化" class="w-full h-[350px] md:h-[420px] object-cover">
+                            <img src="https://p3.hippopx.com/preview/713/838/business-strategy-report-white-paper-hands-reviewing-close-up-view-graphs-setting-up-business-stages-business-stages-report-with-graphs-person-holding-business-report.jpg" alt="品牌管理與優化" class="w-full h-[350px] md:h-[420px] object-cover">
                             <div class="absolute inset-0 bg-gradient-to-r from-bg-soft/60 to-transparent"></div>
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">01 / BRAND MANAGEMENT</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">品牌管理與優化</h3><p class="text-white/50 text-sm leading-relaxed mb-6">從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。</p></div></div>
+                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">01 / BRAND MANAGEMENT</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz1Title">品牌管理與優化</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz1Desc">從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。</p></div></div>
             </div>
             <!-- 商業戰略規劃 -->
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24">
-                <div class="lg:col-span-5 lg:order-1 order-2"><div class="reveal reveal-left"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">02 / STRATEGY PLANNING</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">商業戰略規劃</h3><p class="text-white/50 text-sm leading-relaxed mb-6">以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</p></div></div>
+                <div class="lg:col-span-5 lg:order-1 order-2"><div class="reveal reveal-left"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">02 / STRATEGY PLANNING</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz2Title">商業戰略規劃</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz2Desc">以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。</p></div></div>
                 <div class="lg:col-span-7 lg:order-2 order-1 reveal reveal-right">
                     <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="6">
                         <div class="tilt-card-inner">
@@ -611,7 +573,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">03 / MARKET INSIGHTS</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white">市場洞察與數據分析</h3><p class="text-white/50 text-sm leading-relaxed mb-6">從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。</p></div></div>
+                <div class="lg:col-span-5"><div class="reveal reveal-right"><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-4">03 / MARKET INSIGHTS</div><h3 class="font-serif font-bold text-2xl md:text-3xl mb-5 text-white" data-i18n="biz3Title">市場洞察與數據分析</h3><p class="text-white/50 text-sm leading-relaxed mb-6" data-i18n="biz3Desc">從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。</p></div></div>
             </div>
         </div>
     </section>
@@ -620,17 +582,23 @@
     <section id="services" class="py-24 md:py-32 bg-bg relative overflow-hidden">
         <div class="deco-big-text absolute -right-4 top-10">SERVICES</div>
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"><div><div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">04 / Service Scope</span></div><h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white">業務範圍</h2></div><p class="reveal reveal-up reveal-delay-2 text-white/40 text-sm max-w-sm leading-relaxed">九大專業服務領域，覆蓋從數據蒐集到策略落地的全鏈路。</p></div>
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="svcTag">04 / Service Scope</span></div>
+                    <h2 class="reveal reveal-up reveal-delay-1 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="svcTitle">業務範圍</h2>
+                </div>
+                <p class="reveal reveal-up reveal-delay-2 text-white/40 text-sm max-w-sm leading-relaxed" data-i18n="svcSub">九大專業服務領域，覆蓋從數據蒐集到策略落地的全鏈路。</p>
+            </div>
             <div class="accordion-bars reveal reveal-up reveal-delay-3">
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/862/767/detective-mysterious-crime-man-smoking-magnifying-glass-magnifier-suit-hat-cigar.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">01</div><div class="acc-bar-title">量化調查</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">02</div><div class="acc-bar-title">深度採訪</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/629/256/ai-data-collection-ai-data-annotation-data-collection-data-annotation-ai-data-generation-ai-proofreading-data-collection-services.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">03</div><div class="acc-bar-title">大數據收集</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">04</div><div class="acc-bar-title">品牌進入市場策略</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">05</div><div class="acc-bar-title">品牌現況及經營策略分析</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">06</div><div class="acc-bar-title">行業專項顧問</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/8/776/korea-bio-park-buildling-it-blue-sky-technology-gyeonggido-gyeonggi-do-pangyo.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">07</div><div class="acc-bar-title">協助企業落實措施</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">08</div><div class="acc-bar-title">監察市場趨勢</div></div></div>
-                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">09</div><div class="acc-bar-title">定期報告與跟進</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/862/767/detective-mysterious-crime-man-smoking-magnifying-glass-magnifier-suit-hat-cigar.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">01</div><div class="acc-bar-title" data-i18n="svc1">量化調查</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">02</div><div class="acc-bar-title" data-i18n="svc2">深度採訪</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/629/256/ai-data-collection-ai-data-annotation-data-collection-data-annotation-ai-data-generation-ai-proofreading-data-collection-services.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">03</div><div class="acc-bar-title" data-i18n="svc3">大數據收集</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/920/701/chess-game-strategy-king-black.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">04</div><div class="acc-bar-title" data-i18n="svc4">品牌進入市場策略</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">05</div><div class="acc-bar-title" data-i18n="svc5">品牌現況及經營策略分析</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">06</div><div class="acc-bar-title" data-i18n="svc6">行業專項顧問</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://p3.hippopx.com/preview/8/776/korea-bio-park-buildling-it-blue-sky-technology-gyeonggido-gyeonggi-do-pangyo.jpg');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">07</div><div class="acc-bar-title" data-i18n="svc7">協助企業落實措施</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">08</div><div class="acc-bar-title" data-i18n="svc8">監察市場趨勢</div></div></div>
+                <div class="acc-bar"><div class="acc-bar-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop');"></div><div class="acc-bar-overlay"></div><div class="acc-bar-content"><div class="acc-bar-num">09</div><div class="acc-bar-title" data-i18n="svc9">定期報告與跟進</div></div></div>
             </div>
         </div>
     </section>
@@ -641,16 +609,35 @@
     <section id="process" class="py-24 md:py-32 bg-bg-soft relative overflow-hidden">
         <div class="float-shape" style="bottom:10%;left:8%;width:130px;height:130px;border:1px solid rgba(201,169,110,0.2);animation-delay:-8s;"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
-            <div class="text-center mb-20"><div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">05 / Consulting Process</span></div><div class="reveal reveal-up reveal-delay-1 text-[#d4b87a]/80 font-serif text-sm tracking-widest mb-4">全程監控 · 數據真實 · 專業執行</div><h2 class="reveal reveal-up reveal-delay-2 font-serif font-bold text-3xl md:text-5xl text-white">專案流程</h2></div>
-            <div class="relative mb-20"><div class="timeline-line hidden md:block"></div><div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
-                <div class="timeline-step reveal reveal-up flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 01</div><h4 class="font-serif font-bold text-lg mb-2 text-white">界定需求</h4></div>
-                <div class="timeline-step reveal reveal-up reveal-delay-1 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 02</div><h4 class="font-serif font-bold text-lg mb-2 text-white">蒐集數據</h4></div>
-                <div class="timeline-step reveal reveal-up reveal-delay-2 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 03</div><h4 class="font-serif font-bold text-lg mb-2 text-white">制定策略</h4></div>
-                <div class="timeline-step reveal reveal-up reveal-delay-3 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 04</div><h4 class="font-serif font-bold text-lg mb-2 text-white">實施支援</h4></div>
-                <div class="timeline-step reveal reveal-up reveal-delay-4 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 05</div><h4 class="font-serif font-bold text-lg mb-2 text-white">持續追蹤</h4></div>
-            </div></div>
+            <div class="text-center mb-20">
+                <div class="reveal reveal-up mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="procTag">05 / Consulting Process</span></div>
+                <div class="reveal reveal-up reveal-delay-1 text-[#d4b87a]/80 font-serif text-sm tracking-widest mb-4" data-i18n="procSub">全程監控 · 數據真實 · 專業執行</div>
+                <h2 class="reveal reveal-up reveal-delay-2 font-serif font-bold text-3xl md:text-5xl text-white" data-i18n="procTitle">專案流程</h2>
+            </div>
+            <div class="relative mb-20">
+                <div class="timeline-line hidden md:block"></div>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
+                    <div class="timeline-step reveal reveal-up flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 01</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step1">界定需求</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-1 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 02</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step2">蒐集數據</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-2 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 03</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step3">制定策略</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-3 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 04</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step4">實施支援</h4></div>
+                    <div class="timeline-step reveal reveal-up reveal-delay-4 flex flex-col items-center text-center"><div class="timeline-dot mb-6"></div><div class="font-display text-xs tracking-widest text-[#c9a96e]/60 mb-2">STEP 05</div><h4 class="font-serif font-bold text-lg mb-2 text-white" data-i18n="step5">持續追蹤</h4></div>
+                </div>
+            </div>
             <div class="grid lg:grid-cols-2 gap-10 items-center">
-                <div class="reveal reveal-left order-2 lg:order-1"><p class="text-white/50 leading-loose text-sm">我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。</p><p class="text-white/50 leading-loose text-sm mt-4">從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p><div class="mt-8 flex items-center gap-4"><div class="w-12 h-12 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep shadow-lg"><svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><div><div class="text-white text-sm font-medium">品質保證</div><div class="text-[#d4b87a]/50 text-xs">三重驗證機制 · 數據真實可靠</div></div></div></div>
+                <div class="reveal reveal-left order-2 lg:order-1">
+                    <p class="text-white/50 leading-loose text-sm" data-i18n="procDesc1">我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。</p>
+                    <p class="text-white/50 leading-loose text-sm mt-4" data-i18n="procDesc2">從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。</p>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep shadow-lg">
+                            <svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-white text-sm font-medium" data-i18n="qaTitle">品質保證</div>
+                            <div class="text-[#d4b87a]/50 text-xs" data-i18n="qaSub">三重驗證機制 · 數據真實可靠</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="reveal reveal-right reveal-delay-2 order-1 lg:order-2">
                     <div class="relative overflow-hidden rounded-sm tilt-card border border-[#c9a96e]/25" data-tilt data-tilt-max="5">
                         <div class="tilt-card-inner">
@@ -669,74 +656,530 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 relative">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
                 <div class="lg:col-span-5">
-                    <div class="reveal reveal-left mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display">06 / Contact Us</span></div>
-                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-6 leading-tight text-white">歡迎諮詢</h2>
-                    <p class="reveal reveal-left reveal-delay-2 text-white/50 leading-relaxed text-sm mb-10">啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。</p>
-                    <div class="reveal reveal-left reveal-delay-3 flex items-center gap-4 mb-10 text-white/60 text-sm"><span class="inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>24小時內專人回覆</span><span class="w-1 h-1 rounded-full bg-white/20"></span><span>免費初步諮詢</span></div>
-                    <div class="reveal reveal-left reveal-delay-4 mb-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm"><div class="flex items-center gap-4"><div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors"><svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">EMAIL</div><a href="mailto:contact@topmarket.com.hk" class="text-white text-sm hover:text-[#d4b87a] transition-colors">contact@topmarket.com.hk</a></div></div></div>
-                    <div class="reveal reveal-left reveal-delay-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm"><div class="flex items-center gap-4"><div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors"><svg class="w-5 h-5 text-[#d4b87a]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></div><div><div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">LINKEDIN</div><a href="#" class="text-white text-sm hover:text-[#d4b87a] transition-colors">TOP MARKET 銳鋒顧問</a></div></div></div>
+                    <div class="reveal reveal-left mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="cntTag">06 / Contact Us</span></div>
+                    <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-6 leading-tight text-white" data-i18n="cntTitle">歡迎諮詢</h2>
+                    <p class="reveal reveal-left reveal-delay-2 text-white/50 leading-relaxed text-sm mb-10" data-i18n="cntDesc">啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。</p>
+                    <div class="reveal reveal-left reveal-delay-3 flex items-center gap-4 mb-10 text-white/60 text-sm">
+                        <span class="inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span data-i18n="cntBadge1">24小時內專人回覆</span></span>
+                        <span class="w-1 h-1 rounded-full bg-white/20"></span>
+                        <span data-i18n="cntBadge2">免費初步諮詢</span>
+                    </div>
+                    <div class="reveal reveal-left reveal-delay-4 mb-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors">
+                                <svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">EMAIL</div>
+                                <a href="mailto:contact@topmarket.com.hk" class="text-white text-sm hover:text-[#d4b87a] transition-colors">contact@topmarket.com.hk</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal reveal-left reveal-delay-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors">
+                                <svg class="w-5 h-5 text-[#d4b87a]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">LINKEDIN</div>
+                                <a href="#" class="text-white text-sm hover:text-[#d4b87a] transition-colors" data-i18n="linkedinText">TOP MARKET 銳鋒顧問</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="lg:col-span-7">
                     <form class="reveal reveal-right reveal-delay-2 bg-bg-card border border-[#c9a96e]/25 rounded-sm p-8 md:p-10 space-y-5 shadow-2xl" id="contactForm">
-                        <div class="grid md:grid-cols-2 gap-5"><div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3">姓名</label><input type="text" class="form-input" placeholder="請輸入您的姓名" required></div><div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3">電郵</label><input type="email" class="form-input" placeholder="請輸入您的電郵" required></div></div>
-                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3">公司</label><input type="text" class="form-input" placeholder="請輸入公司名稱"></div>
-                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3">留言</label><textarea class="form-input min-h-[120px] resize-none" placeholder="請簡述您的需求或問題..." required></textarea></div>
-                        <button type="submit" class="btn-primary w-full justify-center">提交諮詢<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></button>
-                        <p class="text-white/30 text-xs text-center">提交即表示您同意我們的隱私政策，我們將於 24 小時內與您聯絡。</p>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblTitle">姓名</label><input type="text" class="form-input" id="inputName" placeholder="請輸入您的姓名" required></div>
+                            <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblEmail">電郵</label><input type="email" class="form-input" id="inputEmail" placeholder="請輸入您的電郵" required></div>
+                        </div>
+                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblCompany">公司</label><input type="text" class="form-input" id="inputCompany" placeholder="請輸入公司名稱"></div>
+                        <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblMessage">留言</label><textarea class="form-input min-h-[120px] resize-none" id="inputMsg" placeholder="請簡述您的需求或問題..." required></textarea></div>
+                        <button type="submit" class="btn-primary w-full justify-center" id="btnSubmit"><span data-i18n="btnSubmit">提交諮詢</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></button>
+                        <p class="text-white/30 text-xs text-center" data-i18n="formNotice">提交即表示您同意我們的隱私政策，我們將於 24 小時內與您聯絡。</p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- 頁腳 -->
     <footer class="bg-bg-deep border-t border-[#c9a96e]/15 py-16">
         <div class="max-w-7xl mx-auto px-6 md:px-10">
             <div class="grid md:grid-cols-12 gap-10 mb-12">
-                <div class="md:col-span-5"><div class="flex items-center gap-3 mb-5"><div class="logo-mark"><span>TM</span></div><div><div class="text-white font-display font-bold text-sm tracking-widest">TOP MARKET</div><div class="text-[#d4b87a]/50 text-[10px] tracking-widest mt-0.5">銳鋒顧問有限公司</div></div></div><p class="text-white/40 text-sm leading-relaxed max-w-md">整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。以銳見洞察行業，用鋒利攻破市場。</p></div>
-                <div class="md:col-span-3"><h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5">快速連結</h5><ul class="space-y-3 text-sm"><li><a href="#about" class="text-white/40 hover:text-[#d4b87a] transition-colors">關於我們</a></li><li><a href="#business" class="text-white/40 hover:text-[#d4b87a] transition-colors">核心業務</a></li><li><a href="#services" class="text-white/40 hover:text-[#d4b87a] transition-colors">業務範圍</a></li><li><a href="#contact" class="text-white/40 hover:text-[#d4b87a] transition-colors">聯絡我們</a></li></ul></div>
-                <div class="md:col-span-4"><h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5">聯絡資訊</h5><ul class="space-y-3 text-sm text-white/40"><li>contact@topmarket.com.hk</li><li>TOP MARKET Consulting Limited</li><li>Hong Kong</li></ul></div>
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="logo-mark"><span>TM</span></div>
+                        <div>
+                            <div class="text-white font-display font-bold text-sm tracking-widest">TOP MARKET</div>
+                            <div class="text-[#d4b87a]/50 text-[10px] tracking-widest mt-0.5" data-i18n="companySub">銳鋒顧問有限公司</div>
+                        </div>
+                    </div>
+                    <p class="text-white/40 text-sm leading-relaxed max-w-md" data-i18n="ftDesc">整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。以銳見洞察行業，用鋒利攻破市場。</p>
+                </div>
+                <div class="md:col-span-3">
+                    <h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5" data-i18n="ftQuickLinks">快速連結</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#about" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navAbout">關於我們</a></li>
+                        <li><a href="#business" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navBusiness">核心業務</a></li>
+                        <li><a href="#services" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navServices">業務範圍</a></li>
+                        <li><a href="#contact" class="text-white/40 hover:text-[#d4b87a] transition-colors" data-i18n="navContact">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4">
+                    <h5 class="text-[#d4b87a]/70 font-medium text-xs tracking-widest mb-5" data-i18n="ftContactInfo">聯絡資訊</h5>
+                    <ul class="space-y-3 text-sm text-white/40">
+                        <li>contact@topmarket.com.hk</li>
+                        <li>TOP MARKET Consulting Limited</li>
+                        <li>Hong Kong</li>
+                    </ul>
+                </div>
             </div>
-            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4"><p class="text-white/30 text-xs">© 2024 TOP MARKET 銳鋒顧問有限公司. All Rights Reserved.</p><div class="flex items-center gap-6"><a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs">隱私政策</a><a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs">服務條款</a></div></div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/30 text-xs" data-i18n="ftRights">© 2024 TOP MARKET 銳鋒顧問有限公司. All Rights Reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs" data-i18n="ftPrivacy">隱私政策</a>
+                    <a href="#" class="text-white/30 hover:text-[#d4b87a] transition-colors text-xs" data-i18n="ftTerms">服務條款</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- 登录模态框 -->
-    <div class="login-modal-overlay" id="loginModal"><div class="login-modal"><button class="close-btn" id="loginModalClose">&times;</button><h2>登入</h2><form id="loginForm" autocomplete="off"><div class="form-group"><label for="loginUsername">帳號</label><input type="text" id="loginUsername" placeholder="請輸入帳號"></div><div class="form-group"><label for="loginPassword">密碼</label><input type="password" id="loginPassword" placeholder="請輸入密碼"></div><button type="submit" class="login-btn">登 入</button><div class="login-error" id="loginError">登錄錯誤，請重新輸入</div></form></div></div>
+    <!-- 登錄模態框 -->
+    <div class="login-modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <button class="close-btn" id="loginModalClose">&times;</button>
+            <h2 data-i18n="loginModalTitle">登入</h2>
+            <form id="loginForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="loginUsername" data-i18n="loginUsernameLabel">帳號</label>
+                    <input type="text" id="loginUsername" placeholder="請輸入帳號">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" data-i18n="loginPasswordLabel">密碼</label>
+                    <input type="password" id="loginPassword" placeholder="請輸入密碼">
+                </div>
+                <button type="submit" class="login-btn" data-i18n="loginBtnText">登 入</button>
+                <div class="login-error" id="loginError" data-i18n="loginErrText">登錄錯誤，請重新輸入</div>
+            </form>
+        </div>
+    </div>
 
     <script>
+        // --- 國際化 (i18n) 語言文本配置 ---
+        const translations = {
+            zh: {
+                docTitle: "TOP MARKET 銳鋒顧問 | 讓商業視野 超越界限",
+                companySub: "銳鋒顧問有限公司",
+                navAbout: "關於我們",
+                navAdvantages: "專業優勢",
+                navBusiness: "核心業務",
+                navServices: "業務範圍",
+                navProcess: "諮詢流程",
+                navResources: "資源中心",
+                navMarketReports: "市場報告",
+                navCompanyReports: "公司報告",
+                navContact: "聯絡我們",
+                navLogin: "登入",
+                navCareers: "加入我們",
+                heroTitleLine1: "讓商業視野",
+                heroTitleLine2: "超越界限",
+                heroSub1: "洞悉香港市場，以精準數據驅動商業策略。",
+                heroSub2: "銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。",
+                btnExplore: "探索服務",
+                btnContact: "聯絡我們",
+                statCases: "+ 成功案例",
+                statYears: "年行業經驗",
+                statSat: "% 客戶滿意度",
+                aboutTag: "01 / About Us",
+                aboutHeading: "以銳見洞察行業<br>用鋒利攻破市場",
+                aboutP1: "<span class='text-white font-medium'>銳鋒顧問有限公司</span>是一家整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。",
+                aboutP2: "專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。",
+                aboutP3: "我們不只是顧問，更是你並肩的商業夥伴。",
+                aboutPillar1: "精準",
+                aboutPillar2: "務實",
+                aboutPillar3: "可持續",
+                advTag: "02 / Our Advantages",
+                advHeadingLine1: "三大核心優勢",
+                advHeadingLine2: "驅動商業增長",
+                adv1Title: "數據驅動",
+                adv1Desc: "摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。",
+                adv2Title: "本地深耕",
+                adv2Desc: "植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。",
+                adv3Title: "敏捷反應",
+                adv3Desc: "面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。",
+                bizTag: "03 / Core Business",
+                bizTitle: "核心業務",
+                biz1Title: "品牌管理與優化",
+                biz1Desc: "從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。",
+                biz2Title: "商業戰略規劃",
+                biz2Desc: "以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。",
+                biz3Title: "市場洞察與數據分析",
+                biz3Desc: "從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。",
+                svcTag: "04 / Service Scope",
+                svcTitle: "業務範圍",
+                svcSub: "九大專業服務領域，覆蓋從數據蒐集到策略落地的全鏈路。",
+                svc1: "量化調查",
+                svc2: "深度採訪",
+                svc3: "大數據收集",
+                svc4: "品牌進入市場策略",
+                svc5: "品牌現況及經營策略分析",
+                svc6: "行業專項顧問",
+                svc7: "協助企業落實措施",
+                svc8: "監察市場趨勢",
+                svc9: "定期報告與跟進",
+                procTag: "05 / Consulting Process",
+                procSub: "全程監控 · 數據真實 · 專業執行",
+                procTitle: "專案流程",
+                step1: "界定需求",
+                step2: "蒐集數據",
+                step3: "制定策略",
+                step4: "實施支援",
+                step5: "持續追蹤",
+                procDesc1: "我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。",
+                procDesc2: "從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。",
+                qaTitle: "品質保證",
+                qaSub: "三重驗證機制 · 數據真實可靠",
+                cntTag: "06 / Contact Us",
+                cntTitle: "歡迎諮詢",
+                cntDesc: "啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長的無限可能。",
+                cntBadge1: "24小時內專人回覆",
+                cntBadge2: "免費初步諮詢",
+                linkedinText: "TOP MARKET 銳鋒顧問",
+                lblTitle: "姓名",
+                lblEmail: "電郵",
+                lblCompany: "公司",
+                lblMessage: "留言",
+                phName: "請輸入您的姓名",
+                phEmail: "請輸入您的電郵",
+                phCompany: "請輸入公司名稱",
+                phMsg: "請簡述您的需求或問題...",
+                btnSubmit: "提交諮詢",
+                formNotice: "提交即表示您同意我們的隱私政策，我們將於 24 小時內與您聯絡。",
+                ftDesc: "整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。以銳見洞察行業，用鋒利攻破市場。",
+                ftQuickLinks: "快速連結",
+                ftContactInfo: "聯絡資訊",
+                ftRights: "© 2024 TOP MARKET 銳鋒顧問有限公司. All Rights Reserved.",
+                ftPrivacy: "隱私政策",
+                ftTerms: "服務條款",
+                loginModalTitle: "登入",
+                loginUsernameLabel: "帳號",
+                loginPasswordLabel: "密碼",
+                phUsername: "請輸入帳號",
+                phPassword: "請輸入密碼",
+                loginBtnText: "登 入",
+                loginErrText: "登錄錯誤，請重新輸入",
+                submittedText: "已提交 ✓"
+            },
+            en: {
+                docTitle: "TOP MARKET Consulting | Expanding Business Horizons",
+                companySub: "TOP MARKET Consulting Limited",
+                navAbout: "About Us",
+                navAdvantages: "Advantages",
+                navBusiness: "Core Business",
+                navServices: "Services",
+                navProcess: "Process",
+                navResources: "Resources",
+                navMarketReports: "Market Reports",
+                navCompanyReports: "Company Reports",
+                navContact: "Contact Us",
+                navLogin: "Login",
+                navCareers: "Careers",
+                heroTitleLine1: "Expanding Horizons,",
+                heroTitleLine2: "Beyond Limits",
+                heroSub1: "In-depth Insights into HK Market, Driving Business Strategy with Data.",
+                heroSub2: "TOP MARKET is committed to helping businesses navigate complex environments, clarify strategic directions, and achieve sustainable growth.",
+                btnExplore: "Explore Services",
+                btnContact: "Contact Us",
+                statCases: "+ Successful Cases",
+                statYears: "Years Experience",
+                statSat: "% Client Satisfaction",
+                aboutTag: "01 / About Us",
+                aboutHeading: "Sharpen Insights,<br>Conquer the Market",
+                aboutP1: "<span class='text-white font-medium'>TOP MARKET Consulting Limited</span> is a full-service business consultancy integrating data collection, consumer behavior research, and brand operations.",
+                aboutP2: "Focusing on end-to-end solutions for local commercial services, retail, F&B, and beauty industries.",
+                aboutP3: "We are not just consultants; we are your dedicated strategic partners.",
+                aboutPillar1: "Precision",
+                aboutPillar2: "Pragmatism",
+                aboutPillar3: "Sustainability",
+                advTag: "02 / Our Advantages",
+                advHeadingLine1: "Three Core Advantages",
+                advHeadingLine2: "Driving Business Growth",
+                adv1Title: "Data-Driven",
+                adv1Desc: "Eliminating gut feelings, we extract key market signals from complex data, ensuring every strategy is backed by evidence.",
+                adv2Title: "Local Expertise",
+                adv2Desc: "Rooted in Hong Kong, we possess deep knowledge of local regulations and business environments, mitigating market risks effectively.",
+                adv3Title: "Agile Response",
+                adv3Desc: "Maintaining high market acuity, we provide flexible and efficient services to help clients capture fleeting business opportunities.",
+                bizTag: "03 / Core Business",
+                bizTitle: "Core Business",
+                biz1Title: "Brand Management & Optimization",
+                biz1Desc: "From brand positioning to process optimization, we provide comprehensive growth solutions to turn strategies into revenue.",
+                biz2Title: "Business Strategy Planning",
+                biz2Desc: "Driven by AI and omnichannel intelligence, we assist companies in constructing top-level blueprints for sustainable success.",
+                biz3Title: "Market Insights & Data Analytics",
+                biz3Desc: "Combining rigorous analytics with market feasibility studies, we provide solid foundations for high-level decision-making.",
+                svcTag: "04 / Service Scope",
+                svcTitle: "Services",
+                svcSub: "Nine professional service areas, covering the end-to-end consulting lifecycle.",
+                svc1: "Quantitative Surveys",
+                svc2: "In-depth Interviews",
+                svc3: "Big Data Collection",
+                svc4: "Go-to-Market Strategy",
+                svc5: "Brand Audit & Strategy",
+                svc6: "Industry Advisory",
+                svc7: "Implementation Support",
+                svc8: "Market Trend Monitoring",
+                svc9: "Reporting & Follow-up",
+                procTag: "05 / Consulting Process",
+                procSub: "Full Monitoring · Verified Data · Professional Execution",
+                procTitle: "Our Process",
+                step1: "Define Needs",
+                step2: "Data Collection",
+                step3: "Formulate Strategy",
+                step4: "Implementation",
+                step5: "Continuous Tracking",
+                procDesc1: "Our in-house quality control team employs random audits, cross-validation, and interview sampling to guarantee maximum accuracy and professionalism.",
+                procDesc2: "From kick-off to final deliverable, every step undergoes strict quality control, ensuring trustworthy solutions.",
+                qaTitle: "Quality Assurance",
+                qaSub: "Triple Validation Mechanism · Verified Data",
+                cntTag: "06 / Contact Us",
+                cntTitle: "Contact Us",
+                cntDesc: "Start your data-driven growth journey: Connect with our experts today to unlock unlimited growth potential.",
+                cntBadge1: "Response within 24 Hours",
+                cntBadge2: "Free Initial Consultation",
+                linkedinText: "TOP MARKET Consulting",
+                lblTitle: "Name",
+                lblEmail: "Email",
+                lblCompany: "Company",
+                lblMessage: "Message",
+                phName: "Enter your name",
+                phEmail: "Enter your email",
+                phCompany: "Enter company name",
+                phMsg: "Briefly describe your requirements...",
+                btnSubmit: "Submit Inquiry",
+                formNotice: "By submitting, you agree to our privacy policy. We will contact you within 24 hours.",
+                ftDesc: "Comprehensive business advisory specializing in data research, consumer behavior analysis, and growth strategies.",
+                ftQuickLinks: "Quick Links",
+                ftContactInfo: "Contact Info",
+                ftRights: "© 2024 TOP MARKET Consulting Limited. All Rights Reserved.",
+                ftPrivacy: "Privacy Policy",
+                ftTerms: "Terms of Service",
+                loginModalTitle: "Login",
+                loginUsernameLabel: "Username",
+                loginPasswordLabel: "Password",
+                phUsername: "Enter username",
+                phPassword: "Enter password",
+                loginBtnText: "Sign In",
+                loginErrText: "Invalid login credentials, please try again.",
+                submittedText: "Submitted ✓"
+            }
+        };
+
+        let currentLang = 'zh';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'zh' ? 'zh-HK' : 'en';
+            const dict = translations[lang];
+
+            // 替換所有帶 data-i18n 的元素
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            // 替換 Placeholder
+            const nameInput = document.getElementById('inputName');
+            const emailInput = document.getElementById('inputEmail');
+            const companyInput = document.getElementById('inputCompany');
+            const msgInput = document.getElementById('inputMsg');
+            const userLogin = document.getElementById('loginUsername');
+            const pwdLogin = document.getElementById('loginPassword');
+
+            if (nameInput) nameInput.placeholder = dict.phName;
+            if (emailInput) emailInput.placeholder = dict.phEmail;
+            if (companyInput) companyInput.placeholder = dict.phCompany;
+            if (msgInput) msgInput.placeholder = dict.phMsg;
+            if (userLogin) userLogin.placeholder = dict.phUsername;
+            if (pwdLogin) pwdLogin.placeholder = dict.phPassword;
+        }
+
         (function() {
+            // 語言切換按鈕事件
+            const langBtn = document.getElementById('langSwitchBtn');
+            langBtn.addEventListener('click', () => {
+                const nextLang = currentLang === 'zh' ? 'en' : 'zh';
+                switchLanguage(nextLang);
+            });
+
             const header = document.getElementById('siteHeader');
             window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30));
             const menuToggle = document.getElementById('menuToggle');
             const dropdownNav = document.getElementById('dropdownNav');
-            menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); dropdownNav.classList.toggle('open'); });
+            menuToggle.addEventListener('click', () => { 
+                menuToggle.classList.toggle('active');
+                dropdownNav.classList.toggle('open'); 
+            });
+            
             document.querySelectorAll('.dropdown-nav a').forEach(link => {
                 link.addEventListener('click', (e) => {
-                    if (link.id === 'resourcesTrigger') { e.preventDefault(); const submenu = document.getElementById('resourcesSubmenu'); const arrow = document.getElementById('resourcesArrow'); submenu.classList.toggle('open'); arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; return; }
+                    if (link.id === 'resourcesTrigger') { 
+                        e.preventDefault(); 
+                        const submenu = document.getElementById('resourcesSubmenu'); 
+                        const arrow = document.getElementById('resourcesArrow');
+                        submenu.classList.toggle('open'); 
+                        arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; 
+                        return; 
+                    }
                     if (link.classList.contains('report-link') || link.id === 'loginTrigger') return;
-                    menuToggle.classList.remove('active'); dropdownNav.classList.remove('open');
+                    menuToggle.classList.remove('active');
+                    dropdownNav.classList.remove('open');
                 });
             });
+
             const loginModal = document.getElementById('loginModal');
             const loginForm = document.getElementById('loginForm');
             const loginError = document.getElementById('loginError');
-            function showLoginModal() { loginModal.classList.add('active'); loginError.classList.remove('show'); loginForm.reset(); }
-            function hideLoginModal() { loginModal.classList.remove('active'); loginError.classList.remove('show'); }
+
+            function showLoginModal() { 
+                loginModal.classList.add('active');
+                loginError.classList.remove('show');
+                loginForm.reset(); 
+            }
+
+            function hideLoginModal() { 
+                loginModal.classList.remove('active');
+                loginError.classList.remove('show'); 
+            }
+
             document.getElementById('loginModalClose').addEventListener('click', hideLoginModal);
             loginModal.addEventListener('click', function(e) { if (e.target === this) hideLoginModal(); });
-            loginForm.addEventListener('submit', function(e) { e.preventDefault(); loginError.textContent = '登錄錯誤，請重新輸入'; loginError.classList.add('show'); });
-            document.getElementById('loginTrigger').addEventListener('click', function(e) { e.preventDefault(); menuToggle.classList.remove('active'); dropdownNav.classList.remove('open'); showLoginModal(); });
-            document.querySelectorAll('.report-link').forEach(link => { link.addEventListener('click', function(e) { e.preventDefault(); menuToggle.classList.remove('active'); dropdownNav.classList.remove('open'); showLoginModal(); }); });
-            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            loginForm.addEventListener('submit', function(e) { 
+                e.preventDefault();
+                loginError.textContent = translations[currentLang].loginErrText;
+                loginError.classList.add('show'); 
+            });
+
+            document.getElementById('loginTrigger').addEventListener('click', function(e) { 
+                e.preventDefault();
+                menuToggle.classList.remove('active');
+                dropdownNav.classList.remove('open');
+                showLoginModal(); 
+            });
+
+            document.querySelectorAll('.report-link').forEach(link => { 
+                link.addEventListener('click', function(e) { 
+                    e.preventDefault();
+                    menuToggle.classList.remove('active');
+                    dropdownNav.classList.remove('open');
+                    showLoginModal(); 
+                }); 
+            });
+
+            const observer = new IntersectionObserver((entries) => { 
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) entry.target.classList.add('visible'); 
+                }); 
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             document.querySelectorAll('.timeline-step').forEach(el => observer.observe(el));
-            const numberObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (!entry.isIntersecting) return; const el = entry.target; const target = parseInt(el.dataset.target); const duration = 2000; const startTime = performance.now(); function animate(now) { const progress = Math.min((now - startTime) / duration, 1); const easeOut = 1 - Math.pow(1 - progress, 3); el.textContent = Math.floor(easeOut * target); if (progress < 1) requestAnimationFrame(animate); else el.textContent = target; } requestAnimationFrame(animate); numberObserver.unobserve(el); }); }, { threshold: 0.5 });
+
+            const numberObserver = new IntersectionObserver((entries) => { 
+                entries.forEach(entry => { 
+                    if (!entry.isIntersecting) return; 
+                    const el = entry.target; 
+                    const target = parseInt(el.dataset.target);
+                    const duration = 2000; 
+                    const startTime = performance.now();
+
+                    function animate(now) { 
+                        const progress = Math.min((now - startTime) / duration, 1); 
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = Math.floor(easeOut * target); 
+                        if (progress < 1) requestAnimationFrame(animate);
+                        else el.textContent = target; 
+                    }
+                    requestAnimationFrame(animate);
+                    numberObserver.unobserve(el); 
+                }); 
+            }, { threshold: 0.5 });
+
             document.querySelectorAll('.stat-number').forEach(el => numberObserver.observe(el));
-            function initTilt() { if (window.innerWidth < 768) return; document.querySelectorAll('[data-tilt]').forEach(card => { if (card.dataset.tiltInit) return; card.dataset.tiltInit = 'true'; const maxTilt = parseFloat(card.dataset.tiltMax) || 10; card.addEventListener('mousemove', (e) => { const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; const cx = rect.width / 2; const cy = rect.height / 2; const rotateX = ((y - cy) / cy) * -maxTilt; const rotateY = ((x - cx) / cx) * maxTilt; const inner = card.querySelector('.tilt-card-inner'); if (inner) inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`; card.querySelectorAll('.tilt-parallax').forEach(el => { const depth = parseFloat(el.dataset.tiltDepth) || 0.1; el.style.transform = `translateX(${rotateY * depth}px) translateY(${-rotateX * depth}px)`; }); }); card.addEventListener('mouseleave', () => { const inner = card.querySelector('.tilt-card-inner'); if (inner) inner.style.transform = 'rotateX(0deg) rotateY(0deg)'; card.querySelectorAll('.tilt-parallax').forEach(el => { el.style.transform = 'translateX(0) translateY(0)'; }); }); }); } initTilt();
-            const heroTitle = document.getElementById('heroTitle'); let targetX = 0, targetY = 0; let currentX = 0, currentY = 0; document.addEventListener('mousemove', (e) => { targetX = (e.clientX / window.innerWidth - 0.5) * 6; targetY = (e.clientY / window.innerHeight - 0.5) * 6; }); function animateTitle() { currentX += (targetX - currentX) * 0.08; currentY += (targetY - currentY) * 0.08; if (heroTitle) heroTitle.style.transform = `perspective(800px) rotateY(${currentX}deg) rotateX(${-currentY}deg)`; requestAnimationFrame(animateTitle); } animateTitle();
-            const heroBg = document.getElementById('heroBg'); window.addEventListener('scroll', () => { const scrollY = window.scrollY; if (heroBg && scrollY < window.innerHeight) heroBg.style.transform = `translateY(${scrollY * 0.3}px)`; });
-            const contactForm = document.getElementById('contactForm'); contactForm.addEventListener('submit', (e) => { e.preventDefault(); const btn = contactForm.querySelector('button[type="submit"]'); const originalHTML = btn.innerHTML; btn.innerHTML = '已提交 ✓'; btn.style.background = '#10b981'; btn.style.borderColor = '#10b981'; setTimeout(() => { btn.innerHTML = originalHTML; btn.style.background = ''; btn.style.borderColor = ''; contactForm.reset(); }, 3000); });
+
+            function initTilt() { 
+                if (window.innerWidth < 768) return; 
+                document.querySelectorAll('[data-tilt]').forEach(card => { 
+                    if (card.dataset.tiltInit) return;
+                    card.dataset.tiltInit = 'true'; 
+                    const maxTilt = parseFloat(card.dataset.tiltMax) || 10;
+                    card.addEventListener('mousemove', (e) => { 
+                        const rect = card.getBoundingClientRect(); 
+                        const x = e.clientX - rect.left; 
+                        const y = e.clientY - rect.top; 
+                        const cx = rect.width / 2;
+                        const cy = rect.height / 2; 
+                        const rotateX = ((y - cy) / cy) * -maxTilt; 
+                        const rotateY = ((x - cx) / cx) * maxTilt; 
+                        const inner = card.querySelector('.tilt-card-inner'); 
+                        if (inner) inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+                        card.querySelectorAll('.tilt-parallax').forEach(el => { 
+                            const depth = parseFloat(el.dataset.tiltDepth) || 0.1;
+                            el.style.transform = `translateX(${rotateY * depth}px) translateY(${-rotateX * depth}px)`; 
+                        }); 
+                    });
+                    card.addEventListener('mouseleave', () => { 
+                        const inner = card.querySelector('.tilt-card-inner');
+                        if (inner) inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                        card.querySelectorAll('.tilt-parallax').forEach(el => { 
+                            el.style.transform = 'translateX(0) translateY(0)'; 
+                        }); 
+                    }); 
+                }); 
+            }
+            initTilt();
+
+            const heroTitle = document.getElementById('heroTitle');
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+            document.addEventListener('mousemove', (e) => { 
+                targetX = (e.clientX / window.innerWidth - 0.5) * 6;
+                targetY = (e.clientY / window.innerHeight - 0.5) * 6; 
+            });
+
+            function animateTitle() { 
+                currentX += (targetX - currentX) * 0.08;
+                currentY += (targetY - currentY) * 0.08; 
+                if (heroTitle) heroTitle.style.transform = `perspective(800px) rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
+                requestAnimationFrame(animateTitle); 
+            }
+            animateTitle();
+
+            const heroBg = document.getElementById('heroBg');
+            window.addEventListener('scroll', () => { 
+                const scrollY = window.scrollY; 
+                if (heroBg && scrollY < window.innerHeight) heroBg.style.transform = `translateY(${scrollY * 0.3}px)`; 
+            });
+
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', (e) => { 
+                e.preventDefault(); 
+                const btn = contactForm.querySelector('button[type="submit"]'); 
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = translations[currentLang].submittedText;
+                btn.style.background = '#10b981';
+                btn.style.borderColor = '#10b981';
+                setTimeout(() => { 
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.style.borderColor = '';
+                    contactForm.reset(); 
+                }, 3000); 
+            });
         })();
     </script>
 </body>
