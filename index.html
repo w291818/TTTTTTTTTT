@@ -494,13 +494,13 @@
                         <div class="has-submenu">
                             <a href="#" class="nav-item" id="resourcesTrigger"><span data-i18n="navResources">Resources</span> <span class="inline-block ml-1 text-xs transition-transform duration-300" id="resourcesArrow">▾</span></a>
                             <div class="submenu-dropdown" id="resourcesSubmenu">
-                                <a href="#" class="report-link" data-i18n="navMarketReports">Market Reports</a>
-                                <a href="#" class="report-link" data-i18n="navCompanyReports">Company Reports</a>
+                                <a href="#" class="report-link" data-i18n="navMarketReports" id="marketReportLink">Market Reports</a>
+                                <a href="#" class="report-link" data-i18n="navCompanyReports" id="companyReportLink">Company Reports</a>
                             </div>
                         </div>
                         <a href="#contact" data-i18n="navContact">Contact Us</a>
                         <a href="#" id="loginTrigger" data-i18n="navLogin">Login</a>
-                        <a href="https://www.linkedin.com/in/銳鋒顧問有限公司-the-top-market-consulting-ltd-5b9a68425" target="_blank" data-i18n="navCareers">Careers</a>
+                        <a href="https://www.linkedin.com/in/銳鋒顧問有限公司-the-top-market-consulting-ltd-5b9a68425" target="_blank" data-i18n="navCareers" id="linkedinNavLink">Careers</a>
                     </div>
                 </div>
             </nav>
@@ -796,28 +796,28 @@
                     <div class="reveal reveal-left mb-4"><span class="text-[#d4b87a]/70 text-xs tracking-widest-xl uppercase font-display" data-i18n="cntTag">Contact Us</span></div>
                     <h2 class="reveal reveal-left reveal-delay-1 font-serif font-bold text-3xl md:text-5xl mb-6 leading-tight text-white" data-i18n="cntTitle">Contact Us</h2>
                     <p class="reveal reveal-left reveal-delay-2 text-white/50 leading-relaxed text-sm mb-10" data-i18n="cntDesc">Start your data-driven growth journey: Connect with our experts today to unlock unlimited growth potential.</p>
-                    <div class="reveal reveal-left reveal-delay-4 mb-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm">
+                    <a href="mailto:Info.thetopmarket@gmail.com" class="reveal reveal-left reveal-delay-4 mb-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group block cursor-pointer bg-bg-card/60 backdrop-blur-sm" id="emailLink">
                         <div class="flex items-center gap-4">
                             <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors flex-shrink-0">
                                 <svg class="w-5 h-5 text-[#d4b87a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             </div>
                             <div class="min-w-0 flex-1">
                                 <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">EMAIL</div>
-                                <a href="mailto:Info.thetopmarket@gmail.com" class="text-white text-sm hover:text-[#d4b87a] transition-colors break-all">Info.thetopmarket@gmail.com</a>
+                                <span class="text-white text-sm group-hover:text-[#d4b87a] transition-colors break-all">Info.thetopmarket@gmail.com</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="reveal reveal-left reveal-delay-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group cursor-pointer bg-bg-card/60 backdrop-blur-sm">
+                    </a>
+                    <a href="https://www.linkedin.com/in/銳鋒顧問有限公司-the-top-market-consulting-ltd-5b9a68425" target="_blank" class="reveal reveal-left reveal-delay-5 p-5 border border-[#c9a96e]/25 rounded-sm hover:border-[#c9a96e]/50 transition-colors group block cursor-pointer bg-bg-card/60 backdrop-blur-sm" id="linkedinContactLink">
                         <div class="flex items-center gap-4">
                             <div class="w-11 h-11 rounded-sm border border-[#c9a96e]/35 flex items-center justify-center bg-bg-deep group-hover:border-[#c9a96e]/60 transition-colors flex-shrink-0">
                                 <svg class="w-5 h-5 text-[#d4b87a]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </div>
                             <div class="min-w-0 flex-1">
                                 <div class="text-[#d4b87a]/60 text-[10px] tracking-widest mb-1">LINKEDIN</div>
-                                <a href="https://www.linkedin.com/in/銳鋒顧問有限公司-the-top-market-consulting-ltd-5b9a68425" target="_blank" class="text-white text-sm hover:text-[#d4b87a] transition-colors" data-i18n="linkedinText">TOP MARKET 銳鋒顧問</a>
+                                <span class="text-white text-sm group-hover:text-[#d4b87a] transition-colors" data-i18n="linkedinText">TOP MARKET 銳鋒顧問</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="lg:col-span-7">
                     <!-- 表單已綁定 Formspree 連結，並透過 AJAX 提交 -->
@@ -1177,6 +1177,54 @@
                 });
             });
 
+            // ===== 市場報告點擊 =====
+            document.getElementById('marketReportLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                gtag('event', 'market_report_click', {
+                    'event_category': 'navigation',
+                    'event_label': 'Market Reports'
+                });
+                menuToggle.classList.remove('active');
+                dropdownNav.classList.remove('open');
+                showLoginModal();
+            });
+
+            // ===== 公司報告點擊 =====
+            document.getElementById('companyReportLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                gtag('event', 'company_report_click', {
+                    'event_category': 'navigation',
+                    'event_label': 'Company Reports'
+                });
+                menuToggle.classList.remove('active');
+                dropdownNav.classList.remove('open');
+                showLoginModal();
+            });
+
+            // ===== LinkedIn 連結點擊（導航欄） =====
+            document.getElementById('linkedinNavLink').addEventListener('click', function() {
+                gtag('event', 'linkedin_click', {
+                    'event_category': 'social',
+                    'event_label': 'nav_careers'
+                });
+            });
+
+            // ===== LinkedIn 連結點擊（聯絡區） =====
+            document.getElementById('linkedinContactLink').addEventListener('click', function() {
+                gtag('event', 'linkedin_click', {
+                    'event_category': 'social',
+                    'event_label': 'contact_section'
+                });
+            });
+
+            // ===== Email 連結點擊 =====
+            document.getElementById('emailLink').addEventListener('click', function() {
+                gtag('event', 'email_click', {
+                    'event_category': 'engagement',
+                    'event_label': 'mailto_contact'
+                });
+            });
+
             // ===== 登錄模態框控制 =====
             const loginModal = document.getElementById('loginModal');
             const loginForm = document.getElementById('loginForm');
@@ -1211,7 +1259,6 @@
             // ===== 登录按钮点击追踪 =====
             document.getElementById('loginTrigger').addEventListener('click', function(e) { 
                 e.preventDefault();
-                // 傳送登錄按鈕點擊事件
                 gtag('event', 'login_click', {
                     'event_category': 'engagement',
                     'event_label': 'header_login'
@@ -1221,14 +1268,16 @@
                 showLoginModal(); 
             });
 
-            // 報告連結點擊（模態框）
-            document.querySelectorAll('.report-link').forEach(link => { 
-                link.addEventListener('click', function(e) { 
+            // 其餘 report-link 點擊（若有其他）
+            document.querySelectorAll('.report-link').forEach(link => {
+                // 已單獨處理 marketReportLink 和 companyReportLink，此處跳過避免重複
+                if (link.id === 'marketReportLink' || link.id === 'companyReportLink') return;
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
                     menuToggle.classList.remove('active');
                     dropdownNav.classList.remove('open');
-                    showLoginModal(); 
-                }); 
+                    showLoginModal();
+                });
             });
 
             // 滾動動畫
@@ -1332,7 +1381,6 @@
                     });
 
                     if (response.ok) {
-                        // 成功：觸發 form_submit_success
                         gtag('event', 'form_submit_success', {
                             'event_category': 'conversion',
                             'event_label': 'contact_form'
@@ -1342,7 +1390,6 @@
                         btn.style.borderColor = '#10b981';
                         contactForm.reset(); 
                     } else {
-                        // 失敗：觸發 form_submit_fail
                         gtag('event', 'form_submit_fail', {
                             'event_category': 'conversion',
                             'event_label': 'contact_form',
@@ -1351,7 +1398,6 @@
                         alert("提交失敗，請再試一次。");
                     }
                 } catch (error) {
-                    // 網絡錯誤：觸發 form_submit_fail
                     gtag('event', 'form_submit_fail', {
                         'event_category': 'conversion',
                         'event_label': 'contact_form',
