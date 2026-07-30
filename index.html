@@ -48,6 +48,7 @@
         gtag('js', new Date());
         gtag('config', 'G-K8FY38SYMQ');
     </script>
+    <!-- ===== GA4 结束 ===== -->
 
     <style>
         *, *::before, *::after { box-sizing: border-box; }
@@ -662,7 +663,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -820,6 +820,7 @@
                     </div>
                 </div>
                 <div class="lg:col-span-7">
+                    <!-- 表單已綁定 Formspree 連結，並透過 AJAX 提交 -->
                     <form action="https://formspree.io/f/xvzeyybe" method="POST" class="reveal reveal-right reveal-delay-2 bg-bg-card border border-[#c9a96e]/25 rounded-sm p-6 sm:p-8 md:p-10 space-y-5 shadow-2xl" id="contactForm">
                         <div class="grid md:grid-cols-2 gap-5">
                             <div><label class="block text-[#d4b87a]/60 text-[10px] tracking-widest mb-3" data-i18n="lblTitle">Name</label><input type="text" name="name" class="form-input" id="inputName" placeholder="Enter your name" required></div>
@@ -891,14 +892,16 @@
                     <label for="loginPassword" data-i18n="loginPasswordLabel">Password</label>
                     <input type="password" id="loginPassword" placeholder="Enter password">
                 </div>
-                <button type="submit" class="login-btn" data-i18n="loginBtnText">Sign In</button>
+                <button type="submit" class="login-btn" id="loginSubmitBtn" data-i18n="loginBtnText">Sign In</button>
                 <div class="login-error" id="loginError" data-i18n="loginErrText">Invalid login credentials, please try again.</div>
             </form>
         </div>
     </div>
 
     <script>
-        // 语言翻译对象（仅保留英文和中文）
+        // ============================================================
+        // 語言包 (完全保留原有內容)
+        // ============================================================
         const translations = {
             zh: {
                 docTitle: "TOP MARKET 銳鋒顧問 | 讓商業視野 超越界限",
@@ -1118,7 +1121,6 @@
                 }
             });
 
-            // 更新 placeholder
             const nameInput = document.getElementById('inputName');
             const emailInput = document.getElementById('inputEmail');
             const companyInput = document.getElementById('inputCompany');
@@ -1135,7 +1137,7 @@
         }
 
         (function() {
-            // 默认英文
+            // 預設切換為英文版面
             switchLanguage('en');
 
             const langBtn = document.getElementById('langSwitchBtn');
@@ -1153,13 +1155,12 @@
                 dropdownNav.classList.toggle('open'); 
             });
             
-            // 导航链接点击处理（资源中心特殊处理）
+            // 導航連結點擊處理（包含資源中心的 gtag）
             document.querySelectorAll('.dropdown-nav a').forEach(link => {
                 link.addEventListener('click', (e) => {
-                    // 资源中心：展开下拉并触发 GA 事件
                     if (link.id === 'resourcesTrigger') { 
                         e.preventDefault(); 
-                        // ===== GA4 事件追踪（资源中心） =====
+                        // ===== 資源中心點擊事件 =====
                         gtag('event', 'resource_center_click', {
                             'event_category': 'navigation',
                             'event_label': 'resources_dropdown'
@@ -1170,13 +1171,13 @@
                         arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)'; 
                         return; 
                     }
-                    // 其他链接：关闭菜单
                     if (link.classList.contains('report-link') || link.id === 'loginTrigger') return;
                     menuToggle.classList.remove('active');
                     dropdownNav.classList.remove('open');
                 });
             });
 
+            // ===== 登錄模態框控制 =====
             const loginModal = document.getElementById('loginModal');
             const loginForm = document.getElementById('loginForm');
             const loginError = document.getElementById('loginError');
@@ -1195,16 +1196,22 @@
             document.getElementById('loginModalClose').addEventListener('click', hideLoginModal);
             loginModal.addEventListener('click', function(e) { if (e.target === this) hideLoginModal(); });
             
+            // ===== 登錄表單提交 =====
             loginForm.addEventListener('submit', function(e) { 
                 e.preventDefault();
+                // 模擬登錄失敗，觸發 login_failed 事件
+                gtag('event', 'login_failed', {
+                    'event_category': 'authentication',
+                    'event_label': 'login_attempt'
+                });
                 loginError.textContent = translations[currentLang].loginErrText;
                 loginError.classList.add('show'); 
             });
 
-            // ===== 登录按钮事件追踪 =====
+            // ===== 登录按钮点击追踪 =====
             document.getElementById('loginTrigger').addEventListener('click', function(e) { 
                 e.preventDefault();
-                // GA4 事件
+                // 傳送登錄按鈕點擊事件
                 gtag('event', 'login_click', {
                     'event_category': 'engagement',
                     'event_label': 'header_login'
@@ -1214,18 +1221,17 @@
                 showLoginModal(); 
             });
 
-            // 资源中心报告链接（点击时触发登录弹窗，同时追踪）
+            // 報告連結點擊（模態框）
             document.querySelectorAll('.report-link').forEach(link => { 
                 link.addEventListener('click', function(e) { 
                     e.preventDefault();
-                    // 也可以添加 GA 事件，但为了简单，这里不重复添加
                     menuToggle.classList.remove('active');
                     dropdownNav.classList.remove('open');
                     showLoginModal(); 
                 }); 
             });
 
-            // 交互动画
+            // 滾動動畫
             const observer = new IntersectionObserver((entries) => { 
                 entries.forEach(entry => { 
                     if (entry.isIntersecting) entry.target.classList.add('visible'); 
@@ -1235,7 +1241,7 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             document.querySelectorAll('.timeline-step').forEach(el => observer.observe(el));
 
-            // 数字动画
+            // 計數動畫
             const numberObserver = new IntersectionObserver((entries) => { 
                 entries.forEach(entry => { 
                     if (!entry.isIntersecting) return; 
@@ -1258,7 +1264,7 @@
 
             document.querySelectorAll('.stat-number').forEach(el => numberObserver.observe(el));
 
-            // 3D 卡片效果
+            // 3D 傾斜卡片
             function initTilt() { 
                 if (window.innerWidth < 768) return; 
                 document.querySelectorAll('[data-tilt]').forEach(card => { 
@@ -1284,7 +1290,7 @@
             }
             initTilt();
 
-            // 标题视差
+            // 標題跟隨滑鼠移動
             const heroTitle = document.getElementById('heroTitle');
             let targetX = 0, targetY = 0;
             let currentX = 0, currentY = 0;
@@ -1301,14 +1307,14 @@
             }
             animateTitle();
 
-            // 英雄背景滚动
+            // Hero 背景視差
             const heroBg = document.getElementById('heroBg');
             window.addEventListener('scroll', () => { 
                 const scrollY = window.scrollY; 
                 if (heroBg && scrollY < window.innerHeight) heroBg.style.transform = `translateY(${scrollY * 0.3}px)`; 
             });
 
-            // 联系表单 AJAX 提交（Formspree）
+            // ===== 聯絡表單提交（GA4 成功/失敗追蹤） =====
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', async function(e) { 
                 e.preventDefault(); 
@@ -1326,14 +1332,31 @@
                     });
 
                     if (response.ok) {
+                        // 成功：觸發 form_submit_success
+                        gtag('event', 'form_submit_success', {
+                            'event_category': 'conversion',
+                            'event_label': 'contact_form'
+                        });
                         btn.innerHTML = translations[currentLang].submittedText;
                         btn.style.background = '#10b981';
                         btn.style.borderColor = '#10b981';
                         contactForm.reset(); 
                     } else {
+                        // 失敗：觸發 form_submit_fail
+                        gtag('event', 'form_submit_fail', {
+                            'event_category': 'conversion',
+                            'event_label': 'contact_form',
+                            'error_code': response.status
+                        });
                         alert("提交失敗，請再試一次。");
                     }
                 } catch (error) {
+                    // 網絡錯誤：觸發 form_submit_fail
+                    gtag('event', 'form_submit_fail', {
+                        'event_category': 'conversion',
+                        'event_label': 'contact_form',
+                        'error_message': error.message || 'network_error'
+                    });
                     alert("網絡錯誤，無法提交。");
                 } finally {
                     setTimeout(() => { 
@@ -1345,5 +1368,6 @@
             });
         })();
     </script>
+
 </body>
 </html>
