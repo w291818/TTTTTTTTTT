@@ -335,10 +335,12 @@
         .submenu-dropdown a:hover { color: #c9a96e; }
 
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 100px; }
-        .hero-bg-img {
+      .hero-bg-img {
             position: absolute; inset: 0;
             background-image: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/HERO.png');
-            background-size: cover; background-position: center; z-index: 0; will-change: transform;
+            background-size: cover; 
+            background-position: center calc(50% + 1cm); /* 向下移動一厘米 */
+            z-index: 0; will-change: transform;
         }
         /* 已去除背景圖片的所有遮擋，完整露出圖片本來的顏色 */
 
