@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">[source: 8]
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -59,6 +60,35 @@
     <!-- ===== GA4 结束 ===== -->
 
     <style>
+        /* 大標題 */
+        .hero-heading-top {
+          font-family: "Playfair Display", serif;
+          font-weight: 700;
+          font-size: clamp(2.8rem,6vw,4.5rem);
+          color: #ffffff;
+          line-height: 1.1;
+        }
+        .hero-heading-bottom {
+          font-family: "Playfair Display", serif;
+          font-weight: 700;
+          font-size: clamp(2.8rem,6vw,4.5rem);
+          line-height: 1.1;
+          background: linear-gradient(90deg,#a68449,#f2d398,#a68449);
+          -webkit-background-clip: text;
+          color: transparent;
+          /* 模擬金屬光感，可再加 text-shadow */
+          text-shadow: 0 0 12px rgba(224,188,118,0.35);
+        }
+
+        /* 副標文字 */
+        .hero-subtext {
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          font-size: 1.15rem;
+          color: #ffffff;
+          margin-top:16px;
+        }
+
         *, *::before, *::after { box-sizing: border-box; }
         img, video { max-width: 100%; height: auto; display: block; }
         body {
@@ -543,10 +573,10 @@
                         <span class="text-[#d4b87a]/80 text-xs tracking-widest-xl uppercase font-display font-medium">Business Intelligence</span>
                     </div>
                     <h1 class="reveal reveal-up reveal-delay-1 hero-title text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-8" id="heroTitle">
-                        <span data-i18n="heroTitleLine1">Expanding Horizons,</span><br>
-                        <span class="text-gold-gradient" data-i18n="heroTitleLine2">Beyond Limits</span>
+                        <span class="hero-heading-top" data-i18n="heroTitleLine1">Expanding Horizons,</span><br>
+                        <span class="hero-heading-bottom" data-i18n="heroTitleLine2">Beyond Limits</span>
                     </h1>
-                    <p class="reveal reveal-up reveal-delay-2 text-base md:text-xl text-white/70 font-light mb-3 max-w-xl" data-i18n="heroSub1">In-depth Insights into HK Market, Driving Business Strategy with Data.</p>
+                    <p class="reveal reveal-up reveal-delay-2 hero-subtext text-base md:text-xl text-white/70 font-light mb-3 max-w-xl" data-i18n="heroSub1">In-depth Insights into HK Market, Driving Business Strategy with Data.</p>
                     <p class="reveal reveal-up reveal-delay-3 text-sm text-white/45 max-w-xl mb-12 leading-relaxed" data-i18n="heroSub2">TOP MARKET is committed to helping businesses navigate complex environments, clarify strategic directions, and achieve sustainable growth.</p>
                     <div class="reveal reveal-up reveal-delay-4 flex flex-wrap gap-4">
                         <a href="#business" class="btn-primary"><span data-i18n="btnExplore">Explore Services</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
