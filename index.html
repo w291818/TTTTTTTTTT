@@ -91,9 +91,10 @@
         .reveal-delay-6 { transition-delay: 0.6s; }
 
         .text-gold-gradient {
-            background: linear-gradient(135deg, #fff2cc 0%, #f0d78c 25%, #c9a96e 60%, #fff2cc 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #ffeaad 20%, #f7df94 40%, #d4b87a 70%, #ffffff 100%);
             background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text; animation: metalShine 5s ease-in-out infinite;
+            filter: drop-shadow(0 2px 12px rgba(212, 184, 122, 0.3));
         }
         @keyframes metalShine { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
@@ -339,10 +340,7 @@
             background-image: url('https://raw.githubusercontent.com/w291818/TTTTTTTTTT/refs/heads/main/HERO.png');
             background-size: cover; background-position: center; z-index: 0; will-change: transform;
         }
-        .hero-bg-img::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(26, 20, 16, 0.50) 0%, rgba(26, 20, 16, 0.20) 50%, rgba(26, 20, 16, 0.60) 100%);
-        }
+        /* 已去除背景圖片的所有遮擋，完整露出圖片本來的顏色 */
 
         .hero-slice {
             position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
@@ -536,19 +534,18 @@
         <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full pb-20">
             <div class="grid lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-8">
-                    <div class="reveal reveal-up flex items-center gap-4 mb-10">
+                    <div class="reveal reveal-up flex items-center gap-4 mb-8">
                         <div class="w-10 h-px bg-[#c9a96e]/60"></div>
                         <span class="text-[#d4b87a]/80 text-xs tracking-widest-xl uppercase font-display font-medium">Business Intelligence</span>
                     </div>
-                    <h1 class="reveal reveal-up reveal-delay-1 hero-title text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-8" id="heroTitle">
-                        <span data-i18n="heroTitleLine1">Expanding Horizons,</span><br>
-                        <span class="text-gold-gradient" data-i18n="heroTitleLine2">Beyond Limits</span>
+                    <!-- 调整后完美对齐效果图1的字體大小與佈局 -->
+                    <h1 class="reveal reveal-up reveal-delay-1 hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6" id="heroTitle" style="letter-spacing: -0.01em;">
+                        <span data-i18n="heroTitleLine1" style="font-weight: 400; color: #ffffff;">Expanding Horizons,</span><br>
+                        <span class="text-gold-gradient" data-i18n="heroTitleLine2" style="font-weight: 700;">Beyond Limits</span>
                     </h1>
-                    <p class="reveal reveal-up reveal-delay-2 text-base md:text-xl text-white/70 font-light mb-3 max-w-xl" data-i18n="heroSub1">In-depth Insights into HK Market, Driving Business Strategy with Data.</p>
-                    <p class="reveal reveal-up reveal-delay-3 text-sm text-white/45 max-w-xl mb-12 leading-relaxed" data-i18n="heroSub2">TOP MARKET is committed to helping businesses navigate complex environments, clarify strategic directions, and achieve sustainable growth.</p>
+                    <p class="reveal reveal-up reveal-delay-2 text-sm md:text-base text-white/80 font-light mb-6 max-w-lg" data-i18n="heroSub1">In-depth Insights into HK Market, Driving Business Strategy with Data.</p>
                     <div class="reveal reveal-up reveal-delay-4 flex flex-wrap gap-4">
-                        <a href="#business" class="btn-primary"><span data-i18n="btnExplore">Explore Services</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
-                        <a href="#contact" class="btn-outline" data-i18n="btnContact">Contact Us</a>
+                        <a href="#business" class="btn-primary" style="padding: 12px 28px;"><span data-i18n="btnExplore">Explore Services</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
                     </div>
                 </div>
                 <div class="lg:col-span-4 hidden lg:block">
@@ -936,92 +933,92 @@
                 navContact: "聯絡我們",
                 navLogin: "登入",
                 navCareers: "加入我們",
-                heroTitleLine1: "讓商業視野",
-                heroTitleLine2: "超越界限",
-                heroSub1: "洞悉香港市場，以精準數據驅動商業策略。",
-                heroSub2: "銳鋒顧問致力於協助企業在複雜多變的商業環境中，釐清戰略方向，實現可持續的業務增長。",
-                btnExplore: "探索服務",
-                btnContact: "聯絡我們",
-                statCases: "+ 成功案例",
-                statYears: "年行業經驗",
-                statSat: "% 客戶滿意度",
+                heroTitleLine1: "Expanding Horizons,",
+                heroTitleLine2: "Beyond Limits",
+                heroSub1: "In-depth Insights into HK Market, Driving Business Strategy with Data.",
+                heroSub2: "TOP MARKET is committed to helping businesses navigate complex environments, clarify strategic directions, and achieve sustainable growth.",
+                btnExplore: "Explore Services",
+                btnContact: "Contact Us",
+                statCases: "+ Successful Cases",
+                statYears: "Years Experience",
+                statSat: "% Client Satisfaction",
                 aboutTag: "About Us",
-                aboutHeading: "以銳見洞察行業<br>用鋒利攻破市場",
-                aboutP1: "<span class='text-white font-medium'>銳鋒顧問有限公司</span>是一家整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。",
-                aboutP2: "專注為商業服務、零售、餐飲與美妝等本地行業提供端到端的解決方案。",
-                aboutP3: "我們不只是顧問，更是你並肩的商業夥伴。",
-                aboutPillar1: "精準",
-                aboutPillar2: "務實",
-                aboutPillar3: "可持續",
+                aboutHeading: "Sharpen Insights,<br>Conquer the Market",
+                aboutP1: "<span class='text-white font-medium'>TOP MARKET Consulting Limited</span> is a full-service business consultancy integrating data collection, consumer behavior research, and brand operations.",
+                aboutP2: "Focusing on end-to-end solutions for local commercial services, retail, F&B, and beauty industries.",
+                aboutP3: "We are not just consultants; we are your dedicated strategic partners.",
+                aboutPillar1: "Precision",
+                aboutPillar2: "Pragmatism",
+                aboutPillar3: "Sustainability",
                 advTag: "Our Advantages",
-                advHeadingLine1: "三大核心優勢",
-                advHeadingLine2: "驅動商業增長",
-                adv1Title: "數據驅動",
-                adv1Desc: "摒棄直覺決策，我們從龐雜的數據中萃取關鍵商業信號，確保每項策略均以真實數據為基礎。",
-                adv2Title: "本地深耕",
-                adv2Desc: "植根香港，我們對本地法規與營商環境具備深刻理解，能有效協助企業駕馭市場波動，精準規避潛在風險。",
-                adv3Title: "敏捷反應",
-                adv3Desc: "面對瞬息萬變的商業環境，我們保持極高的市場敏銳度，以靈活、高效的顧問服務協助客戶迅速調整策略，把握轉瞬即逝的商機。",
+                advHeadingLine1: "Three Core Advantages",
+                advHeadingLine2: "Driving Business Growth",
+                adv1Title: "Data-Driven",
+                adv1Desc: "Eliminating gut feelings, we extract key market signals from complex data, ensuring every strategy is backed by evidence.",
+                adv2Title: "Local Expertise",
+                adv2Desc: "Rooted in Hong Kong, we possess deep understanding of local regulations and business environments, helping enterprises navigate market fluctuations and precisely mitigate potential risks.",
+                adv3Title: "Agile Response",
+                adv3Desc: "Facing a rapidly changing business landscape, we maintain high market acuity, offering flexible and efficient consulting services to help clients swiftly adjust strategies and capture fleeting opportunities.",
                 bizTag: "Core Business",
-                bizTitle: "核心業務",
-                biz1Title: "品牌管理與優化",
-                biz1Desc: "從品牌形象塑造到營運流程優化，提供全方位的管理提升方案，確保每項策略都能精準落地、轉化為實際業績增長。",
-                biz2Title: "商業戰略規劃",
-                biz2Desc: "以人工智能與全渠道情報為核心驅動力，結合深入的策略研究，協助企業建構頂層架構，制定完整的商業藍圖。",
-                biz3Title: "市場洞察與數據分析",
-                biz3Desc: "從深入的市場洞察與數據分析出發，結合嚴謹的商業戰略與規劃，全面評估市場潛力與業務可行性，為企業決策提供堅實依據。",
+                bizTitle: "Core Business",
+                biz1Title: "Brand Management & Optimization",
+                biz1Desc: "From brand positioning to process optimization, we provide comprehensive growth solutions to turn strategies into revenue.",
+                biz2Title: "Business Strategy Planning",
+                biz2Desc: "Driven by AI and omnichannel intelligence, we assist companies in constructing top-level blueprints for sustainable success.",
+                biz3Title: "Market Insights & Data Analytics",
+                biz3Desc: "Combining rigorous analytics with market feasibility studies, we provide solid foundations for high-level decision-making.",
                 svcTag: "Service Scope",
-                svcTitle: "業務範圍",
-                svcSub: "九大專業服務領域，覆蓋從數據蒐集到策略落地的全鏈路。",
-                svc1: "量化調查",
-                svc2: "深度採訪",
-                svc3: "大數據收集",
-                svc4: "品牌進入市場策略",
-                svc5: "品牌現況及經營策略分析",
-                svc6: "行業專項顧問",
-                svc7: "協助企業落實措施",
-                svc8: "監察市場趨勢",
-                svc9: "定期報告與跟進",
+                svcTitle: "Services",
+                svcSub: "Nine professional service areas, covering the end-to-end consulting lifecycle.",
+                svc1: "Quantitative Surveys",
+                svc2: "In-depth Interviews",
+                svc3: "Big Data Collection",
+                svc4: "Go-to-Market Strategy",
+                svc5: "Brand Audit & Strategy",
+                svc6: "Industry Advisory",
+                svc7: "Implementation Support",
+                svc8: "Market Trend Monitoring",
+                svc9: "Reporting & Follow-up",
                 procTag: "Consulting Process",
-                procSub: "全程監控 · 數據真實 · 專業執行",
-                procTitle: "專案流程",
-                step1: "界定需求",
-                step2: "蒐集數據",
-                step3: "制定策略",
-                step4: "實施支援",
-                step5: "持續追蹤",
-                procDesc1: "我們設有內部品質監控團隊，透過抽樣覆核、採訪抽查、數據交叉驗證等方式，確保每一個環節的數據收集、分析與報告都具有高度的真實性與專業性。",
-                procDesc2: "從專案啟動到最終交付，每一步都經過嚴謹的品質把關，讓客戶放心依託我們的專業服務。",
-                qaTitle: "品質保證",
-                qaSub: "三重驗證機制 · 數據真實可靠",
+                procSub: "Full Monitoring · Verified Data · Professional Execution",
+                procTitle: "Our Process",
+                step1: "Define Needs",
+                step2: "Data Collection",
+                step3: "Formulate Strategy",
+                step4: "Implementation",
+                step5: "Continuous Tracking",
+                procDesc1: "Our in-house quality control team employs random audits, cross-validation, and interview sampling to guarantee maximum accuracy and professionalism.",
+                procDesc2: "From kick-off to final deliverable, every step undergoes strict quality control, ensuring trustworthy solutions.",
+                qaTitle: "Quality Assurance",
+                qaSub: "Triple Validation Mechanism · Verified Data",
                 cntTag: "Contact Us",
-                cntTitle: "歡迎諮詢",
-                cntDesc: "啟動您的數據驅動增長之旅：與銳鋒顧問的專業團隊展開對話，探索驅動您業務增長欄的無限可能。",
-                linkedinText: "TOP MARKET 銳鋒顧問",
-                lblTitle: "姓名",
-                lblEmail: "電郵",
-                lblCompany: "公司",
-                lblMessage: "留言",
-                phName: "請輸入您的姓名",
-                phEmail: "請輸入您的電郵",
-                phCompany: "請輸入公司名稱",
-                phMsg: "請簡述您的需求或問題...",
-                btnSubmit: "提交諮詢",
-                formNotice: "提交即表示您同意我們的隱私政策，我們將於 24 小時內與您聯絡。",
-                ftDesc: "整合市場數據蒐集、消費者行為研究及品牌營運策略的全方位商業諮詢機構。以銳見洞察行業，用鋒利攻破市場。",
-                ftQuickLinks: "快速連結",
-                ftContactInfo: "聯絡資訊",
-                ftRights: "© 2024 TOP MARKET 銳鋒顧問有限公司. All Rights Reserved.",
-                ftPrivacy: "隱私政策",
-                ftTerms: "服務條款",
-                loginModalTitle: "登入",
-                loginUsernameLabel: "帳號",
-                loginPasswordLabel: "密碼",
-                phUsername: "請輸入帳號",
-                phPassword: "請輸入密碼",
-                loginBtnText: "登 入",
-                loginErrText: "登錄錯誤，請重新輸入",
-                submittedText: "已提交 ✓"
+                cntTitle: "Contact Us",
+                cntDesc: "Start your data-driven growth journey: Connect with our experts today to unlock unlimited growth potential.",
+                linkedinText: "TOP MARKET Consulting Limited",
+                lblTitle: "Name",
+                lblEmail: "Email",
+                lblCompany: "Company",
+                lblMessage: "Message",
+                phName: "Enter your name",
+                phEmail: "Enter your email",
+                phCompany: "Enter company name",
+                phMsg: "Briefly describe your requirements...",
+                btnSubmit: "Submit Inquiry",
+                formNotice: "By submitting, you agree to our privacy policy. We will contact you within 24 hours.",
+                ftDesc: "Comprehensive business advisory specializing in data research, consumer behavior analysis, and growth strategies.",
+                ftQuickLinks: "Quick Links",
+                ftContactInfo: "Contact Info",
+                ftRights: "© 2024 TOP MARKET Consulting Limited. All Rights Reserved.",
+                ftPrivacy: "Privacy Policy",
+                ftTerms: "Terms of Service",
+                loginModalTitle: "Login",
+                loginUsernameLabel: "Username",
+                loginPasswordLabel: "Password",
+                phUsername: "Enter username",
+                phPassword: "Enter password",
+                loginBtnText: "Sign In",
+                loginErrText: "Invalid login credentials, please try again.",
+                submittedText: "Submitted ✓"
             },
             en: {
                 docTitle: "TOP MARKET Consulting | Expanding Business Horizons",
