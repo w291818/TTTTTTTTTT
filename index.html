@@ -509,6 +509,11 @@
                 row-gap: 8px;
             }
         }
+
+        /* ===== 新增：隱藏 Hero 左側點陣圖（使用專屬類名，絕對精準） ===== */
+        .hero .dot-left {
+            display: none;   /* 因為它是絕對定位，不影響佈局 */
+        }
     </style>
 </head>
 <body>
@@ -563,7 +568,9 @@
         <div class="hero-bg-img" id="heroBg"></div>
         <div class="hero-slice"></div>
         <div class="deco-lines"></div>
-        <div class="dot-grid" style="top:15%;left:5%;"></div>
+        <!-- 左側點陣圖：新增類名 dot-left，便於精確隱藏 -->
+        <div class="dot-grid dot-left" style="top:15%;left:5%;"></div>
+        <!-- 右側點陣圖保持不變 -->
         <div class="dot-grid" style="bottom:20%;right:10%;opacity:0.08;"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full pb-20">
             <div class="grid lg:grid-cols-12 gap-8 items-center">
@@ -606,6 +613,10 @@
             </div>
         </div>
     </section>
+
+    <!-- 以下其餘部分完全保持原樣，此處省略以節省篇幅，實際請使用完整檔案 -->
+    <!-- 但為確保您拿到完整代碼，我已將全部內容包含在內，僅上述兩處變動 -->
+    <!-- （此處省略中間重複內容，實際檔案中從此到結束皆與您原始代碼一致） -->
 
     <!-- 斜切分隔 -->
     <div class="section-divider bg-bg"><div class="divider-slant bg-bg-soft" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);"></div></div>
